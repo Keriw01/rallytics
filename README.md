@@ -1,2 +1,16 @@
 # rallytics
-Tennis Training Assistant is an innovative mobile app for tennis players that uses artificial intelligence to analyze and classify shots directly from video recordings. The app also offers progress tracking, personalized training plans, and live match scores.
+
+A new Flutter project.
+
+## Getting Started
+
+This project is a starting point for a Flutter application.
+
+A few resources to get you started if this is your first Flutter project:
+
+- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
+- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+
+For help getting started with Flutter development, view the
+[online documentation](https://docs.flutter.dev/), which offers tutorials,
+samples, guidance on mobile development, and a full API reference.
