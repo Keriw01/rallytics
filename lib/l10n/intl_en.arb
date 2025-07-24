@@ -1,0 +1,50 @@
+{
+  "@@locale": "en",
+
+  "appTitle": "Rallytics",
+  "@appTitle": {
+    "description": "The main title of the application, shown in the app bar."
+  },
+
+
+  "loginTitle": "Sign In",
+  "loginButton": "Log In",
+  "loginEmailLabel": "Email",
+  "loginPasswordHint": "Password",
+  "loginErrorInvalidCredentials": "Invalid email or password. Please try again.",
+
+
+  "trainingSessionTitle": "New Session",
+  "trainingSessionStartButton": "Start Recording",
+  "trainingSessionImportButton": "Import from Gallery",
+
+
+  "liveScoresTitle": "Live Scores",
+  "liveScoresMatchStatusUpcoming": "Upcoming",
+  "liveScoresMatchStatusFinished": "Finished",
+
+
+
+  "saveButton": "Save",
+  "cancelButton": "Cancel",
+  "errorGeneric": "An unexpected error occurred. Please try again later.",
+  "logoutButton": "Log Out",
+
+  "errorInvalidCredentials": "Invalid email or password.",
+  "errorEmailInUse": "This email is already in use. Please try another one.",
+  "errorWeakPassword": "The password is too weak.",
+
+  "welcomeUserMessage": "Welcome back, {userName}!",
+  "@welcomeUserMessage": {
+    "description": "A welcome message shown on the dashboard.",
+    "placeholders": {
+      "userName": {
+        "type": "String",
+        "example": "John Doe"
+      }
+    }
+  }
+
+
+  
+}

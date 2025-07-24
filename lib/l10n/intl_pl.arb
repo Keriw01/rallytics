@@ -1,0 +1,50 @@
+{
+  "@@locale": "en",
+
+  "appTitle": "Rallytics",
+  "@appTitle": {
+    "description": "Główna nazwa aplikacji, wyświetlana w pasku aplikacji."
+  },
+
+
+  "loginTitle": "Logowanie",
+  "loginButton": "Zaloguj się",
+  "loginEmailLabel": "Email",
+  "loginPasswordHint": "Hasło",
+  "loginErrorInvalidCredentials": "Nie prawidłowy email lub hasło. Spróbuj ponownie.",
+
+
+  "trainingSessionTitle": "Nowa Sesja",
+  "trainingSessionStartButton": "Zacznij Nagrywanie",
+  "trainingSessionImportButton": "Importuj z Galerii",
+
+
+  "liveScoresTitle": "Wyniki na Żywo",
+  "liveScoresMatchStatusUpcoming": "Nadchodzące",
+  "liveScoresMatchStatusFinished": "Zakończone",
+
+
+
+  "saveButton": "Zapisz",
+  "cancelButton": "Anuluj",
+  "errorGeneric": "Nie oczekiwany błąd wystąpił. Spróbuj ponownie później.",
+  "logoutButton": "Wyloguj się",
+
+  "errorInvalidCredentials": "Nie prawidłowy email lub hasło.",
+  "errorEmailInUse": "Ten email jest już używany. Spróbuj innego.",
+  "errorWeakPassword": "Hasło jest zbyt słabe.",
+
+  "welcomeUserMessage": "Witaj z powrotem, {userName}!",
+  "@welcomeUserMessage": {
+    "description": "Wiadomość powitalna wyświetlana na pulpicie.",
+    "placeholders": {
+      "userName": {
+        "type": "String",
+        "example": "Jan Kowalski"
+      }
+    }
+  }
+
+
+  
+}

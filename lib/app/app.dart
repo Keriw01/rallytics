@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rallytics/app/auth_gate.dart';
 
-import '../core/di/injection.dart';
-import '../features/auth/presentation/bloc/auth_bloc.dart';
+import 'package:rallytics/core/di/injection.dart';
+import 'package:rallytics/features/auth/presentation/bloc/auth_bloc.dart';
+import 'package:rallytics/generated/l10n.dart';
 
 class App extends StatelessWidget {
   const App({super.key});
@@ -16,6 +17,8 @@ class App extends StatelessWidget {
       child: MaterialApp(
         title: 'Rallytics',
         theme: ThemeData(),
+        localizationsDelegates: [S.delegate],
+        supportedLocales: S.delegate.supportedLocales,
         home: const AuthGate(),
       ),
     );
