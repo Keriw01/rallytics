@@ -12,7 +12,7 @@ _$UserEntityImpl _$$UserEntityImplFromJson(Map<String, dynamic> json) =>
       email: json['email'] as String,
       displayName: json['displayName'] as String?,
       photoURL: json['photoURL'] as String?,
-      emailVerified: json['emailVerified'] as bool,
+      isEmailVerified: json['isEmailVerified'] as bool,
     );
 
 Map<String, dynamic> _$$UserEntityImplToJson(_$UserEntityImpl instance) =>
@@ -21,5 +21,5 @@ Map<String, dynamic> _$$UserEntityImplToJson(_$UserEntityImpl instance) =>
       'email': instance.email,
       'displayName': instance.displayName,
       'photoURL': instance.photoURL,
-      'emailVerified': instance.emailVerified,
+      'isEmailVerified': instance.isEmailVerified,
     };

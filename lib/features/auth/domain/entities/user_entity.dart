@@ -13,7 +13,7 @@ class UserEntity with _$UserEntity {
     required String email,
     String? displayName,
     String? photoURL,
-    required bool emailVerified,
+    required bool isEmailVerified,
   }) = _UserEntity;
 
   factory UserEntity.fromJson(Map<String, dynamic> json) =>

@@ -25,7 +25,7 @@ mixin _$UserEntity {
   String get email => throw _privateConstructorUsedError;
   String? get displayName => throw _privateConstructorUsedError;
   String? get photoURL => throw _privateConstructorUsedError;
-  bool get emailVerified => throw _privateConstructorUsedError;
+  bool get isEmailVerified => throw _privateConstructorUsedError;
 
   /// Serializes this UserEntity to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -49,7 +49,7 @@ abstract class $UserEntityCopyWith<$Res> {
     String email,
     String? displayName,
     String? photoURL,
-    bool emailVerified,
+    bool isEmailVerified,
   });
 }
 
@@ -72,7 +72,7 @@ class _$UserEntityCopyWithImpl<$Res, $Val extends UserEntity>
     Object? email = null,
     Object? displayName = freezed,
     Object? photoURL = freezed,
-    Object? emailVerified = null,
+    Object? isEmailVerified = null,
   }) {
     return _then(
       _value.copyWith(
@@ -92,9 +92,9 @@ class _$UserEntityCopyWithImpl<$Res, $Val extends UserEntity>
                 ? _value.photoURL
                 : photoURL // ignore: cast_nullable_to_non_nullable
                       as String?,
-            emailVerified: null == emailVerified
-                ? _value.emailVerified
-                : emailVerified // ignore: cast_nullable_to_non_nullable
+            isEmailVerified: null == isEmailVerified
+                ? _value.isEmailVerified
+                : isEmailVerified // ignore: cast_nullable_to_non_nullable
                       as bool,
           )
           as $Val,
@@ -116,7 +116,7 @@ abstract class _$$UserEntityImplCopyWith<$Res>
     String email,
     String? displayName,
     String? photoURL,
-    bool emailVerified,
+    bool isEmailVerified,
   });
 }
 
@@ -138,7 +138,7 @@ class __$$UserEntityImplCopyWithImpl<$Res>
     Object? email = null,
     Object? displayName = freezed,
     Object? photoURL = freezed,
-    Object? emailVerified = null,
+    Object? isEmailVerified = null,
   }) {
     return _then(
       _$UserEntityImpl(
@@ -158,9 +158,9 @@ class __$$UserEntityImplCopyWithImpl<$Res>
             ? _value.photoURL
             : photoURL // ignore: cast_nullable_to_non_nullable
                   as String?,
-        emailVerified: null == emailVerified
-            ? _value.emailVerified
-            : emailVerified // ignore: cast_nullable_to_non_nullable
+        isEmailVerified: null == isEmailVerified
+            ? _value.isEmailVerified
+            : isEmailVerified // ignore: cast_nullable_to_non_nullable
                   as bool,
       ),
     );
@@ -175,7 +175,7 @@ class _$UserEntityImpl implements _UserEntity {
     required this.email,
     this.displayName,
     this.photoURL,
-    required this.emailVerified,
+    required this.isEmailVerified,
   });
 
   factory _$UserEntityImpl.fromJson(Map<String, dynamic> json) =>
@@ -190,11 +190,11 @@ class _$UserEntityImpl implements _UserEntity {
   @override
   final String? photoURL;
   @override
-  final bool emailVerified;
+  final bool isEmailVerified;
 
   @override
   String toString() {
-    return 'UserEntity(uid: $uid, email: $email, displayName: $displayName, photoURL: $photoURL, emailVerified: $emailVerified)';
+    return 'UserEntity(uid: $uid, email: $email, displayName: $displayName, photoURL: $photoURL, isEmailVerified: $isEmailVerified)';
   }
 
   @override
@@ -208,8 +208,8 @@ class _$UserEntityImpl implements _UserEntity {
                 other.displayName == displayName) &&
             (identical(other.photoURL, photoURL) ||
                 other.photoURL == photoURL) &&
-            (identical(other.emailVerified, emailVerified) ||
-                other.emailVerified == emailVerified));
+            (identical(other.isEmailVerified, isEmailVerified) ||
+                other.isEmailVerified == isEmailVerified));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -220,7 +220,7 @@ class _$UserEntityImpl implements _UserEntity {
     email,
     displayName,
     photoURL,
-    emailVerified,
+    isEmailVerified,
   );
 
   /// Create a copy of UserEntity
@@ -243,7 +243,7 @@ abstract class _UserEntity implements UserEntity {
     required final String email,
     final String? displayName,
     final String? photoURL,
-    required final bool emailVerified,
+    required final bool isEmailVerified,
   }) = _$UserEntityImpl;
 
   factory _UserEntity.fromJson(Map<String, dynamic> json) =
@@ -258,7 +258,7 @@ abstract class _UserEntity implements UserEntity {
   @override
   String? get photoURL;
   @override
-  bool get emailVerified;
+  bool get isEmailVerified;
 
   /// Create a copy of UserEntity
   /// with the given fields replaced by the non-null parameter values.

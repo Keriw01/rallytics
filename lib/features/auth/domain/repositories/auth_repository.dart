@@ -8,7 +8,7 @@ abstract class AuthRepository {
 
   Future<void> signInWithEmail(String email, String password);
 
-  Future<void> createUserWithEmailAndPassword(String email, String password);
+  Future<void> signUpWithEmail(String email, String password);
 
   Future<void> signOut();
 }

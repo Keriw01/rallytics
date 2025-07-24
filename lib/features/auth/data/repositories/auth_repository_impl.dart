@@ -28,7 +28,7 @@ class AuthRepositoryImpl implements AuthRepository {
   }
 
   @override
-  Future<void> createUserWithEmailAndPassword(String email, String password) {
+  Future<void> signUpWithEmail(String email, String password) {
     return _authFirebaseDataSource.createUserWithEmailAndPassword(
       email,
       password,
@@ -58,7 +58,7 @@ class AuthRepositoryImpl implements AuthRepository {
     return UserEntity(
       uid: firebaseUser.uid,
       email: firebaseUser.email!,
-      emailVerified: firebaseUser.emailVerified,
+      isEmailVerified: firebaseUser.emailVerified,
       photoURL: firebaseUser.photoURL,
       displayName: firebaseUser.displayName,
     );
