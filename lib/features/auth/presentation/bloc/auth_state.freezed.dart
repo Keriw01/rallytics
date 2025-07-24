@@ -23,7 +23,7 @@ mixin _$AuthState {
     required TResult Function() loading,
     required TResult Function(UserEntity user) authenticated,
     required TResult Function() unauthenticated,
-    required TResult Function(String message) error,
+    required TResult Function(ServerErrorCode code) error,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
@@ -31,7 +31,7 @@ mixin _$AuthState {
     TResult? Function()? loading,
     TResult? Function(UserEntity user)? authenticated,
     TResult? Function()? unauthenticated,
-    TResult? Function(String message)? error,
+    TResult? Function(ServerErrorCode code)? error,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
@@ -39,7 +39,7 @@ mixin _$AuthState {
     TResult Function()? loading,
     TResult Function(UserEntity user)? authenticated,
     TResult Function()? unauthenticated,
-    TResult Function(String message)? error,
+    TResult Function(ServerErrorCode code)? error,
     required TResult orElse(),
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -136,7 +136,7 @@ class _$InitialImpl implements _Initial {
     required TResult Function() loading,
     required TResult Function(UserEntity user) authenticated,
     required TResult Function() unauthenticated,
-    required TResult Function(String message) error,
+    required TResult Function(ServerErrorCode code) error,
   }) {
     return initial();
   }
@@ -148,7 +148,7 @@ class _$InitialImpl implements _Initial {
     TResult? Function()? loading,
     TResult? Function(UserEntity user)? authenticated,
     TResult? Function()? unauthenticated,
-    TResult? Function(String message)? error,
+    TResult? Function(ServerErrorCode code)? error,
   }) {
     return initial?.call();
   }
@@ -160,7 +160,7 @@ class _$InitialImpl implements _Initial {
     TResult Function()? loading,
     TResult Function(UserEntity user)? authenticated,
     TResult Function()? unauthenticated,
-    TResult Function(String message)? error,
+    TResult Function(ServerErrorCode code)? error,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -261,7 +261,7 @@ class _$LoadingImpl implements _Loading {
     required TResult Function() loading,
     required TResult Function(UserEntity user) authenticated,
     required TResult Function() unauthenticated,
-    required TResult Function(String message) error,
+    required TResult Function(ServerErrorCode code) error,
   }) {
     return loading();
   }
@@ -273,7 +273,7 @@ class _$LoadingImpl implements _Loading {
     TResult? Function()? loading,
     TResult? Function(UserEntity user)? authenticated,
     TResult? Function()? unauthenticated,
-    TResult? Function(String message)? error,
+    TResult? Function(ServerErrorCode code)? error,
   }) {
     return loading?.call();
   }
@@ -285,7 +285,7 @@ class _$LoadingImpl implements _Loading {
     TResult Function()? loading,
     TResult Function(UserEntity user)? authenticated,
     TResult Function()? unauthenticated,
-    TResult Function(String message)? error,
+    TResult Function(ServerErrorCode code)? error,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -425,7 +425,7 @@ class _$AuthenticatedImpl implements _Authenticated {
     required TResult Function() loading,
     required TResult Function(UserEntity user) authenticated,
     required TResult Function() unauthenticated,
-    required TResult Function(String message) error,
+    required TResult Function(ServerErrorCode code) error,
   }) {
     return authenticated(user);
   }
@@ -437,7 +437,7 @@ class _$AuthenticatedImpl implements _Authenticated {
     TResult? Function()? loading,
     TResult? Function(UserEntity user)? authenticated,
     TResult? Function()? unauthenticated,
-    TResult? Function(String message)? error,
+    TResult? Function(ServerErrorCode code)? error,
   }) {
     return authenticated?.call(user);
   }
@@ -449,7 +449,7 @@ class _$AuthenticatedImpl implements _Authenticated {
     TResult Function()? loading,
     TResult Function(UserEntity user)? authenticated,
     TResult Function()? unauthenticated,
-    TResult Function(String message)? error,
+    TResult Function(ServerErrorCode code)? error,
     required TResult orElse(),
   }) {
     if (authenticated != null) {
@@ -558,7 +558,7 @@ class _$UnauthenticatedImpl implements _Unauthenticated {
     required TResult Function() loading,
     required TResult Function(UserEntity user) authenticated,
     required TResult Function() unauthenticated,
-    required TResult Function(String message) error,
+    required TResult Function(ServerErrorCode code) error,
   }) {
     return unauthenticated();
   }
@@ -570,7 +570,7 @@ class _$UnauthenticatedImpl implements _Unauthenticated {
     TResult? Function()? loading,
     TResult? Function(UserEntity user)? authenticated,
     TResult? Function()? unauthenticated,
-    TResult? Function(String message)? error,
+    TResult? Function(ServerErrorCode code)? error,
   }) {
     return unauthenticated?.call();
   }
@@ -582,7 +582,7 @@ class _$UnauthenticatedImpl implements _Unauthenticated {
     TResult Function()? loading,
     TResult Function(UserEntity user)? authenticated,
     TResult Function()? unauthenticated,
-    TResult Function(String message)? error,
+    TResult Function(ServerErrorCode code)? error,
     required TResult orElse(),
   }) {
     if (unauthenticated != null) {
@@ -643,7 +643,7 @@ abstract class _$$ErrorImplCopyWith<$Res> {
     $Res Function(_$ErrorImpl) then,
   ) = __$$ErrorImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String message});
+  $Res call({ServerErrorCode code});
 }
 
 /// @nodoc
@@ -659,13 +659,13 @@ class __$$ErrorImplCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? message = null}) {
+  $Res call({Object? code = null}) {
     return _then(
       _$ErrorImpl(
-        null == message
-            ? _value.message
-            : message // ignore: cast_nullable_to_non_nullable
-                  as String,
+        null == code
+            ? _value.code
+            : code // ignore: cast_nullable_to_non_nullable
+                  as ServerErrorCode,
       ),
     );
   }
@@ -674,14 +674,14 @@ class __$$ErrorImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$ErrorImpl implements _Error {
-  const _$ErrorImpl(this.message);
+  const _$ErrorImpl(this.code);
 
   @override
-  final String message;
+  final ServerErrorCode code;
 
   @override
   String toString() {
-    return 'AuthState.error(message: $message)';
+    return 'AuthState.error(code: $code)';
   }
 
   @override
@@ -689,11 +689,11 @@ class _$ErrorImpl implements _Error {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ErrorImpl &&
-            (identical(other.message, message) || other.message == message));
+            (identical(other.code, code) || other.code == code));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, message);
+  int get hashCode => Object.hash(runtimeType, code);
 
   /// Create a copy of AuthState
   /// with the given fields replaced by the non-null parameter values.
@@ -710,9 +710,9 @@ class _$ErrorImpl implements _Error {
     required TResult Function() loading,
     required TResult Function(UserEntity user) authenticated,
     required TResult Function() unauthenticated,
-    required TResult Function(String message) error,
+    required TResult Function(ServerErrorCode code) error,
   }) {
-    return error(message);
+    return error(code);
   }
 
   @override
@@ -722,9 +722,9 @@ class _$ErrorImpl implements _Error {
     TResult? Function()? loading,
     TResult? Function(UserEntity user)? authenticated,
     TResult? Function()? unauthenticated,
-    TResult? Function(String message)? error,
+    TResult? Function(ServerErrorCode code)? error,
   }) {
-    return error?.call(message);
+    return error?.call(code);
   }
 
   @override
@@ -734,11 +734,11 @@ class _$ErrorImpl implements _Error {
     TResult Function()? loading,
     TResult Function(UserEntity user)? authenticated,
     TResult Function()? unauthenticated,
-    TResult Function(String message)? error,
+    TResult Function(ServerErrorCode code)? error,
     required TResult orElse(),
   }) {
     if (error != null) {
-      return error(message);
+      return error(code);
     }
     return orElse();
   }
@@ -785,9 +785,9 @@ class _$ErrorImpl implements _Error {
 }
 
 abstract class _Error implements AuthState {
-  const factory _Error(final String message) = _$ErrorImpl;
+  const factory _Error(final ServerErrorCode code) = _$ErrorImpl;
 
-  String get message;
+  ServerErrorCode get code;
 
   /// Create a copy of AuthState
   /// with the given fields replaced by the non-null parameter values.

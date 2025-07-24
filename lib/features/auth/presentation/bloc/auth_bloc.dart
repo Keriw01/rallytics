@@ -6,8 +6,8 @@ import 'package:rallytics/features/auth/domain/entities/user_entity.dart';
 import 'package:rallytics/features/auth/presentation/bloc/auth_event.dart';
 import 'package:rallytics/features/auth/presentation/bloc/auth_state.dart';
 
-import '../../../../core/error/exceptions.dart';
-import '../../domain/repositories/auth_repository.dart';
+import 'package:rallytics/core/error/exceptions.dart';
+import 'package:rallytics/features/auth/domain/repositories/auth_repository.dart';
 
 // Zarządza stanem interfejsu użytkownika dla funkcji autoryzacji.
 // Reaguje na eventy z UI (np. kliknięcie przycisku "Zaloguj").
@@ -37,7 +37,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       try {
         await _authRepository.signInWithEmail(event.email, event.password);
       } on ServerException catch (e) {
-        emit(AuthState.error(e.message));
+        emit(AuthState.error(e.code));
       }
     });
 
@@ -46,7 +46,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       try {
         await _authRepository.signOut();
       } on ServerException catch (e) {
-        emit(AuthState.error(e.message));
+        emit(AuthState.error(e.code));
       }
     });
   }

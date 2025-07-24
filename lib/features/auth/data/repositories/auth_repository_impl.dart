@@ -2,9 +2,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:injectable/injectable.dart';
 import 'package:rallytics/features/auth/domain/entities/user_entity.dart';
 
-import '../../../../core/error/exceptions.dart';
-import '../../domain/repositories/auth_repository.dart';
-import '../datasources/auth_firebase_datasource.dart';
+import 'package:rallytics/core/error/exceptions.dart';
+import 'package:rallytics/features/auth/domain/repositories/auth_repository.dart';
+import 'package:rallytics/features/auth/data/datasources/auth_firebase_datasource.dart';
 
 // Implementacja interfejsu z `domain/repositories`.
 // Wie, skąd wziąć dane (z jakiego `DataSource`).
@@ -21,9 +21,28 @@ class AuthRepositoryImpl implements AuthRepository {
     try {
       await _authFirebaseDataSource.signInWithEmailAndPassword(email, password);
     } on FirebaseAuthException catch (e) {
-      throw ServerException(message: e.message ?? 'Wystąpił błąd logowania');
-    } catch (_) {
-      throw ServerException();
+      final errorCode = _mapFirebaseErrorCode(e.code);
+      throw ServerException(code: errorCode, originalMessage: e.message);
+    } catch (e) {
+      throw ServerException(
+        code: ServerErrorCode.unknown,
+        originalMessage: e.toString(),
+      );
+    }
+  }
+
+  ServerErrorCode _mapFirebaseErrorCode(String firebaseCode) {
+    switch (firebaseCode) {
+      case 'user-not-found':
+      case 'wrong-password':
+      case 'invalid-credential':
+        return ServerErrorCode.invalidCredentials;
+      case 'email-already-in-use':
+        return ServerErrorCode.emailInUse;
+      case 'weak-password':
+        return ServerErrorCode.weakPassword;
+      default:
+        return ServerErrorCode.unknown;
     }
   }
 
@@ -40,9 +59,13 @@ class AuthRepositoryImpl implements AuthRepository {
     try {
       await _authFirebaseDataSource.signOut();
     } on FirebaseAuthException catch (e) {
-      throw ServerException(message: e.message ?? 'Wystąpił błąd wylogowania');
-    } catch (_) {
-      throw ServerException();
+      final errorCode = _mapFirebaseErrorCode(e.code);
+      throw ServerException(code: errorCode, originalMessage: e.message);
+    } catch (e) {
+      throw ServerException(
+        code: ServerErrorCode.unknown,
+        originalMessage: e.toString(),
+      );
     }
   }
 

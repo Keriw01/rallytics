@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../features/auth/presentation/pages/login_screen.dart';
-import '../features/live_score/presentation/pages/live_score_screen.dart';
+import 'package:rallytics/features/auth/presentation/pages/login_screen.dart';
+import 'package:rallytics/features/live_score/presentation/pages/live_score_screen.dart';
 
-import '../features/auth/presentation/bloc/auth_bloc.dart';
-import '../features/auth/presentation/bloc/auth_state.dart';
+import 'package:rallytics/features/auth/presentation/bloc/auth_bloc.dart';
+import 'package:rallytics/features/auth/presentation/bloc/auth_state.dart';
 
 class AuthGate extends StatelessWidget {
   const AuthGate({super.key});

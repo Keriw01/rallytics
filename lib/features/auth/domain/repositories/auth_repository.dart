@@ -1,4 +1,4 @@
-import '../entities/user_entity.dart';
+import 'package:rallytics/features/auth/domain/entities/user_entity.dart';
 
 // Definiuje interfejs dla dostępu do danych autoryzacji.
 // Mówi co aplikacja potrafi zrobić (np. "zaloguj", "wyloguj"), ale nie mówi jak.

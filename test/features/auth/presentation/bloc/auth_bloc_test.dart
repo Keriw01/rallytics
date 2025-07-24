@@ -98,7 +98,7 @@ void main() {
           mockAuthRepository.authStateChanges,
         ).thenAnswer((_) => Stream.empty());
         when(mockAuthRepository.signInWithEmail(any, any)).thenAnswer(
-          (_) async => throw ServerException(message: 'Błąd logowania'),
+          (_) async => throw ServerException(code: ServerErrorCode.unknown),
         );
       },
 
@@ -112,7 +112,7 @@ void main() {
 
       expect: () => [
         const AuthState.loading(),
-        const AuthState.error('Błąd logowania'),
+        const AuthState.error(ServerErrorCode.unknown),
       ],
     );
   });

@@ -1,5 +1,14 @@
-class ServerException implements Exception {
-  final String message;
+enum ServerErrorCode {
+  invalidCredentials,
+  emailInUse,
+  weakPassword,
+  networkError,
+  unknown,
+}
 
-  ServerException({this.message = 'Wystąpił nieoczekiwany błąd serwera.'});
+class ServerException implements Exception {
+  final ServerErrorCode code;
+  final String? originalMessage;
+
+  ServerException({this.code = ServerErrorCode.unknown, this.originalMessage});
 }

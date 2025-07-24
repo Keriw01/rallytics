@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:rallytics/generated/l10n.dart';
 
-import '../bloc/auth_bloc.dart';
-import '../bloc/auth_state.dart';
+import 'package:rallytics/features/auth/presentation/bloc/auth_bloc.dart';
+import 'package:rallytics/features/auth/presentation/bloc/auth_state.dart';
+import 'package:rallytics/helpers/error_message_helper.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -13,7 +15,12 @@ class LoginScreen extends StatelessWidget {
       body: BlocListener<AuthBloc, AuthState>(
         listener: (context, state) {
           state.maybeWhen(
-            error: (message) => SnackBar(content: Text("data")),
+            error: (errorCode) {
+              final errorMessage = getErrorMessage(context, errorCode);
+              ScaffoldMessenger.of(
+                context,
+              ).showSnackBar(SnackBar(content: Text(errorMessage)));
+            },
             orElse: () {},
           );
         },
@@ -23,9 +30,12 @@ class LoginScreen extends StatelessWidget {
             child: Center(
               child: Column(
                 children: [
-                  const Text("Login Screen"),
+                  Text(S.of(context).loginTitle),
                   //TODO: Handle login form here
-                  ElevatedButton(onPressed: () => {}, child: Text("Login")),
+                  ElevatedButton(
+                    onPressed: () => {},
+                    child: Text(S.of(context).loginButton),
+                  ),
                 ],
               ),
             ),
