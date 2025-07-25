@@ -98,11 +98,125 @@ abstract class AppLocalizations {
     Locale('pl'),
   ];
 
-  /// No description provided for @loginScreen.
+  /// The main title of the application, shown in the app bar.
   ///
   /// In en, this message translates to:
-  /// **'Login Screen'**
-  String get loginScreen;
+  /// **'Rallytics'**
+  String get appTitle;
+
+  /// No description provided for @loginTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign In'**
+  String get loginTitle;
+
+  /// No description provided for @loginButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Log In'**
+  String get loginButton;
+
+  /// No description provided for @loginEmailLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Email'**
+  String get loginEmailLabel;
+
+  /// No description provided for @loginPasswordHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Password'**
+  String get loginPasswordHint;
+
+  /// No description provided for @loginErrorInvalidCredentials.
+  ///
+  /// In en, this message translates to:
+  /// **'Invalid email or password. Please try again.'**
+  String get loginErrorInvalidCredentials;
+
+  /// No description provided for @trainingSessionTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'New Session'**
+  String get trainingSessionTitle;
+
+  /// No description provided for @trainingSessionStartButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Start Recording'**
+  String get trainingSessionStartButton;
+
+  /// No description provided for @trainingSessionImportButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Import from Gallery'**
+  String get trainingSessionImportButton;
+
+  /// No description provided for @liveScoresTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Live Scores'**
+  String get liveScoresTitle;
+
+  /// No description provided for @liveScoresMatchStatusUpcoming.
+  ///
+  /// In en, this message translates to:
+  /// **'Upcoming'**
+  String get liveScoresMatchStatusUpcoming;
+
+  /// No description provided for @liveScoresMatchStatusFinished.
+  ///
+  /// In en, this message translates to:
+  /// **'Finished'**
+  String get liveScoresMatchStatusFinished;
+
+  /// No description provided for @saveButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Save'**
+  String get saveButton;
+
+  /// No description provided for @cancelButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get cancelButton;
+
+  /// No description provided for @errorGeneric.
+  ///
+  /// In en, this message translates to:
+  /// **'An unexpected error occurred. Please try again later.'**
+  String get errorGeneric;
+
+  /// No description provided for @logoutButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Log Out'**
+  String get logoutButton;
+
+  /// No description provided for @errorInvalidCredentials.
+  ///
+  /// In en, this message translates to:
+  /// **'Invalid email or password.'**
+  String get errorInvalidCredentials;
+
+  /// No description provided for @errorEmailInUse.
+  ///
+  /// In en, this message translates to:
+  /// **'This email is already in use. Please try another one.'**
+  String get errorEmailInUse;
+
+  /// No description provided for @errorWeakPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'The password is too weak.'**
+  String get errorWeakPassword;
+
+  /// A welcome message shown on the dashboard.
+  ///
+  /// In en, this message translates to:
+  /// **'Welcome back, {userName}!'**
+  String welcomeUserMessage(String userName);
 }
 
 class _AppLocalizationsDelegate
