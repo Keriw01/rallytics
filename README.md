@@ -17,3 +17,57 @@ Projekt został zbudowany w oparciu o zasady **Clean Architecture**, oddzielają
 
 *   **Podejście Rozwojowe**: **Test-Driven Development (TDD)**
     > Projekt jest rozwijany zgodnie z metodologią TDD. Logika biznesowa i zarządzanie stanem są w pierwszej kolejności opisywane przez testy jednostkowe i widgetowe, a następnie implementowane. Zapewnia to wysoką jakość kodu i stabilność aplikacji.
+
+## 🚀 Instalacja i Uruchomienie
+
+Aby uruchomić projekt lokalnie:
+
+1.  **Sklonuj repozytorium:**
+    ```bash
+    git clone adres_repozytorium
+    cd nazwa_folderu
+    ```
+
+2.  **Zainstaluj zależności Fluttera:**
+    ```bash
+    flutter pub get
+    ```
+
+3.  **Skonfiguruj Firebase:**
+    Aplikacja wymaga połączenia z projektem Firebase.
+    
+    *   **Zainstaluj Firebase CLI**, jeśli jeszcze go nie masz (zgodnie z [oficjalną dokumentacją](https://firebase.google.com/docs/cli#setup_update)).
+    
+    *   Uruchom i wykonaj polecenie w terminalu:
+        ```bash
+        Set-ExecutionPolicy Unrestricted -Scope Process
+        ```
+
+    *   **Zaloguj się do Firebase:**
+        ```bash
+        firebase login
+        ```
+    
+    *   **Skonfiguruj projekt za pomocą FlutterFire CLI:**
+        Uruchom poniższą komendę i wybierz z listy swój projekt Firebase.
+        ```bash
+        flutterfire configure
+        ```
+        Ten krok automatycznie wygeneruje potrzebny plik `lib/firebase_options.dart`.
+
+4.  **Wygeneruj wymagane pliki:**
+    Projekt korzysta z generatorów kodu (`freezed`, `injectable`, `auto_route` itp.). Uruchom `build_runner`, aby wygenerować wszystkie niezbędne pliki:
+    ```bash
+    flutter pub run build_runner watch --delete-conflicting-outputs
+    ```
+
+5.  **Uruchom aplikację:**
+    ```bash
+    flutter run
+    ```
+
+## 🧪 Testowanie
+
+Projekt jest rozwijany zgodnie z metodologią TDD. Aby uruchomić wszystkie testy, użyj komendy:
+```bash
+flutter test
