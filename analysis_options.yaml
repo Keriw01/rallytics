@@ -29,6 +29,11 @@ linter:
 # https://dart.dev/guides/language/analysis-options
 
 analyzer:
+  exclude:
+    - "**/*.g.dart"
+    - "**/*.freezed.dart"
+    - "**/*.config.dart"
+    - "lib/generated/**"
   errors:
     uri_does_not_exist: ignore
     #always_use_package_imports: error

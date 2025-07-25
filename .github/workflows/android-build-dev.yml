@@ -35,8 +35,8 @@ jobs:
       - name: Install dependencies
         run: flutter pub get
 
-      - name: Create Firebase Options file
-        run: printf '%s\n' "${{ secrets.FIREBASE_OPTIONS }}" > lib/firebase_options.dart
+      - name: Create Firebase Options file from Base64 secret
+        run: echo "${{ secrets.FIREBASE_OPTIONS }}" | base64 --decode > lib/firebase_options.dart
 
       - name: Generate generated files
         run: flutter pub run build_runner build --delete-conflicting-outputs
