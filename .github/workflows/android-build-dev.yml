@@ -3,11 +3,11 @@ name: Android Build (Debug)
 on:
   push:
     branches:
-      - dev
+      - develop
       - main
   pull_request:
     branches:
-      - dev
+      - develop
       - main
   workflow_dispatch:
 
