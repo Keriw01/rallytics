@@ -29,5 +29,6 @@ linter:
 # https://dart.dev/guides/language/analysis-options
 
 analyzer:
-  #errors:
+  errors:
+    uri_does_not_exist: ignore
     #always_use_package_imports: error
