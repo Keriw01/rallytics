@@ -22,7 +22,6 @@
     "settings": "tools",
     "profile": "admin",
     "utils": "utils",
-    "helpers": "helper",
-    "assets": "asset"
+    "helpers": "helper"
   },
 }
