@@ -40,6 +40,9 @@ jobs:
       - name: Create Firebase Options file from Base64 secret
         run: echo "${{ secrets.DEV_FIREBASE_OPTIONS }}" | base64 --decode > lib/firebase_options_dev.dart
 
+      - name: Create 'dev' flavor directory for google-services.json
+        run: mkdir -p android/app/src/dev    
+      
       - name: Create google-services.json from Base64 secret
         run: echo "${{ secrets.DEV_GOOGLE_SERVICES_JSON }}" | base64 --decode > android/app/src/dev/google-services.json
 
