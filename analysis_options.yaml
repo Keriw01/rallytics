@@ -30,6 +30,8 @@ linter:
 
 analyzer:
   exclude:
+    - 'lib/main_dev.dart'
+    - 'lib/main_prod.dart'
     - "**/*.g.dart"
     - "**/*.freezed.dart"
     - "**/*.config.dart"
