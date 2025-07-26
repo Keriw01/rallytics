@@ -1,17 +1,17 @@
 import 'dart:ui';
 
+import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart';
 import 'package:rallytics/app/app.dart';
 import 'package:rallytics/core/di/injection.dart';
-import 'package:rallytics/core/config/firebase_config.dart';
 
-Future<void> main() async {
+Future<void> runMainApp(FirebaseOptions firebaseOptions) async {
   WidgetsFlutterBinding.ensureInitialized();
 
   await configureDependencies();
 
-  await FirebaseConfig.initialize();
+  await Firebase.initializeApp(options: firebaseOptions);
 
   FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterFatalError;
 
