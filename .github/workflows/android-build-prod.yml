@@ -1,12 +1,12 @@
-name: Android Build DEV (Debug)
+name: Android Build PROD (Debug)
 
 on:
   push:
     branches:
-      - develop
+      - main
   pull_request:
     branches:
-      - develop
+      - main
   workflow_dispatch:
 
 jobs:
@@ -38,19 +38,19 @@ jobs:
         run: flutter pub get
 
       - name: Create Firebase Options file from Base64 secret
-        run: echo "${{ secrets.DEV_FIREBASE_OPTIONS }}" | base64 --decode > lib/firebase_options_dev.dart
+        run: echo "${{ secrets.FIREBASE_OPTIONS }}" | base64 --decode > lib/firebase_options_prod.dart
 
       - name: Create google-services.json from Base64 secret
-        run: echo "${{ secrets.DEV_GOOGLE_SERVICES_JSON }}" | base64 --decode > android/app/src/dev/google-services.json
+        run: echo "${{ secrets.GOOGLE_SERVICES_JSON }}" | base64 --decode > android/app/src/prod/google-services.json
 
       - name: Generate generated files
         run: flutter pub run build_runner build --delete-conflicting-outputs
       
-      - name: Build Android APK DEV (Debug)
-        run: flutter build apk --debug --flavor dev -t lib/main_dev.dart
+      - name: Build Android APK PROD (Debug)
+        run: flutter build apk --debug --flavor prod -t lib/main_prod.dart
         
       - name: Upload APK artifact
         uses: actions/upload-artifact@v4
         with:
           name: debug-apk
-          path: build/app/outputs/flutter-apk/app-dev-debug.apk
+          path: build/app/outputs/flutter-apk/app-prod-debug.apk

@@ -41,6 +41,28 @@ android {
             signingConfig = signingConfigs.getByName("debug")
         }
     }
+
+    flavorDimensions += "default"
+
+    productFlavors {
+        create("dev") {
+            dimension = "default"
+            resValue(
+                type = "string",
+                name = "app_name",
+                value = "Rallytics DEV")
+            applicationIdSuffix = ".dev"
+        }
+
+        create("prod") {
+            dimension = "default"
+            resValue(
+                type = "string",
+                name = "app_name",
+                value = "Rallytics")
+            applicationIdSuffix = ""
+        }
+    }
 }
 
 flutter {
