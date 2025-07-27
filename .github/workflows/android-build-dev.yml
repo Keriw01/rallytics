@@ -4,9 +4,6 @@ on:
   push:
     branches:
       - develop
-  pull_request:
-    branches:
-      - develop
   workflow_dispatch:
 
 jobs:
@@ -46,14 +43,18 @@ jobs:
       - name: Create google-services.json from Base64 secret
         run: echo "${{ secrets.DEV_GOOGLE_SERVICES_JSON }}" | base64 --decode > android/app/src/dev/google-services.json
 
-      - name: Generate generated files
-        run: flutter pub run build_runner build --delete-conflicting-outputs
+      - name: Build Android App Bundle DEV (Debug)
+        run: flutter build appbundle --debug --flavor dev -t lib/main_dev.dart
       
-      - name: Build Android APK DEV (Debug)
-        run: flutter build apk --debug --flavor dev -t lib/main_dev.dart
-        
-      - name: Upload APK artifact
-        uses: actions/upload-artifact@v4
+      - name: Upload to Firebase App Distribution
+        uses: wzieba/Firebase-Distribution-Github-Action@v1.7.1
         with:
-          name: debug-apk
-          path: build/app/outputs/flutter-apk/app-dev-debug.apk
+          appId: ${{ secrets.FIREBASE_APP_ID_DEV }}
+
+          token: ${{ secrets.FIREBASE_CLI_TOKEN }}
+          
+          file: build/app/outputs/bundle/devDebug/app-dev-debug.aab
+          
+          groups: 'developers'
+        
+          releaseNotes: "Build z gałęzi 'develop' - ${{ github.sha }}"
