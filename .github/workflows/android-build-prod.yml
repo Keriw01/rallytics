@@ -1,10 +1,7 @@
-name: Android Build PROD (Debug)
+name: Android Build PROD (Release)
 
 on:
   push:
-    branches:
-      - main
-  pull_request:
     branches:
       - main
   workflow_dispatch:
@@ -40,17 +37,27 @@ jobs:
       - name: Create Firebase Options file from Base64 secret
         run: echo "${{ secrets.FIREBASE_OPTIONS }}" | base64 --decode > lib/firebase_options_prod.dart
 
+      - name: Create 'prod' flavor directory for google-services.json
+        run: mkdir -p android/app/src/prod
+
       - name: Create google-services.json from Base64 secret
         run: echo "${{ secrets.GOOGLE_SERVICES_JSON }}" | base64 --decode > android/app/src/prod/google-services.json
 
       - name: Generate generated files
         run: flutter pub run build_runner build --delete-conflicting-outputs
+
+      - name: Decode Keystore
+        run: echo "${{ secrets.PROD_KEYSTORE_BASE64 }}" | base64 --decode > android/app/upload-keystore.jks
       
-      - name: Build Android APK PROD (Debug)
-        run: flutter build apk --debug --flavor prod -t lib/main_prod.dart
+      - name: Build Android App Bundle PROD (Release)
+        run: flutter build appbundle --release --flavor prod -t lib/main_prod.dart
+        env:
+          SIGNING_KEY_ALIAS: ${{ secrets.PROD_KEY_ALIAS }}
+          SIGNING_KEY_PASSWORD: ${{ secrets.PROD_KEY_PASSWORD }}
+          SIGNING_STORE_PASSWORD: ${{ secrets.PROD_STORE_PASSWORD }}
         
-      - name: Upload APK artifact
+      - name: Upload App Bundle artifact
         uses: actions/upload-artifact@v4
         with:
-          name: debug-apk
-          path: build/app/outputs/flutter-apk/app-prod-debug.apk
+          name: release-aab
+          path: build/app/outputs/bundle/prodRelease/app-prod-release.aab
