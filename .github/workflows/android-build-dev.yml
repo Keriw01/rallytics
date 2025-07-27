@@ -43,8 +43,8 @@ jobs:
       - name: Create google-services.json from Base64 secret
         run: echo "${{ secrets.DEV_GOOGLE_SERVICES_JSON }}" | base64 --decode > android/app/src/dev/google-services.json
 
-      - name: Build Android AppBundle DEV (Debug)
-        run: flutter build appbundle --debug --flavor dev -t lib/main_dev.dart
+      - name: Build Android APK DEV (Debug)
+        run: flutter build apk --debug --flavor dev -t lib/main_dev.dart
       
       - name: Upload to Firebase App Distribution
         uses: wzieba/Firebase-Distribution-Github-Action@v1.7.1
@@ -53,7 +53,7 @@ jobs:
 
           token: ${{ secrets.FIREBASE_CLI_TOKEN }}
           
-          file: build/app/outputs/bundle/devDebug/app-dev-debug.aab
+          file: build/app/outputs/flutter-apk/app-dev-debug.apk
           
           groups: 'developers'
         
