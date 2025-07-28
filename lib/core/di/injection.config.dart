@@ -13,6 +13,7 @@ import 'package:firebase_auth/firebase_auth.dart' as _i59;
 import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
 
+import '../../app/theme/theme_cubit/theme_cubit.dart' as _i30;
 import '../../features/auth/data/datasources/auth_firebase_datasource.dart'
     as _i157;
 import '../../features/auth/data/repositories/auth_repository_impl.dart'
@@ -29,6 +30,7 @@ _i174.GetIt $initGetIt(
 }) {
   final gh = _i526.GetItHelper(getIt, environment, environmentFilter);
   final firebaseInjectableModule = _$FirebaseInjectableModule();
+  gh.factory<_i30.ThemeCubit>(() => _i30.ThemeCubit());
   gh.lazySingleton<_i59.FirebaseAuth>(
     () => firebaseInjectableModule.firebaseAuth,
   );
