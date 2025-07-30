@@ -22,27 +22,29 @@ class AuthRepositoryImpl implements AuthRepository {
       await _authFirebaseDataSource.signInWithEmailAndPassword(email, password);
     } on FirebaseAuthException catch (e) {
       final errorCode = _mapFirebaseErrorCode(e.code);
-      throw ServerException(code: errorCode, originalMessage: e.message);
+      throw AuthException(code: errorCode, originalMessage: e.message);
     } catch (e) {
-      throw ServerException(
-        code: ServerErrorCode.unknown,
+      throw AuthException(
+        code: AuthErrorCode.unknown,
         originalMessage: e.toString(),
       );
     }
   }
 
-  ServerErrorCode _mapFirebaseErrorCode(String firebaseCode) {
+  AuthErrorCode _mapFirebaseErrorCode(String firebaseCode) {
     switch (firebaseCode) {
       case 'user-not-found':
       case 'wrong-password':
       case 'invalid-credential':
-        return ServerErrorCode.invalidCredentials;
-      case 'email-already-in-use':
-        return ServerErrorCode.emailInUse;
+        return AuthErrorCode.invalidCredentials;
+      case 'invalid-email':
+        return AuthErrorCode.invalidEmail;
       case 'weak-password':
-        return ServerErrorCode.weakPassword;
+        return AuthErrorCode.weakPassword;
+      case 'email-already-in-use':
+        return AuthErrorCode.emailAlreadyInUse;
       default:
-        return ServerErrorCode.unknown;
+        return AuthErrorCode.unknown;
     }
   }
 
@@ -60,10 +62,10 @@ class AuthRepositoryImpl implements AuthRepository {
       await _authFirebaseDataSource.signOut();
     } on FirebaseAuthException catch (e) {
       final errorCode = _mapFirebaseErrorCode(e.code);
-      throw ServerException(code: errorCode, originalMessage: e.message);
+      throw AuthException(code: errorCode, originalMessage: e.message);
     } catch (e) {
-      throw ServerException(
-        code: ServerErrorCode.unknown,
+      throw AuthException(
+        code: AuthErrorCode.unknown,
         originalMessage: e.toString(),
       );
     }

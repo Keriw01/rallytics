@@ -164,6 +164,12 @@ abstract class AppLocalizations {
   /// **'Enter your password'**
   String get passwordHint;
 
+  /// No description provided for @confirmPasswordLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Repeat password'**
+  String get confirmPasswordLabel;
+
   /// No description provided for @forgotPasswordButton.
   ///
   /// In en, this message translates to:
@@ -224,11 +230,23 @@ abstract class AppLocalizations {
   /// **'This email is already in use. Please try another one.'**
   String get authErrorEmailInUse;
 
+  /// No description provided for @authErrorInvalidEmail.
+  ///
+  /// In en, this message translates to:
+  /// **'Email is invalid.'**
+  String get authErrorInvalidEmail;
+
   /// No description provided for @authErrorWeakPassword.
   ///
   /// In en, this message translates to:
   /// **'The password is too weak. Should be at least 12 characters and contain minimum 1 uppercase, lowercase letter, number, special character.'**
   String get authErrorWeakPassword;
+
+  /// No description provided for @authErrorPasswordsDoNotMatch.
+  ///
+  /// In en, this message translates to:
+  /// **'Passwords don\'t match.'**
+  String get authErrorPasswordsDoNotMatch;
 
   /// No description provided for @trainingSessionTitle.
   ///

@@ -1,11 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:rallytics/core/constants/validation_constants.dart';
-import 'package:rallytics/generated/l10n.dart';
 
-class PasswordTextField extends StatelessWidget {
-  const PasswordTextField({super.key, required this.controller});
+typedef StringValidator = String? Function(String?);
+
+class AuthTextField extends StatelessWidget {
+  const AuthTextField({
+    super.key,
+    required this.controller,
+    required this.isEmailField,
+    required this.labelText,
+    required this.validator,
+  });
 
   final TextEditingController controller;
+  final bool isEmailField;
+  final String labelText;
+  final StringValidator? validator;
 
   @override
   Widget build(BuildContext context) {
@@ -13,19 +22,12 @@ class PasswordTextField extends StatelessWidget {
 
     return TextFormField(
       controller: controller,
-      obscureText: true,
+      obscureText: isEmailField ? false : true,
+      keyboardType: isEmailField
+          ? TextInputType.emailAddress
+          : TextInputType.text,
       autovalidateMode: AutovalidateMode.onUserInteraction,
-      validator: (value) {
-        if (value == null || value.isEmpty) {
-          return S.of(context).authErrorPasswordRequired;
-        }
-
-        if (!kPasswordRegex.hasMatch(value)) {
-          return S.of(context).authErrorWeakPassword;
-        }
-
-        return null;
-      },
+      validator: validator,
       style: textTheme.labelMedium,
       decoration: InputDecoration(
         focusedBorder: const UnderlineInputBorder(
@@ -37,8 +39,8 @@ class PasswordTextField extends StatelessWidget {
           borderRadius: BorderRadius.all(Radius.circular(24)),
         ),
         filled: true,
-        prefixIcon: const Icon(Icons.lock, size: 20),
-        labelText: S.of(context).passwordLabel,
+        prefixIcon: Icon(isEmailField ? Icons.email : Icons.lock, size: 20),
+        labelText: labelText,
         labelStyle: textTheme.labelMedium,
         errorMaxLines: 4,
       ),

@@ -31,13 +31,19 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Email jest wymagany."),
         "authErrorInvalidCredentials": MessageLookupByLibrary.simpleMessage(
             "Nieprawidłowy email lub hasło. Proszę spróbować ponownie."),
+        "authErrorInvalidEmail":
+            MessageLookupByLibrary.simpleMessage("Email jest niepoprawny."),
         "authErrorInvalidEmailFormat": MessageLookupByLibrary.simpleMessage(
             "Proszę wprowadzić prawidłowy adres email."),
         "authErrorPasswordRequired":
             MessageLookupByLibrary.simpleMessage("Hasło jest wymagane."),
+        "authErrorPasswordsDoNotMatch":
+            MessageLookupByLibrary.simpleMessage("Hasła do siebie nie pasują."),
         "authErrorWeakPassword": MessageLookupByLibrary.simpleMessage(
             "Hasło jest zbyt słabe. Powinno mieć co najmniej 12 znaków i zawierać minimum 1 wielką, małą literę, cyfrę i znak specjalny."),
         "cancelButton": MessageLookupByLibrary.simpleMessage("Anuluj"),
+        "confirmPasswordLabel":
+            MessageLookupByLibrary.simpleMessage("Powtórz hasło"),
         "emailHint":
             MessageLookupByLibrary.simpleMessage("Wpisz swój adres email"),
         "emailLabel": MessageLookupByLibrary.simpleMessage("Email"),

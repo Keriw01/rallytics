@@ -23,7 +23,7 @@ mixin _$AuthState {
     required TResult Function() loading,
     required TResult Function(UserEntity user) authenticated,
     required TResult Function() unauthenticated,
-    required TResult Function(ServerErrorCode code) error,
+    required TResult Function(Object code) error,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
@@ -31,7 +31,7 @@ mixin _$AuthState {
     TResult? Function()? loading,
     TResult? Function(UserEntity user)? authenticated,
     TResult? Function()? unauthenticated,
-    TResult? Function(ServerErrorCode code)? error,
+    TResult? Function(Object code)? error,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
@@ -39,7 +39,7 @@ mixin _$AuthState {
     TResult Function()? loading,
     TResult Function(UserEntity user)? authenticated,
     TResult Function()? unauthenticated,
-    TResult Function(ServerErrorCode code)? error,
+    TResult Function(Object code)? error,
     required TResult orElse(),
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -136,7 +136,7 @@ class _$InitialImpl implements _Initial {
     required TResult Function() loading,
     required TResult Function(UserEntity user) authenticated,
     required TResult Function() unauthenticated,
-    required TResult Function(ServerErrorCode code) error,
+    required TResult Function(Object code) error,
   }) {
     return initial();
   }
@@ -148,7 +148,7 @@ class _$InitialImpl implements _Initial {
     TResult? Function()? loading,
     TResult? Function(UserEntity user)? authenticated,
     TResult? Function()? unauthenticated,
-    TResult? Function(ServerErrorCode code)? error,
+    TResult? Function(Object code)? error,
   }) {
     return initial?.call();
   }
@@ -160,7 +160,7 @@ class _$InitialImpl implements _Initial {
     TResult Function()? loading,
     TResult Function(UserEntity user)? authenticated,
     TResult Function()? unauthenticated,
-    TResult Function(ServerErrorCode code)? error,
+    TResult Function(Object code)? error,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -261,7 +261,7 @@ class _$LoadingImpl implements _Loading {
     required TResult Function() loading,
     required TResult Function(UserEntity user) authenticated,
     required TResult Function() unauthenticated,
-    required TResult Function(ServerErrorCode code) error,
+    required TResult Function(Object code) error,
   }) {
     return loading();
   }
@@ -273,7 +273,7 @@ class _$LoadingImpl implements _Loading {
     TResult? Function()? loading,
     TResult? Function(UserEntity user)? authenticated,
     TResult? Function()? unauthenticated,
-    TResult? Function(ServerErrorCode code)? error,
+    TResult? Function(Object code)? error,
   }) {
     return loading?.call();
   }
@@ -285,7 +285,7 @@ class _$LoadingImpl implements _Loading {
     TResult Function()? loading,
     TResult Function(UserEntity user)? authenticated,
     TResult Function()? unauthenticated,
-    TResult Function(ServerErrorCode code)? error,
+    TResult Function(Object code)? error,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -425,7 +425,7 @@ class _$AuthenticatedImpl implements _Authenticated {
     required TResult Function() loading,
     required TResult Function(UserEntity user) authenticated,
     required TResult Function() unauthenticated,
-    required TResult Function(ServerErrorCode code) error,
+    required TResult Function(Object code) error,
   }) {
     return authenticated(user);
   }
@@ -437,7 +437,7 @@ class _$AuthenticatedImpl implements _Authenticated {
     TResult? Function()? loading,
     TResult? Function(UserEntity user)? authenticated,
     TResult? Function()? unauthenticated,
-    TResult? Function(ServerErrorCode code)? error,
+    TResult? Function(Object code)? error,
   }) {
     return authenticated?.call(user);
   }
@@ -449,7 +449,7 @@ class _$AuthenticatedImpl implements _Authenticated {
     TResult Function()? loading,
     TResult Function(UserEntity user)? authenticated,
     TResult Function()? unauthenticated,
-    TResult Function(ServerErrorCode code)? error,
+    TResult Function(Object code)? error,
     required TResult orElse(),
   }) {
     if (authenticated != null) {
@@ -558,7 +558,7 @@ class _$UnauthenticatedImpl implements _Unauthenticated {
     required TResult Function() loading,
     required TResult Function(UserEntity user) authenticated,
     required TResult Function() unauthenticated,
-    required TResult Function(ServerErrorCode code) error,
+    required TResult Function(Object code) error,
   }) {
     return unauthenticated();
   }
@@ -570,7 +570,7 @@ class _$UnauthenticatedImpl implements _Unauthenticated {
     TResult? Function()? loading,
     TResult? Function(UserEntity user)? authenticated,
     TResult? Function()? unauthenticated,
-    TResult? Function(ServerErrorCode code)? error,
+    TResult? Function(Object code)? error,
   }) {
     return unauthenticated?.call();
   }
@@ -582,7 +582,7 @@ class _$UnauthenticatedImpl implements _Unauthenticated {
     TResult Function()? loading,
     TResult Function(UserEntity user)? authenticated,
     TResult Function()? unauthenticated,
-    TResult Function(ServerErrorCode code)? error,
+    TResult Function(Object code)? error,
     required TResult orElse(),
   }) {
     if (unauthenticated != null) {
@@ -643,7 +643,7 @@ abstract class _$$ErrorImplCopyWith<$Res> {
     $Res Function(_$ErrorImpl) then,
   ) = __$$ErrorImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({ServerErrorCode code});
+  $Res call({Object code});
 }
 
 /// @nodoc
@@ -660,14 +660,7 @@ class __$$ErrorImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({Object? code = null}) {
-    return _then(
-      _$ErrorImpl(
-        null == code
-            ? _value.code
-            : code // ignore: cast_nullable_to_non_nullable
-                  as ServerErrorCode,
-      ),
-    );
+    return _then(_$ErrorImpl(null == code ? _value.code : code));
   }
 }
 
@@ -677,7 +670,7 @@ class _$ErrorImpl implements _Error {
   const _$ErrorImpl(this.code);
 
   @override
-  final ServerErrorCode code;
+  final Object code;
 
   @override
   String toString() {
@@ -689,11 +682,12 @@ class _$ErrorImpl implements _Error {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ErrorImpl &&
-            (identical(other.code, code) || other.code == code));
+            const DeepCollectionEquality().equals(other.code, code));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, code);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(code));
 
   /// Create a copy of AuthState
   /// with the given fields replaced by the non-null parameter values.
@@ -710,7 +704,7 @@ class _$ErrorImpl implements _Error {
     required TResult Function() loading,
     required TResult Function(UserEntity user) authenticated,
     required TResult Function() unauthenticated,
-    required TResult Function(ServerErrorCode code) error,
+    required TResult Function(Object code) error,
   }) {
     return error(code);
   }
@@ -722,7 +716,7 @@ class _$ErrorImpl implements _Error {
     TResult? Function()? loading,
     TResult? Function(UserEntity user)? authenticated,
     TResult? Function()? unauthenticated,
-    TResult? Function(ServerErrorCode code)? error,
+    TResult? Function(Object code)? error,
   }) {
     return error?.call(code);
   }
@@ -734,7 +728,7 @@ class _$ErrorImpl implements _Error {
     TResult Function()? loading,
     TResult Function(UserEntity user)? authenticated,
     TResult Function()? unauthenticated,
-    TResult Function(ServerErrorCode code)? error,
+    TResult Function(Object code)? error,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -785,9 +779,9 @@ class _$ErrorImpl implements _Error {
 }
 
 abstract class _Error implements AuthState {
-  const factory _Error(final ServerErrorCode code) = _$ErrorImpl;
+  const factory _Error(final Object code) = _$ErrorImpl;
 
-  ServerErrorCode get code;
+  Object get code;
 
   /// Create a copy of AuthState
   /// with the given fields replaced by the non-null parameter values.

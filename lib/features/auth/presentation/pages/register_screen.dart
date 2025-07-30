@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
+import 'package:rallytics/core/constants/validation_constants.dart';
+import 'package:rallytics/features/auth/presentation/bloc/auth_event.dart';
 import 'package:rallytics/features/auth/presentation/widgets/auth_redirect_widget.dart';
-import 'package:rallytics/features/auth/presentation/widgets/email_text_field.dart';
+import 'package:rallytics/features/auth/presentation/widgets/auth_text_field.dart';
 import 'package:rallytics/features/auth/presentation/widgets/or_divider.dart';
-import 'package:rallytics/features/auth/presentation/widgets/password_text_field.dart';
 import 'package:rallytics/features/auth/presentation/widgets/social_login_buttons.dart';
 import 'package:rallytics/generated/l10n.dart';
 
@@ -25,6 +26,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
   late final TextEditingController _emailController;
   late final TextEditingController _passwordController;
+  late final TextEditingController _confirmPasswordController;
 
   bool _isButtonEnabled = false;
 
@@ -34,12 +36,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
     _emailController = TextEditingController();
     _passwordController = TextEditingController();
+    _confirmPasswordController = TextEditingController();
   }
 
   @override
   void dispose() {
     _emailController.dispose();
     _passwordController.dispose();
+    _confirmPasswordController.dispose();
     super.dispose();
   }
 
@@ -47,12 +51,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
     if (!(_formkey.currentState?.validate() ?? false)) {
       return;
     }
-    // context.read<AuthBloc>().add(
-    //   AuthEvent.signUpRequested(
-    //     email: _emailController.text.trim(),
-    //     password: _passwordController.text.trim(),
-    //   ),
-    // );
+    context.read<AuthBloc>().add(
+      AuthEvent.signUpRequested(
+        email: _emailController.text.trim(),
+        password: _passwordController.text.trim(),
+        confirmPassword: _confirmPasswordController.text.trim(),
+      ),
+    );
   }
 
   @override
@@ -116,10 +121,66 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                   style: textTheme.headlineLarge,
                                 ),
                                 SizedBox(height: screenHeight * 0.02),
-                                EmailTextField(controller: _emailController),
+                                AuthTextField(
+                                  controller: _emailController,
+                                  isEmailField: true,
+                                  labelText: S.of(context).emailLabel,
+                                  validator: (value) {
+                                    if (value == null || value.isEmpty) {
+                                      return S
+                                          .of(context)
+                                          .authErrorEmailRequired;
+                                    }
+
+                                    if (!kEmailRegex.hasMatch(value)) {
+                                      return S
+                                          .of(context)
+                                          .authErrorInvalidEmailFormat;
+                                    }
+                                    return null;
+                                  },
+                                ),
                                 SizedBox(height: screenHeight * 0.02),
-                                PasswordTextField(
+                                AuthTextField(
                                   controller: _passwordController,
+                                  isEmailField: false,
+                                  labelText: S.of(context).passwordLabel,
+                                  validator: (value) {
+                                    if (value == null || value.isEmpty) {
+                                      return S
+                                          .of(context)
+                                          .authErrorPasswordRequired;
+                                    }
+
+                                    if (!kPasswordRegex.hasMatch(value)) {
+                                      return S
+                                          .of(context)
+                                          .authErrorWeakPassword;
+                                    }
+
+                                    return null;
+                                  },
+                                ),
+                                SizedBox(height: screenHeight * 0.02),
+                                AuthTextField(
+                                  controller: _confirmPasswordController,
+                                  isEmailField: false,
+                                  labelText: S.of(context).confirmPasswordLabel,
+                                  validator: (value) {
+                                    if (value == null || value.isEmpty) {
+                                      return S
+                                          .of(context)
+                                          .authErrorPasswordRequired;
+                                    }
+
+                                    if (value != _passwordController.text) {
+                                      return S
+                                          .of(context)
+                                          .authErrorPasswordsDoNotMatch;
+                                    }
+
+                                    return null;
+                                  },
                                 ),
                                 SizedBox(height: screenHeight * 0.03),
                                 ElevatedButton(

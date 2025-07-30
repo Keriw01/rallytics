@@ -76,7 +76,7 @@ void main() {
 
       final call = repository.signInWithEmail;
 
-      expect(() => call('email', 'password'), throwsA(isA<ServerException>()));
+      expect(() => call('email', 'password'), throwsA(isA<AuthException>()));
     },
   );
 }

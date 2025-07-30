@@ -42,6 +42,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get passwordHint => 'Enter your password';
 
   @override
+  String get confirmPasswordLabel => 'Repeat password';
+
+  @override
   String get forgotPasswordButton => 'Forgot your password?';
 
   @override
@@ -75,8 +78,14 @@ class AppLocalizationsEn extends AppLocalizations {
       'This email is already in use. Please try another one.';
 
   @override
+  String get authErrorInvalidEmail => 'Email is invalid.';
+
+  @override
   String get authErrorWeakPassword =>
       'The password is too weak. Should be at least 12 characters and contain minimum 1 uppercase, lowercase letter, number, special character.';
+
+  @override
+  String get authErrorPasswordsDoNotMatch => 'Passwords don\'t match.';
 
   @override
   String get trainingSessionTitle => 'New Session';

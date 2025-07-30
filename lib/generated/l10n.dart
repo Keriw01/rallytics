@@ -160,6 +160,16 @@ class S {
     );
   }
 
+  /// `Repeat password`
+  String get confirmPasswordLabel {
+    return Intl.message(
+      'Repeat password',
+      name: 'confirmPasswordLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Forgot your password?`
   String get forgotPasswordButton {
     return Intl.message(
@@ -260,11 +270,31 @@ class S {
     );
   }
 
+  /// `Email is invalid.`
+  String get authErrorInvalidEmail {
+    return Intl.message(
+      'Email is invalid.',
+      name: 'authErrorInvalidEmail',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `The password is too weak. Should be at least 12 characters and contain minimum 1 uppercase, lowercase letter, number, special character.`
   String get authErrorWeakPassword {
     return Intl.message(
       'The password is too weak. Should be at least 12 characters and contain minimum 1 uppercase, lowercase letter, number, special character.',
       name: 'authErrorWeakPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Passwords don't match.`
+  String get authErrorPasswordsDoNotMatch {
+    return Intl.message(
+      'Passwords don\'t match.',
+      name: 'authErrorPasswordsDoNotMatch',
       desc: '',
       args: [],
     );

@@ -7,6 +7,7 @@ import 'package:rallytics/core/error/exceptions.dart';
 import 'package:rallytics/features/auth/domain/entities/user_entity.dart';
 import 'package:rallytics/features/auth/domain/repositories/auth_repository.dart';
 import 'package:rallytics/features/auth/domain/usecases/sign_in_with_email.dart';
+import 'package:rallytics/features/auth/domain/usecases/sign_up_with_email.dart';
 import 'package:rallytics/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:rallytics/features/auth/presentation/bloc/auth_event.dart';
 import 'package:rallytics/features/auth/presentation/bloc/auth_state.dart';
@@ -18,6 +19,7 @@ void main() {
   late AuthBloc authBloc;
   late MockAuthRepository mockAuthRepository;
   late SignInWithEmailUseCase signInWithEmailUseCase;
+  late SignUpWithEmailUseCase signUpWithEmailUseCase;
 
   const testUserEntity = UserEntity(
     uid: 'test_uid',
@@ -28,6 +30,7 @@ void main() {
   setUp(() {
     mockAuthRepository = MockAuthRepository();
     signInWithEmailUseCase = SignInWithEmailUseCase(mockAuthRepository);
+    signUpWithEmailUseCase = SignUpWithEmailUseCase(mockAuthRepository);
 
     when(mockAuthRepository.authStateChanges).thenAnswer((_) => Stream.empty());
   });
@@ -39,7 +42,11 @@ void main() {
   test('initial state should be AuthState.initial', () {
     when(mockAuthRepository.authStateChanges).thenAnswer((_) => Stream.empty());
 
-    authBloc = AuthBloc(mockAuthRepository, signInWithEmailUseCase);
+    authBloc = AuthBloc(
+      mockAuthRepository,
+      signInWithEmailUseCase,
+      signUpWithEmailUseCase,
+    );
 
     expect(authBloc.state, const AuthState.initial());
   });
@@ -53,8 +60,11 @@ void main() {
         ).thenAnswer((_) => Stream.value(testUserEntity));
       },
 
-      build: () =>
-          authBloc = AuthBloc(mockAuthRepository, signInWithEmailUseCase),
+      build: () => authBloc = AuthBloc(
+        mockAuthRepository,
+        signInWithEmailUseCase,
+        signUpWithEmailUseCase,
+      ),
 
       expect: () => [const AuthState.authenticated(testUserEntity)],
     );
@@ -67,8 +77,11 @@ void main() {
         ).thenAnswer((_) => Stream.value(null));
       },
 
-      build: () =>
-          authBloc = AuthBloc(mockAuthRepository, signInWithEmailUseCase),
+      build: () => authBloc = AuthBloc(
+        mockAuthRepository,
+        signInWithEmailUseCase,
+        signUpWithEmailUseCase,
+      ),
 
       expect: () => [const AuthState.unauthenticated()],
     );
@@ -86,8 +99,11 @@ void main() {
         ).thenAnswer((_) async => {});
       },
 
-      build: () =>
-          authBloc = AuthBloc(mockAuthRepository, signInWithEmailUseCase),
+      build: () => authBloc = AuthBloc(
+        mockAuthRepository,
+        signInWithEmailUseCase,
+        signUpWithEmailUseCase,
+      ),
 
       act: (bloc) => bloc.add(
         const AuthEvent.signInRequested(
@@ -106,12 +122,15 @@ void main() {
           mockAuthRepository.authStateChanges,
         ).thenAnswer((_) => Stream.empty());
         when(mockAuthRepository.signInWithEmail(any, any)).thenAnswer(
-          (_) async => throw ServerException(code: ServerErrorCode.unknown),
+          (_) async => throw AuthException(code: AuthErrorCode.unknown),
         );
       },
 
-      build: () =>
-          authBloc = AuthBloc(mockAuthRepository, signInWithEmailUseCase),
+      build: () => authBloc = AuthBloc(
+        mockAuthRepository,
+        signInWithEmailUseCase,
+        signUpWithEmailUseCase,
+      ),
       act: (bloc) => bloc.add(
         const AuthEvent.signInRequested(
           email: 'test@test.com',
@@ -121,7 +140,7 @@ void main() {
 
       expect: () => [
         const AuthState.loading(),
-        const AuthState.error(ServerErrorCode.unknown),
+        const AuthState.error(AuthErrorCode.unknown),
       ],
     );
   });

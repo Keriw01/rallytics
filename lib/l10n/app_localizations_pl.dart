@@ -42,6 +42,9 @@ class AppLocalizationsPl extends AppLocalizations {
   String get passwordHint => 'Wprowadź swoje hasło';
 
   @override
+  String get confirmPasswordLabel => 'Powtórz hasło';
+
+  @override
   String get forgotPasswordButton => 'Nie pamiętasz hasła?';
 
   @override
@@ -75,8 +78,14 @@ class AppLocalizationsPl extends AppLocalizations {
       'Ten email jest już używany. Proszę spróbować innego.';
 
   @override
+  String get authErrorInvalidEmail => 'Email jest niepoprawny.';
+
+  @override
   String get authErrorWeakPassword =>
       'Hasło jest zbyt słabe. Powinno mieć co najmniej 12 znaków i zawierać minimum 1 wielką, małą literę, cyfrę i znak specjalny.';
+
+  @override
+  String get authErrorPasswordsDoNotMatch => 'Hasła do siebie nie pasują.';
 
   @override
   String get trainingSessionTitle => 'Nowa Sesja';

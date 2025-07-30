@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
+import 'package:rallytics/core/constants/validation_constants.dart';
 import 'package:rallytics/features/auth/presentation/bloc/auth_event.dart';
 import 'package:rallytics/features/auth/presentation/widgets/auth_redirect_widget.dart';
-import 'package:rallytics/features/auth/presentation/widgets/email_text_field.dart';
+import 'package:rallytics/features/auth/presentation/widgets/auth_text_field.dart';
 import 'package:rallytics/features/auth/presentation/widgets/or_divider.dart';
-import 'package:rallytics/features/auth/presentation/widgets/password_text_field.dart';
 import 'package:rallytics/features/auth/presentation/widgets/social_login_buttons.dart';
 import 'package:rallytics/generated/l10n.dart';
 
@@ -102,9 +102,38 @@ class _LoginScreenState extends State<LoginScreen> {
                       child: SvgPicture.asset('assets/images/login_logo.svg'),
                     ),
                     SizedBox(height: screenHeight * 0.02),
-                    EmailTextField(controller: _emailController),
+                    AuthTextField(
+                      controller: _emailController,
+                      isEmailField: true,
+                      labelText: S.of(context).emailLabel,
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return S.of(context).authErrorEmailRequired;
+                        }
+
+                        if (!kEmailRegex.hasMatch(value)) {
+                          return S.of(context).authErrorInvalidEmailFormat;
+                        }
+                        return null;
+                      },
+                    ),
                     SizedBox(height: screenHeight * 0.02),
-                    PasswordTextField(controller: _passwordController),
+                    AuthTextField(
+                      controller: _passwordController,
+                      isEmailField: false,
+                      labelText: S.of(context).passwordLabel,
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return S.of(context).authErrorPasswordRequired;
+                        }
+
+                        if (!kPasswordRegex.hasMatch(value)) {
+                          return S.of(context).authErrorWeakPassword;
+                        }
+
+                        return null;
+                      },
+                    ),
                     SizedBox(height: screenHeight * 0.01),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.end,

@@ -19,6 +19,7 @@
   "emailHint": "Enter your email address",
   "passwordLabel": "Password",
   "passwordHint": "Enter your password",
+  "confirmPasswordLabel": "Repeat password",
   "forgotPasswordButton": "Forgot your password?",
   
   "registerTitle": "Register",
@@ -32,7 +33,9 @@
   "authErrorInvalidEmailFormat": "Please enter a valid email address.",
   "authErrorInvalidCredentials": "Invalid email or password. Please try again.",
   "authErrorEmailInUse": "This email is already in use. Please try another one.",
+  "authErrorInvalidEmail": "Email is invalid.",
   "authErrorWeakPassword": "The password is too weak. Should be at least 12 characters and contain minimum 1 uppercase, lowercase letter, number, special character.",
+  "authErrorPasswordsDoNotMatch": "Passwords don't match.",
 
   "trainingSessionTitle": "New Session",
   "trainingSessionStartButton": "Start Recording",

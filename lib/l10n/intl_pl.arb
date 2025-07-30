@@ -19,6 +19,7 @@
   "emailHint": "Wpisz swój adres email",
   "passwordLabel": "Hasło",
   "passwordHint": "Wprowadź swoje hasło",
+  "confirmPasswordLabel": "Powtórz hasło",
   "forgotPasswordButton": "Nie pamiętasz hasła?",
   
   "registerTitle": "Rejestracja",
@@ -32,7 +33,9 @@
   "authErrorInvalidEmailFormat": "Proszę wprowadzić prawidłowy adres email.",
   "authErrorInvalidCredentials": "Nieprawidłowy email lub hasło. Proszę spróbować ponownie.",
   "authErrorEmailInUse": "Ten email jest już używany. Proszę spróbować innego.",
+  "authErrorInvalidEmail": "Email jest niepoprawny.",
   "authErrorWeakPassword": "Hasło jest zbyt słabe. Powinno mieć co najmniej 12 znaków i zawierać minimum 1 wielką, małą literę, cyfrę i znak specjalny.",
+  "authErrorPasswordsDoNotMatch": "Hasła do siebie nie pasują.",
 
 
   "trainingSessionTitle": "Nowa Sesja",
