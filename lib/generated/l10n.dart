@@ -290,11 +290,41 @@ class S {
     );
   }
 
-  /// `Passwords don't match.`
-  String get authErrorPasswordsDoNotMatch {
+  /// `The passwords do not match.`
+  String get validationErrorPasswordsDoNotMatch {
     return Intl.message(
-      'Passwords don\'t match.',
-      name: 'authErrorPasswordsDoNotMatch',
+      'The passwords do not match.',
+      name: 'validationErrorPasswordsDoNotMatch',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Not all fields are filled in.`
+  String get validationErrorEmptyFields {
+    return Intl.message(
+      'Not all fields are filled in.',
+      name: 'validationErrorEmptyFields',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The email is invalid.`
+  String get validationErrorInvalidEmail {
+    return Intl.message(
+      'The email is invalid.',
+      name: 'validationErrorInvalidEmail',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The password does not meet the requirements.`
+  String get validationErrorWeakPassword {
+    return Intl.message(
+      'The password does not meet the requirements.',
+      name: 'validationErrorWeakPassword',
       desc: '',
       args: [],
     );

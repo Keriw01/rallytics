@@ -37,8 +37,6 @@ class MessageLookup extends MessageLookupByLibrary {
             "Proszę wprowadzić prawidłowy adres email."),
         "authErrorPasswordRequired":
             MessageLookupByLibrary.simpleMessage("Hasło jest wymagane."),
-        "authErrorPasswordsDoNotMatch":
-            MessageLookupByLibrary.simpleMessage("Hasła do siebie nie pasują."),
         "authErrorWeakPassword": MessageLookupByLibrary.simpleMessage(
             "Hasło jest zbyt słabe. Powinno mieć co najmniej 12 znaków i zawierać minimum 1 wielką, małą literę, cyfrę i znak specjalny."),
         "cancelButton": MessageLookupByLibrary.simpleMessage("Anuluj"),
@@ -75,6 +73,14 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Zacznij Nagrywanie"),
         "trainingSessionTitle":
             MessageLookupByLibrary.simpleMessage("Nowa Sesja"),
+        "validationErrorEmptyFields": MessageLookupByLibrary.simpleMessage(
+            "Nie wszystkie pola są uzupełnione."),
+        "validationErrorInvalidEmail":
+            MessageLookupByLibrary.simpleMessage("Email jest niepoprawny."),
+        "validationErrorPasswordsDoNotMatch":
+            MessageLookupByLibrary.simpleMessage("Hasła do siebie nie pasują."),
+        "validationErrorWeakPassword":
+            MessageLookupByLibrary.simpleMessage("Hasło nie spełnia wymagań."),
         "welcomeUserMessage": m0
       };
 }

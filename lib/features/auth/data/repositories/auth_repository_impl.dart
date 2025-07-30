@@ -5,6 +5,7 @@ import 'package:rallytics/features/auth/domain/entities/user_entity.dart';
 import 'package:rallytics/core/error/exceptions.dart';
 import 'package:rallytics/features/auth/domain/repositories/auth_repository.dart';
 import 'package:rallytics/features/auth/data/datasources/auth_firebase_datasource.dart';
+import 'package:rallytics/helpers/error_message_helper.dart';
 
 // Implementacja interfejsu z `domain/repositories`.
 // Wie, skąd wziąć dane (z jakiego `DataSource`).
@@ -21,7 +22,7 @@ class AuthRepositoryImpl implements AuthRepository {
     try {
       await _authFirebaseDataSource.signInWithEmailAndPassword(email, password);
     } on FirebaseAuthException catch (e) {
-      final errorCode = _mapFirebaseErrorCode(e.code);
+      final errorCode = mapFirebaseErrorCode(e.code);
       throw AuthException(code: errorCode, originalMessage: e.message);
     } catch (e) {
       throw AuthException(
@@ -31,29 +32,22 @@ class AuthRepositoryImpl implements AuthRepository {
     }
   }
 
-  AuthErrorCode _mapFirebaseErrorCode(String firebaseCode) {
-    switch (firebaseCode) {
-      case 'user-not-found':
-      case 'wrong-password':
-      case 'invalid-credential':
-        return AuthErrorCode.invalidCredentials;
-      case 'invalid-email':
-        return AuthErrorCode.invalidEmail;
-      case 'weak-password':
-        return AuthErrorCode.weakPassword;
-      case 'email-already-in-use':
-        return AuthErrorCode.emailAlreadyInUse;
-      default:
-        return AuthErrorCode.unknown;
-    }
-  }
-
   @override
   Future<void> signUpWithEmail(String email, String password) {
-    return _authFirebaseDataSource.createUserWithEmailAndPassword(
-      email,
-      password,
-    );
+    try {
+      return _authFirebaseDataSource.createUserWithEmailAndPassword(
+        email,
+        password,
+      );
+    } on FirebaseAuthException catch (e) {
+      final errorCode = mapFirebaseErrorCode(e.code);
+      throw AuthException(code: errorCode, originalMessage: e.message);
+    } catch (e) {
+      throw AuthException(
+        code: AuthErrorCode.unknown,
+        originalMessage: e.toString(),
+      );
+    }
   }
 
   @override
@@ -61,7 +55,7 @@ class AuthRepositoryImpl implements AuthRepository {
     try {
       await _authFirebaseDataSource.signOut();
     } on FirebaseAuthException catch (e) {
-      final errorCode = _mapFirebaseErrorCode(e.code);
+      final errorCode = mapFirebaseErrorCode(e.code);
       throw AuthException(code: errorCode, originalMessage: e.message);
     } catch (e) {
       throw AuthException(

@@ -35,7 +35,12 @@
   "authErrorEmailInUse": "Ten email jest już używany. Proszę spróbować innego.",
   "authErrorInvalidEmail": "Email jest niepoprawny.",
   "authErrorWeakPassword": "Hasło jest zbyt słabe. Powinno mieć co najmniej 12 znaków i zawierać minimum 1 wielką, małą literę, cyfrę i znak specjalny.",
-  "authErrorPasswordsDoNotMatch": "Hasła do siebie nie pasują.",
+  
+  
+  "validationErrorPasswordsDoNotMatch": "Hasła do siebie nie pasują.",
+  "validationErrorEmptyFields": "Nie wszystkie pola są uzupełnione.",
+  "validationErrorInvalidEmail": "Email jest niepoprawny.",
+  "validationErrorWeakPassword": "Hasło nie spełnia wymagań.",
 
 
   "trainingSessionTitle": "Nowa Sesja",

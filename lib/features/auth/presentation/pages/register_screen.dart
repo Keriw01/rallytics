@@ -176,7 +176,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                     if (value != _passwordController.text) {
                                       return S
                                           .of(context)
-                                          .authErrorPasswordsDoNotMatch;
+                                          .validationErrorPasswordsDoNotMatch;
                                     }
 
                                     return null;

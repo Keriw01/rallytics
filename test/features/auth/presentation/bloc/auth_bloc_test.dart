@@ -14,12 +14,12 @@ import 'package:rallytics/features/auth/presentation/bloc/auth_state.dart';
 
 import 'auth_bloc_test.mocks.dart';
 
-@GenerateMocks([AuthRepository])
+@GenerateMocks([AuthRepository, SignInWithEmailUseCase, SignUpWithEmailUseCase])
 void main() {
   late AuthBloc authBloc;
   late MockAuthRepository mockAuthRepository;
-  late SignInWithEmailUseCase signInWithEmailUseCase;
-  late SignUpWithEmailUseCase signUpWithEmailUseCase;
+  late MockSignInWithEmailUseCase mockSignInUseCase;
+  late MockSignUpWithEmailUseCase mockSignUpUseCase;
 
   const testUserEntity = UserEntity(
     uid: 'test_uid',
@@ -29,8 +29,8 @@ void main() {
 
   setUp(() {
     mockAuthRepository = MockAuthRepository();
-    signInWithEmailUseCase = SignInWithEmailUseCase(mockAuthRepository);
-    signUpWithEmailUseCase = SignUpWithEmailUseCase(mockAuthRepository);
+    mockSignInUseCase = MockSignInWithEmailUseCase();
+    mockSignUpUseCase = MockSignUpWithEmailUseCase();
 
     when(mockAuthRepository.authStateChanges).thenAnswer((_) => Stream.empty());
   });
@@ -44,8 +44,8 @@ void main() {
 
     authBloc = AuthBloc(
       mockAuthRepository,
-      signInWithEmailUseCase,
-      signUpWithEmailUseCase,
+      mockSignInUseCase,
+      mockSignUpUseCase,
     );
 
     expect(authBloc.state, const AuthState.initial());
@@ -62,8 +62,8 @@ void main() {
 
       build: () => authBloc = AuthBloc(
         mockAuthRepository,
-        signInWithEmailUseCase,
-        signUpWithEmailUseCase,
+        mockSignInUseCase,
+        mockSignUpUseCase,
       ),
 
       expect: () => [const AuthState.authenticated(testUserEntity)],
@@ -79,8 +79,8 @@ void main() {
 
       build: () => authBloc = AuthBloc(
         mockAuthRepository,
-        signInWithEmailUseCase,
-        signUpWithEmailUseCase,
+        mockSignInUseCase,
+        mockSignUpUseCase,
       ),
 
       expect: () => [const AuthState.unauthenticated()],
@@ -101,8 +101,8 @@ void main() {
 
       build: () => authBloc = AuthBloc(
         mockAuthRepository,
-        signInWithEmailUseCase,
-        signUpWithEmailUseCase,
+        mockSignInUseCase,
+        mockSignUpUseCase,
       ),
 
       act: (bloc) => bloc.add(
@@ -121,15 +121,15 @@ void main() {
         when(
           mockAuthRepository.authStateChanges,
         ).thenAnswer((_) => Stream.empty());
-        when(mockAuthRepository.signInWithEmail(any, any)).thenAnswer(
+        when(mockSignInUseCase(any)).thenAnswer(
           (_) async => throw AuthException(code: AuthErrorCode.unknown),
         );
       },
 
       build: () => authBloc = AuthBloc(
         mockAuthRepository,
-        signInWithEmailUseCase,
-        signUpWithEmailUseCase,
+        mockSignInUseCase,
+        mockSignUpUseCase,
       ),
       act: (bloc) => bloc.add(
         const AuthEvent.signInRequested(
@@ -141,6 +141,78 @@ void main() {
       expect: () => [
         const AuthState.loading(),
         const AuthState.error(AuthErrorCode.unknown),
+      ],
+    );
+  });
+
+  group('SignUpRequested', () {
+    blocTest<AuthBloc, AuthState>(
+      'it should emit [loading] and then nothing when registration is successful',
+      setUp: () {
+        when(mockSignUpUseCase(any)).thenAnswer((_) async => {});
+      },
+      build: () => authBloc = AuthBloc(
+        mockAuthRepository,
+        mockSignInUseCase,
+        mockSignUpUseCase,
+      ),
+      act: (bloc) => bloc.add(
+        const AuthEvent.signUpRequested(
+          email: 'test@test.com',
+          password: 'password123',
+          confirmPassword: 'password123',
+        ),
+      ),
+      expect: () => [const AuthState.loading()],
+    );
+
+    blocTest<AuthBloc, AuthState>(
+      'should emit [loading, error] with validation code when Use Case throws ValidationException',
+      setUp: () {
+        when(mockSignUpUseCase(any)).thenThrow(
+          ValidationException(code: ValidationErrorCode.passwordsDoNotMatch),
+        );
+      },
+      build: () => authBloc = AuthBloc(
+        mockAuthRepository,
+        mockSignInUseCase,
+        mockSignUpUseCase,
+      ),
+      act: (bloc) => bloc.add(
+        const AuthEvent.signUpRequested(
+          email: 'test@test.com',
+          password: 'password123',
+          confirmPassword: 'password456',
+        ),
+      ),
+      expect: () => [
+        const AuthState.loading(),
+        const AuthState.error(ValidationErrorCode.passwordsDoNotMatch),
+      ],
+    );
+
+    blocTest<AuthBloc, AuthState>(
+      'should emit [loading, error] with the authorization code when Use Case throws AuthException',
+      setUp: () {
+        when(
+          mockSignUpUseCase(any),
+        ).thenThrow(AuthException(code: AuthErrorCode.emailAlreadyInUse));
+      },
+      build: () => authBloc = AuthBloc(
+        mockAuthRepository,
+        mockSignInUseCase,
+        mockSignUpUseCase,
+      ),
+      act: (bloc) => bloc.add(
+        const AuthEvent.signUpRequested(
+          email: 'test@test.com',
+          password: 'password123',
+          confirmPassword: 'password123',
+        ),
+      ),
+      expect: () => [
+        const AuthState.loading(),
+        const AuthState.error(AuthErrorCode.emailAlreadyInUse),
       ],
     );
   });

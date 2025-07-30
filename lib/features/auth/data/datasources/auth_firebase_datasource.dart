@@ -34,15 +34,23 @@ class AuthFirebaseDataSourceImpl implements AuthFirebaseDataSource {
     String email,
     String password,
   ) async {
-    await _firebaseAuth.createUserWithEmailAndPassword(
-      email: email,
-      password: password,
-    );
+    try {
+      await _firebaseAuth.createUserWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+    } on FirebaseAuthException {
+      rethrow;
+    }
   }
 
   @override
   Future<void> signOut() async {
-    await _firebaseAuth.signOut();
+    try {
+      await _firebaseAuth.signOut();
+    } on FirebaseAuthException {
+      rethrow;
+    }
   }
 
   @override

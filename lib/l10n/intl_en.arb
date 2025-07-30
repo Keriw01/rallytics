@@ -35,7 +35,11 @@
   "authErrorEmailInUse": "This email is already in use. Please try another one.",
   "authErrorInvalidEmail": "Email is invalid.",
   "authErrorWeakPassword": "The password is too weak. Should be at least 12 characters and contain minimum 1 uppercase, lowercase letter, number, special character.",
-  "authErrorPasswordsDoNotMatch": "Passwords don't match.",
+
+  "validationErrorPasswordsDoNotMatch": "The passwords do not match.",
+  "validationErrorEmptyFields": "Not all fields are filled in.",
+  "validationErrorInvalidEmail": "The email is invalid.",
+  "validationErrorWeakPassword": "The password does not meet the requirements.",
 
   "trainingSessionTitle": "New Session",
   "trainingSessionStartButton": "Start Recording",

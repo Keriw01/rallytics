@@ -37,8 +37,6 @@ class MessageLookup extends MessageLookupByLibrary {
             "Please enter a valid email address."),
         "authErrorPasswordRequired":
             MessageLookupByLibrary.simpleMessage("Password is required."),
-        "authErrorPasswordsDoNotMatch":
-            MessageLookupByLibrary.simpleMessage("Passwords don\'t match."),
         "authErrorWeakPassword": MessageLookupByLibrary.simpleMessage(
             "The password is too weak. Should be at least 12 characters and contain minimum 1 uppercase, lowercase letter, number, special character."),
         "cancelButton": MessageLookupByLibrary.simpleMessage("Cancel"),
@@ -77,6 +75,14 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Start Recording"),
         "trainingSessionTitle":
             MessageLookupByLibrary.simpleMessage("New Session"),
+        "validationErrorEmptyFields": MessageLookupByLibrary.simpleMessage(
+            "Not all fields are filled in."),
+        "validationErrorInvalidEmail":
+            MessageLookupByLibrary.simpleMessage("The email is invalid."),
+        "validationErrorPasswordsDoNotMatch":
+            MessageLookupByLibrary.simpleMessage("The passwords do not match."),
+        "validationErrorWeakPassword": MessageLookupByLibrary.simpleMessage(
+            "The password does not meet the requirements."),
         "welcomeUserMessage": m0
       };
 }
