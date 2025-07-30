@@ -19,6 +19,7 @@ import '../../features/auth/data/datasources/auth_firebase_datasource.dart'
 import '../../features/auth/data/repositories/auth_repository_impl.dart'
     as _i153;
 import '../../features/auth/domain/repositories/auth_repository.dart' as _i787;
+import '../../features/auth/domain/usecases/sign_in_with_email.dart' as _i485;
 import '../../features/auth/presentation/bloc/auth_bloc.dart' as _i797;
 import 'firebase_injectable_module.dart' as _i574;
 
@@ -40,7 +41,15 @@ _i174.GetIt $initGetIt(
   gh.lazySingleton<_i787.AuthRepository>(
     () => _i153.AuthRepositoryImpl(gh<_i157.AuthFirebaseDataSource>()),
   );
-  gh.factory<_i797.AuthBloc>(() => _i797.AuthBloc(gh<_i787.AuthRepository>()));
+  gh.lazySingleton<_i485.SignInWithEmailUseCase>(
+    () => _i485.SignInWithEmailUseCase(gh<_i787.AuthRepository>()),
+  );
+  gh.factory<_i797.AuthBloc>(
+    () => _i797.AuthBloc(
+      gh<_i787.AuthRepository>(),
+      gh<_i485.SignInWithEmailUseCase>(),
+    ),
+  );
   return getIt;
 }
 

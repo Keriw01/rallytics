@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:rallytics/features/auth/domain/entities/user_entity.dart';
+import 'package:rallytics/features/auth/domain/usecases/sign_in_with_email.dart';
 import 'package:rallytics/features/auth/presentation/bloc/auth_event.dart';
 import 'package:rallytics/features/auth/presentation/bloc/auth_state.dart';
 
@@ -17,9 +18,12 @@ import 'package:rallytics/features/auth/domain/repositories/auth_repository.dart
 @injectable
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   final AuthRepository _authRepository;
+  final SignInWithEmailUseCase _signInWithEmailUseCase;
+
   StreamSubscription<UserEntity?>? _userSubscription;
 
-  AuthBloc(this._authRepository) : super(const AuthState.initial()) {
+  AuthBloc(this._authRepository, this._signInWithEmailUseCase)
+    : super(const AuthState.initial()) {
     _userSubscription = _authRepository.authStateChanges.listen((user) {
       add(AuthEvent.authUserChanged(user));
     });
@@ -35,7 +39,9 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     on<SignInRequested>((event, emit) async {
       emit(const AuthState.loading());
       try {
-        await _authRepository.signInWithEmail(event.email, event.password);
+        await _signInWithEmailUseCase(
+          SignInParams(email: event.email, password: event.password),
+        );
       } on ServerException catch (e) {
         emit(AuthState.error(e.code));
       }

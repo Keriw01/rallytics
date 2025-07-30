@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:rallytics/core/router/router_refresh_stream.dart';
 import 'package:rallytics/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:rallytics/features/auth/presentation/pages/login_screen.dart';
+import 'package:rallytics/features/auth/presentation/pages/register_screen.dart';
 import 'package:rallytics/features/live_score/presentation/pages/live_score_screen.dart';
 
 GoRouter configureRouter(AuthBloc authBloc) {
@@ -13,6 +14,8 @@ GoRouter configureRouter(AuthBloc authBloc) {
     redirect: (BuildContext context, GoRouterState state) {
       final authState = authBloc.state;
 
+      final publicRoutes = ['/login', '/login/register'];
+
       final bool loggedIn = authState.map(
         initial: (_) => false,
         loading: (_) => false,
@@ -21,13 +24,15 @@ GoRouter configureRouter(AuthBloc authBloc) {
         error: (_) => false,
       );
 
-      final bool loggingIn = state.matchedLocation == '/login';
+      final bool isGoingToPublicRoute = publicRoutes.contains(
+        state.matchedLocation,
+      );
 
-      if (!loggedIn && !loggingIn) {
+      if (!loggedIn && !isGoingToPublicRoute) {
         return '/login';
       }
 
-      if (loggedIn && loggingIn) {
+      if (loggedIn && isGoingToPublicRoute) {
         return '/';
       }
 
@@ -39,7 +44,15 @@ GoRouter configureRouter(AuthBloc authBloc) {
         path: '/login',
         name: 'login',
         builder: (context, state) => const LoginScreen(),
+        routes: [
+          GoRoute(
+            path: '/register',
+            name: 'register',
+            builder: (context, state) => const RegisterScreen(),
+          ),
+        ],
       ),
+
       GoRoute(
         path: '/',
         name: 'live_score',

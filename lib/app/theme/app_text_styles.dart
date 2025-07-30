@@ -52,7 +52,7 @@ class AppTextStyles {
     bodySmall: _inter.copyWith(fontSize: 12, fontWeight: FontWeight.normal),
 
     // For buttons and other interactive labels
-    labelLarge: _inter.copyWith(fontSize: 14, fontWeight: FontWeight.w600),
+    labelLarge: _inter.copyWith(fontSize: 14, fontWeight: FontWeight.bold),
     labelMedium: _inter.copyWith(fontSize: 12, fontWeight: FontWeight.w500),
     labelSmall: _inter.copyWith(fontSize: 11, fontWeight: FontWeight.normal),
   );

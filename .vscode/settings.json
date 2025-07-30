@@ -24,4 +24,6 @@
     "utils": "utils",
     "helpers": "helper"
   },
+  "files.autoSave": "afterDelay",
+  "dart.flutterHotReloadOnSave": "all",
 }

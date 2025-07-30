@@ -7,12 +7,32 @@
   },
 
 
-  "loginTitle": "Sign In",
-  "loginButton": "Log In",
-  "loginEmailLabel": "Email",
-  "loginPasswordHint": "Password",
-  "loginErrorInvalidCredentials": "Invalid email or password. Please try again.",
+  "saveButton": "Save",
+  "cancelButton": "Cancel",
+  "logoutButton": "Log Out",
+  "orConnectWith": "or connect with",
 
+
+  "loginTitle": "Login",
+  "signInButton": "Sign in",
+  "emailLabel": "Email",
+  "emailHint": "Enter your email address",
+  "passwordLabel": "Password",
+  "passwordHint": "Enter your password",
+  "forgotPasswordButton": "Forgot your password?",
+  
+  "registerTitle": "Register",
+  "signUpButton": "Sign up",
+  "signUpPrompt": "Don't have an account?",
+  "signInPrompt": "Already have an account?",
+
+  
+  "authErrorEmailRequired" : "Email is required.",
+  "authErrorPasswordRequired" : "Password is required.",
+  "authErrorInvalidEmailFormat": "Please enter a valid email address.",
+  "authErrorInvalidCredentials": "Invalid email or password. Please try again.",
+  "authErrorEmailInUse": "This email is already in use. Please try another one.",
+  "authErrorWeakPassword": "The password is too weak. Should be at least 12 characters and contain minimum 1 uppercase, lowercase letter, number, special character.",
 
   "trainingSessionTitle": "New Session",
   "trainingSessionStartButton": "Start Recording",
@@ -24,16 +44,6 @@
   "liveScoresMatchStatusFinished": "Finished",
 
 
-
-  "saveButton": "Save",
-  "cancelButton": "Cancel",
-  "errorGeneric": "An unexpected error occurred. Please try again later.",
-  "logoutButton": "Log Out",
-
-  "errorInvalidCredentials": "Invalid email or password.",
-  "errorEmailInUse": "This email is already in use. Please try another one.",
-  "errorWeakPassword": "The password is too weak.",
-
   "welcomeUserMessage": "Welcome back, {userName}!",
   "@welcomeUserMessage": {
     "description": "A welcome message shown on the dashboard.",
@@ -43,8 +53,9 @@
         "example": "John Doe"
       }
     }
-  }
+  },
 
 
-  
+  "errorGeneric": "An unexpected error occurred. Please try again later."
+
 }

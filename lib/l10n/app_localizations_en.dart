@@ -12,20 +12,71 @@ class AppLocalizationsEn extends AppLocalizations {
   String get appTitle => 'Rallytics';
 
   @override
-  String get loginTitle => 'Sign In';
+  String get saveButton => 'Save';
 
   @override
-  String get loginButton => 'Log In';
+  String get cancelButton => 'Cancel';
 
   @override
-  String get loginEmailLabel => 'Email';
+  String get logoutButton => 'Log Out';
 
   @override
-  String get loginPasswordHint => 'Password';
+  String get orConnectWith => 'or connect with';
 
   @override
-  String get loginErrorInvalidCredentials =>
+  String get loginTitle => 'Login';
+
+  @override
+  String get signInButton => 'Sign in';
+
+  @override
+  String get emailLabel => 'Email';
+
+  @override
+  String get emailHint => 'Enter your email address';
+
+  @override
+  String get passwordLabel => 'Password';
+
+  @override
+  String get passwordHint => 'Enter your password';
+
+  @override
+  String get forgotPasswordButton => 'Forgot your password?';
+
+  @override
+  String get registerTitle => 'Register';
+
+  @override
+  String get signUpButton => 'Sign up';
+
+  @override
+  String get signUpPrompt => 'Don\'t have an account?';
+
+  @override
+  String get signInPrompt => 'Already have an account?';
+
+  @override
+  String get authErrorEmailRequired => 'Email is required.';
+
+  @override
+  String get authErrorPasswordRequired => 'Password is required.';
+
+  @override
+  String get authErrorInvalidEmailFormat =>
+      'Please enter a valid email address.';
+
+  @override
+  String get authErrorInvalidCredentials =>
       'Invalid email or password. Please try again.';
+
+  @override
+  String get authErrorEmailInUse =>
+      'This email is already in use. Please try another one.';
+
+  @override
+  String get authErrorWeakPassword =>
+      'The password is too weak. Should be at least 12 characters and contain minimum 1 uppercase, lowercase letter, number, special character.';
 
   @override
   String get trainingSessionTitle => 'New Session';
@@ -46,30 +97,11 @@ class AppLocalizationsEn extends AppLocalizations {
   String get liveScoresMatchStatusFinished => 'Finished';
 
   @override
-  String get saveButton => 'Save';
-
-  @override
-  String get cancelButton => 'Cancel';
+  String welcomeUserMessage(String userName) {
+    return 'Welcome back, $userName!';
+  }
 
   @override
   String get errorGeneric =>
       'An unexpected error occurred. Please try again later.';
-
-  @override
-  String get logoutButton => 'Log Out';
-
-  @override
-  String get errorInvalidCredentials => 'Invalid email or password.';
-
-  @override
-  String get errorEmailInUse =>
-      'This email is already in use. Please try another one.';
-
-  @override
-  String get errorWeakPassword => 'The password is too weak.';
-
-  @override
-  String welcomeUserMessage(String userName) {
-    return 'Welcome back, $userName!';
-  }
 }

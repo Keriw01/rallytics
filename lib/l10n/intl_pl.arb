@@ -7,11 +7,32 @@
   },
 
 
+  "saveButton": "Zapisz",
+  "cancelButton": "Anuluj",
+  "logoutButton": "Wyloguj",
+  "orConnectWith": "lub połącz z",
+
+
   "loginTitle": "Logowanie",
-  "loginButton": "Zaloguj się",
-  "loginEmailLabel": "Email",
-  "loginPasswordHint": "Hasło",
-  "loginErrorInvalidCredentials": "Nie prawidłowy email lub hasło. Spróbuj ponownie.",
+  "signInButton": "Zaloguj się",
+  "emailLabel": "Email",
+  "emailHint": "Wpisz swój adres email",
+  "passwordLabel": "Hasło",
+  "passwordHint": "Wprowadź swoje hasło",
+  "forgotPasswordButton": "Nie pamiętasz hasła?",
+  
+  "registerTitle": "Rejestracja",
+  "signUpButton": "Zarejestruj się",
+  "signUpPrompt": "Nie masz konta?",
+  "signInPrompt": "Masz już konto?",
+
+  
+  "authErrorEmailRequired" : "Email jest wymagany.",
+  "authErrorPasswordRequired" : "Hasło jest wymagane.",
+  "authErrorInvalidEmailFormat": "Proszę wprowadzić prawidłowy adres email.",
+  "authErrorInvalidCredentials": "Nieprawidłowy email lub hasło. Proszę spróbować ponownie.",
+  "authErrorEmailInUse": "Ten email jest już używany. Proszę spróbować innego.",
+  "authErrorWeakPassword": "Hasło jest zbyt słabe. Powinno mieć co najmniej 12 znaków i zawierać minimum 1 wielką, małą literę, cyfrę i znak specjalny.",
 
 
   "trainingSessionTitle": "Nowa Sesja",
@@ -24,27 +45,18 @@
   "liveScoresMatchStatusFinished": "Zakończone",
 
 
-
-  "saveButton": "Zapisz",
-  "cancelButton": "Anuluj",
-  "errorGeneric": "Nie oczekiwany błąd wystąpił. Spróbuj ponownie później.",
-  "logoutButton": "Wyloguj się",
-
-  "errorInvalidCredentials": "Nie prawidłowy email lub hasło.",
-  "errorEmailInUse": "Ten email jest już używany. Spróbuj innego.",
-  "errorWeakPassword": "Hasło jest zbyt słabe.",
-
-  "welcomeUserMessage": "Witaj z powrotem, {userName}!",
+  "welcomeUserMessage": "Witaj ponownie, {userName}!",
   "@welcomeUserMessage": {
-    "description": "Wiadomość powitalna wyświetlana na pulpicie.",
+    "description": "Powitanie wyświetlane na pulpicie.",
     "placeholders": {
       "userName": {
         "type": "String",
-        "example": "Jan Kowalski"
+        "example": "John Doe"
       }
     }
-  }
+  },
 
 
+  "errorGeneric": "Niespodziewany błąd. Proszę spróbować ponownie później."
   
 }
