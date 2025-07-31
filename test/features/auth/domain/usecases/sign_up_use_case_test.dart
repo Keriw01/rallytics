@@ -18,6 +18,7 @@ void main() {
   });
 
   const tEmail = 'test@test.com';
+  const tWeakPassword = 'password12';
   const tPassword = 'Password123!';
   const tConfirmPassword = 'Password123!';
   const tWrongConfirmPassword = 'password456!';
@@ -78,6 +79,44 @@ void main() {
           (e) => e.code,
           'code',
           ValidationErrorCode.invalidEmail,
+        ),
+      ),
+    );
+  });
+
+  test('should throw ValidationException when passwords is weak', () async {
+    final paramsWithWeakPasswords = SignUpParams(
+      email: tEmail,
+      password: tWeakPassword,
+      confirmPassword: tWeakPassword,
+    );
+
+    expect(
+      () => useCase(paramsWithWeakPasswords),
+      throwsA(
+        isA<ValidationException>().having(
+          (e) => e.code,
+          'code',
+          ValidationErrorCode.weakPassword,
+        ),
+      ),
+    );
+  });
+
+  test('should throw ValidationException when some field are empty', () async {
+    final signUpParams = SignUpParams(
+      email: '',
+      password: tPassword,
+      confirmPassword: tConfirmPassword,
+    );
+
+    expect(
+      () => useCase(signUpParams),
+      throwsA(
+        isA<ValidationException>().having(
+          (e) => e.code,
+          'code',
+          ValidationErrorCode.emptyFields,
         ),
       ),
     );

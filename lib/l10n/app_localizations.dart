@@ -242,11 +242,29 @@ abstract class AppLocalizations {
   /// **'The password is too weak. Should be at least 12 characters and contain minimum 1 uppercase, lowercase letter, number, special character.'**
   String get authErrorWeakPassword;
 
-  /// No description provided for @authErrorPasswordsDoNotMatch.
+  /// No description provided for @validationErrorPasswordsDoNotMatch.
   ///
   /// In en, this message translates to:
-  /// **'Passwords don\'t match.'**
-  String get authErrorPasswordsDoNotMatch;
+  /// **'The passwords do not match.'**
+  String get validationErrorPasswordsDoNotMatch;
+
+  /// No description provided for @validationErrorEmptyFields.
+  ///
+  /// In en, this message translates to:
+  /// **'Not all fields are filled in.'**
+  String get validationErrorEmptyFields;
+
+  /// No description provided for @validationErrorInvalidEmail.
+  ///
+  /// In en, this message translates to:
+  /// **'The email is invalid.'**
+  String get validationErrorInvalidEmail;
+
+  /// No description provided for @validationErrorWeakPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'The password does not meet the requirements.'**
+  String get validationErrorWeakPassword;
 
   /// No description provided for @trainingSessionTitle.
   ///

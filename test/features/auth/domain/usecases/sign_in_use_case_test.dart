@@ -18,12 +18,12 @@ void main() {
   });
 
   const tEmail = 'test@test.com';
-  const tPassword = 'password123!';
+  const tPassword = 'Password123!';
 
   final tSignInParams = SignInParams(email: tEmail, password: tPassword);
 
   test(
-    'powinien wywołać signInWithEmail w repozytorium, gdy dane są poprawne',
+    'should call signInWithEmail in the repository when the data is valid',
     () async {
       when(
         mockAuthRepository.signInWithEmail(any, any),
@@ -36,24 +36,36 @@ void main() {
     },
   );
 
-  test(
-    'powinien rzucić ValidationException, gdy e-mail jest niepoprawny',
-    () async {
-      final paramsWithInvalidEmail = SignInParams(
-        email: 'invalid-email',
-        password: tPassword,
-      );
+  test('should throw ValidationException when email is invalid', () async {
+    final paramsWithInvalidEmail = SignInParams(
+      email: 'invalid-email',
+      password: tPassword,
+    );
 
-      expect(
-        () => useCase(paramsWithInvalidEmail),
-        throwsA(
-          isA<ValidationException>().having(
-            (e) => e.code,
-            'code',
-            ValidationErrorCode.invalidEmail,
-          ),
+    expect(
+      () => useCase(paramsWithInvalidEmail),
+      throwsA(
+        isA<ValidationException>().having(
+          (e) => e.code,
+          'code',
+          ValidationErrorCode.invalidEmail,
         ),
-      );
-    },
-  );
+      ),
+    );
+  });
+
+  test('should throw ValidationException when some field is empty', () async {
+    final paramsWithEmptyField = SignInParams(email: '', password: tPassword);
+
+    expect(
+      () => useCase(paramsWithEmptyField),
+      throwsA(
+        isA<ValidationException>().having(
+          (e) => e.code,
+          'code',
+          ValidationErrorCode.emptyFields,
+        ),
+      ),
+    );
+  });
 }

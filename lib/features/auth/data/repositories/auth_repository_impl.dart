@@ -56,12 +56,7 @@ class AuthRepositoryImpl implements AuthRepository {
       await _authFirebaseDataSource.signOut();
     } on FirebaseAuthException catch (e) {
       final errorCode = mapFirebaseErrorCode(e.code);
-      throw AuthException(code: errorCode, originalMessage: e.message);
-    } catch (e) {
-      throw AuthException(
-        code: AuthErrorCode.unknown,
-        originalMessage: e.toString(),
-      );
+      throw AuthException(code: errorCode, originalMessage: e.toString());
     }
   }
 

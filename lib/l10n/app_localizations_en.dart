@@ -85,7 +85,18 @@ class AppLocalizationsEn extends AppLocalizations {
       'The password is too weak. Should be at least 12 characters and contain minimum 1 uppercase, lowercase letter, number, special character.';
 
   @override
-  String get authErrorPasswordsDoNotMatch => 'Passwords don\'t match.';
+  String get validationErrorPasswordsDoNotMatch =>
+      'The passwords do not match.';
+
+  @override
+  String get validationErrorEmptyFields => 'Not all fields are filled in.';
+
+  @override
+  String get validationErrorInvalidEmail => 'The email is invalid.';
+
+  @override
+  String get validationErrorWeakPassword =>
+      'The password does not meet the requirements.';
 
   @override
   String get trainingSessionTitle => 'New Session';

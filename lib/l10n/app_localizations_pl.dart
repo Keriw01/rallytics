@@ -85,7 +85,17 @@ class AppLocalizationsPl extends AppLocalizations {
       'Hasło jest zbyt słabe. Powinno mieć co najmniej 12 znaków i zawierać minimum 1 wielką, małą literę, cyfrę i znak specjalny.';
 
   @override
-  String get authErrorPasswordsDoNotMatch => 'Hasła do siebie nie pasują.';
+  String get validationErrorPasswordsDoNotMatch =>
+      'Hasła do siebie nie pasują.';
+
+  @override
+  String get validationErrorEmptyFields => 'Nie wszystkie pola są uzupełnione.';
+
+  @override
+  String get validationErrorInvalidEmail => 'Email jest niepoprawny.';
+
+  @override
+  String get validationErrorWeakPassword => 'Hasło nie spełnia wymagań.';
 
   @override
   String get trainingSessionTitle => 'Nowa Sesja';

@@ -38,6 +38,7 @@ class SignUpWithEmailUseCase implements UseCase<void, SignUpParams> {
         !kPasswordRegex.hasMatch(params.confirmPassword)) {
       throw ValidationException(code: ValidationErrorCode.weakPassword);
     }
+
     if (params.password != params.confirmPassword) {
       throw ValidationException(code: ValidationErrorCode.passwordsDoNotMatch);
     }
