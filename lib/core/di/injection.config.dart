@@ -19,7 +19,10 @@ import '../../features/auth/data/datasources/auth_firebase_datasource.dart'
 import '../../features/auth/data/repositories/auth_repository_impl.dart'
     as _i153;
 import '../../features/auth/domain/repositories/auth_repository.dart' as _i787;
+import '../../features/auth/domain/usecases/get_auth_state_changes_use_case.dart'
+    as _i615;
 import '../../features/auth/domain/usecases/sign_in_with_email.dart' as _i485;
+import '../../features/auth/domain/usecases/sign_out.dart' as _i568;
 import '../../features/auth/domain/usecases/sign_up_with_email.dart' as _i460;
 import '../../features/auth/presentation/bloc/auth_bloc.dart' as _i797;
 import 'firebase_injectable_module.dart' as _i574;
@@ -48,11 +51,18 @@ _i174.GetIt $initGetIt(
   gh.lazySingleton<_i460.SignUpWithEmailUseCase>(
     () => _i460.SignUpWithEmailUseCase(gh<_i787.AuthRepository>()),
   );
+  gh.lazySingleton<_i568.SignOutUseCase>(
+    () => _i568.SignOutUseCase(gh<_i787.AuthRepository>()),
+  );
+  gh.lazySingleton<_i615.GetAuthStateChangesUseCase>(
+    () => _i615.GetAuthStateChangesUseCase(gh<_i787.AuthRepository>()),
+  );
   gh.factory<_i797.AuthBloc>(
     () => _i797.AuthBloc(
-      gh<_i787.AuthRepository>(),
+      gh<_i615.GetAuthStateChangesUseCase>(),
       gh<_i485.SignInWithEmailUseCase>(),
       gh<_i460.SignUpWithEmailUseCase>(),
+      gh<_i568.SignOutUseCase>(),
     ),
   );
   return getIt;

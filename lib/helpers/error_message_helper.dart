@@ -19,7 +19,7 @@ AuthErrorCode mapFirebaseErrorCode(String firebaseCode) {
   }
 }
 
-String getErrorMessage(BuildContext context, Object code) {
+String getErrorMessage(BuildContext context, ErrorCode code) {
   if (code is AuthErrorCode) {
     return _getAuthErrorMessage(context, code);
   }

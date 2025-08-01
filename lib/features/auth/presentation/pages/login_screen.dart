@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:rallytics/core/constants/validation_constants.dart';
+import 'package:rallytics/core/presentation/widgets/tennis_ball_loader/tennis_ball_loader.dart';
 import 'package:rallytics/features/auth/presentation/bloc/auth_event.dart';
 import 'package:rallytics/features/auth/presentation/widgets/auth_redirect_widget.dart';
 import 'package:rallytics/features/auth/presentation/widgets/auth_text_field.dart';
@@ -58,128 +59,135 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
+    return Scaffold(
+      body: BlocConsumer<AuthBloc, AuthState>(
+        listener: (context, state) {
+          if (state is Error) {
+            final errorMessage = getErrorMessage(context, state.code);
+            ScaffoldMessenger.of(
+              context,
+            ).showSnackBar(SnackBar(content: Text(errorMessage)));
+          }
+        },
+        builder: (context, state) {
+          return Stack(
+            children: [
+              _buildLoginForm(context),
+
+              if (state is Loading) TennisBallLoader(),
+            ],
+          );
+        },
+      ),
+    );
+  }
+
+  Widget _buildLoginForm(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
 
     final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
 
-    return Scaffold(
-      body: BlocListener<AuthBloc, AuthState>(
-        listener: (context, state) {
-          state.maybeWhen(
-            error: (errorCode) {
-              final errorMessage = getErrorMessage(context, errorCode);
-              ScaffoldMessenger.of(
-                context,
-              ).showSnackBar(SnackBar(content: Text(errorMessage)));
+    return SafeArea(
+      child: SingleChildScrollView(
+        reverse: true,
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.1),
+          child: Form(
+            key: _formkey,
+            onChanged: () {
+              setState(() {
+                _isButtonEnabled = _formkey.currentState?.validate() ?? false;
+              });
             },
-            orElse: () {},
-          );
-        },
-        child: SafeArea(
-          child: SingleChildScrollView(
-            reverse: true,
-            child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.1),
-              child: Form(
-                key: _formkey,
-                onChanged: () {
-                  setState(() {
-                    _isButtonEnabled =
-                        _formkey.currentState?.validate() ?? false;
-                  });
-                },
-                child: Column(
+            child: Column(
+              children: [
+                SizedBox(height: screenHeight * 0.02),
+                Text(
+                  S.of(context).loginTitle.toUpperCase(),
+                  style: textTheme.headlineLarge,
+                ),
+                SizedBox(height: screenHeight * 0.02),
+                SizedBox(
+                  height: screenHeight * 0.3,
+                  child: SvgPicture.asset('assets/images/login_logo.svg'),
+                ),
+                SizedBox(height: screenHeight * 0.02),
+                AuthTextField(
+                  controller: _emailController,
+                  isEmailField: true,
+                  labelText: S.of(context).emailLabel,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return S.of(context).authErrorEmailRequired;
+                    }
+
+                    if (!kEmailRegex.hasMatch(value)) {
+                      return S.of(context).authErrorInvalidEmailFormat;
+                    }
+                    return null;
+                  },
+                ),
+                SizedBox(height: screenHeight * 0.02),
+                AuthTextField(
+                  controller: _passwordController,
+                  isEmailField: false,
+                  labelText: S.of(context).passwordLabel,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return S.of(context).authErrorPasswordRequired;
+                    }
+
+                    if (!kPasswordRegex.hasMatch(value)) {
+                      return S.of(context).authErrorWeakPassword;
+                    }
+
+                    return null;
+                  },
+                ),
+                SizedBox(height: screenHeight * 0.01),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    SizedBox(height: screenHeight * 0.02),
-                    Text(
-                      S.of(context).loginTitle.toUpperCase(),
-                      style: textTheme.headlineLarge,
-                    ),
-                    SizedBox(height: screenHeight * 0.02),
-                    SizedBox(
-                      height: screenHeight * 0.3,
-                      child: SvgPicture.asset('assets/images/login_logo.svg'),
-                    ),
-                    SizedBox(height: screenHeight * 0.02),
-                    AuthTextField(
-                      controller: _emailController,
-                      isEmailField: true,
-                      labelText: S.of(context).emailLabel,
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return S.of(context).authErrorEmailRequired;
-                        }
-
-                        if (!kEmailRegex.hasMatch(value)) {
-                          return S.of(context).authErrorInvalidEmailFormat;
-                        }
-                        return null;
-                      },
-                    ),
-                    SizedBox(height: screenHeight * 0.02),
-                    AuthTextField(
-                      controller: _passwordController,
-                      isEmailField: false,
-                      labelText: S.of(context).passwordLabel,
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return S.of(context).authErrorPasswordRequired;
-                        }
-
-                        if (!kPasswordRegex.hasMatch(value)) {
-                          return S.of(context).authErrorWeakPassword;
-                        }
-
-                        return null;
-                      },
-                    ),
-                    SizedBox(height: screenHeight * 0.01),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        Flexible(
-                          child: TextButton(
-                            onPressed: () =>
-                                null, //TODO: Handle forgot password
-                            child: Text(
-                              S.of(context).forgotPasswordButton,
-                              style: textTheme.labelMedium!.copyWith(
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
+                    Flexible(
+                      child: TextButton(
+                        onPressed: () => null, //TODO: Handle forgot password
+                        child: Text(
+                          S.of(context).forgotPasswordButton,
+                          style: textTheme.labelMedium!.copyWith(
+                            fontWeight: FontWeight.bold,
                           ),
                         ),
-                      ],
-                    ),
-                    SizedBox(height: screenHeight * 0.01),
-                    ElevatedButton(
-                      onPressed: _isButtonEnabled ? _signIn : null,
-                      child: Padding(
-                        padding: EdgeInsets.symmetric(
-                          horizontal: screenWidth * 0.09,
-                        ),
-                        child: Text(S.of(context).signInButton),
                       ),
-                    ),
-                    SizedBox(height: screenHeight * 0.03),
-                    OrDivider(),
-                    SizedBox(height: screenHeight * 0.02),
-                    //TODO: Handle socials login buttons
-                    SocialLoginButtons(
-                      onFacebookPressed: () => null,
-                      onTwitterPressed: () => null,
-                      onGooglePressed: () => null,
-                      onApplePressed: () => null,
-                    ),
-                    AuthRedirectWidget(
-                      promptText: S.of(context).signUpPrompt,
-                      buttonText: S.of(context).signUpButton,
-                      onPressed: () => context.goNamed('register'),
                     ),
                   ],
                 ),
-              ),
+                SizedBox(height: screenHeight * 0.01),
+                ElevatedButton(
+                  onPressed: _isButtonEnabled ? _signIn : null,
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: screenWidth * 0.09,
+                    ),
+                    child: Text(S.of(context).signInButton),
+                  ),
+                ),
+                SizedBox(height: screenHeight * 0.03),
+                OrDivider(),
+                SizedBox(height: screenHeight * 0.02),
+                //TODO: Handle socials login buttons
+                SocialLoginButtons(
+                  onFacebookPressed: () => null,
+                  onTwitterPressed: () => null,
+                  onGooglePressed: () => null,
+                  onApplePressed: () => null,
+                ),
+                AuthRedirectWidget(
+                  promptText: S.of(context).signUpPrompt,
+                  buttonText: S.of(context).signUpButton,
+                  onPressed: () => context.goNamed('register'),
+                ),
+              ],
             ),
           ),
         ),

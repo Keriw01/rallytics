@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:rallytics/core/constants/validation_constants.dart';
+import 'package:rallytics/core/presentation/widgets/tennis_ball_loader/tennis_ball_loader.dart';
 import 'package:rallytics/features/auth/presentation/bloc/auth_event.dart';
 import 'package:rallytics/features/auth/presentation/widgets/auth_redirect_widget.dart';
 import 'package:rallytics/features/auth/presentation/widgets/auth_text_field.dart';
@@ -62,162 +63,161 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
   @override
   Widget build(BuildContext context) {
+    return Scaffold(
+      resizeToAvoidBottomInset: false,
+      body: BlocConsumer<AuthBloc, AuthState>(
+        listener: (context, state) {
+          if (state is Error) {
+            final errorMessage = getErrorMessage(context, state.code);
+            ScaffoldMessenger.of(
+              context,
+            ).showSnackBar(SnackBar(content: Text(errorMessage)));
+          }
+        },
+        builder: (context, state) {
+          return Stack(
+            children: [
+              _buildPositionedBackground(),
+
+              _buildRegisterForm(context),
+
+              if (state is Loading) TennisBallLoader(),
+            ],
+          );
+        },
+      ),
+    );
+  }
+
+  Positioned _buildPositionedBackground() {
+    return Positioned(
+      left: 0,
+      right: 0,
+      bottom: 0,
+      child: SvgPicture.asset(
+        'assets/images/register_background.svg',
+        fit: BoxFit.cover,
+      ),
+    );
+  }
+
+  Widget _buildRegisterForm(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
 
     final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
 
-    return Scaffold(
-      resizeToAvoidBottomInset: false,
-      body: BlocListener<AuthBloc, AuthState>(
-        listener: (context, state) {
-          state.maybeWhen(
-            error: (errorCode) {
-              final errorMessage = getErrorMessage(context, errorCode);
-              ScaffoldMessenger.of(
-                context,
-              ).showSnackBar(SnackBar(content: Text(errorMessage)));
-            },
-            orElse: () {},
-          );
-        },
-        child: Stack(
-          children: [
-            Positioned(
-              left: 0,
-              right: 0,
-              bottom: 0,
-              child: SvgPicture.asset(
-                'assets/images/register_background.svg',
-                fit: BoxFit.cover,
-              ),
-            ),
-
-            SafeArea(
-              child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.1),
-                child: LayoutBuilder(
-                  builder: (context, viewportConstraints) {
-                    return SingleChildScrollView(
-                      reverse: true,
-                      child: ConstrainedBox(
-                        constraints: BoxConstraints(
-                          minHeight: viewportConstraints.maxHeight,
+    return SafeArea(
+      child: Padding(
+        padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.1),
+        child: LayoutBuilder(
+          builder: (context, viewportConstraints) {
+            return SingleChildScrollView(
+              reverse: true,
+              child: ConstrainedBox(
+                constraints: BoxConstraints(
+                  minHeight: viewportConstraints.maxHeight,
+                ),
+                child: IntrinsicHeight(
+                  child: Form(
+                    key: _formkey,
+                    onChanged: () {
+                      setState(() {
+                        _isButtonEnabled =
+                            _formkey.currentState?.validate() ?? false;
+                      });
+                    },
+                    child: Column(
+                      children: [
+                        SizedBox(height: screenHeight * 0.02),
+                        Text(
+                          S.of(context).registerTitle.toUpperCase(),
+                          style: textTheme.headlineLarge,
                         ),
-                        child: IntrinsicHeight(
-                          child: Form(
-                            key: _formkey,
-                            onChanged: () {
-                              setState(() {
-                                _isButtonEnabled =
-                                    _formkey.currentState?.validate() ?? false;
-                              });
-                            },
-                            child: Column(
-                              children: [
-                                SizedBox(height: screenHeight * 0.02),
-                                Text(
-                                  S.of(context).registerTitle.toUpperCase(),
-                                  style: textTheme.headlineLarge,
-                                ),
-                                SizedBox(height: screenHeight * 0.02),
-                                AuthTextField(
-                                  controller: _emailController,
-                                  isEmailField: true,
-                                  labelText: S.of(context).emailLabel,
-                                  validator: (value) {
-                                    if (value == null || value.isEmpty) {
-                                      return S
-                                          .of(context)
-                                          .authErrorEmailRequired;
-                                    }
+                        SizedBox(height: screenHeight * 0.02),
+                        AuthTextField(
+                          controller: _emailController,
+                          isEmailField: true,
+                          labelText: S.of(context).emailLabel,
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return S.of(context).authErrorEmailRequired;
+                            }
 
-                                    if (!kEmailRegex.hasMatch(value)) {
-                                      return S
-                                          .of(context)
-                                          .authErrorInvalidEmailFormat;
-                                    }
-                                    return null;
-                                  },
-                                ),
-                                SizedBox(height: screenHeight * 0.02),
-                                AuthTextField(
-                                  controller: _passwordController,
-                                  isEmailField: false,
-                                  labelText: S.of(context).passwordLabel,
-                                  validator: (value) {
-                                    if (value == null || value.isEmpty) {
-                                      return S
-                                          .of(context)
-                                          .authErrorPasswordRequired;
-                                    }
+                            if (!kEmailRegex.hasMatch(value)) {
+                              return S.of(context).authErrorInvalidEmailFormat;
+                            }
+                            return null;
+                          },
+                        ),
+                        SizedBox(height: screenHeight * 0.02),
+                        AuthTextField(
+                          controller: _passwordController,
+                          isEmailField: false,
+                          labelText: S.of(context).passwordLabel,
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return S.of(context).authErrorPasswordRequired;
+                            }
 
-                                    if (!kPasswordRegex.hasMatch(value)) {
-                                      return S
-                                          .of(context)
-                                          .authErrorWeakPassword;
-                                    }
+                            if (!kPasswordRegex.hasMatch(value)) {
+                              return S.of(context).authErrorWeakPassword;
+                            }
 
-                                    return null;
-                                  },
-                                ),
-                                SizedBox(height: screenHeight * 0.02),
-                                AuthTextField(
-                                  controller: _confirmPasswordController,
-                                  isEmailField: false,
-                                  labelText: S.of(context).confirmPasswordLabel,
-                                  validator: (value) {
-                                    if (value == null || value.isEmpty) {
-                                      return S
-                                          .of(context)
-                                          .authErrorPasswordRequired;
-                                    }
+                            return null;
+                          },
+                        ),
+                        SizedBox(height: screenHeight * 0.02),
+                        AuthTextField(
+                          controller: _confirmPasswordController,
+                          isEmailField: false,
+                          labelText: S.of(context).confirmPasswordLabel,
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return S.of(context).authErrorPasswordRequired;
+                            }
 
-                                    if (value != _passwordController.text) {
-                                      return S
-                                          .of(context)
-                                          .validationErrorPasswordsDoNotMatch;
-                                    }
+                            if (value != _passwordController.text) {
+                              return S
+                                  .of(context)
+                                  .validationErrorPasswordsDoNotMatch;
+                            }
 
-                                    return null;
-                                  },
-                                ),
-                                SizedBox(height: screenHeight * 0.03),
-                                ElevatedButton(
-                                  onPressed: _isButtonEnabled ? _signUp : null,
-                                  child: Padding(
-                                    padding: EdgeInsets.symmetric(
-                                      horizontal: screenWidth * 0.09,
-                                    ),
-                                    child: Text(S.of(context).signUpButton),
-                                  ),
-                                ),
-                                SizedBox(height: screenHeight * 0.03),
-                                OrDivider(),
-                                SizedBox(height: screenHeight * 0.02),
-                                //TODO: Handle socials login buttons
-                                SocialLoginButtons(
-                                  onFacebookPressed: () => null,
-                                  onTwitterPressed: () => null,
-                                  onGooglePressed: () => null,
-                                  onApplePressed: () => null,
-                                ),
-                                AuthRedirectWidget(
-                                  promptText: S.of(context).signInPrompt,
-                                  buttonText: S.of(context).signInButton,
-                                  onPressed: () => context.goNamed('login'),
-                                ),
-                              ],
+                            return null;
+                          },
+                        ),
+                        SizedBox(height: screenHeight * 0.03),
+                        ElevatedButton(
+                          onPressed: _isButtonEnabled ? _signUp : null,
+                          child: Padding(
+                            padding: EdgeInsets.symmetric(
+                              horizontal: screenWidth * 0.09,
                             ),
+                            child: Text(S.of(context).signUpButton),
                           ),
                         ),
-                      ),
-                    );
-                  },
+                        SizedBox(height: screenHeight * 0.03),
+                        OrDivider(),
+                        SizedBox(height: screenHeight * 0.02),
+                        //TODO: Handle socials login buttons
+                        SocialLoginButtons(
+                          onFacebookPressed: () => null,
+                          onTwitterPressed: () => null,
+                          onGooglePressed: () => null,
+                          onApplePressed: () => null,
+                        ),
+                        AuthRedirectWidget(
+                          promptText: S.of(context).signInPrompt,
+                          buttonText: S.of(context).signInButton,
+                          onPressed: () => context.goNamed('login'),
+                        ),
+                      ],
+                    ),
+                  ),
                 ),
               ),
-            ),
-          ],
+            );
+          },
         ),
       ),
     );

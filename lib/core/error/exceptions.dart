@@ -1,4 +1,6 @@
-enum AuthErrorCode {
+abstract class ErrorCode {}
+
+enum AuthErrorCode implements ErrorCode {
   unknown,
   invalidCredentials,
   invalidEmail,
@@ -6,7 +8,7 @@ enum AuthErrorCode {
   emailAlreadyInUse,
 }
 
-enum ValidationErrorCode {
+enum ValidationErrorCode implements ErrorCode {
   unknown,
   emptyFields,
   invalidEmail,

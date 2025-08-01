@@ -5,8 +5,9 @@ import 'package:mockito/mockito.dart';
 import 'package:rallytics/core/error/exceptions.dart';
 
 import 'package:rallytics/features/auth/domain/entities/user_entity.dart';
-import 'package:rallytics/features/auth/domain/repositories/auth_repository.dart';
+import 'package:rallytics/features/auth/domain/usecases/get_auth_state_changes_use_case.dart';
 import 'package:rallytics/features/auth/domain/usecases/sign_in_with_email.dart';
+import 'package:rallytics/features/auth/domain/usecases/sign_out.dart';
 import 'package:rallytics/features/auth/domain/usecases/sign_up_with_email.dart';
 import 'package:rallytics/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:rallytics/features/auth/presentation/bloc/auth_event.dart';
@@ -14,12 +15,18 @@ import 'package:rallytics/features/auth/presentation/bloc/auth_state.dart';
 
 import 'auth_bloc_test.mocks.dart';
 
-@GenerateMocks([AuthRepository, SignInWithEmailUseCase, SignUpWithEmailUseCase])
+@GenerateMocks([
+  GetAuthStateChangesUseCase,
+  SignInWithEmailUseCase,
+  SignUpWithEmailUseCase,
+  SignOutUseCase,
+])
 void main() {
   late AuthBloc authBloc;
-  late MockAuthRepository mockAuthRepository;
+  late MockGetAuthStateChangesUseCase mockGetAuthStateChangesUseCase;
   late MockSignInWithEmailUseCase mockSignInUseCase;
   late MockSignUpWithEmailUseCase mockSignUpUseCase;
+  late MockSignOutUseCase mockSignOutUseCase;
 
   const testUserEntity = UserEntity(
     uid: 'test_uid',
@@ -28,12 +35,13 @@ void main() {
   );
 
   setUp(() {
-    mockAuthRepository = MockAuthRepository();
+    mockGetAuthStateChangesUseCase = MockGetAuthStateChangesUseCase();
     mockSignInUseCase = MockSignInWithEmailUseCase();
     mockSignUpUseCase = MockSignUpWithEmailUseCase();
+    mockSignOutUseCase = MockSignOutUseCase();
 
     //! Globally mocking the authStateChanges stream for all tests in this file.
-    when(mockAuthRepository.authStateChanges).thenAnswer((_) => Stream.empty());
+    when(mockGetAuthStateChangesUseCase(any)).thenAnswer((_) => Stream.empty());
   });
 
   tearDown(() {
@@ -42,9 +50,10 @@ void main() {
 
   test('initial state should be AuthState.initial', () {
     authBloc = AuthBloc(
-      mockAuthRepository,
+      mockGetAuthStateChangesUseCase,
       mockSignInUseCase,
       mockSignUpUseCase,
+      mockSignOutUseCase,
     );
 
     expect(authBloc.state, const AuthState.initial());
@@ -55,14 +64,15 @@ void main() {
       'should emit [authenticated] when a user appears in the stream',
       setUp: () {
         when(
-          mockAuthRepository.authStateChanges,
+          mockGetAuthStateChangesUseCase(any),
         ).thenAnswer((_) => Stream.value(testUserEntity));
       },
 
       build: () => authBloc = AuthBloc(
-        mockAuthRepository,
+        mockGetAuthStateChangesUseCase,
         mockSignInUseCase,
         mockSignUpUseCase,
+        mockSignOutUseCase,
       ),
 
       expect: () => [const AuthState.authenticated(testUserEntity)],
@@ -72,14 +82,15 @@ void main() {
       'should emit [unauthenticated] when null appears in the stream',
       setUp: () {
         when(
-          mockAuthRepository.authStateChanges,
+          mockGetAuthStateChangesUseCase(any),
         ).thenAnswer((_) => Stream.value(null));
       },
 
       build: () => authBloc = AuthBloc(
-        mockAuthRepository,
+        mockGetAuthStateChangesUseCase,
         mockSignInUseCase,
         mockSignUpUseCase,
+        mockSignOutUseCase,
       ),
 
       expect: () => [const AuthState.unauthenticated()],
@@ -96,9 +107,10 @@ void main() {
       },
 
       build: () => authBloc = AuthBloc(
-        mockAuthRepository,
+        mockGetAuthStateChangesUseCase,
         mockSignInUseCase,
         mockSignUpUseCase,
+        mockSignOutUseCase,
       ),
 
       act: (bloc) => bloc.add(
@@ -119,9 +131,10 @@ void main() {
         ).thenThrow(ValidationException(code: ValidationErrorCode.unknown));
       },
       build: () => authBloc = AuthBloc(
-        mockAuthRepository,
+        mockGetAuthStateChangesUseCase,
         mockSignInUseCase,
         mockSignUpUseCase,
+        mockSignOutUseCase,
       ),
       act: (bloc) => bloc.add(
         const AuthEvent.signInRequested(
@@ -143,9 +156,10 @@ void main() {
         );
       },
       build: () => authBloc = AuthBloc(
-        mockAuthRepository,
+        mockGetAuthStateChangesUseCase,
         mockSignInUseCase,
         mockSignUpUseCase,
+        mockSignOutUseCase,
       ),
       act: (bloc) => bloc.add(
         const AuthEvent.signInRequested(
@@ -167,9 +181,10 @@ void main() {
         ).thenThrow(ValidationException(code: ValidationErrorCode.emptyFields));
       },
       build: () => authBloc = AuthBloc(
-        mockAuthRepository,
+        mockGetAuthStateChangesUseCase,
         mockSignInUseCase,
         mockSignUpUseCase,
+        mockSignOutUseCase,
       ),
       act: (bloc) => bloc.add(
         const AuthEvent.signInRequested(email: '', password: 'Password@1234'),
@@ -188,9 +203,10 @@ void main() {
         );
       },
       build: () => authBloc = AuthBloc(
-        mockAuthRepository,
+        mockGetAuthStateChangesUseCase,
         mockSignInUseCase,
         mockSignUpUseCase,
+        mockSignOutUseCase,
       ),
       act: (bloc) => bloc.add(
         const AuthEvent.signInRequested(
@@ -212,9 +228,10 @@ void main() {
         );
       },
       build: () => authBloc = AuthBloc(
-        mockAuthRepository,
+        mockGetAuthStateChangesUseCase,
         mockSignInUseCase,
         mockSignUpUseCase,
+        mockSignOutUseCase,
       ),
       act: (bloc) => bloc.add(
         const AuthEvent.signInRequested(
@@ -237,9 +254,10 @@ void main() {
       },
 
       build: () => authBloc = AuthBloc(
-        mockAuthRepository,
+        mockGetAuthStateChangesUseCase,
         mockSignInUseCase,
         mockSignUpUseCase,
+        mockSignOutUseCase,
       ),
       act: (bloc) => bloc.add(
         const AuthEvent.signInRequested(
@@ -262,9 +280,10 @@ void main() {
         ).thenThrow(AuthException(code: AuthErrorCode.invalidCredentials));
       },
       build: () => authBloc = AuthBloc(
-        mockAuthRepository,
+        mockGetAuthStateChangesUseCase,
         mockSignInUseCase,
         mockSignUpUseCase,
+        mockSignOutUseCase,
       ),
       act: (bloc) => bloc.add(
         const AuthEvent.signInRequested(
@@ -286,9 +305,10 @@ void main() {
         ).thenThrow(AuthException(code: AuthErrorCode.invalidEmail));
       },
       build: () => authBloc = AuthBloc(
-        mockAuthRepository,
+        mockGetAuthStateChangesUseCase,
         mockSignInUseCase,
         mockSignUpUseCase,
+        mockSignOutUseCase,
       ),
       act: (bloc) => bloc.add(
         const AuthEvent.signInRequested(
@@ -310,9 +330,10 @@ void main() {
         ).thenThrow(AuthException(code: AuthErrorCode.weakPassword));
       },
       build: () => authBloc = AuthBloc(
-        mockAuthRepository,
+        mockGetAuthStateChangesUseCase,
         mockSignInUseCase,
         mockSignUpUseCase,
+        mockSignOutUseCase,
       ),
       act: (bloc) => bloc.add(
         const AuthEvent.signInRequested(
@@ -334,9 +355,10 @@ void main() {
         ).thenThrow(AuthException(code: AuthErrorCode.emailAlreadyInUse));
       },
       build: () => authBloc = AuthBloc(
-        mockAuthRepository,
+        mockGetAuthStateChangesUseCase,
         mockSignInUseCase,
         mockSignUpUseCase,
+        mockSignOutUseCase,
       ),
       act: (bloc) => bloc.add(
         const AuthEvent.signInRequested(
@@ -360,9 +382,10 @@ void main() {
         when(mockSignUpUseCase(any)).thenAnswer((_) async => {});
       },
       build: () => authBloc = AuthBloc(
-        mockAuthRepository,
+        mockGetAuthStateChangesUseCase,
         mockSignInUseCase,
         mockSignUpUseCase,
+        mockSignOutUseCase,
       ),
       act: (bloc) => bloc.add(
         const AuthEvent.signUpRequested(
@@ -382,9 +405,10 @@ void main() {
         ).thenThrow(ValidationException(code: ValidationErrorCode.unknown));
       },
       build: () => authBloc = AuthBloc(
-        mockAuthRepository,
+        mockGetAuthStateChangesUseCase,
         mockSignInUseCase,
         mockSignUpUseCase,
+        mockSignOutUseCase,
       ),
       act: (bloc) => bloc.add(
         const AuthEvent.signUpRequested(
@@ -407,9 +431,10 @@ void main() {
         );
       },
       build: () => authBloc = AuthBloc(
-        mockAuthRepository,
+        mockGetAuthStateChangesUseCase,
         mockSignInUseCase,
         mockSignUpUseCase,
+        mockSignOutUseCase,
       ),
       act: (bloc) => bloc.add(
         const AuthEvent.signUpRequested(
@@ -432,9 +457,10 @@ void main() {
         ).thenThrow(ValidationException(code: ValidationErrorCode.emptyFields));
       },
       build: () => authBloc = AuthBloc(
-        mockAuthRepository,
+        mockGetAuthStateChangesUseCase,
         mockSignInUseCase,
         mockSignUpUseCase,
+        mockSignOutUseCase,
       ),
       act: (bloc) => bloc.add(
         const AuthEvent.signUpRequested(
@@ -457,9 +483,10 @@ void main() {
         );
       },
       build: () => authBloc = AuthBloc(
-        mockAuthRepository,
+        mockGetAuthStateChangesUseCase,
         mockSignInUseCase,
         mockSignUpUseCase,
+        mockSignOutUseCase,
       ),
       act: (bloc) => bloc.add(
         const AuthEvent.signUpRequested(
@@ -482,9 +509,10 @@ void main() {
         );
       },
       build: () => authBloc = AuthBloc(
-        mockAuthRepository,
+        mockGetAuthStateChangesUseCase,
         mockSignInUseCase,
         mockSignUpUseCase,
+        mockSignOutUseCase,
       ),
       act: (bloc) => bloc.add(
         const AuthEvent.signUpRequested(
@@ -508,9 +536,10 @@ void main() {
       },
 
       build: () => authBloc = AuthBloc(
-        mockAuthRepository,
+        mockGetAuthStateChangesUseCase,
         mockSignInUseCase,
         mockSignUpUseCase,
+        mockSignOutUseCase,
       ),
       act: (bloc) => bloc.add(
         const AuthEvent.signUpRequested(
@@ -534,9 +563,10 @@ void main() {
         ).thenThrow(AuthException(code: AuthErrorCode.invalidCredentials));
       },
       build: () => authBloc = AuthBloc(
-        mockAuthRepository,
+        mockGetAuthStateChangesUseCase,
         mockSignInUseCase,
         mockSignUpUseCase,
+        mockSignOutUseCase,
       ),
       act: (bloc) => bloc.add(
         const AuthEvent.signUpRequested(
@@ -559,9 +589,10 @@ void main() {
         ).thenThrow(AuthException(code: AuthErrorCode.invalidEmail));
       },
       build: () => authBloc = AuthBloc(
-        mockAuthRepository,
+        mockGetAuthStateChangesUseCase,
         mockSignInUseCase,
         mockSignUpUseCase,
+        mockSignOutUseCase,
       ),
       act: (bloc) => bloc.add(
         const AuthEvent.signUpRequested(
@@ -584,9 +615,10 @@ void main() {
         ).thenThrow(AuthException(code: AuthErrorCode.weakPassword));
       },
       build: () => authBloc = AuthBloc(
-        mockAuthRepository,
+        mockGetAuthStateChangesUseCase,
         mockSignInUseCase,
         mockSignUpUseCase,
+        mockSignOutUseCase,
       ),
       act: (bloc) => bloc.add(
         const AuthEvent.signUpRequested(
@@ -609,9 +641,10 @@ void main() {
         ).thenThrow(AuthException(code: AuthErrorCode.emailAlreadyInUse));
       },
       build: () => authBloc = AuthBloc(
-        mockAuthRepository,
+        mockGetAuthStateChangesUseCase,
         mockSignInUseCase,
         mockSignUpUseCase,
+        mockSignOutUseCase,
       ),
       act: (bloc) => bloc.add(
         const AuthEvent.signUpRequested(
@@ -632,20 +665,21 @@ void main() {
     blocTest<AuthBloc, AuthState>(
       'should emit [loading] and then nothing when sign out succeeds',
       setUp: () {
-        when(mockAuthRepository.signOut()).thenAnswer((_) async => {});
+        when(mockSignOutUseCase(any)).thenAnswer((_) async => {});
       },
 
       build: () => authBloc = AuthBloc(
-        mockAuthRepository,
+        mockGetAuthStateChangesUseCase,
         mockSignInUseCase,
         mockSignUpUseCase,
+        mockSignOutUseCase,
       ),
 
       act: (bloc) => bloc.add(const AuthEvent.signOutRequested()),
 
       expect: () => [const AuthState.loading()],
 
-      verify: (_) => verify(mockAuthRepository.signOut()).called(1),
+      verify: (_) => verify(mockSignOutUseCase(any)).called(1),
     );
   });
 
@@ -653,11 +687,15 @@ void main() {
     'should emit [loading, error] when sign out fails',
     setUp: () {
       when(
-        mockAuthRepository.signOut(),
+        mockSignOutUseCase(any),
       ).thenThrow(AuthException(code: AuthErrorCode.unknown));
     },
-    build: () =>
-        AuthBloc(mockAuthRepository, mockSignInUseCase, mockSignUpUseCase),
+    build: () => AuthBloc(
+      mockGetAuthStateChangesUseCase,
+      mockSignInUseCase,
+      mockSignUpUseCase,
+      mockSignOutUseCase,
+    ),
 
     act: (bloc) => bloc.add(AuthEvent.signOutRequested()),
 
@@ -667,7 +705,7 @@ void main() {
     ],
 
     verify: (bloc) {
-      verify(mockAuthRepository.signOut()).called(1);
+      verify(mockSignOutUseCase(any)).called(1);
     },
   );
 }
