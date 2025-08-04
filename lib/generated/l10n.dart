@@ -60,51 +60,271 @@ class S {
     );
   }
 
-  /// `Sign In`
+  /// `Save`
+  String get saveButton {
+    return Intl.message(
+      'Save',
+      name: 'saveButton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Cancel`
+  String get cancelButton {
+    return Intl.message(
+      'Cancel',
+      name: 'cancelButton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Log Out`
+  String get logoutButton {
+    return Intl.message(
+      'Log Out',
+      name: 'logoutButton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `or connect with`
+  String get orConnectWith {
+    return Intl.message(
+      'or connect with',
+      name: 'orConnectWith',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Login`
   String get loginTitle {
     return Intl.message(
-      'Sign In',
+      'Login',
       name: 'loginTitle',
       desc: '',
       args: [],
     );
   }
 
-  /// `Log In`
-  String get loginButton {
+  /// `Sign in`
+  String get signInButton {
     return Intl.message(
-      'Log In',
-      name: 'loginButton',
+      'Sign in',
+      name: 'signInButton',
       desc: '',
       args: [],
     );
   }
 
   /// `Email`
-  String get loginEmailLabel {
+  String get emailLabel {
     return Intl.message(
       'Email',
-      name: 'loginEmailLabel',
+      name: 'emailLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter your email address`
+  String get emailHint {
+    return Intl.message(
+      'Enter your email address',
+      name: 'emailHint',
       desc: '',
       args: [],
     );
   }
 
   /// `Password`
-  String get loginPasswordHint {
+  String get passwordLabel {
     return Intl.message(
       'Password',
-      name: 'loginPasswordHint',
+      name: 'passwordLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter your password`
+  String get passwordHint {
+    return Intl.message(
+      'Enter your password',
+      name: 'passwordHint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Repeat password`
+  String get confirmPasswordLabel {
+    return Intl.message(
+      'Repeat password',
+      name: 'confirmPasswordLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Forgot your password?`
+  String get forgotPasswordButton {
+    return Intl.message(
+      'Forgot your password?',
+      name: 'forgotPasswordButton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Register`
+  String get registerTitle {
+    return Intl.message(
+      'Register',
+      name: 'registerTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sign up`
+  String get signUpButton {
+    return Intl.message(
+      'Sign up',
+      name: 'signUpButton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Don't have an account?`
+  String get signUpPrompt {
+    return Intl.message(
+      'Don\'t have an account?',
+      name: 'signUpPrompt',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Already have an account?`
+  String get signInPrompt {
+    return Intl.message(
+      'Already have an account?',
+      name: 'signInPrompt',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Email is required.`
+  String get authErrorEmailRequired {
+    return Intl.message(
+      'Email is required.',
+      name: 'authErrorEmailRequired',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Password is required.`
+  String get authErrorPasswordRequired {
+    return Intl.message(
+      'Password is required.',
+      name: 'authErrorPasswordRequired',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter a valid email address.`
+  String get authErrorInvalidEmailFormat {
+    return Intl.message(
+      'Please enter a valid email address.',
+      name: 'authErrorInvalidEmailFormat',
       desc: '',
       args: [],
     );
   }
 
   /// `Invalid email or password. Please try again.`
-  String get loginErrorInvalidCredentials {
+  String get authErrorInvalidCredentials {
     return Intl.message(
       'Invalid email or password. Please try again.',
-      name: 'loginErrorInvalidCredentials',
+      name: 'authErrorInvalidCredentials',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `This email is already in use. Please try another one.`
+  String get authErrorEmailInUse {
+    return Intl.message(
+      'This email is already in use. Please try another one.',
+      name: 'authErrorEmailInUse',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Email is invalid.`
+  String get authErrorInvalidEmail {
+    return Intl.message(
+      'Email is invalid.',
+      name: 'authErrorInvalidEmail',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The password is too weak. Should be at least 12 characters and contain minimum 1 uppercase, lowercase letter, number, special character.`
+  String get authErrorWeakPassword {
+    return Intl.message(
+      'The password is too weak. Should be at least 12 characters and contain minimum 1 uppercase, lowercase letter, number, special character.',
+      name: 'authErrorWeakPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The passwords do not match.`
+  String get validationErrorPasswordsDoNotMatch {
+    return Intl.message(
+      'The passwords do not match.',
+      name: 'validationErrorPasswordsDoNotMatch',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Not all fields are filled in.`
+  String get validationErrorEmptyFields {
+    return Intl.message(
+      'Not all fields are filled in.',
+      name: 'validationErrorEmptyFields',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The email is invalid.`
+  String get validationErrorInvalidEmail {
+    return Intl.message(
+      'The email is invalid.',
+      name: 'validationErrorInvalidEmail',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The password does not meet the requirements.`
+  String get validationErrorWeakPassword {
+    return Intl.message(
+      'The password does not meet the requirements.',
+      name: 'validationErrorWeakPassword',
       desc: '',
       args: [],
     );
@@ -170,23 +390,13 @@ class S {
     );
   }
 
-  /// `Save`
-  String get saveButton {
+  /// `Welcome back, {userName}!`
+  String welcomeUserMessage(String userName) {
     return Intl.message(
-      'Save',
-      name: 'saveButton',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Cancel`
-  String get cancelButton {
-    return Intl.message(
-      'Cancel',
-      name: 'cancelButton',
-      desc: '',
-      args: [],
+      'Welcome back, $userName!',
+      name: 'welcomeUserMessage',
+      desc: 'A welcome message shown on the dashboard.',
+      args: [userName],
     );
   }
 
@@ -197,56 +407,6 @@ class S {
       name: 'errorGeneric',
       desc: '',
       args: [],
-    );
-  }
-
-  /// `Log Out`
-  String get logoutButton {
-    return Intl.message(
-      'Log Out',
-      name: 'logoutButton',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Invalid email or password.`
-  String get errorInvalidCredentials {
-    return Intl.message(
-      'Invalid email or password.',
-      name: 'errorInvalidCredentials',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `This email is already in use. Please try another one.`
-  String get errorEmailInUse {
-    return Intl.message(
-      'This email is already in use. Please try another one.',
-      name: 'errorEmailInUse',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `The password is too weak.`
-  String get errorWeakPassword {
-    return Intl.message(
-      'The password is too weak.',
-      name: 'errorWeakPassword',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Welcome back, {userName}!`
-  String welcomeUserMessage(String userName) {
-    return Intl.message(
-      'Welcome back, $userName!',
-      name: 'welcomeUserMessage',
-      desc: 'A welcome message shown on the dashboard.',
-      args: [userName],
     );
   }
 }

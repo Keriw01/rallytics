@@ -5,6 +5,7 @@ import 'package:rallytics/features/auth/domain/entities/user_entity.dart';
 import 'package:rallytics/core/error/exceptions.dart';
 import 'package:rallytics/features/auth/domain/repositories/auth_repository.dart';
 import 'package:rallytics/features/auth/data/datasources/auth_firebase_datasource.dart';
+import 'package:rallytics/helpers/error_message_helper.dart';
 
 // Implementacja interfejsu z `domain/repositories`.
 // Wie, skąd wziąć dane (z jakiego `DataSource`).
@@ -21,37 +22,59 @@ class AuthRepositoryImpl implements AuthRepository {
     try {
       await _authFirebaseDataSource.signInWithEmailAndPassword(email, password);
     } on FirebaseAuthException catch (e) {
-      final errorCode = _mapFirebaseErrorCode(e.code);
-      throw ServerException(code: errorCode, originalMessage: e.message);
+      final errorCode = mapFirebaseErrorCode(e.code);
+      throw AuthException(code: errorCode, originalMessage: e.message);
     } catch (e) {
-      throw ServerException(
-        code: ServerErrorCode.unknown,
+      throw AuthException(
+        code: AuthErrorCode.unknown,
         originalMessage: e.toString(),
       );
     }
   }
 
-  ServerErrorCode _mapFirebaseErrorCode(String firebaseCode) {
-    switch (firebaseCode) {
-      case 'user-not-found':
-      case 'wrong-password':
-      case 'invalid-credential':
-        return ServerErrorCode.invalidCredentials;
-      case 'email-already-in-use':
-        return ServerErrorCode.emailInUse;
-      case 'weak-password':
-        return ServerErrorCode.weakPassword;
-      default:
-        return ServerErrorCode.unknown;
+  @override
+  Future<void> signUpWithEmail(String email, String password) {
+    try {
+      return _authFirebaseDataSource.createUserWithEmailAndPassword(
+        email,
+        password,
+      );
+    } on FirebaseAuthException catch (e) {
+      final errorCode = mapFirebaseErrorCode(e.code);
+      throw AuthException(code: errorCode, originalMessage: e.message);
+    } catch (e) {
+      throw AuthException(
+        code: AuthErrorCode.unknown,
+        originalMessage: e.toString(),
+      );
     }
   }
 
   @override
-  Future<void> signUpWithEmail(String email, String password) {
-    return _authFirebaseDataSource.createUserWithEmailAndPassword(
-      email,
-      password,
-    );
+  Future<void> signInWithGoogle() async {
+    try {
+      await _authFirebaseDataSource.signInWithGoogle();
+    } catch (e) {
+      throw AuthException();
+    }
+  }
+
+  @override
+  Future<void> signInWithFacebook() async {
+    try {
+      await _authFirebaseDataSource.signInWithFacebook();
+    } catch (e) {
+      throw AuthException();
+    }
+  }
+
+  @override
+  Future<void> signInWithGitHub() async {
+    try {
+      await _authFirebaseDataSource.signInWithGitHub();
+    } catch (e) {
+      throw AuthException();
+    }
   }
 
   @override
@@ -59,13 +82,8 @@ class AuthRepositoryImpl implements AuthRepository {
     try {
       await _authFirebaseDataSource.signOut();
     } on FirebaseAuthException catch (e) {
-      final errorCode = _mapFirebaseErrorCode(e.code);
-      throw ServerException(code: errorCode, originalMessage: e.message);
-    } catch (e) {
-      throw ServerException(
-        code: ServerErrorCode.unknown,
-        originalMessage: e.toString(),
-      );
+      final errorCode = mapFirebaseErrorCode(e.code);
+      throw AuthException(code: errorCode, originalMessage: e.toString());
     }
   }
 

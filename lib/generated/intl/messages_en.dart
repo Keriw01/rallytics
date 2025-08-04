@@ -25,34 +25,64 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "appTitle": MessageLookupByLibrary.simpleMessage("Rallytics"),
-        "cancelButton": MessageLookupByLibrary.simpleMessage("Cancel"),
-        "errorEmailInUse": MessageLookupByLibrary.simpleMessage(
+        "authErrorEmailInUse": MessageLookupByLibrary.simpleMessage(
             "This email is already in use. Please try another one."),
+        "authErrorEmailRequired":
+            MessageLookupByLibrary.simpleMessage("Email is required."),
+        "authErrorInvalidCredentials": MessageLookupByLibrary.simpleMessage(
+            "Invalid email or password. Please try again."),
+        "authErrorInvalidEmail":
+            MessageLookupByLibrary.simpleMessage("Email is invalid."),
+        "authErrorInvalidEmailFormat": MessageLookupByLibrary.simpleMessage(
+            "Please enter a valid email address."),
+        "authErrorPasswordRequired":
+            MessageLookupByLibrary.simpleMessage("Password is required."),
+        "authErrorWeakPassword": MessageLookupByLibrary.simpleMessage(
+            "The password is too weak. Should be at least 12 characters and contain minimum 1 uppercase, lowercase letter, number, special character."),
+        "cancelButton": MessageLookupByLibrary.simpleMessage("Cancel"),
+        "confirmPasswordLabel":
+            MessageLookupByLibrary.simpleMessage("Repeat password"),
+        "emailHint":
+            MessageLookupByLibrary.simpleMessage("Enter your email address"),
+        "emailLabel": MessageLookupByLibrary.simpleMessage("Email"),
         "errorGeneric": MessageLookupByLibrary.simpleMessage(
             "An unexpected error occurred. Please try again later."),
-        "errorInvalidCredentials":
-            MessageLookupByLibrary.simpleMessage("Invalid email or password."),
-        "errorWeakPassword":
-            MessageLookupByLibrary.simpleMessage("The password is too weak."),
+        "forgotPasswordButton":
+            MessageLookupByLibrary.simpleMessage("Forgot your password?"),
         "liveScoresMatchStatusFinished":
             MessageLookupByLibrary.simpleMessage("Finished"),
         "liveScoresMatchStatusUpcoming":
             MessageLookupByLibrary.simpleMessage("Upcoming"),
         "liveScoresTitle": MessageLookupByLibrary.simpleMessage("Live Scores"),
-        "loginButton": MessageLookupByLibrary.simpleMessage("Log In"),
-        "loginEmailLabel": MessageLookupByLibrary.simpleMessage("Email"),
-        "loginErrorInvalidCredentials": MessageLookupByLibrary.simpleMessage(
-            "Invalid email or password. Please try again."),
-        "loginPasswordHint": MessageLookupByLibrary.simpleMessage("Password"),
-        "loginTitle": MessageLookupByLibrary.simpleMessage("Sign In"),
+        "loginTitle": MessageLookupByLibrary.simpleMessage("Login"),
         "logoutButton": MessageLookupByLibrary.simpleMessage("Log Out"),
+        "orConnectWith":
+            MessageLookupByLibrary.simpleMessage("or connect with"),
+        "passwordHint":
+            MessageLookupByLibrary.simpleMessage("Enter your password"),
+        "passwordLabel": MessageLookupByLibrary.simpleMessage("Password"),
+        "registerTitle": MessageLookupByLibrary.simpleMessage("Register"),
         "saveButton": MessageLookupByLibrary.simpleMessage("Save"),
+        "signInButton": MessageLookupByLibrary.simpleMessage("Sign in"),
+        "signInPrompt":
+            MessageLookupByLibrary.simpleMessage("Already have an account?"),
+        "signUpButton": MessageLookupByLibrary.simpleMessage("Sign up"),
+        "signUpPrompt":
+            MessageLookupByLibrary.simpleMessage("Don\'t have an account?"),
         "trainingSessionImportButton":
             MessageLookupByLibrary.simpleMessage("Import from Gallery"),
         "trainingSessionStartButton":
             MessageLookupByLibrary.simpleMessage("Start Recording"),
         "trainingSessionTitle":
             MessageLookupByLibrary.simpleMessage("New Session"),
+        "validationErrorEmptyFields": MessageLookupByLibrary.simpleMessage(
+            "Not all fields are filled in."),
+        "validationErrorInvalidEmail":
+            MessageLookupByLibrary.simpleMessage("The email is invalid."),
+        "validationErrorPasswordsDoNotMatch":
+            MessageLookupByLibrary.simpleMessage("The passwords do not match."),
+        "validationErrorWeakPassword": MessageLookupByLibrary.simpleMessage(
+            "The password does not meet the requirements."),
         "welcomeUserMessage": m0
       };
 }

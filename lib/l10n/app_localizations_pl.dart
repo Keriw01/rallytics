@@ -12,20 +12,90 @@ class AppLocalizationsPl extends AppLocalizations {
   String get appTitle => 'Rallytics';
 
   @override
+  String get saveButton => 'Zapisz';
+
+  @override
+  String get cancelButton => 'Anuluj';
+
+  @override
+  String get logoutButton => 'Wyloguj';
+
+  @override
+  String get orConnectWith => 'lub połącz z';
+
+  @override
   String get loginTitle => 'Logowanie';
 
   @override
-  String get loginButton => 'Zaloguj się';
+  String get signInButton => 'Zaloguj się';
 
   @override
-  String get loginEmailLabel => 'Email';
+  String get emailLabel => 'Email';
 
   @override
-  String get loginPasswordHint => 'Hasło';
+  String get emailHint => 'Wpisz swój adres email';
 
   @override
-  String get loginErrorInvalidCredentials =>
-      'Nie prawidłowy email lub hasło. Spróbuj ponownie.';
+  String get passwordLabel => 'Hasło';
+
+  @override
+  String get passwordHint => 'Wprowadź swoje hasło';
+
+  @override
+  String get confirmPasswordLabel => 'Powtórz hasło';
+
+  @override
+  String get forgotPasswordButton => 'Nie pamiętasz hasła?';
+
+  @override
+  String get registerTitle => 'Rejestracja';
+
+  @override
+  String get signUpButton => 'Zarejestruj się';
+
+  @override
+  String get signUpPrompt => 'Nie masz konta?';
+
+  @override
+  String get signInPrompt => 'Masz już konto?';
+
+  @override
+  String get authErrorEmailRequired => 'Email jest wymagany.';
+
+  @override
+  String get authErrorPasswordRequired => 'Hasło jest wymagane.';
+
+  @override
+  String get authErrorInvalidEmailFormat =>
+      'Proszę wprowadzić prawidłowy adres email.';
+
+  @override
+  String get authErrorInvalidCredentials =>
+      'Nieprawidłowy email lub hasło. Proszę spróbować ponownie.';
+
+  @override
+  String get authErrorEmailInUse =>
+      'Ten email jest już używany. Proszę spróbować innego.';
+
+  @override
+  String get authErrorInvalidEmail => 'Email jest niepoprawny.';
+
+  @override
+  String get authErrorWeakPassword =>
+      'Hasło jest zbyt słabe. Powinno mieć co najmniej 12 znaków i zawierać minimum 1 wielką, małą literę, cyfrę i znak specjalny.';
+
+  @override
+  String get validationErrorPasswordsDoNotMatch =>
+      'Hasła do siebie nie pasują.';
+
+  @override
+  String get validationErrorEmptyFields => 'Nie wszystkie pola są uzupełnione.';
+
+  @override
+  String get validationErrorInvalidEmail => 'Email jest niepoprawny.';
+
+  @override
+  String get validationErrorWeakPassword => 'Hasło nie spełnia wymagań.';
 
   @override
   String get trainingSessionTitle => 'Nowa Sesja';
@@ -46,29 +116,11 @@ class AppLocalizationsPl extends AppLocalizations {
   String get liveScoresMatchStatusFinished => 'Zakończone';
 
   @override
-  String get saveButton => 'Zapisz';
-
-  @override
-  String get cancelButton => 'Anuluj';
+  String welcomeUserMessage(String userName) {
+    return 'Witaj ponownie, $userName!';
+  }
 
   @override
   String get errorGeneric =>
-      'Nie oczekiwany błąd wystąpił. Spróbuj ponownie później.';
-
-  @override
-  String get logoutButton => 'Wyloguj się';
-
-  @override
-  String get errorInvalidCredentials => 'Nie prawidłowy email lub hasło.';
-
-  @override
-  String get errorEmailInUse => 'Ten email jest już używany. Spróbuj innego.';
-
-  @override
-  String get errorWeakPassword => 'Hasło jest zbyt słabe.';
-
-  @override
-  String welcomeUserMessage(String userName) {
-    return 'Witaj z powrotem, $userName!';
-  }
+      'Niespodziewany błąd. Proszę spróbować ponownie później.';
 }

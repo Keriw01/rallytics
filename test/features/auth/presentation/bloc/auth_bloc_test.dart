@@ -5,17 +5,37 @@ import 'package:mockito/mockito.dart';
 import 'package:rallytics/core/error/exceptions.dart';
 
 import 'package:rallytics/features/auth/domain/entities/user_entity.dart';
-import 'package:rallytics/features/auth/domain/repositories/auth_repository.dart';
+import 'package:rallytics/features/auth/domain/usecases/get_auth_state_changes.dart';
+import 'package:rallytics/features/auth/domain/usecases/sign_in_with_email.dart';
+import 'package:rallytics/features/auth/domain/usecases/sign_in_with_facebook.dart';
+import 'package:rallytics/features/auth/domain/usecases/sign_in_with_github.dart';
+import 'package:rallytics/features/auth/domain/usecases/sign_in_with_google.dart';
+import 'package:rallytics/features/auth/domain/usecases/sign_out.dart';
+import 'package:rallytics/features/auth/domain/usecases/sign_up_with_email.dart';
 import 'package:rallytics/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:rallytics/features/auth/presentation/bloc/auth_event.dart';
 import 'package:rallytics/features/auth/presentation/bloc/auth_state.dart';
 
 import 'auth_bloc_test.mocks.dart';
 
-@GenerateMocks([AuthRepository])
+@GenerateMocks([
+  GetAuthStateChangesUseCase,
+  SignInWithEmailUseCase,
+  SignUpWithEmailUseCase,
+  SignInWithGoogleUseCase,
+  SignInWithFacebookUseCase,
+  SignInWithGitHubUseCase,
+  SignOutUseCase,
+])
 void main() {
   late AuthBloc authBloc;
-  late MockAuthRepository mockAuthRepository;
+  late MockGetAuthStateChangesUseCase mockGetAuthStateChangesUseCase;
+  late MockSignInWithEmailUseCase mockSignInUseCase;
+  late MockSignUpWithEmailUseCase mockSignUpUseCase;
+  late MockSignInWithGoogleUseCase mockSignInWithGoogleUseCase;
+  late MockSignInWithFacebookUseCase mockSignInWithFacebookUseCase;
+  late MockSignInWithGitHubUseCase mockSignInWithGitHubUseCase;
+  late MockSignOutUseCase mockSignOutUseCase;
 
   const testUserEntity = UserEntity(
     uid: 'test_uid',
@@ -24,7 +44,16 @@ void main() {
   );
 
   setUp(() {
-    mockAuthRepository = MockAuthRepository();
+    mockGetAuthStateChangesUseCase = MockGetAuthStateChangesUseCase();
+    mockSignInUseCase = MockSignInWithEmailUseCase();
+    mockSignUpUseCase = MockSignUpWithEmailUseCase();
+    mockSignInWithGoogleUseCase = MockSignInWithGoogleUseCase();
+    mockSignInWithFacebookUseCase = MockSignInWithFacebookUseCase();
+    mockSignInWithGitHubUseCase = MockSignInWithGitHubUseCase();
+    mockSignOutUseCase = MockSignOutUseCase();
+
+    //! Globally mocking the authStateChanges stream for all tests in this file.
+    when(mockGetAuthStateChangesUseCase(any)).thenAnswer((_) => Stream.empty());
   });
 
   tearDown(() {
@@ -32,9 +61,15 @@ void main() {
   });
 
   test('initial state should be AuthState.initial', () {
-    when(mockAuthRepository.authStateChanges).thenAnswer((_) => Stream.empty());
-
-    authBloc = AuthBloc(mockAuthRepository);
+    authBloc = AuthBloc(
+      mockGetAuthStateChangesUseCase,
+      mockSignInUseCase,
+      mockSignUpUseCase,
+      mockSignInWithGoogleUseCase,
+      mockSignInWithFacebookUseCase,
+      mockSignInWithGitHubUseCase,
+      mockSignOutUseCase,
+    );
 
     expect(authBloc.state, const AuthState.initial());
   });
@@ -44,11 +79,19 @@ void main() {
       'should emit [authenticated] when a user appears in the stream',
       setUp: () {
         when(
-          mockAuthRepository.authStateChanges,
+          mockGetAuthStateChangesUseCase(any),
         ).thenAnswer((_) => Stream.value(testUserEntity));
       },
 
-      build: () => authBloc = AuthBloc(mockAuthRepository),
+      build: () => authBloc = AuthBloc(
+        mockGetAuthStateChangesUseCase,
+        mockSignInUseCase,
+        mockSignUpUseCase,
+        mockSignInWithGoogleUseCase,
+        mockSignInWithFacebookUseCase,
+        mockSignInWithGitHubUseCase,
+        mockSignOutUseCase,
+      ),
 
       expect: () => [const AuthState.authenticated(testUserEntity)],
     );
@@ -57,34 +100,47 @@ void main() {
       'should emit [unauthenticated] when null appears in the stream',
       setUp: () {
         when(
-          mockAuthRepository.authStateChanges,
+          mockGetAuthStateChangesUseCase(any),
         ).thenAnswer((_) => Stream.value(null));
       },
 
-      build: () => authBloc = AuthBloc(mockAuthRepository),
+      build: () => authBloc = AuthBloc(
+        mockGetAuthStateChangesUseCase,
+        mockSignInUseCase,
+        mockSignUpUseCase,
+        mockSignInWithGoogleUseCase,
+        mockSignInWithFacebookUseCase,
+        mockSignInWithGitHubUseCase,
+        mockSignOutUseCase,
+      ),
 
       expect: () => [const AuthState.unauthenticated()],
     );
   });
 
+  // ------------------- Event: SignInRequested -------------------
+
   group('Event: SignInRequested', () {
     blocTest<AuthBloc, AuthState>(
       'it should emit [loading] and then nothing when login succeeds',
       setUp: () {
-        when(
-          mockAuthRepository.authStateChanges,
-        ).thenAnswer((_) => Stream.empty());
-        when(
-          mockAuthRepository.signInWithEmail(any, any),
-        ).thenAnswer((_) async => {});
+        when(mockSignInUseCase(any)).thenAnswer((_) async => {});
       },
 
-      build: () => authBloc = AuthBloc(mockAuthRepository),
+      build: () => authBloc = AuthBloc(
+        mockGetAuthStateChangesUseCase,
+        mockSignInUseCase,
+        mockSignUpUseCase,
+        mockSignInWithGoogleUseCase,
+        mockSignInWithFacebookUseCase,
+        mockSignInWithGitHubUseCase,
+        mockSignOutUseCase,
+      ),
 
       act: (bloc) => bloc.add(
         const AuthEvent.signInRequested(
           email: 'test@test.com',
-          password: '123',
+          password: 'Password@1234',
         ),
       ),
 
@@ -92,28 +148,657 @@ void main() {
     );
 
     blocTest<AuthBloc, AuthState>(
-      'should emit [loading, error] when login fails',
+      'should emit [loading, error] when validation fail',
       setUp: () {
         when(
-          mockAuthRepository.authStateChanges,
-        ).thenAnswer((_) => Stream.empty());
-        when(mockAuthRepository.signInWithEmail(any, any)).thenAnswer(
-          (_) async => throw ServerException(code: ServerErrorCode.unknown),
-        );
+          mockSignInUseCase(any),
+        ).thenThrow(ValidationException(code: ValidationErrorCode.unknown));
       },
-
-      build: () => authBloc = AuthBloc(mockAuthRepository),
+      build: () => authBloc = AuthBloc(
+        mockGetAuthStateChangesUseCase,
+        mockSignInUseCase,
+        mockSignUpUseCase,
+        mockSignInWithGoogleUseCase,
+        mockSignInWithFacebookUseCase,
+        mockSignInWithGitHubUseCase,
+        mockSignOutUseCase,
+      ),
       act: (bloc) => bloc.add(
         const AuthEvent.signInRequested(
           email: 'test@test.com',
-          password: '123',
+          password: 'Password@1234',
+        ),
+      ),
+      expect: () => [
+        const AuthState.loading(),
+        const AuthState.error(ValidationErrorCode.unknown),
+      ],
+    );
+
+    blocTest<AuthBloc, AuthState>(
+      'should emit [loading, error] when passwords do not match',
+      setUp: () {
+        when(mockSignInUseCase(any)).thenThrow(
+          ValidationException(code: ValidationErrorCode.passwordsDoNotMatch),
+        );
+      },
+      build: () => authBloc = AuthBloc(
+        mockGetAuthStateChangesUseCase,
+        mockSignInUseCase,
+        mockSignUpUseCase,
+        mockSignInWithGoogleUseCase,
+        mockSignInWithFacebookUseCase,
+        mockSignInWithGitHubUseCase,
+        mockSignOutUseCase,
+      ),
+      act: (bloc) => bloc.add(
+        const AuthEvent.signInRequested(
+          email: 'test@test.com',
+          password: 'Password@1234',
+        ),
+      ),
+      expect: () => [
+        const AuthState.loading(),
+        const AuthState.error(ValidationErrorCode.passwordsDoNotMatch),
+      ],
+    );
+
+    blocTest<AuthBloc, AuthState>(
+      'should emit [loading, error] when form fields are empty',
+      setUp: () {
+        when(
+          mockSignInUseCase(any),
+        ).thenThrow(ValidationException(code: ValidationErrorCode.emptyFields));
+      },
+      build: () => authBloc = AuthBloc(
+        mockGetAuthStateChangesUseCase,
+        mockSignInUseCase,
+        mockSignUpUseCase,
+        mockSignInWithGoogleUseCase,
+        mockSignInWithFacebookUseCase,
+        mockSignInWithGitHubUseCase,
+        mockSignOutUseCase,
+      ),
+      act: (bloc) => bloc.add(
+        const AuthEvent.signInRequested(email: '', password: 'Password@1234'),
+      ),
+      expect: () => [
+        const AuthState.loading(),
+        const AuthState.error(ValidationErrorCode.emptyFields),
+      ],
+    );
+
+    blocTest<AuthBloc, AuthState>(
+      'should emit [loading, error] when email format is invalid',
+      setUp: () {
+        when(mockSignInUseCase(any)).thenThrow(
+          ValidationException(code: ValidationErrorCode.invalidEmail),
+        );
+      },
+      build: () => authBloc = AuthBloc(
+        mockGetAuthStateChangesUseCase,
+        mockSignInUseCase,
+        mockSignUpUseCase,
+        mockSignInWithGoogleUseCase,
+        mockSignInWithFacebookUseCase,
+        mockSignInWithGitHubUseCase,
+        mockSignOutUseCase,
+      ),
+      act: (bloc) => bloc.add(
+        const AuthEvent.signInRequested(
+          email: '/!test@test.com',
+          password: 'Password@1234',
+        ),
+      ),
+      expect: () => [
+        const AuthState.loading(),
+        const AuthState.error(ValidationErrorCode.invalidEmail),
+      ],
+    );
+
+    blocTest<AuthBloc, AuthState>(
+      'should emit [loading, error] when password is weak',
+      setUp: () {
+        when(mockSignInUseCase(any)).thenThrow(
+          ValidationException(code: ValidationErrorCode.weakPassword),
+        );
+      },
+      build: () => authBloc = AuthBloc(
+        mockGetAuthStateChangesUseCase,
+        mockSignInUseCase,
+        mockSignUpUseCase,
+        mockSignInWithGoogleUseCase,
+        mockSignInWithFacebookUseCase,
+        mockSignInWithGitHubUseCase,
+        mockSignOutUseCase,
+      ),
+      act: (bloc) => bloc.add(
+        const AuthEvent.signInRequested(
+          email: 'test@test.com',
+          password: 'password1234',
+        ),
+      ),
+      expect: () => [
+        const AuthState.loading(),
+        const AuthState.error(ValidationErrorCode.weakPassword),
+      ],
+    );
+
+    blocTest<AuthBloc, AuthState>(
+      'should emit [loading, error] when login fails',
+      setUp: () {
+        when(mockSignInUseCase(any)).thenAnswer(
+          (_) async => throw AuthException(code: AuthErrorCode.unknown),
+        );
+      },
+
+      build: () => authBloc = AuthBloc(
+        mockGetAuthStateChangesUseCase,
+        mockSignInUseCase,
+        mockSignUpUseCase,
+        mockSignInWithGoogleUseCase,
+        mockSignInWithFacebookUseCase,
+        mockSignInWithGitHubUseCase,
+        mockSignOutUseCase,
+      ),
+      act: (bloc) => bloc.add(
+        const AuthEvent.signInRequested(
+          email: 'test@test.com',
+          password: 'Password@1234',
         ),
       ),
 
       expect: () => [
         const AuthState.loading(),
-        const AuthState.error(ServerErrorCode.unknown),
+        const AuthState.error(AuthErrorCode.unknown),
+      ],
+    );
+
+    blocTest<AuthBloc, AuthState>(
+      'should emit [loading, error] when credentials are invalid',
+      setUp: () {
+        when(
+          mockSignInUseCase(any),
+        ).thenThrow(AuthException(code: AuthErrorCode.invalidCredentials));
+      },
+      build: () => authBloc = AuthBloc(
+        mockGetAuthStateChangesUseCase,
+        mockSignInUseCase,
+        mockSignUpUseCase,
+        mockSignInWithGoogleUseCase,
+        mockSignInWithFacebookUseCase,
+        mockSignInWithGitHubUseCase,
+        mockSignOutUseCase,
+      ),
+      act: (bloc) => bloc.add(
+        const AuthEvent.signInRequested(
+          email: 'test@test.com',
+          password: 'Password@1234',
+        ),
+      ),
+      expect: () => [
+        const AuthState.loading(),
+        const AuthState.error(AuthErrorCode.invalidCredentials),
+      ],
+    );
+
+    blocTest<AuthBloc, AuthState>(
+      'should emit [loading, error] when email is invalid',
+      setUp: () {
+        when(
+          mockSignInUseCase(any),
+        ).thenThrow(AuthException(code: AuthErrorCode.invalidEmail));
+      },
+      build: () => authBloc = AuthBloc(
+        mockGetAuthStateChangesUseCase,
+        mockSignInUseCase,
+        mockSignUpUseCase,
+        mockSignInWithGoogleUseCase,
+        mockSignInWithFacebookUseCase,
+        mockSignInWithGitHubUseCase,
+        mockSignOutUseCase,
+      ),
+      act: (bloc) => bloc.add(
+        const AuthEvent.signInRequested(
+          email: '/!test@test.com',
+          password: 'Password@1234',
+        ),
+      ),
+      expect: () => [
+        const AuthState.loading(),
+        const AuthState.error(AuthErrorCode.invalidEmail),
+      ],
+    );
+
+    blocTest<AuthBloc, AuthState>(
+      'should emit [loading, error] when password is weak',
+      setUp: () {
+        when(
+          mockSignInUseCase(any),
+        ).thenThrow(AuthException(code: AuthErrorCode.weakPassword));
+      },
+      build: () => authBloc = AuthBloc(
+        mockGetAuthStateChangesUseCase,
+        mockSignInUseCase,
+        mockSignUpUseCase,
+        mockSignInWithGoogleUseCase,
+        mockSignInWithFacebookUseCase,
+        mockSignInWithGitHubUseCase,
+        mockSignOutUseCase,
+      ),
+      act: (bloc) => bloc.add(
+        const AuthEvent.signInRequested(
+          email: 'test@test.com',
+          password: 'password1234',
+        ),
+      ),
+      expect: () => [
+        const AuthState.loading(),
+        const AuthState.error(AuthErrorCode.weakPassword),
+      ],
+    );
+
+    blocTest<AuthBloc, AuthState>(
+      'should emit [loading, error] when email is already in use',
+      setUp: () {
+        when(
+          mockSignInUseCase(any),
+        ).thenThrow(AuthException(code: AuthErrorCode.emailAlreadyInUse));
+      },
+      build: () => authBloc = AuthBloc(
+        mockGetAuthStateChangesUseCase,
+        mockSignInUseCase,
+        mockSignUpUseCase,
+        mockSignInWithGoogleUseCase,
+        mockSignInWithFacebookUseCase,
+        mockSignInWithGitHubUseCase,
+        mockSignOutUseCase,
+      ),
+      act: (bloc) => bloc.add(
+        const AuthEvent.signInRequested(
+          email: 'test@test.com',
+          password: 'Password@1234',
+        ),
+      ),
+      expect: () => [
+        const AuthState.loading(),
+        const AuthState.error(AuthErrorCode.emailAlreadyInUse),
       ],
     );
   });
+
+  // ------------------- Event: SignUpRequested -------------------
+
+  group('Event: SignUpRequested', () {
+    blocTest<AuthBloc, AuthState>(
+      'it should emit [loading]  and then nothing when register succeeds',
+      setUp: () {
+        when(mockSignUpUseCase(any)).thenAnswer((_) async => {});
+      },
+      build: () => authBloc = AuthBloc(
+        mockGetAuthStateChangesUseCase,
+        mockSignInUseCase,
+        mockSignUpUseCase,
+        mockSignInWithGoogleUseCase,
+        mockSignInWithFacebookUseCase,
+        mockSignInWithGitHubUseCase,
+        mockSignOutUseCase,
+      ),
+      act: (bloc) => bloc.add(
+        const AuthEvent.signUpRequested(
+          email: 'test@test.com',
+          password: 'Password@1234',
+          confirmPassword: 'Password@1234',
+        ),
+      ),
+      expect: () => [const AuthState.loading()],
+    );
+
+    blocTest<AuthBloc, AuthState>(
+      'should emit [loading, error] when validation fail',
+      setUp: () {
+        when(
+          mockSignUpUseCase(any),
+        ).thenThrow(ValidationException(code: ValidationErrorCode.unknown));
+      },
+      build: () => authBloc = AuthBloc(
+        mockGetAuthStateChangesUseCase,
+        mockSignInUseCase,
+        mockSignUpUseCase,
+        mockSignInWithGoogleUseCase,
+        mockSignInWithFacebookUseCase,
+        mockSignInWithGitHubUseCase,
+        mockSignOutUseCase,
+      ),
+      act: (bloc) => bloc.add(
+        const AuthEvent.signUpRequested(
+          email: 'test@test.com',
+          password: 'Password@1234',
+          confirmPassword: 'Password@456',
+        ),
+      ),
+      expect: () => [
+        const AuthState.loading(),
+        const AuthState.error(ValidationErrorCode.unknown),
+      ],
+    );
+
+    blocTest<AuthBloc, AuthState>(
+      'should emit [loading, error] when passwords do not match',
+      setUp: () {
+        when(mockSignUpUseCase(any)).thenThrow(
+          ValidationException(code: ValidationErrorCode.passwordsDoNotMatch),
+        );
+      },
+      build: () => authBloc = AuthBloc(
+        mockGetAuthStateChangesUseCase,
+        mockSignInUseCase,
+        mockSignUpUseCase,
+        mockSignInWithGoogleUseCase,
+        mockSignInWithFacebookUseCase,
+        mockSignInWithGitHubUseCase,
+        mockSignOutUseCase,
+      ),
+      act: (bloc) => bloc.add(
+        const AuthEvent.signUpRequested(
+          email: 'test@test.com',
+          password: 'Password@1234',
+          confirmPassword: 'Password@456',
+        ),
+      ),
+      expect: () => [
+        const AuthState.loading(),
+        const AuthState.error(ValidationErrorCode.passwordsDoNotMatch),
+      ],
+    );
+
+    blocTest<AuthBloc, AuthState>(
+      'should emit [loading, error] when form fields are empty',
+      setUp: () {
+        when(
+          mockSignUpUseCase(any),
+        ).thenThrow(ValidationException(code: ValidationErrorCode.emptyFields));
+      },
+      build: () => authBloc = AuthBloc(
+        mockGetAuthStateChangesUseCase,
+        mockSignInUseCase,
+        mockSignUpUseCase,
+        mockSignInWithGoogleUseCase,
+        mockSignInWithFacebookUseCase,
+        mockSignInWithGitHubUseCase,
+        mockSignOutUseCase,
+      ),
+      act: (bloc) => bloc.add(
+        const AuthEvent.signUpRequested(
+          email: '',
+          password: 'Password@1234',
+          confirmPassword: 'Password@1234',
+        ),
+      ),
+      expect: () => [
+        const AuthState.loading(),
+        const AuthState.error(ValidationErrorCode.emptyFields),
+      ],
+    );
+
+    blocTest<AuthBloc, AuthState>(
+      'should emit [loading, error] when email format is invalid',
+      setUp: () {
+        when(mockSignUpUseCase(any)).thenThrow(
+          ValidationException(code: ValidationErrorCode.invalidEmail),
+        );
+      },
+      build: () => authBloc = AuthBloc(
+        mockGetAuthStateChangesUseCase,
+        mockSignInUseCase,
+        mockSignUpUseCase,
+        mockSignInWithGoogleUseCase,
+        mockSignInWithFacebookUseCase,
+        mockSignInWithGitHubUseCase,
+        mockSignOutUseCase,
+      ),
+      act: (bloc) => bloc.add(
+        const AuthEvent.signUpRequested(
+          email: '/!test@test.com',
+          password: 'Password@1234',
+          confirmPassword: 'Password@1234',
+        ),
+      ),
+      expect: () => [
+        const AuthState.loading(),
+        const AuthState.error(ValidationErrorCode.invalidEmail),
+      ],
+    );
+
+    blocTest<AuthBloc, AuthState>(
+      'should emit [loading, error] when password is weak',
+      setUp: () {
+        when(mockSignUpUseCase(any)).thenThrow(
+          ValidationException(code: ValidationErrorCode.weakPassword),
+        );
+      },
+      build: () => authBloc = AuthBloc(
+        mockGetAuthStateChangesUseCase,
+        mockSignInUseCase,
+        mockSignUpUseCase,
+        mockSignInWithGoogleUseCase,
+        mockSignInWithFacebookUseCase,
+        mockSignInWithGitHubUseCase,
+        mockSignOutUseCase,
+      ),
+      act: (bloc) => bloc.add(
+        const AuthEvent.signUpRequested(
+          email: 'test@test.com',
+          password: 'password1234',
+          confirmPassword: 'password1234',
+        ),
+      ),
+      expect: () => [
+        const AuthState.loading(),
+        const AuthState.error(ValidationErrorCode.weakPassword),
+      ],
+    );
+
+    blocTest<AuthBloc, AuthState>(
+      'should emit [loading, error] when login fails',
+      setUp: () {
+        when(mockSignUpUseCase(any)).thenAnswer(
+          (_) async => throw AuthException(code: AuthErrorCode.unknown),
+        );
+      },
+
+      build: () => authBloc = AuthBloc(
+        mockGetAuthStateChangesUseCase,
+        mockSignInUseCase,
+        mockSignUpUseCase,
+        mockSignInWithGoogleUseCase,
+        mockSignInWithFacebookUseCase,
+        mockSignInWithGitHubUseCase,
+        mockSignOutUseCase,
+      ),
+      act: (bloc) => bloc.add(
+        const AuthEvent.signUpRequested(
+          email: 'test@test.com',
+          password: 'Password@1234',
+          confirmPassword: 'Password@1234',
+        ),
+      ),
+
+      expect: () => [
+        const AuthState.loading(),
+        const AuthState.error(AuthErrorCode.unknown),
+      ],
+    );
+
+    blocTest<AuthBloc, AuthState>(
+      'should emit [loading, error] when credentials are invalid',
+      setUp: () {
+        when(
+          mockSignUpUseCase(any),
+        ).thenThrow(AuthException(code: AuthErrorCode.invalidCredentials));
+      },
+      build: () => authBloc = AuthBloc(
+        mockGetAuthStateChangesUseCase,
+        mockSignInUseCase,
+        mockSignUpUseCase,
+        mockSignInWithGoogleUseCase,
+        mockSignInWithFacebookUseCase,
+        mockSignInWithGitHubUseCase,
+        mockSignOutUseCase,
+      ),
+      act: (bloc) => bloc.add(
+        const AuthEvent.signUpRequested(
+          email: 'test@test.com',
+          password: 'Password@1234',
+          confirmPassword: 'Password@1234',
+        ),
+      ),
+      expect: () => [
+        const AuthState.loading(),
+        const AuthState.error(AuthErrorCode.invalidCredentials),
+      ],
+    );
+
+    blocTest<AuthBloc, AuthState>(
+      'should emit [loading, error] when email is invalid',
+      setUp: () {
+        when(
+          mockSignUpUseCase(any),
+        ).thenThrow(AuthException(code: AuthErrorCode.invalidEmail));
+      },
+      build: () => authBloc = AuthBloc(
+        mockGetAuthStateChangesUseCase,
+        mockSignInUseCase,
+        mockSignUpUseCase,
+        mockSignInWithGoogleUseCase,
+        mockSignInWithFacebookUseCase,
+        mockSignInWithGitHubUseCase,
+        mockSignOutUseCase,
+      ),
+      act: (bloc) => bloc.add(
+        const AuthEvent.signUpRequested(
+          email: '/!test@test.com',
+          password: 'Password@1234',
+          confirmPassword: 'Password@1234',
+        ),
+      ),
+      expect: () => [
+        const AuthState.loading(),
+        const AuthState.error(AuthErrorCode.invalidEmail),
+      ],
+    );
+
+    blocTest<AuthBloc, AuthState>(
+      'should emit [loading, error] when password is weak',
+      setUp: () {
+        when(
+          mockSignUpUseCase(any),
+        ).thenThrow(AuthException(code: AuthErrorCode.weakPassword));
+      },
+      build: () => authBloc = AuthBloc(
+        mockGetAuthStateChangesUseCase,
+        mockSignInUseCase,
+        mockSignUpUseCase,
+        mockSignInWithGoogleUseCase,
+        mockSignInWithFacebookUseCase,
+        mockSignInWithGitHubUseCase,
+        mockSignOutUseCase,
+      ),
+      act: (bloc) => bloc.add(
+        const AuthEvent.signUpRequested(
+          email: 'test@test.com',
+          password: 'password1234',
+          confirmPassword: 'password1234',
+        ),
+      ),
+      expect: () => [
+        const AuthState.loading(),
+        const AuthState.error(AuthErrorCode.weakPassword),
+      ],
+    );
+
+    blocTest<AuthBloc, AuthState>(
+      'should emit [loading, error] when email is already in use',
+      setUp: () {
+        when(
+          mockSignUpUseCase(any),
+        ).thenThrow(AuthException(code: AuthErrorCode.emailAlreadyInUse));
+      },
+      build: () => authBloc = AuthBloc(
+        mockGetAuthStateChangesUseCase,
+        mockSignInUseCase,
+        mockSignUpUseCase,
+        mockSignInWithGoogleUseCase,
+        mockSignInWithFacebookUseCase,
+        mockSignInWithGitHubUseCase,
+        mockSignOutUseCase,
+      ),
+      act: (bloc) => bloc.add(
+        const AuthEvent.signUpRequested(
+          email: 'test@test.com',
+          password: 'Password@1234',
+          confirmPassword: 'Password@1234',
+        ),
+      ),
+      expect: () => [
+        const AuthState.loading(),
+        const AuthState.error(AuthErrorCode.emailAlreadyInUse),
+      ],
+    );
+  });
+  // ------------------- Event: SignOutRequested -------------------
+
+  group('Event: SignOutRequested', () {
+    blocTest<AuthBloc, AuthState>(
+      'should emit [loading] and then nothing when sign out succeeds',
+      setUp: () {
+        when(mockSignOutUseCase(any)).thenAnswer((_) async => {});
+      },
+
+      build: () => authBloc = AuthBloc(
+        mockGetAuthStateChangesUseCase,
+        mockSignInUseCase,
+        mockSignUpUseCase,
+        mockSignInWithGoogleUseCase,
+        mockSignInWithFacebookUseCase,
+        mockSignInWithGitHubUseCase,
+        mockSignOutUseCase,
+      ),
+
+      act: (bloc) => bloc.add(const AuthEvent.signOutRequested()),
+
+      expect: () => [const AuthState.loading()],
+
+      verify: (_) => verify(mockSignOutUseCase(any)).called(1),
+    );
+  });
+
+  blocTest<AuthBloc, AuthState>(
+    'should emit [loading, error] when sign out fails',
+    setUp: () {
+      when(
+        mockSignOutUseCase(any),
+      ).thenThrow(AuthException(code: AuthErrorCode.unknown));
+    },
+    build: () => AuthBloc(
+      mockGetAuthStateChangesUseCase,
+      mockSignInUseCase,
+      mockSignUpUseCase,
+      mockSignInWithGoogleUseCase,
+      mockSignInWithFacebookUseCase,
+      mockSignInWithGitHubUseCase,
+      mockSignOutUseCase,
+    ),
+
+    act: (bloc) => bloc.add(AuthEvent.signOutRequested()),
+
+    expect: () => [
+      const AuthState.loading(),
+      const AuthState.error(AuthErrorCode.unknown),
+    ],
+
+    verify: (bloc) {
+      verify(mockSignOutUseCase(any)).called(1);
+    },
+  );
 }

@@ -104,35 +104,167 @@ abstract class AppLocalizations {
   /// **'Rallytics'**
   String get appTitle;
 
+  /// No description provided for @saveButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Save'**
+  String get saveButton;
+
+  /// No description provided for @cancelButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get cancelButton;
+
+  /// No description provided for @logoutButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Log Out'**
+  String get logoutButton;
+
+  /// No description provided for @orConnectWith.
+  ///
+  /// In en, this message translates to:
+  /// **'or connect with'**
+  String get orConnectWith;
+
   /// No description provided for @loginTitle.
   ///
   /// In en, this message translates to:
-  /// **'Sign In'**
+  /// **'Login'**
   String get loginTitle;
 
-  /// No description provided for @loginButton.
+  /// No description provided for @signInButton.
   ///
   /// In en, this message translates to:
-  /// **'Log In'**
-  String get loginButton;
+  /// **'Sign in'**
+  String get signInButton;
 
-  /// No description provided for @loginEmailLabel.
+  /// No description provided for @emailLabel.
   ///
   /// In en, this message translates to:
   /// **'Email'**
-  String get loginEmailLabel;
+  String get emailLabel;
 
-  /// No description provided for @loginPasswordHint.
+  /// No description provided for @emailHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter your email address'**
+  String get emailHint;
+
+  /// No description provided for @passwordLabel.
   ///
   /// In en, this message translates to:
   /// **'Password'**
-  String get loginPasswordHint;
+  String get passwordLabel;
 
-  /// No description provided for @loginErrorInvalidCredentials.
+  /// No description provided for @passwordHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter your password'**
+  String get passwordHint;
+
+  /// No description provided for @confirmPasswordLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Repeat password'**
+  String get confirmPasswordLabel;
+
+  /// No description provided for @forgotPasswordButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Forgot your password?'**
+  String get forgotPasswordButton;
+
+  /// No description provided for @registerTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Register'**
+  String get registerTitle;
+
+  /// No description provided for @signUpButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign up'**
+  String get signUpButton;
+
+  /// No description provided for @signUpPrompt.
+  ///
+  /// In en, this message translates to:
+  /// **'Don\'t have an account?'**
+  String get signUpPrompt;
+
+  /// No description provided for @signInPrompt.
+  ///
+  /// In en, this message translates to:
+  /// **'Already have an account?'**
+  String get signInPrompt;
+
+  /// No description provided for @authErrorEmailRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Email is required.'**
+  String get authErrorEmailRequired;
+
+  /// No description provided for @authErrorPasswordRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Password is required.'**
+  String get authErrorPasswordRequired;
+
+  /// No description provided for @authErrorInvalidEmailFormat.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter a valid email address.'**
+  String get authErrorInvalidEmailFormat;
+
+  /// No description provided for @authErrorInvalidCredentials.
   ///
   /// In en, this message translates to:
   /// **'Invalid email or password. Please try again.'**
-  String get loginErrorInvalidCredentials;
+  String get authErrorInvalidCredentials;
+
+  /// No description provided for @authErrorEmailInUse.
+  ///
+  /// In en, this message translates to:
+  /// **'This email is already in use. Please try another one.'**
+  String get authErrorEmailInUse;
+
+  /// No description provided for @authErrorInvalidEmail.
+  ///
+  /// In en, this message translates to:
+  /// **'Email is invalid.'**
+  String get authErrorInvalidEmail;
+
+  /// No description provided for @authErrorWeakPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'The password is too weak. Should be at least 12 characters and contain minimum 1 uppercase, lowercase letter, number, special character.'**
+  String get authErrorWeakPassword;
+
+  /// No description provided for @validationErrorPasswordsDoNotMatch.
+  ///
+  /// In en, this message translates to:
+  /// **'The passwords do not match.'**
+  String get validationErrorPasswordsDoNotMatch;
+
+  /// No description provided for @validationErrorEmptyFields.
+  ///
+  /// In en, this message translates to:
+  /// **'Not all fields are filled in.'**
+  String get validationErrorEmptyFields;
+
+  /// No description provided for @validationErrorInvalidEmail.
+  ///
+  /// In en, this message translates to:
+  /// **'The email is invalid.'**
+  String get validationErrorInvalidEmail;
+
+  /// No description provided for @validationErrorWeakPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'The password does not meet the requirements.'**
+  String get validationErrorWeakPassword;
 
   /// No description provided for @trainingSessionTitle.
   ///
@@ -170,53 +302,17 @@ abstract class AppLocalizations {
   /// **'Finished'**
   String get liveScoresMatchStatusFinished;
 
-  /// No description provided for @saveButton.
+  /// A welcome message shown on the dashboard.
   ///
   /// In en, this message translates to:
-  /// **'Save'**
-  String get saveButton;
-
-  /// No description provided for @cancelButton.
-  ///
-  /// In en, this message translates to:
-  /// **'Cancel'**
-  String get cancelButton;
+  /// **'Welcome back, {userName}!'**
+  String welcomeUserMessage(String userName);
 
   /// No description provided for @errorGeneric.
   ///
   /// In en, this message translates to:
   /// **'An unexpected error occurred. Please try again later.'**
   String get errorGeneric;
-
-  /// No description provided for @logoutButton.
-  ///
-  /// In en, this message translates to:
-  /// **'Log Out'**
-  String get logoutButton;
-
-  /// No description provided for @errorInvalidCredentials.
-  ///
-  /// In en, this message translates to:
-  /// **'Invalid email or password.'**
-  String get errorInvalidCredentials;
-
-  /// No description provided for @errorEmailInUse.
-  ///
-  /// In en, this message translates to:
-  /// **'This email is already in use. Please try another one.'**
-  String get errorEmailInUse;
-
-  /// No description provided for @errorWeakPassword.
-  ///
-  /// In en, this message translates to:
-  /// **'The password is too weak.'**
-  String get errorWeakPassword;
-
-  /// A welcome message shown on the dashboard.
-  ///
-  /// In en, this message translates to:
-  /// **'Welcome back, {userName}!'**
-  String welcomeUserMessage(String userName);
 }
 
 class _AppLocalizationsDelegate

@@ -6,10 +6,22 @@
 import 'dart:async' as _i3;
 
 import 'package:mockito/mockito.dart' as _i1;
+import 'package:rallytics/core/usecases/usecase.dart' as _i5;
 import 'package:rallytics/features/auth/domain/entities/user_entity.dart'
     as _i4;
-import 'package:rallytics/features/auth/domain/repositories/auth_repository.dart'
+import 'package:rallytics/features/auth/domain/usecases/get_auth_state_changes.dart'
     as _i2;
+import 'package:rallytics/features/auth/domain/usecases/sign_in_with_email.dart'
+    as _i6;
+import 'package:rallytics/features/auth/domain/usecases/sign_in_with_facebook.dart'
+    as _i9;
+import 'package:rallytics/features/auth/domain/usecases/sign_in_with_github.dart'
+    as _i10;
+import 'package:rallytics/features/auth/domain/usecases/sign_in_with_google.dart'
+    as _i8;
+import 'package:rallytics/features/auth/domain/usecases/sign_out.dart' as _i11;
+import 'package:rallytics/features/auth/domain/usecases/sign_up_with_email.dart'
+    as _i7;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -25,44 +37,131 @@ import 'package:rallytics/features/auth/domain/repositories/auth_repository.dart
 // ignore_for_file: camel_case_types
 // ignore_for_file: subtype_of_sealed_class
 
-/// A class which mocks [AuthRepository].
+/// A class which mocks [GetAuthStateChangesUseCase].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockAuthRepository extends _i1.Mock implements _i2.AuthRepository {
-  MockAuthRepository() {
+class MockGetAuthStateChangesUseCase extends _i1.Mock
+    implements _i2.GetAuthStateChangesUseCase {
+  MockGetAuthStateChangesUseCase() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i3.Stream<_i4.UserEntity?> get authStateChanges =>
+  _i3.Stream<_i4.UserEntity?> call(_i5.NoParams? params) =>
       (super.noSuchMethod(
-            Invocation.getter(#authStateChanges),
+            Invocation.method(#call, [params]),
             returnValue: _i3.Stream<_i4.UserEntity?>.empty(),
           )
           as _i3.Stream<_i4.UserEntity?>);
+}
+
+/// A class which mocks [SignInWithEmailUseCase].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockSignInWithEmailUseCase extends _i1.Mock
+    implements _i6.SignInWithEmailUseCase {
+  MockSignInWithEmailUseCase() {
+    _i1.throwOnMissingStub(this);
+  }
 
   @override
-  _i3.Future<void> signInWithEmail(String? email, String? password) =>
+  _i3.Future<void> call(_i6.SignInParams? params) =>
       (super.noSuchMethod(
-            Invocation.method(#signInWithEmail, [email, password]),
+            Invocation.method(#call, [params]),
             returnValue: _i3.Future<void>.value(),
             returnValueForMissingStub: _i3.Future<void>.value(),
           )
           as _i3.Future<void>);
+}
+
+/// A class which mocks [SignUpWithEmailUseCase].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockSignUpWithEmailUseCase extends _i1.Mock
+    implements _i7.SignUpWithEmailUseCase {
+  MockSignUpWithEmailUseCase() {
+    _i1.throwOnMissingStub(this);
+  }
 
   @override
-  _i3.Future<void> signUpWithEmail(String? email, String? password) =>
+  _i3.Future<void> call(_i7.SignUpParams? params) =>
       (super.noSuchMethod(
-            Invocation.method(#signUpWithEmail, [email, password]),
+            Invocation.method(#call, [params]),
             returnValue: _i3.Future<void>.value(),
             returnValueForMissingStub: _i3.Future<void>.value(),
           )
           as _i3.Future<void>);
+}
+
+/// A class which mocks [SignInWithGoogleUseCase].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockSignInWithGoogleUseCase extends _i1.Mock
+    implements _i8.SignInWithGoogleUseCase {
+  MockSignInWithGoogleUseCase() {
+    _i1.throwOnMissingStub(this);
+  }
 
   @override
-  _i3.Future<void> signOut() =>
+  _i3.Future<void> call(_i5.NoParams? params) =>
       (super.noSuchMethod(
-            Invocation.method(#signOut, []),
+            Invocation.method(#call, [params]),
+            returnValue: _i3.Future<void>.value(),
+            returnValueForMissingStub: _i3.Future<void>.value(),
+          )
+          as _i3.Future<void>);
+}
+
+/// A class which mocks [SignInWithFacebookUseCase].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockSignInWithFacebookUseCase extends _i1.Mock
+    implements _i9.SignInWithFacebookUseCase {
+  MockSignInWithFacebookUseCase() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  _i3.Future<void> call(_i5.NoParams? params) =>
+      (super.noSuchMethod(
+            Invocation.method(#call, [params]),
+            returnValue: _i3.Future<void>.value(),
+            returnValueForMissingStub: _i3.Future<void>.value(),
+          )
+          as _i3.Future<void>);
+}
+
+/// A class which mocks [SignInWithGitHubUseCase].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockSignInWithGitHubUseCase extends _i1.Mock
+    implements _i10.SignInWithGitHubUseCase {
+  MockSignInWithGitHubUseCase() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  _i3.Future<void> call(_i5.NoParams? params) =>
+      (super.noSuchMethod(
+            Invocation.method(#call, [params]),
+            returnValue: _i3.Future<void>.value(),
+            returnValueForMissingStub: _i3.Future<void>.value(),
+          )
+          as _i3.Future<void>);
+}
+
+/// A class which mocks [SignOutUseCase].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockSignOutUseCase extends _i1.Mock implements _i11.SignOutUseCase {
+  MockSignOutUseCase() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  _i3.Future<void> call(_i5.NoParams? params) =>
+      (super.noSuchMethod(
+            Invocation.method(#call, [params]),
             returnValue: _i3.Future<void>.value(),
             returnValueForMissingStub: _i3.Future<void>.value(),
           )

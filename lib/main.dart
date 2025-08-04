@@ -6,10 +6,15 @@ import 'package:flutter/material.dart';
 import 'package:rallytics/app/app.dart';
 import 'package:rallytics/core/di/injection.dart';
 
-Future<void> runMainApp(FirebaseOptions firebaseOptions) async {
+Future<void> runMainApp({
+  required FirebaseOptions firebaseOptions,
+  required String environment,
+}) async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  await configureDependencies();
+  await configureDependencies(environment: environment);
+
+  await getIt.allReady();
 
   await Firebase.initializeApp(options: firebaseOptions);
 

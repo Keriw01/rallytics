@@ -2,12 +2,19 @@ import 'dart:async';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
+import 'package:rallytics/core/usecases/usecase.dart';
 import 'package:rallytics/features/auth/domain/entities/user_entity.dart';
+import 'package:rallytics/features/auth/domain/usecases/get_auth_state_changes.dart';
+import 'package:rallytics/features/auth/domain/usecases/sign_in_with_email.dart';
+import 'package:rallytics/features/auth/domain/usecases/sign_in_with_facebook.dart';
+import 'package:rallytics/features/auth/domain/usecases/sign_in_with_github.dart';
+import 'package:rallytics/features/auth/domain/usecases/sign_in_with_google.dart';
+import 'package:rallytics/features/auth/domain/usecases/sign_out.dart';
+import 'package:rallytics/features/auth/domain/usecases/sign_up_with_email.dart';
 import 'package:rallytics/features/auth/presentation/bloc/auth_event.dart';
 import 'package:rallytics/features/auth/presentation/bloc/auth_state.dart';
 
 import 'package:rallytics/core/error/exceptions.dart';
-import 'package:rallytics/features/auth/domain/repositories/auth_repository.dart';
 
 // Zarządza stanem interfejsu użytkownika dla funkcji autoryzacji.
 // Reaguje na eventy z UI (np. kliknięcie przycisku "Zaloguj").
@@ -16,11 +23,26 @@ import 'package:rallytics/features/auth/domain/repositories/auth_repository.dart
 // Nie wie nic o Firebase - zna tylko `AuthRepository` i `UserEntity`.
 @injectable
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
-  final AuthRepository _authRepository;
+  final GetAuthStateChangesUseCase _getAuthStateChangesUseCase;
+  final SignInWithEmailUseCase _signInWithEmailUseCase;
+  final SignUpWithEmailUseCase _signUpWithEmailUseCase;
+  final SignInWithGoogleUseCase _signInWithGoogleUseCase;
+  final SignInWithFacebookUseCase _signInWithFacebookUseCase;
+  final SignInWithGitHubUseCase _signInWithGitHubUseCase;
+  final SignOutUseCase _signOutUseCase;
+
   StreamSubscription<UserEntity?>? _userSubscription;
 
-  AuthBloc(this._authRepository) : super(const AuthState.initial()) {
-    _userSubscription = _authRepository.authStateChanges.listen((user) {
+  AuthBloc(
+    this._getAuthStateChangesUseCase,
+    this._signInWithEmailUseCase,
+    this._signUpWithEmailUseCase,
+    this._signInWithGoogleUseCase,
+    this._signInWithFacebookUseCase,
+    this._signInWithGitHubUseCase,
+    this._signOutUseCase,
+  ) : super(const AuthState.initial()) {
+    _userSubscription = _getAuthStateChangesUseCase(NoParams()).listen((user) {
       add(AuthEvent.authUserChanged(user));
     });
 
@@ -35,8 +57,53 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     on<SignInRequested>((event, emit) async {
       emit(const AuthState.loading());
       try {
-        await _authRepository.signInWithEmail(event.email, event.password);
-      } on ServerException catch (e) {
+        await _signInWithEmailUseCase(
+          SignInParams(email: event.email, password: event.password),
+        );
+      } on AuthException catch (e) {
+        emit(AuthState.error(e.code));
+      } on ValidationException catch (e) {
+        emit(AuthState.error(e.code));
+      }
+    });
+
+    on<SignUpRequested>((event, emit) async {
+      emit(const AuthState.loading());
+      try {
+        await _signUpWithEmailUseCase(
+          SignUpParams(
+            email: event.email,
+            password: event.password,
+            confirmPassword: event.confirmPassword,
+          ),
+        );
+      } on AuthException catch (e) {
+        emit(AuthState.error(e.code));
+      } on ValidationException catch (e) {
+        emit(AuthState.error(e.code));
+      }
+    });
+
+    on<SignInWithGoogleRequested>((event, emit) async {
+      try {
+        await _signInWithGoogleUseCase(NoParams());
+      } on AuthException catch (e) {
+        emit(AuthState.error(e.code));
+      }
+    });
+
+    on<SignInWithFacebookRequested>((event, emit) async {
+      try {
+        await _signInWithFacebookUseCase(NoParams());
+      } on AuthException catch (e) {
+        emit(AuthState.error(e.code));
+      }
+    });
+
+    on<SignInWithGitHubRequested>((event, emit) async {
+      try {
+        await _signInWithGitHubUseCase(NoParams());
+      } on AuthException catch (e) {
         emit(AuthState.error(e.code));
       }
     });
@@ -44,8 +111,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     on<SignOutRequested>((event, emit) async {
       emit(const AuthState.loading());
       try {
-        await _authRepository.signOut();
-      } on ServerException catch (e) {
+        await _signOutUseCase(NoParams());
+      } on AuthException catch (e) {
         emit(AuthState.error(e.code));
       }
     });

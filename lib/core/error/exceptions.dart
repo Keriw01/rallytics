@@ -1,14 +1,30 @@
-enum ServerErrorCode {
-  invalidCredentials,
-  emailInUse,
-  weakPassword,
-  networkError,
+abstract class ErrorCode {}
+
+enum AuthErrorCode implements ErrorCode {
   unknown,
+  invalidCredentials,
+  invalidEmail,
+  weakPassword,
+  emailAlreadyInUse,
 }
 
-class ServerException implements Exception {
-  final ServerErrorCode code;
+enum ValidationErrorCode implements ErrorCode {
+  unknown,
+  emptyFields,
+  invalidEmail,
+  weakPassword,
+  passwordsDoNotMatch,
+}
+
+class AuthException implements Exception {
+  final AuthErrorCode code;
   final String? originalMessage;
 
-  ServerException({this.code = ServerErrorCode.unknown, this.originalMessage});
+  AuthException({this.code = AuthErrorCode.unknown, this.originalMessage});
+}
+
+class ValidationException implements Exception {
+  final ValidationErrorCode code;
+
+  ValidationException({this.code = ValidationErrorCode.unknown});
 }
