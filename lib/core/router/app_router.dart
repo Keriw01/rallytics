@@ -5,6 +5,7 @@ import 'package:rallytics/core/router/router_refresh_stream.dart';
 import 'package:rallytics/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:rallytics/features/auth/presentation/pages/login_screen.dart';
 import 'package:rallytics/features/auth/presentation/pages/register_screen.dart';
+import 'package:rallytics/features/auth/presentation/pages/reset_password_screen.dart';
 import 'package:rallytics/features/live_score/presentation/pages/live_score_screen.dart';
 
 GoRouter configureRouter(AuthBloc authBloc) {
@@ -14,13 +15,18 @@ GoRouter configureRouter(AuthBloc authBloc) {
     redirect: (BuildContext context, GoRouterState state) {
       final authState = authBloc.state;
 
-      final publicRoutes = ['/login', '/login/register'];
+      final publicRoutes = [
+        '/login',
+        '/login/register',
+        '/login/reset_password',
+      ];
 
       final bool loggedIn = authState.map(
         initial: (_) => false,
         loading: (_) => false,
         authenticated: (_) => true,
         unauthenticated: (_) => false,
+        passwordResetEmailSent: (_) => false,
         error: (_) => false,
       );
 
@@ -45,6 +51,11 @@ GoRouter configureRouter(AuthBloc authBloc) {
         name: 'login',
         builder: (context, state) => const LoginScreen(),
         routes: [
+          GoRoute(
+            path: '/reset_password',
+            name: 'reset_password',
+            builder: (context, state) => const ResetPasswordScreen(),
+          ),
           GoRoute(
             path: '/register',
             name: 'register',

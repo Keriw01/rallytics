@@ -199,7 +199,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         SizedBox(height: screenHeight * 0.03),
                         OrDivider(),
                         SizedBox(height: screenHeight * 0.02),
-                        //TODO: Handle socials login buttons
                         SocialLoginButtons(
                           onGooglePressed: () => context.read<AuthBloc>().add(
                             AuthEvent.signInWithGoogle(),

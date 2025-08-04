@@ -6,7 +6,7 @@
     "description": "The main title of the application, shown in the app bar."
   },
 
-
+  "sendButton": "Send",
   "saveButton": "Save",
   "cancelButton": "Cancel",
   "logoutButton": "Log Out",
@@ -26,6 +26,9 @@
   "signUpButton": "Sign up",
   "signUpPrompt": "Don't have an account?",
   "signInPrompt": "Already have an account?",
+
+  "resetPasswordTitle": "Reset Password",
+  "passwordResetEmailSentSuccess": "If an account exists for that email, a password reset link has been sent.",
 
   
   "authErrorEmailRequired" : "Email is required.",

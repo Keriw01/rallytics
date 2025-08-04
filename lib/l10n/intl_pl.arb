@@ -6,7 +6,7 @@
     "description": "Główna nazwa aplikacji, wyświetlana w pasku aplikacji."
   },
 
-
+  "sendButton": "Wyślij",
   "saveButton": "Zapisz",
   "cancelButton": "Anuluj",
   "logoutButton": "Wyloguj",
@@ -26,6 +26,9 @@
   "signUpButton": "Zarejestruj się",
   "signUpPrompt": "Nie masz konta?",
   "signInPrompt": "Masz już konto?",
+
+  "resetPasswordTitle": "Zresetuj hasło",
+  "passwordResetEmailSentSuccess": "Jeśli istnieje konto dla tego adresu e-mail, link do resetowania hasła został wysłany.",
 
   
   "authErrorEmailRequired" : "Email jest wymagany.",

@@ -61,8 +61,13 @@ class MessageLookup extends MessageLookupByLibrary {
         "passwordHint":
             MessageLookupByLibrary.simpleMessage("Enter your password"),
         "passwordLabel": MessageLookupByLibrary.simpleMessage("Password"),
+        "passwordResetEmailSentSuccess": MessageLookupByLibrary.simpleMessage(
+            "If an account exists for that email, a password reset link has been sent."),
         "registerTitle": MessageLookupByLibrary.simpleMessage("Register"),
+        "resetPasswordTitle":
+            MessageLookupByLibrary.simpleMessage("Reset Password"),
         "saveButton": MessageLookupByLibrary.simpleMessage("Save"),
+        "sendButton": MessageLookupByLibrary.simpleMessage("Send"),
         "signInButton": MessageLookupByLibrary.simpleMessage("Sign in"),
         "signInPrompt":
             MessageLookupByLibrary.simpleMessage("Already have an account?"),

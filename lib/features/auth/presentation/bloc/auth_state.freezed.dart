@@ -23,6 +23,7 @@ mixin _$AuthState {
     required TResult Function() loading,
     required TResult Function(UserEntity user) authenticated,
     required TResult Function() unauthenticated,
+    required TResult Function() passwordResetEmailSent,
     required TResult Function(ErrorCode code) error,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -31,6 +32,7 @@ mixin _$AuthState {
     TResult? Function()? loading,
     TResult? Function(UserEntity user)? authenticated,
     TResult? Function()? unauthenticated,
+    TResult? Function()? passwordResetEmailSent,
     TResult? Function(ErrorCode code)? error,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -39,6 +41,7 @@ mixin _$AuthState {
     TResult Function()? loading,
     TResult Function(UserEntity user)? authenticated,
     TResult Function()? unauthenticated,
+    TResult Function()? passwordResetEmailSent,
     TResult Function(ErrorCode code)? error,
     required TResult orElse(),
   }) => throw _privateConstructorUsedError;
@@ -48,6 +51,8 @@ mixin _$AuthState {
     required TResult Function(Loading value) loading,
     required TResult Function(_Authenticated value) authenticated,
     required TResult Function(_Unauthenticated value) unauthenticated,
+    required TResult Function(PasswordResetEmailSent value)
+    passwordResetEmailSent,
     required TResult Function(Error value) error,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -56,6 +61,7 @@ mixin _$AuthState {
     TResult? Function(Loading value)? loading,
     TResult? Function(_Authenticated value)? authenticated,
     TResult? Function(_Unauthenticated value)? unauthenticated,
+    TResult? Function(PasswordResetEmailSent value)? passwordResetEmailSent,
     TResult? Function(Error value)? error,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -64,6 +70,7 @@ mixin _$AuthState {
     TResult Function(Loading value)? loading,
     TResult Function(_Authenticated value)? authenticated,
     TResult Function(_Unauthenticated value)? unauthenticated,
+    TResult Function(PasswordResetEmailSent value)? passwordResetEmailSent,
     TResult Function(Error value)? error,
     required TResult orElse(),
   }) => throw _privateConstructorUsedError;
@@ -136,6 +143,7 @@ class _$InitialImpl implements _Initial {
     required TResult Function() loading,
     required TResult Function(UserEntity user) authenticated,
     required TResult Function() unauthenticated,
+    required TResult Function() passwordResetEmailSent,
     required TResult Function(ErrorCode code) error,
   }) {
     return initial();
@@ -148,6 +156,7 @@ class _$InitialImpl implements _Initial {
     TResult? Function()? loading,
     TResult? Function(UserEntity user)? authenticated,
     TResult? Function()? unauthenticated,
+    TResult? Function()? passwordResetEmailSent,
     TResult? Function(ErrorCode code)? error,
   }) {
     return initial?.call();
@@ -160,6 +169,7 @@ class _$InitialImpl implements _Initial {
     TResult Function()? loading,
     TResult Function(UserEntity user)? authenticated,
     TResult Function()? unauthenticated,
+    TResult Function()? passwordResetEmailSent,
     TResult Function(ErrorCode code)? error,
     required TResult orElse(),
   }) {
@@ -176,6 +186,8 @@ class _$InitialImpl implements _Initial {
     required TResult Function(Loading value) loading,
     required TResult Function(_Authenticated value) authenticated,
     required TResult Function(_Unauthenticated value) unauthenticated,
+    required TResult Function(PasswordResetEmailSent value)
+    passwordResetEmailSent,
     required TResult Function(Error value) error,
   }) {
     return initial(this);
@@ -188,6 +200,7 @@ class _$InitialImpl implements _Initial {
     TResult? Function(Loading value)? loading,
     TResult? Function(_Authenticated value)? authenticated,
     TResult? Function(_Unauthenticated value)? unauthenticated,
+    TResult? Function(PasswordResetEmailSent value)? passwordResetEmailSent,
     TResult? Function(Error value)? error,
   }) {
     return initial?.call(this);
@@ -200,6 +213,7 @@ class _$InitialImpl implements _Initial {
     TResult Function(Loading value)? loading,
     TResult Function(_Authenticated value)? authenticated,
     TResult Function(_Unauthenticated value)? unauthenticated,
+    TResult Function(PasswordResetEmailSent value)? passwordResetEmailSent,
     TResult Function(Error value)? error,
     required TResult orElse(),
   }) {
@@ -261,6 +275,7 @@ class _$LoadingImpl implements Loading {
     required TResult Function() loading,
     required TResult Function(UserEntity user) authenticated,
     required TResult Function() unauthenticated,
+    required TResult Function() passwordResetEmailSent,
     required TResult Function(ErrorCode code) error,
   }) {
     return loading();
@@ -273,6 +288,7 @@ class _$LoadingImpl implements Loading {
     TResult? Function()? loading,
     TResult? Function(UserEntity user)? authenticated,
     TResult? Function()? unauthenticated,
+    TResult? Function()? passwordResetEmailSent,
     TResult? Function(ErrorCode code)? error,
   }) {
     return loading?.call();
@@ -285,6 +301,7 @@ class _$LoadingImpl implements Loading {
     TResult Function()? loading,
     TResult Function(UserEntity user)? authenticated,
     TResult Function()? unauthenticated,
+    TResult Function()? passwordResetEmailSent,
     TResult Function(ErrorCode code)? error,
     required TResult orElse(),
   }) {
@@ -301,6 +318,8 @@ class _$LoadingImpl implements Loading {
     required TResult Function(Loading value) loading,
     required TResult Function(_Authenticated value) authenticated,
     required TResult Function(_Unauthenticated value) unauthenticated,
+    required TResult Function(PasswordResetEmailSent value)
+    passwordResetEmailSent,
     required TResult Function(Error value) error,
   }) {
     return loading(this);
@@ -313,6 +332,7 @@ class _$LoadingImpl implements Loading {
     TResult? Function(Loading value)? loading,
     TResult? Function(_Authenticated value)? authenticated,
     TResult? Function(_Unauthenticated value)? unauthenticated,
+    TResult? Function(PasswordResetEmailSent value)? passwordResetEmailSent,
     TResult? Function(Error value)? error,
   }) {
     return loading?.call(this);
@@ -325,6 +345,7 @@ class _$LoadingImpl implements Loading {
     TResult Function(Loading value)? loading,
     TResult Function(_Authenticated value)? authenticated,
     TResult Function(_Unauthenticated value)? unauthenticated,
+    TResult Function(PasswordResetEmailSent value)? passwordResetEmailSent,
     TResult Function(Error value)? error,
     required TResult orElse(),
   }) {
@@ -425,6 +446,7 @@ class _$AuthenticatedImpl implements _Authenticated {
     required TResult Function() loading,
     required TResult Function(UserEntity user) authenticated,
     required TResult Function() unauthenticated,
+    required TResult Function() passwordResetEmailSent,
     required TResult Function(ErrorCode code) error,
   }) {
     return authenticated(user);
@@ -437,6 +459,7 @@ class _$AuthenticatedImpl implements _Authenticated {
     TResult? Function()? loading,
     TResult? Function(UserEntity user)? authenticated,
     TResult? Function()? unauthenticated,
+    TResult? Function()? passwordResetEmailSent,
     TResult? Function(ErrorCode code)? error,
   }) {
     return authenticated?.call(user);
@@ -449,6 +472,7 @@ class _$AuthenticatedImpl implements _Authenticated {
     TResult Function()? loading,
     TResult Function(UserEntity user)? authenticated,
     TResult Function()? unauthenticated,
+    TResult Function()? passwordResetEmailSent,
     TResult Function(ErrorCode code)? error,
     required TResult orElse(),
   }) {
@@ -465,6 +489,8 @@ class _$AuthenticatedImpl implements _Authenticated {
     required TResult Function(Loading value) loading,
     required TResult Function(_Authenticated value) authenticated,
     required TResult Function(_Unauthenticated value) unauthenticated,
+    required TResult Function(PasswordResetEmailSent value)
+    passwordResetEmailSent,
     required TResult Function(Error value) error,
   }) {
     return authenticated(this);
@@ -477,6 +503,7 @@ class _$AuthenticatedImpl implements _Authenticated {
     TResult? Function(Loading value)? loading,
     TResult? Function(_Authenticated value)? authenticated,
     TResult? Function(_Unauthenticated value)? unauthenticated,
+    TResult? Function(PasswordResetEmailSent value)? passwordResetEmailSent,
     TResult? Function(Error value)? error,
   }) {
     return authenticated?.call(this);
@@ -489,6 +516,7 @@ class _$AuthenticatedImpl implements _Authenticated {
     TResult Function(Loading value)? loading,
     TResult Function(_Authenticated value)? authenticated,
     TResult Function(_Unauthenticated value)? unauthenticated,
+    TResult Function(PasswordResetEmailSent value)? passwordResetEmailSent,
     TResult Function(Error value)? error,
     required TResult orElse(),
   }) {
@@ -558,6 +586,7 @@ class _$UnauthenticatedImpl implements _Unauthenticated {
     required TResult Function() loading,
     required TResult Function(UserEntity user) authenticated,
     required TResult Function() unauthenticated,
+    required TResult Function() passwordResetEmailSent,
     required TResult Function(ErrorCode code) error,
   }) {
     return unauthenticated();
@@ -570,6 +599,7 @@ class _$UnauthenticatedImpl implements _Unauthenticated {
     TResult? Function()? loading,
     TResult? Function(UserEntity user)? authenticated,
     TResult? Function()? unauthenticated,
+    TResult? Function()? passwordResetEmailSent,
     TResult? Function(ErrorCode code)? error,
   }) {
     return unauthenticated?.call();
@@ -582,6 +612,7 @@ class _$UnauthenticatedImpl implements _Unauthenticated {
     TResult Function()? loading,
     TResult Function(UserEntity user)? authenticated,
     TResult Function()? unauthenticated,
+    TResult Function()? passwordResetEmailSent,
     TResult Function(ErrorCode code)? error,
     required TResult orElse(),
   }) {
@@ -598,6 +629,8 @@ class _$UnauthenticatedImpl implements _Unauthenticated {
     required TResult Function(Loading value) loading,
     required TResult Function(_Authenticated value) authenticated,
     required TResult Function(_Unauthenticated value) unauthenticated,
+    required TResult Function(PasswordResetEmailSent value)
+    passwordResetEmailSent,
     required TResult Function(Error value) error,
   }) {
     return unauthenticated(this);
@@ -610,6 +643,7 @@ class _$UnauthenticatedImpl implements _Unauthenticated {
     TResult? Function(Loading value)? loading,
     TResult? Function(_Authenticated value)? authenticated,
     TResult? Function(_Unauthenticated value)? unauthenticated,
+    TResult? Function(PasswordResetEmailSent value)? passwordResetEmailSent,
     TResult? Function(Error value)? error,
   }) {
     return unauthenticated?.call(this);
@@ -622,6 +656,7 @@ class _$UnauthenticatedImpl implements _Unauthenticated {
     TResult Function(Loading value)? loading,
     TResult Function(_Authenticated value)? authenticated,
     TResult Function(_Unauthenticated value)? unauthenticated,
+    TResult Function(PasswordResetEmailSent value)? passwordResetEmailSent,
     TResult Function(Error value)? error,
     required TResult orElse(),
   }) {
@@ -634,6 +669,139 @@ class _$UnauthenticatedImpl implements _Unauthenticated {
 
 abstract class _Unauthenticated implements AuthState {
   const factory _Unauthenticated() = _$UnauthenticatedImpl;
+}
+
+/// @nodoc
+abstract class _$$PasswordResetEmailSentImplCopyWith<$Res> {
+  factory _$$PasswordResetEmailSentImplCopyWith(
+    _$PasswordResetEmailSentImpl value,
+    $Res Function(_$PasswordResetEmailSentImpl) then,
+  ) = __$$PasswordResetEmailSentImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$PasswordResetEmailSentImplCopyWithImpl<$Res>
+    extends _$AuthStateCopyWithImpl<$Res, _$PasswordResetEmailSentImpl>
+    implements _$$PasswordResetEmailSentImplCopyWith<$Res> {
+  __$$PasswordResetEmailSentImplCopyWithImpl(
+    _$PasswordResetEmailSentImpl _value,
+    $Res Function(_$PasswordResetEmailSentImpl) _then,
+  ) : super(_value, _then);
+
+  /// Create a copy of AuthState
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$PasswordResetEmailSentImpl implements PasswordResetEmailSent {
+  const _$PasswordResetEmailSentImpl();
+
+  @override
+  String toString() {
+    return 'AuthState.passwordResetEmailSent()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$PasswordResetEmailSentImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(UserEntity user) authenticated,
+    required TResult Function() unauthenticated,
+    required TResult Function() passwordResetEmailSent,
+    required TResult Function(ErrorCode code) error,
+  }) {
+    return passwordResetEmailSent();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(UserEntity user)? authenticated,
+    TResult? Function()? unauthenticated,
+    TResult? Function()? passwordResetEmailSent,
+    TResult? Function(ErrorCode code)? error,
+  }) {
+    return passwordResetEmailSent?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(UserEntity user)? authenticated,
+    TResult Function()? unauthenticated,
+    TResult Function()? passwordResetEmailSent,
+    TResult Function(ErrorCode code)? error,
+    required TResult orElse(),
+  }) {
+    if (passwordResetEmailSent != null) {
+      return passwordResetEmailSent();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(Loading value) loading,
+    required TResult Function(_Authenticated value) authenticated,
+    required TResult Function(_Unauthenticated value) unauthenticated,
+    required TResult Function(PasswordResetEmailSent value)
+    passwordResetEmailSent,
+    required TResult Function(Error value) error,
+  }) {
+    return passwordResetEmailSent(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(Loading value)? loading,
+    TResult? Function(_Authenticated value)? authenticated,
+    TResult? Function(_Unauthenticated value)? unauthenticated,
+    TResult? Function(PasswordResetEmailSent value)? passwordResetEmailSent,
+    TResult? Function(Error value)? error,
+  }) {
+    return passwordResetEmailSent?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(Loading value)? loading,
+    TResult Function(_Authenticated value)? authenticated,
+    TResult Function(_Unauthenticated value)? unauthenticated,
+    TResult Function(PasswordResetEmailSent value)? passwordResetEmailSent,
+    TResult Function(Error value)? error,
+    required TResult orElse(),
+  }) {
+    if (passwordResetEmailSent != null) {
+      return passwordResetEmailSent(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class PasswordResetEmailSent implements AuthState {
+  const factory PasswordResetEmailSent() = _$PasswordResetEmailSentImpl;
 }
 
 /// @nodoc
@@ -710,6 +878,7 @@ class _$ErrorImpl implements Error {
     required TResult Function() loading,
     required TResult Function(UserEntity user) authenticated,
     required TResult Function() unauthenticated,
+    required TResult Function() passwordResetEmailSent,
     required TResult Function(ErrorCode code) error,
   }) {
     return error(code);
@@ -722,6 +891,7 @@ class _$ErrorImpl implements Error {
     TResult? Function()? loading,
     TResult? Function(UserEntity user)? authenticated,
     TResult? Function()? unauthenticated,
+    TResult? Function()? passwordResetEmailSent,
     TResult? Function(ErrorCode code)? error,
   }) {
     return error?.call(code);
@@ -734,6 +904,7 @@ class _$ErrorImpl implements Error {
     TResult Function()? loading,
     TResult Function(UserEntity user)? authenticated,
     TResult Function()? unauthenticated,
+    TResult Function()? passwordResetEmailSent,
     TResult Function(ErrorCode code)? error,
     required TResult orElse(),
   }) {
@@ -750,6 +921,8 @@ class _$ErrorImpl implements Error {
     required TResult Function(Loading value) loading,
     required TResult Function(_Authenticated value) authenticated,
     required TResult Function(_Unauthenticated value) unauthenticated,
+    required TResult Function(PasswordResetEmailSent value)
+    passwordResetEmailSent,
     required TResult Function(Error value) error,
   }) {
     return error(this);
@@ -762,6 +935,7 @@ class _$ErrorImpl implements Error {
     TResult? Function(Loading value)? loading,
     TResult? Function(_Authenticated value)? authenticated,
     TResult? Function(_Unauthenticated value)? unauthenticated,
+    TResult? Function(PasswordResetEmailSent value)? passwordResetEmailSent,
     TResult? Function(Error value)? error,
   }) {
     return error?.call(this);
@@ -774,6 +948,7 @@ class _$ErrorImpl implements Error {
     TResult Function(Loading value)? loading,
     TResult Function(_Authenticated value)? authenticated,
     TResult Function(_Unauthenticated value)? unauthenticated,
+    TResult Function(PasswordResetEmailSent value)? passwordResetEmailSent,
     TResult Function(Error value)? error,
     required TResult orElse(),
   }) {

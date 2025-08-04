@@ -12,6 +12,7 @@ abstract class AuthFirebaseDataSource {
   Future<void> signInWithGoogle();
   Future<void> signInWithFacebook();
   Future<void> signInWithGitHub();
+  Future<void> sendPasswordResetEmail(String email);
   Future<void> signOut();
   Stream<User?> get authStateChanges;
 }
@@ -94,6 +95,15 @@ class AuthFirebaseDataSourceImpl implements AuthFirebaseDataSource {
 
       await _firebaseAuth.signInWithProvider(githubProvider);
     } catch (e) {
+      rethrow;
+    }
+  }
+
+  @override
+  Future<void> sendPasswordResetEmail(String email) async {
+    try {
+      await _firebaseAuth.sendPasswordResetEmail(email: email);
+    } on FirebaseAuthException {
       rethrow;
     }
   }

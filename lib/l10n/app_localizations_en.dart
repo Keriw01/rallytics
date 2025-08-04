@@ -12,6 +12,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get appTitle => 'Rallytics';
 
   @override
+  String get sendButton => 'Send';
+
+  @override
   String get saveButton => 'Save';
 
   @override
@@ -58,6 +61,13 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get signInPrompt => 'Already have an account?';
+
+  @override
+  String get resetPasswordTitle => 'Reset Password';
+
+  @override
+  String get passwordResetEmailSentSuccess =>
+      'If an account exists for that email, a password reset link has been sent.';
 
   @override
   String get authErrorEmailRequired => 'Email is required.';

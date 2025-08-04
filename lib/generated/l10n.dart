@@ -60,6 +60,16 @@ class S {
     );
   }
 
+  /// `Send`
+  String get sendButton {
+    return Intl.message(
+      'Send',
+      name: 'sendButton',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Save`
   String get saveButton {
     return Intl.message(
@@ -215,6 +225,26 @@ class S {
     return Intl.message(
       'Already have an account?',
       name: 'signInPrompt',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Reset Password`
+  String get resetPasswordTitle {
+    return Intl.message(
+      'Reset Password',
+      name: 'resetPasswordTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `If an account exists for that email, a password reset link has been sent.`
+  String get passwordResetEmailSentSuccess {
+    return Intl.message(
+      'If an account exists for that email, a password reset link has been sent.',
+      name: 'passwordResetEmailSentSuccess',
       desc: '',
       args: [],
     );

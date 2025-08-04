@@ -104,6 +104,12 @@ abstract class AppLocalizations {
   /// **'Rallytics'**
   String get appTitle;
 
+  /// No description provided for @sendButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Send'**
+  String get sendButton;
+
   /// No description provided for @saveButton.
   ///
   /// In en, this message translates to:
@@ -199,6 +205,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Already have an account?'**
   String get signInPrompt;
+
+  /// No description provided for @resetPasswordTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Reset Password'**
+  String get resetPasswordTitle;
+
+  /// No description provided for @passwordResetEmailSentSuccess.
+  ///
+  /// In en, this message translates to:
+  /// **'If an account exists for that email, a password reset link has been sent.'**
+  String get passwordResetEmailSentSuccess;
 
   /// No description provided for @authErrorEmailRequired.
   ///
