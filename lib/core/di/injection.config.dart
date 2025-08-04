@@ -23,6 +23,8 @@ import '../../features/auth/data/repositories/auth_repository_impl.dart'
 import '../../features/auth/domain/repositories/auth_repository.dart' as _i787;
 import '../../features/auth/domain/usecases/get_auth_state_changes_usecase.dart'
     as _i810;
+import '../../features/auth/domain/usecases/send_email_verification_usecase.dart'
+    as _i707;
 import '../../features/auth/domain/usecases/send_password_reset_email_usecase.dart'
     as _i961;
 import '../../features/auth/domain/usecases/sign_in_with_email_usecase.dart'
@@ -88,11 +90,17 @@ Future<_i174.GetIt> $initGetIt(
   gh.lazySingleton<_i915.SignOutUseCase>(
     () => _i915.SignOutUseCase(gh<_i787.AuthRepository>()),
   );
-  gh.lazySingleton<_i254.SignUpWithEmailUseCase>(
-    () => _i254.SignUpWithEmailUseCase(gh<_i787.AuthRepository>()),
-  );
   gh.lazySingleton<_i961.SendPasswordResetEmailUseCase>(
     () => _i961.SendPasswordResetEmailUseCase(gh<_i787.AuthRepository>()),
+  );
+  gh.lazySingleton<_i707.SendEmailVerificationUseCase>(
+    () => _i707.SendEmailVerificationUseCase(gh<_i787.AuthRepository>()),
+  );
+  gh.lazySingleton<_i254.SignUpWithEmailUseCase>(
+    () => _i254.SignUpWithEmailUseCase(
+      gh<_i787.AuthRepository>(),
+      gh<_i707.SendEmailVerificationUseCase>(),
+    ),
   );
   gh.factory<_i797.AuthBloc>(
     () => _i797.AuthBloc(
@@ -103,6 +111,7 @@ Future<_i174.GetIt> $initGetIt(
       gh<_i369.SignInWithFacebookUseCase>(),
       gh<_i287.SignInWithGitHubUseCase>(),
       gh<_i961.SendPasswordResetEmailUseCase>(),
+      gh<_i707.SendEmailVerificationUseCase>(),
       gh<_i915.SignOutUseCase>(),
     ),
   );

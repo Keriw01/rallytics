@@ -98,6 +98,12 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            Text(
+              S.of(context).resetPasswordInstruction,
+              textAlign: TextAlign.center,
+              style: Theme.of(context).textTheme.bodyMedium,
+            ),
+            SizedBox(height: screenHeight * 0.02),
             AuthTextField(
               controller: _emailController,
               isEmailField: true,

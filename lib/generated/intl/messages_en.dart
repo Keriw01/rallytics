@@ -20,7 +20,12 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'en';
 
-  static String m0(userName) => "Welcome back, ${userName}!";
+  static String m0(userEmail) =>
+      "A verification link has been sent to ${userEmail}. Please check your inbox and click the link to activate your account.";
+
+  static String m1(seconds) => "Resend in ${seconds}s";
+
+  static String m2(userName) => "Welcome back, ${userName}!";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
@@ -64,14 +69,16 @@ class MessageLookup extends MessageLookupByLibrary {
         "passwordResetEmailSentSuccess": MessageLookupByLibrary.simpleMessage(
             "If an account exists for that email, a password reset link has been sent."),
         "registerTitle": MessageLookupByLibrary.simpleMessage("Register"),
+        "resetPasswordInstruction": MessageLookupByLibrary.simpleMessage(
+            "Enter the email address associated with your account and we\'ll send you a link to reset your password."),
         "resetPasswordTitle":
             MessageLookupByLibrary.simpleMessage("Reset Password"),
         "saveButton": MessageLookupByLibrary.simpleMessage("Save"),
         "sendButton": MessageLookupByLibrary.simpleMessage("Send"),
-        "signInButton": MessageLookupByLibrary.simpleMessage("Sign in"),
+        "signInButton": MessageLookupByLibrary.simpleMessage("Sign In"),
         "signInPrompt":
             MessageLookupByLibrary.simpleMessage("Already have an account?"),
-        "signUpButton": MessageLookupByLibrary.simpleMessage("Sign up"),
+        "signUpButton": MessageLookupByLibrary.simpleMessage("Sign Up"),
         "signUpPrompt":
             MessageLookupByLibrary.simpleMessage("Don\'t have an account?"),
         "trainingSessionImportButton":
@@ -88,6 +95,12 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("The passwords do not match."),
         "validationErrorWeakPassword": MessageLookupByLibrary.simpleMessage(
             "The password does not meet the requirements."),
-        "welcomeUserMessage": m0
+        "verifyEmailMessage": m0,
+        "verifyEmailResendButton":
+            MessageLookupByLibrary.simpleMessage("Resend Email"),
+        "verifyEmailResendButtonInSeconds": m1,
+        "verifyEmailTitle":
+            MessageLookupByLibrary.simpleMessage("Verify Your Email"),
+        "welcomeUserMessage": m2
       };
 }

@@ -33,9 +33,9 @@ class AuthRepositoryImpl implements AuthRepository {
   }
 
   @override
-  Future<void> signUpWithEmail(String email, String password) {
+  Future<void> signUpWithEmail(String email, String password) async {
     try {
-      return _authFirebaseDataSource.createUserWithEmailAndPassword(
+      await _authFirebaseDataSource.createUserWithEmailAndPassword(
         email,
         password,
       );
@@ -84,6 +84,18 @@ class AuthRepositoryImpl implements AuthRepository {
     } on FirebaseAuthException catch (e) {
       final errorCode = mapFirebaseErrorCode(e.code);
       throw AuthException(code: errorCode, originalMessage: e.message);
+    } catch (e) {
+      throw AuthException(
+        code: AuthErrorCode.unknown,
+        originalMessage: e.toString(),
+      );
+    }
+  }
+
+  @override
+  Future<void> sendEmailVerification() async {
+    try {
+      await _authFirebaseDataSource.sendEmailVerification();
     } catch (e) {
       throw AuthException(
         code: AuthErrorCode.unknown,

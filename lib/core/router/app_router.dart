@@ -6,6 +6,7 @@ import 'package:rallytics/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:rallytics/features/auth/presentation/pages/login_screen.dart';
 import 'package:rallytics/features/auth/presentation/pages/register_screen.dart';
 import 'package:rallytics/features/auth/presentation/pages/reset_password_screen.dart';
+import 'package:rallytics/features/auth/presentation/pages/verify_email_screen.dart';
 import 'package:rallytics/features/live_score/presentation/pages/live_score_screen.dart';
 
 GoRouter configureRouter(AuthBloc authBloc) {
@@ -21,7 +22,12 @@ GoRouter configureRouter(AuthBloc authBloc) {
         '/login/reset_password',
       ];
 
-      final bool loggedIn = authState.map(
+      final bool isVerified = authState.maybeWhen(
+        authenticated: (user) => user.isEmailVerified,
+        orElse: () => false,
+      );
+
+      final bool isLoggedIn = authState.map(
         initial: (_) => false,
         loading: (_) => false,
         authenticated: (_) => true,
@@ -30,15 +36,27 @@ GoRouter configureRouter(AuthBloc authBloc) {
         error: (_) => false,
       );
 
-      final bool isGoingToPublicRoute = publicRoutes.contains(
-        state.matchedLocation,
-      );
+      final currentLocation = state.matchedLocation;
+      final isGoingToPublicRoute = publicRoutes.contains(currentLocation);
+      final isAtVerifyScreen = currentLocation == '/verify-email';
 
-      if (!loggedIn && !isGoingToPublicRoute) {
+      if (isAtVerifyScreen) {
+        if (isVerified) return '/';
+
+        if (!isLoggedIn) return '/login';
+
+        return null;
+      }
+
+      if (isLoggedIn && !isVerified) {
+        return '/verify-email';
+      }
+
+      if (!isLoggedIn && !isGoingToPublicRoute) {
         return '/login';
       }
 
-      if (loggedIn && isGoingToPublicRoute) {
+      if (isLoggedIn && isVerified && isGoingToPublicRoute) {
         return '/';
       }
 
@@ -62,6 +80,12 @@ GoRouter configureRouter(AuthBloc authBloc) {
             builder: (context, state) => const RegisterScreen(),
           ),
         ],
+      ),
+
+      GoRoute(
+        path: '/verify-email',
+        name: 'verify_email',
+        builder: (context, state) => const VerifyEmailScreen(),
       ),
 
       GoRoute(

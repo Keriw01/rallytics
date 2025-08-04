@@ -17,6 +17,8 @@ import 'package:rallytics/features/auth/domain/usecases/params/sign_in_with_emai
     as _i7;
 import 'package:rallytics/features/auth/domain/usecases/params/sign_up_with_email_params.dart'
     as _i9;
+import 'package:rallytics/features/auth/domain/usecases/send_email_verification_usecase.dart'
+    as _i15;
 import 'package:rallytics/features/auth/domain/usecases/send_password_reset_email_usecase.dart'
     as _i13;
 import 'package:rallytics/features/auth/domain/usecases/sign_in_with_email_usecase.dart'
@@ -28,7 +30,7 @@ import 'package:rallytics/features/auth/domain/usecases/sign_in_with_github_usec
 import 'package:rallytics/features/auth/domain/usecases/sign_in_with_google_usecase.dart'
     as _i10;
 import 'package:rallytics/features/auth/domain/usecases/sign_out_usecase.dart'
-    as _i15;
+    as _i16;
 import 'package:rallytics/features/auth/domain/usecases/sign_up_with_email_usecase.dart'
     as _i8;
 
@@ -178,10 +180,29 @@ class MockSendPasswordResetEmailUseCase extends _i1.Mock
           as _i3.Future<void>);
 }
 
+/// A class which mocks [SendEmailVerificationUseCase].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockSendEmailVerificationUseCase extends _i1.Mock
+    implements _i15.SendEmailVerificationUseCase {
+  MockSendEmailVerificationUseCase() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  _i3.Future<void> call(_i5.NoParams? params) =>
+      (super.noSuchMethod(
+            Invocation.method(#call, [params]),
+            returnValue: _i3.Future<void>.value(),
+            returnValueForMissingStub: _i3.Future<void>.value(),
+          )
+          as _i3.Future<void>);
+}
+
 /// A class which mocks [SignOutUseCase].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockSignOutUseCase extends _i1.Mock implements _i15.SignOutUseCase {
+class MockSignOutUseCase extends _i1.Mock implements _i16.SignOutUseCase {
   MockSignOutUseCase() {
     _i1.throwOnMissingStub(this);
   }

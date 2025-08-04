@@ -31,6 +31,7 @@ mixin _$AuthEvent {
     required TResult Function() signInWithFacebook,
     required TResult Function() signInWithGitHub,
     required TResult Function(String email) passwordResetRequested,
+    required TResult Function() sendEmailVerificationRequested,
     required TResult Function() signOutRequested,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -43,6 +44,7 @@ mixin _$AuthEvent {
     TResult? Function()? signInWithFacebook,
     TResult? Function()? signInWithGitHub,
     TResult? Function(String email)? passwordResetRequested,
+    TResult? Function()? sendEmailVerificationRequested,
     TResult? Function()? signOutRequested,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -55,6 +57,7 @@ mixin _$AuthEvent {
     TResult Function()? signInWithFacebook,
     TResult Function()? signInWithGitHub,
     TResult Function(String email)? passwordResetRequested,
+    TResult Function()? sendEmailVerificationRequested,
     TResult Function()? signOutRequested,
     required TResult orElse(),
   }) => throw _privateConstructorUsedError;
@@ -69,6 +72,8 @@ mixin _$AuthEvent {
     required TResult Function(SignInWithGitHubRequested value) signInWithGitHub,
     required TResult Function(PasswordResetRequested value)
     passwordResetRequested,
+    required TResult Function(SendEmailVerificationRequested value)
+    sendEmailVerificationRequested,
     required TResult Function(SignOutRequested value) signOutRequested,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -80,6 +85,8 @@ mixin _$AuthEvent {
     TResult? Function(SignInWithFacebookRequested value)? signInWithFacebook,
     TResult? Function(SignInWithGitHubRequested value)? signInWithGitHub,
     TResult? Function(PasswordResetRequested value)? passwordResetRequested,
+    TResult? Function(SendEmailVerificationRequested value)?
+    sendEmailVerificationRequested,
     TResult? Function(SignOutRequested value)? signOutRequested,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -91,6 +98,8 @@ mixin _$AuthEvent {
     TResult Function(SignInWithFacebookRequested value)? signInWithFacebook,
     TResult Function(SignInWithGitHubRequested value)? signInWithGitHub,
     TResult Function(PasswordResetRequested value)? passwordResetRequested,
+    TResult Function(SendEmailVerificationRequested value)?
+    sendEmailVerificationRequested,
     TResult Function(SignOutRequested value)? signOutRequested,
     required TResult orElse(),
   }) => throw _privateConstructorUsedError;
@@ -217,6 +226,7 @@ class _$AuthUserChangedImpl implements AuthUserChanged {
     required TResult Function() signInWithFacebook,
     required TResult Function() signInWithGitHub,
     required TResult Function(String email) passwordResetRequested,
+    required TResult Function() sendEmailVerificationRequested,
     required TResult Function() signOutRequested,
   }) {
     return authUserChanged(user);
@@ -233,6 +243,7 @@ class _$AuthUserChangedImpl implements AuthUserChanged {
     TResult? Function()? signInWithFacebook,
     TResult? Function()? signInWithGitHub,
     TResult? Function(String email)? passwordResetRequested,
+    TResult? Function()? sendEmailVerificationRequested,
     TResult? Function()? signOutRequested,
   }) {
     return authUserChanged?.call(user);
@@ -249,6 +260,7 @@ class _$AuthUserChangedImpl implements AuthUserChanged {
     TResult Function()? signInWithFacebook,
     TResult Function()? signInWithGitHub,
     TResult Function(String email)? passwordResetRequested,
+    TResult Function()? sendEmailVerificationRequested,
     TResult Function()? signOutRequested,
     required TResult orElse(),
   }) {
@@ -270,6 +282,8 @@ class _$AuthUserChangedImpl implements AuthUserChanged {
     required TResult Function(SignInWithGitHubRequested value) signInWithGitHub,
     required TResult Function(PasswordResetRequested value)
     passwordResetRequested,
+    required TResult Function(SendEmailVerificationRequested value)
+    sendEmailVerificationRequested,
     required TResult Function(SignOutRequested value) signOutRequested,
   }) {
     return authUserChanged(this);
@@ -285,6 +299,8 @@ class _$AuthUserChangedImpl implements AuthUserChanged {
     TResult? Function(SignInWithFacebookRequested value)? signInWithFacebook,
     TResult? Function(SignInWithGitHubRequested value)? signInWithGitHub,
     TResult? Function(PasswordResetRequested value)? passwordResetRequested,
+    TResult? Function(SendEmailVerificationRequested value)?
+    sendEmailVerificationRequested,
     TResult? Function(SignOutRequested value)? signOutRequested,
   }) {
     return authUserChanged?.call(this);
@@ -300,6 +316,8 @@ class _$AuthUserChangedImpl implements AuthUserChanged {
     TResult Function(SignInWithFacebookRequested value)? signInWithFacebook,
     TResult Function(SignInWithGitHubRequested value)? signInWithGitHub,
     TResult Function(PasswordResetRequested value)? passwordResetRequested,
+    TResult Function(SendEmailVerificationRequested value)?
+    sendEmailVerificationRequested,
     TResult Function(SignOutRequested value)? signOutRequested,
     required TResult orElse(),
   }) {
@@ -415,6 +433,7 @@ class _$SignInRequestedImpl implements SignInRequested {
     required TResult Function() signInWithFacebook,
     required TResult Function() signInWithGitHub,
     required TResult Function(String email) passwordResetRequested,
+    required TResult Function() sendEmailVerificationRequested,
     required TResult Function() signOutRequested,
   }) {
     return signInRequested(email, password);
@@ -431,6 +450,7 @@ class _$SignInRequestedImpl implements SignInRequested {
     TResult? Function()? signInWithFacebook,
     TResult? Function()? signInWithGitHub,
     TResult? Function(String email)? passwordResetRequested,
+    TResult? Function()? sendEmailVerificationRequested,
     TResult? Function()? signOutRequested,
   }) {
     return signInRequested?.call(email, password);
@@ -447,6 +467,7 @@ class _$SignInRequestedImpl implements SignInRequested {
     TResult Function()? signInWithFacebook,
     TResult Function()? signInWithGitHub,
     TResult Function(String email)? passwordResetRequested,
+    TResult Function()? sendEmailVerificationRequested,
     TResult Function()? signOutRequested,
     required TResult orElse(),
   }) {
@@ -468,6 +489,8 @@ class _$SignInRequestedImpl implements SignInRequested {
     required TResult Function(SignInWithGitHubRequested value) signInWithGitHub,
     required TResult Function(PasswordResetRequested value)
     passwordResetRequested,
+    required TResult Function(SendEmailVerificationRequested value)
+    sendEmailVerificationRequested,
     required TResult Function(SignOutRequested value) signOutRequested,
   }) {
     return signInRequested(this);
@@ -483,6 +506,8 @@ class _$SignInRequestedImpl implements SignInRequested {
     TResult? Function(SignInWithFacebookRequested value)? signInWithFacebook,
     TResult? Function(SignInWithGitHubRequested value)? signInWithGitHub,
     TResult? Function(PasswordResetRequested value)? passwordResetRequested,
+    TResult? Function(SendEmailVerificationRequested value)?
+    sendEmailVerificationRequested,
     TResult? Function(SignOutRequested value)? signOutRequested,
   }) {
     return signInRequested?.call(this);
@@ -498,6 +523,8 @@ class _$SignInRequestedImpl implements SignInRequested {
     TResult Function(SignInWithFacebookRequested value)? signInWithFacebook,
     TResult Function(SignInWithGitHubRequested value)? signInWithGitHub,
     TResult Function(PasswordResetRequested value)? passwordResetRequested,
+    TResult Function(SendEmailVerificationRequested value)?
+    sendEmailVerificationRequested,
     TResult Function(SignOutRequested value)? signOutRequested,
     required TResult orElse(),
   }) {
@@ -634,6 +661,7 @@ class _$SignUpRequestedImpl implements SignUpRequested {
     required TResult Function() signInWithFacebook,
     required TResult Function() signInWithGitHub,
     required TResult Function(String email) passwordResetRequested,
+    required TResult Function() sendEmailVerificationRequested,
     required TResult Function() signOutRequested,
   }) {
     return signUpRequested(email, password, confirmPassword);
@@ -650,6 +678,7 @@ class _$SignUpRequestedImpl implements SignUpRequested {
     TResult? Function()? signInWithFacebook,
     TResult? Function()? signInWithGitHub,
     TResult? Function(String email)? passwordResetRequested,
+    TResult? Function()? sendEmailVerificationRequested,
     TResult? Function()? signOutRequested,
   }) {
     return signUpRequested?.call(email, password, confirmPassword);
@@ -666,6 +695,7 @@ class _$SignUpRequestedImpl implements SignUpRequested {
     TResult Function()? signInWithFacebook,
     TResult Function()? signInWithGitHub,
     TResult Function(String email)? passwordResetRequested,
+    TResult Function()? sendEmailVerificationRequested,
     TResult Function()? signOutRequested,
     required TResult orElse(),
   }) {
@@ -687,6 +717,8 @@ class _$SignUpRequestedImpl implements SignUpRequested {
     required TResult Function(SignInWithGitHubRequested value) signInWithGitHub,
     required TResult Function(PasswordResetRequested value)
     passwordResetRequested,
+    required TResult Function(SendEmailVerificationRequested value)
+    sendEmailVerificationRequested,
     required TResult Function(SignOutRequested value) signOutRequested,
   }) {
     return signUpRequested(this);
@@ -702,6 +734,8 @@ class _$SignUpRequestedImpl implements SignUpRequested {
     TResult? Function(SignInWithFacebookRequested value)? signInWithFacebook,
     TResult? Function(SignInWithGitHubRequested value)? signInWithGitHub,
     TResult? Function(PasswordResetRequested value)? passwordResetRequested,
+    TResult? Function(SendEmailVerificationRequested value)?
+    sendEmailVerificationRequested,
     TResult? Function(SignOutRequested value)? signOutRequested,
   }) {
     return signUpRequested?.call(this);
@@ -717,6 +751,8 @@ class _$SignUpRequestedImpl implements SignUpRequested {
     TResult Function(SignInWithFacebookRequested value)? signInWithFacebook,
     TResult Function(SignInWithGitHubRequested value)? signInWithGitHub,
     TResult Function(PasswordResetRequested value)? passwordResetRequested,
+    TResult Function(SendEmailVerificationRequested value)?
+    sendEmailVerificationRequested,
     TResult Function(SignOutRequested value)? signOutRequested,
     required TResult orElse(),
   }) {
@@ -801,6 +837,7 @@ class _$SignInWithGoogleRequestedImpl implements SignInWithGoogleRequested {
     required TResult Function() signInWithFacebook,
     required TResult Function() signInWithGitHub,
     required TResult Function(String email) passwordResetRequested,
+    required TResult Function() sendEmailVerificationRequested,
     required TResult Function() signOutRequested,
   }) {
     return signInWithGoogle();
@@ -817,6 +854,7 @@ class _$SignInWithGoogleRequestedImpl implements SignInWithGoogleRequested {
     TResult? Function()? signInWithFacebook,
     TResult? Function()? signInWithGitHub,
     TResult? Function(String email)? passwordResetRequested,
+    TResult? Function()? sendEmailVerificationRequested,
     TResult? Function()? signOutRequested,
   }) {
     return signInWithGoogle?.call();
@@ -833,6 +871,7 @@ class _$SignInWithGoogleRequestedImpl implements SignInWithGoogleRequested {
     TResult Function()? signInWithFacebook,
     TResult Function()? signInWithGitHub,
     TResult Function(String email)? passwordResetRequested,
+    TResult Function()? sendEmailVerificationRequested,
     TResult Function()? signOutRequested,
     required TResult orElse(),
   }) {
@@ -854,6 +893,8 @@ class _$SignInWithGoogleRequestedImpl implements SignInWithGoogleRequested {
     required TResult Function(SignInWithGitHubRequested value) signInWithGitHub,
     required TResult Function(PasswordResetRequested value)
     passwordResetRequested,
+    required TResult Function(SendEmailVerificationRequested value)
+    sendEmailVerificationRequested,
     required TResult Function(SignOutRequested value) signOutRequested,
   }) {
     return signInWithGoogle(this);
@@ -869,6 +910,8 @@ class _$SignInWithGoogleRequestedImpl implements SignInWithGoogleRequested {
     TResult? Function(SignInWithFacebookRequested value)? signInWithFacebook,
     TResult? Function(SignInWithGitHubRequested value)? signInWithGitHub,
     TResult? Function(PasswordResetRequested value)? passwordResetRequested,
+    TResult? Function(SendEmailVerificationRequested value)?
+    sendEmailVerificationRequested,
     TResult? Function(SignOutRequested value)? signOutRequested,
   }) {
     return signInWithGoogle?.call(this);
@@ -884,6 +927,8 @@ class _$SignInWithGoogleRequestedImpl implements SignInWithGoogleRequested {
     TResult Function(SignInWithFacebookRequested value)? signInWithFacebook,
     TResult Function(SignInWithGitHubRequested value)? signInWithGitHub,
     TResult Function(PasswordResetRequested value)? passwordResetRequested,
+    TResult Function(SendEmailVerificationRequested value)?
+    sendEmailVerificationRequested,
     TResult Function(SignOutRequested value)? signOutRequested,
     required TResult orElse(),
   }) {
@@ -954,6 +999,7 @@ class _$SignInWithFacebookRequestedImpl implements SignInWithFacebookRequested {
     required TResult Function() signInWithFacebook,
     required TResult Function() signInWithGitHub,
     required TResult Function(String email) passwordResetRequested,
+    required TResult Function() sendEmailVerificationRequested,
     required TResult Function() signOutRequested,
   }) {
     return signInWithFacebook();
@@ -970,6 +1016,7 @@ class _$SignInWithFacebookRequestedImpl implements SignInWithFacebookRequested {
     TResult? Function()? signInWithFacebook,
     TResult? Function()? signInWithGitHub,
     TResult? Function(String email)? passwordResetRequested,
+    TResult? Function()? sendEmailVerificationRequested,
     TResult? Function()? signOutRequested,
   }) {
     return signInWithFacebook?.call();
@@ -986,6 +1033,7 @@ class _$SignInWithFacebookRequestedImpl implements SignInWithFacebookRequested {
     TResult Function()? signInWithFacebook,
     TResult Function()? signInWithGitHub,
     TResult Function(String email)? passwordResetRequested,
+    TResult Function()? sendEmailVerificationRequested,
     TResult Function()? signOutRequested,
     required TResult orElse(),
   }) {
@@ -1007,6 +1055,8 @@ class _$SignInWithFacebookRequestedImpl implements SignInWithFacebookRequested {
     required TResult Function(SignInWithGitHubRequested value) signInWithGitHub,
     required TResult Function(PasswordResetRequested value)
     passwordResetRequested,
+    required TResult Function(SendEmailVerificationRequested value)
+    sendEmailVerificationRequested,
     required TResult Function(SignOutRequested value) signOutRequested,
   }) {
     return signInWithFacebook(this);
@@ -1022,6 +1072,8 @@ class _$SignInWithFacebookRequestedImpl implements SignInWithFacebookRequested {
     TResult? Function(SignInWithFacebookRequested value)? signInWithFacebook,
     TResult? Function(SignInWithGitHubRequested value)? signInWithGitHub,
     TResult? Function(PasswordResetRequested value)? passwordResetRequested,
+    TResult? Function(SendEmailVerificationRequested value)?
+    sendEmailVerificationRequested,
     TResult? Function(SignOutRequested value)? signOutRequested,
   }) {
     return signInWithFacebook?.call(this);
@@ -1037,6 +1089,8 @@ class _$SignInWithFacebookRequestedImpl implements SignInWithFacebookRequested {
     TResult Function(SignInWithFacebookRequested value)? signInWithFacebook,
     TResult Function(SignInWithGitHubRequested value)? signInWithGitHub,
     TResult Function(PasswordResetRequested value)? passwordResetRequested,
+    TResult Function(SendEmailVerificationRequested value)?
+    sendEmailVerificationRequested,
     TResult Function(SignOutRequested value)? signOutRequested,
     required TResult orElse(),
   }) {
@@ -1108,6 +1162,7 @@ class _$SignInWithGitHubRequestedImpl implements SignInWithGitHubRequested {
     required TResult Function() signInWithFacebook,
     required TResult Function() signInWithGitHub,
     required TResult Function(String email) passwordResetRequested,
+    required TResult Function() sendEmailVerificationRequested,
     required TResult Function() signOutRequested,
   }) {
     return signInWithGitHub();
@@ -1124,6 +1179,7 @@ class _$SignInWithGitHubRequestedImpl implements SignInWithGitHubRequested {
     TResult? Function()? signInWithFacebook,
     TResult? Function()? signInWithGitHub,
     TResult? Function(String email)? passwordResetRequested,
+    TResult? Function()? sendEmailVerificationRequested,
     TResult? Function()? signOutRequested,
   }) {
     return signInWithGitHub?.call();
@@ -1140,6 +1196,7 @@ class _$SignInWithGitHubRequestedImpl implements SignInWithGitHubRequested {
     TResult Function()? signInWithFacebook,
     TResult Function()? signInWithGitHub,
     TResult Function(String email)? passwordResetRequested,
+    TResult Function()? sendEmailVerificationRequested,
     TResult Function()? signOutRequested,
     required TResult orElse(),
   }) {
@@ -1161,6 +1218,8 @@ class _$SignInWithGitHubRequestedImpl implements SignInWithGitHubRequested {
     required TResult Function(SignInWithGitHubRequested value) signInWithGitHub,
     required TResult Function(PasswordResetRequested value)
     passwordResetRequested,
+    required TResult Function(SendEmailVerificationRequested value)
+    sendEmailVerificationRequested,
     required TResult Function(SignOutRequested value) signOutRequested,
   }) {
     return signInWithGitHub(this);
@@ -1176,6 +1235,8 @@ class _$SignInWithGitHubRequestedImpl implements SignInWithGitHubRequested {
     TResult? Function(SignInWithFacebookRequested value)? signInWithFacebook,
     TResult? Function(SignInWithGitHubRequested value)? signInWithGitHub,
     TResult? Function(PasswordResetRequested value)? passwordResetRequested,
+    TResult? Function(SendEmailVerificationRequested value)?
+    sendEmailVerificationRequested,
     TResult? Function(SignOutRequested value)? signOutRequested,
   }) {
     return signInWithGitHub?.call(this);
@@ -1191,6 +1252,8 @@ class _$SignInWithGitHubRequestedImpl implements SignInWithGitHubRequested {
     TResult Function(SignInWithFacebookRequested value)? signInWithFacebook,
     TResult Function(SignInWithGitHubRequested value)? signInWithGitHub,
     TResult Function(PasswordResetRequested value)? passwordResetRequested,
+    TResult Function(SendEmailVerificationRequested value)?
+    sendEmailVerificationRequested,
     TResult Function(SignOutRequested value)? signOutRequested,
     required TResult orElse(),
   }) {
@@ -1291,6 +1354,7 @@ class _$PasswordResetRequestedImpl implements PasswordResetRequested {
     required TResult Function() signInWithFacebook,
     required TResult Function() signInWithGitHub,
     required TResult Function(String email) passwordResetRequested,
+    required TResult Function() sendEmailVerificationRequested,
     required TResult Function() signOutRequested,
   }) {
     return passwordResetRequested(email);
@@ -1307,6 +1371,7 @@ class _$PasswordResetRequestedImpl implements PasswordResetRequested {
     TResult? Function()? signInWithFacebook,
     TResult? Function()? signInWithGitHub,
     TResult? Function(String email)? passwordResetRequested,
+    TResult? Function()? sendEmailVerificationRequested,
     TResult? Function()? signOutRequested,
   }) {
     return passwordResetRequested?.call(email);
@@ -1323,6 +1388,7 @@ class _$PasswordResetRequestedImpl implements PasswordResetRequested {
     TResult Function()? signInWithFacebook,
     TResult Function()? signInWithGitHub,
     TResult Function(String email)? passwordResetRequested,
+    TResult Function()? sendEmailVerificationRequested,
     TResult Function()? signOutRequested,
     required TResult orElse(),
   }) {
@@ -1344,6 +1410,8 @@ class _$PasswordResetRequestedImpl implements PasswordResetRequested {
     required TResult Function(SignInWithGitHubRequested value) signInWithGitHub,
     required TResult Function(PasswordResetRequested value)
     passwordResetRequested,
+    required TResult Function(SendEmailVerificationRequested value)
+    sendEmailVerificationRequested,
     required TResult Function(SignOutRequested value) signOutRequested,
   }) {
     return passwordResetRequested(this);
@@ -1359,6 +1427,8 @@ class _$PasswordResetRequestedImpl implements PasswordResetRequested {
     TResult? Function(SignInWithFacebookRequested value)? signInWithFacebook,
     TResult? Function(SignInWithGitHubRequested value)? signInWithGitHub,
     TResult? Function(PasswordResetRequested value)? passwordResetRequested,
+    TResult? Function(SendEmailVerificationRequested value)?
+    sendEmailVerificationRequested,
     TResult? Function(SignOutRequested value)? signOutRequested,
   }) {
     return passwordResetRequested?.call(this);
@@ -1374,6 +1444,8 @@ class _$PasswordResetRequestedImpl implements PasswordResetRequested {
     TResult Function(SignInWithFacebookRequested value)? signInWithFacebook,
     TResult Function(SignInWithGitHubRequested value)? signInWithGitHub,
     TResult Function(PasswordResetRequested value)? passwordResetRequested,
+    TResult Function(SendEmailVerificationRequested value)?
+    sendEmailVerificationRequested,
     TResult Function(SignOutRequested value)? signOutRequested,
     required TResult orElse(),
   }) {
@@ -1395,6 +1467,170 @@ abstract class PasswordResetRequested implements AuthEvent {
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PasswordResetRequestedImplCopyWith<_$PasswordResetRequestedImpl>
   get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$SendEmailVerificationRequestedImplCopyWith<$Res> {
+  factory _$$SendEmailVerificationRequestedImplCopyWith(
+    _$SendEmailVerificationRequestedImpl value,
+    $Res Function(_$SendEmailVerificationRequestedImpl) then,
+  ) = __$$SendEmailVerificationRequestedImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$SendEmailVerificationRequestedImplCopyWithImpl<$Res>
+    extends _$AuthEventCopyWithImpl<$Res, _$SendEmailVerificationRequestedImpl>
+    implements _$$SendEmailVerificationRequestedImplCopyWith<$Res> {
+  __$$SendEmailVerificationRequestedImplCopyWithImpl(
+    _$SendEmailVerificationRequestedImpl _value,
+    $Res Function(_$SendEmailVerificationRequestedImpl) _then,
+  ) : super(_value, _then);
+
+  /// Create a copy of AuthEvent
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$SendEmailVerificationRequestedImpl
+    implements SendEmailVerificationRequested {
+  const _$SendEmailVerificationRequestedImpl();
+
+  @override
+  String toString() {
+    return 'AuthEvent.sendEmailVerificationRequested()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SendEmailVerificationRequestedImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(UserEntity? user) authUserChanged,
+    required TResult Function(String email, String password) signInRequested,
+    required TResult Function(
+      String email,
+      String password,
+      String confirmPassword,
+    )
+    signUpRequested,
+    required TResult Function() signInWithGoogle,
+    required TResult Function() signInWithFacebook,
+    required TResult Function() signInWithGitHub,
+    required TResult Function(String email) passwordResetRequested,
+    required TResult Function() sendEmailVerificationRequested,
+    required TResult Function() signOutRequested,
+  }) {
+    return sendEmailVerificationRequested();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(UserEntity? user)? authUserChanged,
+    TResult? Function(String email, String password)? signInRequested,
+    TResult? Function(String email, String password, String confirmPassword)?
+    signUpRequested,
+    TResult? Function()? signInWithGoogle,
+    TResult? Function()? signInWithFacebook,
+    TResult? Function()? signInWithGitHub,
+    TResult? Function(String email)? passwordResetRequested,
+    TResult? Function()? sendEmailVerificationRequested,
+    TResult? Function()? signOutRequested,
+  }) {
+    return sendEmailVerificationRequested?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(UserEntity? user)? authUserChanged,
+    TResult Function(String email, String password)? signInRequested,
+    TResult Function(String email, String password, String confirmPassword)?
+    signUpRequested,
+    TResult Function()? signInWithGoogle,
+    TResult Function()? signInWithFacebook,
+    TResult Function()? signInWithGitHub,
+    TResult Function(String email)? passwordResetRequested,
+    TResult Function()? sendEmailVerificationRequested,
+    TResult Function()? signOutRequested,
+    required TResult orElse(),
+  }) {
+    if (sendEmailVerificationRequested != null) {
+      return sendEmailVerificationRequested();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(AuthUserChanged value) authUserChanged,
+    required TResult Function(SignInRequested value) signInRequested,
+    required TResult Function(SignUpRequested value) signUpRequested,
+    required TResult Function(SignInWithGoogleRequested value) signInWithGoogle,
+    required TResult Function(SignInWithFacebookRequested value)
+    signInWithFacebook,
+    required TResult Function(SignInWithGitHubRequested value) signInWithGitHub,
+    required TResult Function(PasswordResetRequested value)
+    passwordResetRequested,
+    required TResult Function(SendEmailVerificationRequested value)
+    sendEmailVerificationRequested,
+    required TResult Function(SignOutRequested value) signOutRequested,
+  }) {
+    return sendEmailVerificationRequested(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(AuthUserChanged value)? authUserChanged,
+    TResult? Function(SignInRequested value)? signInRequested,
+    TResult? Function(SignUpRequested value)? signUpRequested,
+    TResult? Function(SignInWithGoogleRequested value)? signInWithGoogle,
+    TResult? Function(SignInWithFacebookRequested value)? signInWithFacebook,
+    TResult? Function(SignInWithGitHubRequested value)? signInWithGitHub,
+    TResult? Function(PasswordResetRequested value)? passwordResetRequested,
+    TResult? Function(SendEmailVerificationRequested value)?
+    sendEmailVerificationRequested,
+    TResult? Function(SignOutRequested value)? signOutRequested,
+  }) {
+    return sendEmailVerificationRequested?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(AuthUserChanged value)? authUserChanged,
+    TResult Function(SignInRequested value)? signInRequested,
+    TResult Function(SignUpRequested value)? signUpRequested,
+    TResult Function(SignInWithGoogleRequested value)? signInWithGoogle,
+    TResult Function(SignInWithFacebookRequested value)? signInWithFacebook,
+    TResult Function(SignInWithGitHubRequested value)? signInWithGitHub,
+    TResult Function(PasswordResetRequested value)? passwordResetRequested,
+    TResult Function(SendEmailVerificationRequested value)?
+    sendEmailVerificationRequested,
+    TResult Function(SignOutRequested value)? signOutRequested,
+    required TResult orElse(),
+  }) {
+    if (sendEmailVerificationRequested != null) {
+      return sendEmailVerificationRequested(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class SendEmailVerificationRequested implements AuthEvent {
+  const factory SendEmailVerificationRequested() =
+      _$SendEmailVerificationRequestedImpl;
 }
 
 /// @nodoc
@@ -1452,6 +1688,7 @@ class _$SignOutRequestedImpl implements SignOutRequested {
     required TResult Function() signInWithFacebook,
     required TResult Function() signInWithGitHub,
     required TResult Function(String email) passwordResetRequested,
+    required TResult Function() sendEmailVerificationRequested,
     required TResult Function() signOutRequested,
   }) {
     return signOutRequested();
@@ -1468,6 +1705,7 @@ class _$SignOutRequestedImpl implements SignOutRequested {
     TResult? Function()? signInWithFacebook,
     TResult? Function()? signInWithGitHub,
     TResult? Function(String email)? passwordResetRequested,
+    TResult? Function()? sendEmailVerificationRequested,
     TResult? Function()? signOutRequested,
   }) {
     return signOutRequested?.call();
@@ -1484,6 +1722,7 @@ class _$SignOutRequestedImpl implements SignOutRequested {
     TResult Function()? signInWithFacebook,
     TResult Function()? signInWithGitHub,
     TResult Function(String email)? passwordResetRequested,
+    TResult Function()? sendEmailVerificationRequested,
     TResult Function()? signOutRequested,
     required TResult orElse(),
   }) {
@@ -1505,6 +1744,8 @@ class _$SignOutRequestedImpl implements SignOutRequested {
     required TResult Function(SignInWithGitHubRequested value) signInWithGitHub,
     required TResult Function(PasswordResetRequested value)
     passwordResetRequested,
+    required TResult Function(SendEmailVerificationRequested value)
+    sendEmailVerificationRequested,
     required TResult Function(SignOutRequested value) signOutRequested,
   }) {
     return signOutRequested(this);
@@ -1520,6 +1761,8 @@ class _$SignOutRequestedImpl implements SignOutRequested {
     TResult? Function(SignInWithFacebookRequested value)? signInWithFacebook,
     TResult? Function(SignInWithGitHubRequested value)? signInWithGitHub,
     TResult? Function(PasswordResetRequested value)? passwordResetRequested,
+    TResult? Function(SendEmailVerificationRequested value)?
+    sendEmailVerificationRequested,
     TResult? Function(SignOutRequested value)? signOutRequested,
   }) {
     return signOutRequested?.call(this);
@@ -1535,6 +1778,8 @@ class _$SignOutRequestedImpl implements SignOutRequested {
     TResult Function(SignInWithFacebookRequested value)? signInWithFacebook,
     TResult Function(SignInWithGitHubRequested value)? signInWithGitHub,
     TResult Function(PasswordResetRequested value)? passwordResetRequested,
+    TResult Function(SendEmailVerificationRequested value)?
+    sendEmailVerificationRequested,
     TResult Function(SignOutRequested value)? signOutRequested,
     required TResult orElse(),
   }) {

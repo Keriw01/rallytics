@@ -20,7 +20,12 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'pl';
 
-  static String m0(userName) => "Witaj ponownie, ${userName}!";
+  static String m0(userEmail) =>
+      "Link weryfikacyjny został wysłany na adres ${userEmail}. Sprawdź skrzynkę odbiorczą i kliknij link, aby aktywować konto.";
+
+  static String m1(seconds) => "Wyślij ponownie za ${seconds} s";
+
+  static String m2(userName) => "Witaj ponownie, ${userName}!";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
@@ -64,6 +69,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "passwordResetEmailSentSuccess": MessageLookupByLibrary.simpleMessage(
             "Jeśli istnieje konto dla tego adresu e-mail, link do resetowania hasła został wysłany."),
         "registerTitle": MessageLookupByLibrary.simpleMessage("Rejestracja"),
+        "resetPasswordInstruction": MessageLookupByLibrary.simpleMessage(
+            "Wprowadź adres e-mail powiązany z Twoim kontem, a my wyślemy Ci link umożliwiający zresetowanie hasła."),
         "resetPasswordTitle":
             MessageLookupByLibrary.simpleMessage("Zresetuj hasło"),
         "saveButton": MessageLookupByLibrary.simpleMessage("Zapisz"),
@@ -86,6 +93,12 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Hasła do siebie nie pasują."),
         "validationErrorWeakPassword":
             MessageLookupByLibrary.simpleMessage("Hasło nie spełnia wymagań."),
-        "welcomeUserMessage": m0
+        "verifyEmailMessage": m0,
+        "verifyEmailResendButton":
+            MessageLookupByLibrary.simpleMessage("Wyślij ponownie e-mail"),
+        "verifyEmailResendButtonInSeconds": m1,
+        "verifyEmailTitle":
+            MessageLookupByLibrary.simpleMessage("Weryfikacja e-mail"),
+        "welcomeUserMessage": m2
       };
 }

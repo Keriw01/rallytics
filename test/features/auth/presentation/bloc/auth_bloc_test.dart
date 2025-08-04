@@ -6,6 +6,7 @@ import 'package:rallytics/core/error/exceptions.dart';
 
 import 'package:rallytics/features/auth/domain/entities/user_entity.dart';
 import 'package:rallytics/features/auth/domain/usecases/get_auth_state_changes_usecase.dart';
+import 'package:rallytics/features/auth/domain/usecases/send_email_verification_usecase.dart';
 import 'package:rallytics/features/auth/domain/usecases/send_password_reset_email_usecase.dart';
 import 'package:rallytics/features/auth/domain/usecases/sign_in_with_email_usecase.dart';
 import 'package:rallytics/features/auth/domain/usecases/sign_in_with_facebook_usecase.dart';
@@ -27,6 +28,7 @@ import 'auth_bloc_test.mocks.dart';
   SignInWithFacebookUseCase,
   SignInWithGitHubUseCase,
   SendPasswordResetEmailUseCase,
+  SendEmailVerificationUseCase,
   SignOutUseCase,
 ])
 void main() {
@@ -38,6 +40,7 @@ void main() {
   late MockSignInWithFacebookUseCase mockSignInWithFacebookUseCase;
   late MockSignInWithGitHubUseCase mockSignInWithGitHubUseCase;
   late MockSendPasswordResetEmailUseCase mockSendPasswordResetEmailUseCase;
+  late MockSendEmailVerificationUseCase mockSendEmailVerificationUseCase;
 
   late MockSignOutUseCase mockSignOutUseCase;
 
@@ -55,6 +58,7 @@ void main() {
     mockSignInWithFacebookUseCase = MockSignInWithFacebookUseCase();
     mockSignInWithGitHubUseCase = MockSignInWithGitHubUseCase();
     mockSendPasswordResetEmailUseCase = MockSendPasswordResetEmailUseCase();
+    mockSendEmailVerificationUseCase = MockSendEmailVerificationUseCase();
     mockSignOutUseCase = MockSignOutUseCase();
 
     //! Globally mocking the authStateChanges stream for all tests in this file.
@@ -74,6 +78,7 @@ void main() {
       mockSignInWithFacebookUseCase,
       mockSignInWithGitHubUseCase,
       mockSendPasswordResetEmailUseCase,
+      mockSendEmailVerificationUseCase,
       mockSignOutUseCase,
     );
 
@@ -97,6 +102,7 @@ void main() {
         mockSignInWithFacebookUseCase,
         mockSignInWithGitHubUseCase,
         mockSendPasswordResetEmailUseCase,
+        mockSendEmailVerificationUseCase,
         mockSignOutUseCase,
       ),
 
@@ -119,6 +125,7 @@ void main() {
         mockSignInWithFacebookUseCase,
         mockSignInWithGitHubUseCase,
         mockSendPasswordResetEmailUseCase,
+        mockSendEmailVerificationUseCase,
         mockSignOutUseCase,
       ),
 
@@ -143,6 +150,7 @@ void main() {
         mockSignInWithFacebookUseCase,
         mockSignInWithGitHubUseCase,
         mockSendPasswordResetEmailUseCase,
+        mockSendEmailVerificationUseCase,
         mockSignOutUseCase,
       ),
 
@@ -171,6 +179,7 @@ void main() {
         mockSignInWithFacebookUseCase,
         mockSignInWithGitHubUseCase,
         mockSendPasswordResetEmailUseCase,
+        mockSendEmailVerificationUseCase,
         mockSignOutUseCase,
       ),
       act: (bloc) => bloc.add(
@@ -200,6 +209,7 @@ void main() {
         mockSignInWithFacebookUseCase,
         mockSignInWithGitHubUseCase,
         mockSendPasswordResetEmailUseCase,
+        mockSendEmailVerificationUseCase,
         mockSignOutUseCase,
       ),
       act: (bloc) => bloc.add(
@@ -229,6 +239,7 @@ void main() {
         mockSignInWithFacebookUseCase,
         mockSignInWithGitHubUseCase,
         mockSendPasswordResetEmailUseCase,
+        mockSendEmailVerificationUseCase,
         mockSignOutUseCase,
       ),
       act: (bloc) => bloc.add(
@@ -255,6 +266,7 @@ void main() {
         mockSignInWithFacebookUseCase,
         mockSignInWithGitHubUseCase,
         mockSendPasswordResetEmailUseCase,
+        mockSendEmailVerificationUseCase,
         mockSignOutUseCase,
       ),
       act: (bloc) => bloc.add(
@@ -284,6 +296,7 @@ void main() {
         mockSignInWithFacebookUseCase,
         mockSignInWithGitHubUseCase,
         mockSendPasswordResetEmailUseCase,
+        mockSendEmailVerificationUseCase,
         mockSignOutUseCase,
       ),
       act: (bloc) => bloc.add(
@@ -314,6 +327,7 @@ void main() {
         mockSignInWithFacebookUseCase,
         mockSignInWithGitHubUseCase,
         mockSendPasswordResetEmailUseCase,
+        mockSendEmailVerificationUseCase,
         mockSignOutUseCase,
       ),
       act: (bloc) => bloc.add(
@@ -344,6 +358,7 @@ void main() {
         mockSignInWithFacebookUseCase,
         mockSignInWithGitHubUseCase,
         mockSendPasswordResetEmailUseCase,
+        mockSendEmailVerificationUseCase,
         mockSignOutUseCase,
       ),
       act: (bloc) => bloc.add(
@@ -373,6 +388,7 @@ void main() {
         mockSignInWithFacebookUseCase,
         mockSignInWithGitHubUseCase,
         mockSendPasswordResetEmailUseCase,
+        mockSendEmailVerificationUseCase,
         mockSignOutUseCase,
       ),
       act: (bloc) => bloc.add(
@@ -402,6 +418,7 @@ void main() {
         mockSignInWithFacebookUseCase,
         mockSignInWithGitHubUseCase,
         mockSendPasswordResetEmailUseCase,
+        mockSendEmailVerificationUseCase,
         mockSignOutUseCase,
       ),
       act: (bloc) => bloc.add(
@@ -431,6 +448,7 @@ void main() {
         mockSignInWithFacebookUseCase,
         mockSignInWithGitHubUseCase,
         mockSendPasswordResetEmailUseCase,
+        mockSendEmailVerificationUseCase,
         mockSignOutUseCase,
       ),
       act: (bloc) => bloc.add(
@@ -462,6 +480,7 @@ void main() {
         mockSignInWithFacebookUseCase,
         mockSignInWithGitHubUseCase,
         mockSendPasswordResetEmailUseCase,
+        mockSendEmailVerificationUseCase,
         mockSignOutUseCase,
       ),
       act: (bloc) => bloc.add(
@@ -489,6 +508,7 @@ void main() {
         mockSignInWithFacebookUseCase,
         mockSignInWithGitHubUseCase,
         mockSendPasswordResetEmailUseCase,
+        mockSendEmailVerificationUseCase,
         mockSignOutUseCase,
       ),
       act: (bloc) => bloc.add(
@@ -519,6 +539,7 @@ void main() {
         mockSignInWithFacebookUseCase,
         mockSignInWithGitHubUseCase,
         mockSendPasswordResetEmailUseCase,
+        mockSendEmailVerificationUseCase,
         mockSignOutUseCase,
       ),
       act: (bloc) => bloc.add(
@@ -549,6 +570,7 @@ void main() {
         mockSignInWithFacebookUseCase,
         mockSignInWithGitHubUseCase,
         mockSendPasswordResetEmailUseCase,
+        mockSendEmailVerificationUseCase,
         mockSignOutUseCase,
       ),
       act: (bloc) => bloc.add(
@@ -579,6 +601,7 @@ void main() {
         mockSignInWithFacebookUseCase,
         mockSignInWithGitHubUseCase,
         mockSendPasswordResetEmailUseCase,
+        mockSendEmailVerificationUseCase,
         mockSignOutUseCase,
       ),
       act: (bloc) => bloc.add(
@@ -609,6 +632,7 @@ void main() {
         mockSignInWithFacebookUseCase,
         mockSignInWithGitHubUseCase,
         mockSendPasswordResetEmailUseCase,
+        mockSendEmailVerificationUseCase,
         mockSignOutUseCase,
       ),
       act: (bloc) => bloc.add(
@@ -640,6 +664,7 @@ void main() {
         mockSignInWithFacebookUseCase,
         mockSignInWithGitHubUseCase,
         mockSendPasswordResetEmailUseCase,
+        mockSendEmailVerificationUseCase,
         mockSignOutUseCase,
       ),
       act: (bloc) => bloc.add(
@@ -671,6 +696,7 @@ void main() {
         mockSignInWithFacebookUseCase,
         mockSignInWithGitHubUseCase,
         mockSendPasswordResetEmailUseCase,
+        mockSendEmailVerificationUseCase,
         mockSignOutUseCase,
       ),
       act: (bloc) => bloc.add(
@@ -701,6 +727,7 @@ void main() {
         mockSignInWithFacebookUseCase,
         mockSignInWithGitHubUseCase,
         mockSendPasswordResetEmailUseCase,
+        mockSendEmailVerificationUseCase,
         mockSignOutUseCase,
       ),
       act: (bloc) => bloc.add(
@@ -731,6 +758,7 @@ void main() {
         mockSignInWithFacebookUseCase,
         mockSignInWithGitHubUseCase,
         mockSendPasswordResetEmailUseCase,
+        mockSendEmailVerificationUseCase,
         mockSignOutUseCase,
       ),
       act: (bloc) => bloc.add(
@@ -761,6 +789,7 @@ void main() {
         mockSignInWithFacebookUseCase,
         mockSignInWithGitHubUseCase,
         mockSendPasswordResetEmailUseCase,
+        mockSendEmailVerificationUseCase,
         mockSignOutUseCase,
       ),
       act: (bloc) => bloc.add(
@@ -793,6 +822,7 @@ void main() {
         mockSignInWithFacebookUseCase,
         mockSignInWithGitHubUseCase,
         mockSendPasswordResetEmailUseCase,
+        mockSendEmailVerificationUseCase,
         mockSignOutUseCase,
       ),
 
@@ -819,6 +849,7 @@ void main() {
       mockSignInWithFacebookUseCase,
       mockSignInWithGitHubUseCase,
       mockSendPasswordResetEmailUseCase,
+      mockSendEmailVerificationUseCase,
       mockSignOutUseCase,
     ),
 

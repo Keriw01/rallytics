@@ -13,6 +13,7 @@ abstract class AuthFirebaseDataSource {
   Future<void> signInWithFacebook();
   Future<void> signInWithGitHub();
   Future<void> sendPasswordResetEmail(String email);
+  Future<void> sendEmailVerification();
   Future<void> signOut();
   Stream<User?> get authStateChanges;
 }
@@ -103,6 +104,18 @@ class AuthFirebaseDataSourceImpl implements AuthFirebaseDataSource {
   Future<void> sendPasswordResetEmail(String email) async {
     try {
       await _firebaseAuth.sendPasswordResetEmail(email: email);
+    } on FirebaseAuthException {
+      rethrow;
+    }
+  }
+
+  @override
+  Future<void> sendEmailVerification() async {
+    try {
+      final user = _firebaseAuth.currentUser;
+      if (user != null && !user.emailVerified) {
+        await user.sendEmailVerification();
+      }
     } on FirebaseAuthException {
       rethrow;
     }

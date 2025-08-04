@@ -4,18 +4,25 @@ import 'package:mockito/mockito.dart';
 import 'package:rallytics/core/error/exceptions.dart';
 import 'package:rallytics/features/auth/domain/repositories/auth_repository.dart';
 import 'package:rallytics/features/auth/domain/usecases/params/sign_up_with_email_params.dart';
+import 'package:rallytics/features/auth/domain/usecases/send_email_verification_usecase.dart';
 import 'package:rallytics/features/auth/domain/usecases/sign_up_with_email_usecase.dart';
 
 import 'sign_up_use_case_test.mocks.dart';
 
-@GenerateMocks([AuthRepository])
+@GenerateMocks([AuthRepository, SendEmailVerificationUseCase])
 void main() {
   late SignUpWithEmailUseCase useCase;
   late MockAuthRepository mockAuthRepository;
+  late MockSendEmailVerificationUseCase mockSendEmailVerificationUseCase;
 
   setUp(() {
     mockAuthRepository = MockAuthRepository();
-    useCase = SignUpWithEmailUseCase(mockAuthRepository);
+    mockSendEmailVerificationUseCase = MockSendEmailVerificationUseCase();
+
+    useCase = SignUpWithEmailUseCase(
+      mockAuthRepository,
+      mockSendEmailVerificationUseCase,
+    );
   });
 
   const tEmail = 'test@test.com';
