@@ -1,5 +1,7 @@
 import java.io.FileInputStream
 import java.util.Properties
+import java.io.File
+import com.google.gson.Gson
 
 plugins {
     id("com.android.application")
@@ -12,12 +14,21 @@ plugins {
     id("dev.flutter.flutter-gradle-plugin")
 }
 
+fun getApiKeys(flavor: String, projectDir: File): Map<String, Any> {
+    val projectRoot = projectDir.parentFile.parentFile 
+    val keysFile = File(projectRoot, "api-keys.${flavor}.json")
+    if (keysFile.exists()) {
+        return Gson().fromJson(keysFile.reader(), Map::class.java) as Map<String, Any>
+    }
+    return emptyMap()
+}
+
 val keystorePropertiesFile = rootProject.file("key.properties")
 val keystoreProperties = Properties()
+
 if (keystorePropertiesFile.exists()) {
     keystoreProperties.load(FileInputStream(keystorePropertiesFile))
 }
-
 
 android {
     namespace = "com.example.rallytics"
@@ -64,11 +75,17 @@ android {
     productFlavors {
         create("dev") {
             dimension = "default"
+            applicationIdSuffix = ".dev"
+            versionNameSuffix = "-dev"
             resValue(
                 type = "string",
                 name = "app_name",
                 value = "Rallytics DEV")
-            applicationIdSuffix = ".dev"
+            val devKeys = getApiKeys("dev", project.projectDir)
+            manifestPlaceholders.apply {
+                put("facebookAppId", devKeys["facebook_app_id"] ?: "")
+                put("facebookClientToken", devKeys["facebook_client_token"] ?: "")
+            }
         }
 
         create("prod") {
@@ -78,6 +95,11 @@ android {
                 name = "app_name",
                 value = "Rallytics")
             applicationIdSuffix = ""
+            val prodKeys = getApiKeys("prod", project.projectDir)
+            manifestPlaceholders.apply {
+                put("facebookAppId", prodKeys["facebook_app_id"] ?: "")
+                put("facebookClientToken", prodKeys["facebook_client_token"] ?: "")
+            }
         }
     }
 }

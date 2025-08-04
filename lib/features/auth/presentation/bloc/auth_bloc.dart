@@ -4,8 +4,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:rallytics/core/usecases/usecase.dart';
 import 'package:rallytics/features/auth/domain/entities/user_entity.dart';
-import 'package:rallytics/features/auth/domain/usecases/get_auth_state_changes_use_case.dart';
+import 'package:rallytics/features/auth/domain/usecases/get_auth_state_changes.dart';
 import 'package:rallytics/features/auth/domain/usecases/sign_in_with_email.dart';
+import 'package:rallytics/features/auth/domain/usecases/sign_in_with_facebook.dart';
+import 'package:rallytics/features/auth/domain/usecases/sign_in_with_github.dart';
+import 'package:rallytics/features/auth/domain/usecases/sign_in_with_google.dart';
 import 'package:rallytics/features/auth/domain/usecases/sign_out.dart';
 import 'package:rallytics/features/auth/domain/usecases/sign_up_with_email.dart';
 import 'package:rallytics/features/auth/presentation/bloc/auth_event.dart';
@@ -23,6 +26,9 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   final GetAuthStateChangesUseCase _getAuthStateChangesUseCase;
   final SignInWithEmailUseCase _signInWithEmailUseCase;
   final SignUpWithEmailUseCase _signUpWithEmailUseCase;
+  final SignInWithGoogleUseCase _signInWithGoogleUseCase;
+  final SignInWithFacebookUseCase _signInWithFacebookUseCase;
+  final SignInWithGitHubUseCase _signInWithGitHubUseCase;
   final SignOutUseCase _signOutUseCase;
 
   StreamSubscription<UserEntity?>? _userSubscription;
@@ -31,6 +37,9 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     this._getAuthStateChangesUseCase,
     this._signInWithEmailUseCase,
     this._signUpWithEmailUseCase,
+    this._signInWithGoogleUseCase,
+    this._signInWithFacebookUseCase,
+    this._signInWithGitHubUseCase,
     this._signOutUseCase,
   ) : super(const AuthState.initial()) {
     _userSubscription = _getAuthStateChangesUseCase(NoParams()).listen((user) {
@@ -71,6 +80,30 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       } on AuthException catch (e) {
         emit(AuthState.error(e.code));
       } on ValidationException catch (e) {
+        emit(AuthState.error(e.code));
+      }
+    });
+
+    on<SignInWithGoogleRequested>((event, emit) async {
+      try {
+        await _signInWithGoogleUseCase(NoParams());
+      } on AuthException catch (e) {
+        emit(AuthState.error(e.code));
+      }
+    });
+
+    on<SignInWithFacebookRequested>((event, emit) async {
+      try {
+        await _signInWithFacebookUseCase(NoParams());
+      } on AuthException catch (e) {
+        emit(AuthState.error(e.code));
+      }
+    });
+
+    on<SignInWithGitHubRequested>((event, emit) async {
+      try {
+        await _signInWithGitHubUseCase(NoParams());
+      } on AuthException catch (e) {
         emit(AuthState.error(e.code));
       }
     });

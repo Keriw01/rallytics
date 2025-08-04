@@ -60,6 +60,33 @@ class MockAuthRepository extends _i1.Mock implements _i2.AuthRepository {
           as _i3.Future<void>);
 
   @override
+  _i3.Future<void> signInWithGoogle() =>
+      (super.noSuchMethod(
+            Invocation.method(#signInWithGoogle, []),
+            returnValue: _i3.Future<void>.value(),
+            returnValueForMissingStub: _i3.Future<void>.value(),
+          )
+          as _i3.Future<void>);
+
+  @override
+  _i3.Future<void> signInWithFacebook() =>
+      (super.noSuchMethod(
+            Invocation.method(#signInWithFacebook, []),
+            returnValue: _i3.Future<void>.value(),
+            returnValueForMissingStub: _i3.Future<void>.value(),
+          )
+          as _i3.Future<void>);
+
+  @override
+  _i3.Future<void> signInWithGitHub() =>
+      (super.noSuchMethod(
+            Invocation.method(#signInWithGitHub, []),
+            returnValue: _i3.Future<void>.value(),
+            returnValueForMissingStub: _i3.Future<void>.value(),
+          )
+          as _i3.Future<void>);
+
+  @override
   _i3.Future<void> signOut() =>
       (super.noSuchMethod(
             Invocation.method(#signOut, []),

@@ -5,15 +5,13 @@ class SocialLoginButtons extends StatelessWidget {
   const SocialLoginButtons({
     super.key,
     required this.onFacebookPressed,
-    required this.onTwitterPressed,
+    required this.onGitHubPressed,
     required this.onGooglePressed,
-    required this.onApplePressed,
   });
 
   final VoidCallback onFacebookPressed;
-  final VoidCallback onTwitterPressed;
+  final VoidCallback onGitHubPressed;
   final VoidCallback onGooglePressed;
-  final VoidCallback onApplePressed;
 
   @override
   Widget build(BuildContext context) {
@@ -25,23 +23,19 @@ class SocialLoginButtons extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           IconButton(
-            onPressed: () => onFacebookPressed,
-            icon: const Icon(FontAwesomeIcons.facebook, size: 36),
-          ),
-          SizedBox(width: screenHeight * 0.01),
-          IconButton(
-            onPressed: () => onTwitterPressed,
-            icon: const Icon(FontAwesomeIcons.xTwitter, size: 36),
-          ),
-          SizedBox(width: screenHeight * 0.01),
-          IconButton(
-            onPressed: () => onGooglePressed,
+            onPressed: onGooglePressed,
             icon: const Icon(FontAwesomeIcons.google, size: 36),
           ),
+
           SizedBox(width: screenHeight * 0.01),
           IconButton(
-            onPressed: () => onApplePressed,
-            icon: const Icon(FontAwesomeIcons.apple, size: 36),
+            onPressed: onGitHubPressed,
+            icon: const Icon(FontAwesomeIcons.github, size: 36),
+          ),
+          SizedBox(width: screenHeight * 0.01),
+          IconButton(
+            onPressed: onFacebookPressed,
+            icon: const Icon(FontAwesomeIcons.facebook, size: 36),
           ),
         ],
       ),

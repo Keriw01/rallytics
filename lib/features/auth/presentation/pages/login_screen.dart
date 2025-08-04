@@ -151,7 +151,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   children: [
                     Flexible(
                       child: TextButton(
-                        onPressed: () => null, //TODO: Handle forgot password
+                        onPressed: () {}, //TODO: Handle forgot password
                         child: Text(
                           S.of(context).forgotPasswordButton,
                           style: textTheme.labelMedium!.copyWith(
@@ -177,10 +177,15 @@ class _LoginScreenState extends State<LoginScreen> {
                 SizedBox(height: screenHeight * 0.02),
                 //TODO: Handle socials login buttons
                 SocialLoginButtons(
-                  onFacebookPressed: () => null,
-                  onTwitterPressed: () => null,
-                  onGooglePressed: () => null,
-                  onApplePressed: () => null,
+                  onGooglePressed: () => context.read<AuthBloc>().add(
+                            AuthEvent.signInWithGoogle(),
+                          ),
+                  onFacebookPressed: () => context.read<AuthBloc>().add(
+                    AuthEvent.signInWithFacebook(),
+                  ),
+                  onGitHubPressed: () => context.read<AuthBloc>().add(
+                    AuthEvent.signInWithGitHub(),
+                  ),
                 ),
                 AuthRedirectWidget(
                   promptText: S.of(context).signUpPrompt,

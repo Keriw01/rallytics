@@ -201,10 +201,15 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         SizedBox(height: screenHeight * 0.02),
                         //TODO: Handle socials login buttons
                         SocialLoginButtons(
-                          onFacebookPressed: () => null,
-                          onTwitterPressed: () => null,
-                          onGooglePressed: () => null,
-                          onApplePressed: () => null,
+                          onGooglePressed: () => context.read<AuthBloc>().add(
+                            AuthEvent.signInWithGoogle(),
+                          ),
+                          onFacebookPressed: () => context.read<AuthBloc>().add(
+                            AuthEvent.signInWithFacebook(),
+                          ),
+                          onGitHubPressed: () => context.read<AuthBloc>().add(
+                            AuthEvent.signInWithGitHub(),
+                          ),
                         ),
                         AuthRedirectWidget(
                           promptText: S.of(context).signInPrompt,

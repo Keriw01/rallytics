@@ -15,5 +15,8 @@ class AuthEvent with _$AuthEvent {
     required String password,
     required String confirmPassword,
   }) = SignUpRequested;
+  const factory AuthEvent.signInWithGoogle() = SignInWithGoogleRequested;
+  const factory AuthEvent.signInWithFacebook() = SignInWithFacebookRequested;
+  const factory AuthEvent.signInWithGitHub() = SignInWithGitHubRequested;
   const factory AuthEvent.signOutRequested() = SignOutRequested;
 }

@@ -10,5 +10,11 @@ abstract class AuthRepository {
 
   Future<void> signUpWithEmail(String email, String password);
 
+  Future<void> signInWithGoogle();
+
+  Future<void> signInWithFacebook();
+
+  Future<void> signInWithGitHub();
+
   Future<void> signOut();
 }

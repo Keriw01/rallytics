@@ -51,6 +51,33 @@ class AuthRepositoryImpl implements AuthRepository {
   }
 
   @override
+  Future<void> signInWithGoogle() async {
+    try {
+      await _authFirebaseDataSource.signInWithGoogle();
+    } catch (e) {
+      throw AuthException();
+    }
+  }
+
+  @override
+  Future<void> signInWithFacebook() async {
+    try {
+      await _authFirebaseDataSource.signInWithFacebook();
+    } catch (e) {
+      throw AuthException();
+    }
+  }
+
+  @override
+  Future<void> signInWithGitHub() async {
+    try {
+      await _authFirebaseDataSource.signInWithGitHub();
+    } catch (e) {
+      throw AuthException();
+    }
+  }
+
+  @override
   Future<void> signOut() async {
     try {
       await _authFirebaseDataSource.signOut();

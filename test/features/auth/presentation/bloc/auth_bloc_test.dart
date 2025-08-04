@@ -5,8 +5,11 @@ import 'package:mockito/mockito.dart';
 import 'package:rallytics/core/error/exceptions.dart';
 
 import 'package:rallytics/features/auth/domain/entities/user_entity.dart';
-import 'package:rallytics/features/auth/domain/usecases/get_auth_state_changes_use_case.dart';
+import 'package:rallytics/features/auth/domain/usecases/get_auth_state_changes.dart';
 import 'package:rallytics/features/auth/domain/usecases/sign_in_with_email.dart';
+import 'package:rallytics/features/auth/domain/usecases/sign_in_with_facebook.dart';
+import 'package:rallytics/features/auth/domain/usecases/sign_in_with_github.dart';
+import 'package:rallytics/features/auth/domain/usecases/sign_in_with_google.dart';
 import 'package:rallytics/features/auth/domain/usecases/sign_out.dart';
 import 'package:rallytics/features/auth/domain/usecases/sign_up_with_email.dart';
 import 'package:rallytics/features/auth/presentation/bloc/auth_bloc.dart';
@@ -19,6 +22,9 @@ import 'auth_bloc_test.mocks.dart';
   GetAuthStateChangesUseCase,
   SignInWithEmailUseCase,
   SignUpWithEmailUseCase,
+  SignInWithGoogleUseCase,
+  SignInWithFacebookUseCase,
+  SignInWithGitHubUseCase,
   SignOutUseCase,
 ])
 void main() {
@@ -26,6 +32,9 @@ void main() {
   late MockGetAuthStateChangesUseCase mockGetAuthStateChangesUseCase;
   late MockSignInWithEmailUseCase mockSignInUseCase;
   late MockSignUpWithEmailUseCase mockSignUpUseCase;
+  late MockSignInWithGoogleUseCase mockSignInWithGoogleUseCase;
+  late MockSignInWithFacebookUseCase mockSignInWithFacebookUseCase;
+  late MockSignInWithGitHubUseCase mockSignInWithGitHubUseCase;
   late MockSignOutUseCase mockSignOutUseCase;
 
   const testUserEntity = UserEntity(
@@ -38,6 +47,9 @@ void main() {
     mockGetAuthStateChangesUseCase = MockGetAuthStateChangesUseCase();
     mockSignInUseCase = MockSignInWithEmailUseCase();
     mockSignUpUseCase = MockSignUpWithEmailUseCase();
+    mockSignInWithGoogleUseCase = MockSignInWithGoogleUseCase();
+    mockSignInWithFacebookUseCase = MockSignInWithFacebookUseCase();
+    mockSignInWithGitHubUseCase = MockSignInWithGitHubUseCase();
     mockSignOutUseCase = MockSignOutUseCase();
 
     //! Globally mocking the authStateChanges stream for all tests in this file.
@@ -53,6 +65,9 @@ void main() {
       mockGetAuthStateChangesUseCase,
       mockSignInUseCase,
       mockSignUpUseCase,
+      mockSignInWithGoogleUseCase,
+      mockSignInWithFacebookUseCase,
+      mockSignInWithGitHubUseCase,
       mockSignOutUseCase,
     );
 
@@ -72,6 +87,9 @@ void main() {
         mockGetAuthStateChangesUseCase,
         mockSignInUseCase,
         mockSignUpUseCase,
+        mockSignInWithGoogleUseCase,
+        mockSignInWithFacebookUseCase,
+        mockSignInWithGitHubUseCase,
         mockSignOutUseCase,
       ),
 
@@ -90,6 +108,9 @@ void main() {
         mockGetAuthStateChangesUseCase,
         mockSignInUseCase,
         mockSignUpUseCase,
+        mockSignInWithGoogleUseCase,
+        mockSignInWithFacebookUseCase,
+        mockSignInWithGitHubUseCase,
         mockSignOutUseCase,
       ),
 
@@ -110,6 +131,9 @@ void main() {
         mockGetAuthStateChangesUseCase,
         mockSignInUseCase,
         mockSignUpUseCase,
+        mockSignInWithGoogleUseCase,
+        mockSignInWithFacebookUseCase,
+        mockSignInWithGitHubUseCase,
         mockSignOutUseCase,
       ),
 
@@ -134,6 +158,9 @@ void main() {
         mockGetAuthStateChangesUseCase,
         mockSignInUseCase,
         mockSignUpUseCase,
+        mockSignInWithGoogleUseCase,
+        mockSignInWithFacebookUseCase,
+        mockSignInWithGitHubUseCase,
         mockSignOutUseCase,
       ),
       act: (bloc) => bloc.add(
@@ -159,6 +186,9 @@ void main() {
         mockGetAuthStateChangesUseCase,
         mockSignInUseCase,
         mockSignUpUseCase,
+        mockSignInWithGoogleUseCase,
+        mockSignInWithFacebookUseCase,
+        mockSignInWithGitHubUseCase,
         mockSignOutUseCase,
       ),
       act: (bloc) => bloc.add(
@@ -184,6 +214,9 @@ void main() {
         mockGetAuthStateChangesUseCase,
         mockSignInUseCase,
         mockSignUpUseCase,
+        mockSignInWithGoogleUseCase,
+        mockSignInWithFacebookUseCase,
+        mockSignInWithGitHubUseCase,
         mockSignOutUseCase,
       ),
       act: (bloc) => bloc.add(
@@ -206,6 +239,9 @@ void main() {
         mockGetAuthStateChangesUseCase,
         mockSignInUseCase,
         mockSignUpUseCase,
+        mockSignInWithGoogleUseCase,
+        mockSignInWithFacebookUseCase,
+        mockSignInWithGitHubUseCase,
         mockSignOutUseCase,
       ),
       act: (bloc) => bloc.add(
@@ -231,6 +267,9 @@ void main() {
         mockGetAuthStateChangesUseCase,
         mockSignInUseCase,
         mockSignUpUseCase,
+        mockSignInWithGoogleUseCase,
+        mockSignInWithFacebookUseCase,
+        mockSignInWithGitHubUseCase,
         mockSignOutUseCase,
       ),
       act: (bloc) => bloc.add(
@@ -257,6 +296,9 @@ void main() {
         mockGetAuthStateChangesUseCase,
         mockSignInUseCase,
         mockSignUpUseCase,
+        mockSignInWithGoogleUseCase,
+        mockSignInWithFacebookUseCase,
+        mockSignInWithGitHubUseCase,
         mockSignOutUseCase,
       ),
       act: (bloc) => bloc.add(
@@ -283,6 +325,9 @@ void main() {
         mockGetAuthStateChangesUseCase,
         mockSignInUseCase,
         mockSignUpUseCase,
+        mockSignInWithGoogleUseCase,
+        mockSignInWithFacebookUseCase,
+        mockSignInWithGitHubUseCase,
         mockSignOutUseCase,
       ),
       act: (bloc) => bloc.add(
@@ -308,6 +353,9 @@ void main() {
         mockGetAuthStateChangesUseCase,
         mockSignInUseCase,
         mockSignUpUseCase,
+        mockSignInWithGoogleUseCase,
+        mockSignInWithFacebookUseCase,
+        mockSignInWithGitHubUseCase,
         mockSignOutUseCase,
       ),
       act: (bloc) => bloc.add(
@@ -333,6 +381,9 @@ void main() {
         mockGetAuthStateChangesUseCase,
         mockSignInUseCase,
         mockSignUpUseCase,
+        mockSignInWithGoogleUseCase,
+        mockSignInWithFacebookUseCase,
+        mockSignInWithGitHubUseCase,
         mockSignOutUseCase,
       ),
       act: (bloc) => bloc.add(
@@ -358,6 +409,9 @@ void main() {
         mockGetAuthStateChangesUseCase,
         mockSignInUseCase,
         mockSignUpUseCase,
+        mockSignInWithGoogleUseCase,
+        mockSignInWithFacebookUseCase,
+        mockSignInWithGitHubUseCase,
         mockSignOutUseCase,
       ),
       act: (bloc) => bloc.add(
@@ -385,6 +439,9 @@ void main() {
         mockGetAuthStateChangesUseCase,
         mockSignInUseCase,
         mockSignUpUseCase,
+        mockSignInWithGoogleUseCase,
+        mockSignInWithFacebookUseCase,
+        mockSignInWithGitHubUseCase,
         mockSignOutUseCase,
       ),
       act: (bloc) => bloc.add(
@@ -408,6 +465,9 @@ void main() {
         mockGetAuthStateChangesUseCase,
         mockSignInUseCase,
         mockSignUpUseCase,
+        mockSignInWithGoogleUseCase,
+        mockSignInWithFacebookUseCase,
+        mockSignInWithGitHubUseCase,
         mockSignOutUseCase,
       ),
       act: (bloc) => bloc.add(
@@ -434,6 +494,9 @@ void main() {
         mockGetAuthStateChangesUseCase,
         mockSignInUseCase,
         mockSignUpUseCase,
+        mockSignInWithGoogleUseCase,
+        mockSignInWithFacebookUseCase,
+        mockSignInWithGitHubUseCase,
         mockSignOutUseCase,
       ),
       act: (bloc) => bloc.add(
@@ -460,6 +523,9 @@ void main() {
         mockGetAuthStateChangesUseCase,
         mockSignInUseCase,
         mockSignUpUseCase,
+        mockSignInWithGoogleUseCase,
+        mockSignInWithFacebookUseCase,
+        mockSignInWithGitHubUseCase,
         mockSignOutUseCase,
       ),
       act: (bloc) => bloc.add(
@@ -486,6 +552,9 @@ void main() {
         mockGetAuthStateChangesUseCase,
         mockSignInUseCase,
         mockSignUpUseCase,
+        mockSignInWithGoogleUseCase,
+        mockSignInWithFacebookUseCase,
+        mockSignInWithGitHubUseCase,
         mockSignOutUseCase,
       ),
       act: (bloc) => bloc.add(
@@ -512,6 +581,9 @@ void main() {
         mockGetAuthStateChangesUseCase,
         mockSignInUseCase,
         mockSignUpUseCase,
+        mockSignInWithGoogleUseCase,
+        mockSignInWithFacebookUseCase,
+        mockSignInWithGitHubUseCase,
         mockSignOutUseCase,
       ),
       act: (bloc) => bloc.add(
@@ -539,6 +611,9 @@ void main() {
         mockGetAuthStateChangesUseCase,
         mockSignInUseCase,
         mockSignUpUseCase,
+        mockSignInWithGoogleUseCase,
+        mockSignInWithFacebookUseCase,
+        mockSignInWithGitHubUseCase,
         mockSignOutUseCase,
       ),
       act: (bloc) => bloc.add(
@@ -566,6 +641,9 @@ void main() {
         mockGetAuthStateChangesUseCase,
         mockSignInUseCase,
         mockSignUpUseCase,
+        mockSignInWithGoogleUseCase,
+        mockSignInWithFacebookUseCase,
+        mockSignInWithGitHubUseCase,
         mockSignOutUseCase,
       ),
       act: (bloc) => bloc.add(
@@ -592,6 +670,9 @@ void main() {
         mockGetAuthStateChangesUseCase,
         mockSignInUseCase,
         mockSignUpUseCase,
+        mockSignInWithGoogleUseCase,
+        mockSignInWithFacebookUseCase,
+        mockSignInWithGitHubUseCase,
         mockSignOutUseCase,
       ),
       act: (bloc) => bloc.add(
@@ -618,6 +699,9 @@ void main() {
         mockGetAuthStateChangesUseCase,
         mockSignInUseCase,
         mockSignUpUseCase,
+        mockSignInWithGoogleUseCase,
+        mockSignInWithFacebookUseCase,
+        mockSignInWithGitHubUseCase,
         mockSignOutUseCase,
       ),
       act: (bloc) => bloc.add(
@@ -644,6 +728,9 @@ void main() {
         mockGetAuthStateChangesUseCase,
         mockSignInUseCase,
         mockSignUpUseCase,
+        mockSignInWithGoogleUseCase,
+        mockSignInWithFacebookUseCase,
+        mockSignInWithGitHubUseCase,
         mockSignOutUseCase,
       ),
       act: (bloc) => bloc.add(
@@ -672,6 +759,9 @@ void main() {
         mockGetAuthStateChangesUseCase,
         mockSignInUseCase,
         mockSignUpUseCase,
+        mockSignInWithGoogleUseCase,
+        mockSignInWithFacebookUseCase,
+        mockSignInWithGitHubUseCase,
         mockSignOutUseCase,
       ),
 
@@ -694,6 +784,9 @@ void main() {
       mockGetAuthStateChangesUseCase,
       mockSignInUseCase,
       mockSignUpUseCase,
+      mockSignInWithGoogleUseCase,
+      mockSignInWithFacebookUseCase,
+      mockSignInWithGitHubUseCase,
       mockSignOutUseCase,
     ),
 
