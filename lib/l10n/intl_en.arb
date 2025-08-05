@@ -6,7 +6,7 @@
     "description": "The main title of the application, shown in the app bar."
   },
 
-
+  "sendButton": "Send",
   "saveButton": "Save",
   "cancelButton": "Cancel",
   "logoutButton": "Log Out",
@@ -14,7 +14,7 @@
 
 
   "loginTitle": "Login",
-  "signInButton": "Sign in",
+  "signInButton": "Sign In",
   "emailLabel": "Email",
   "emailHint": "Enter your email address",
   "passwordLabel": "Password",
@@ -23,9 +23,37 @@
   "forgotPasswordButton": "Forgot your password?",
   
   "registerTitle": "Register",
-  "signUpButton": "Sign up",
+  "signUpButton": "Sign Up",
   "signUpPrompt": "Don't have an account?",
   "signInPrompt": "Already have an account?",
+
+  "resetPasswordTitle": "Reset Password",
+  "passwordResetEmailSentSuccess": "If an account exists for that email, a password reset link has been sent.",
+  "resetPasswordInstruction": "Enter the email address associated with your account and we'll send you a link to reset your password.",
+
+
+  "verifyEmailTitle": "Verify Your Email",
+  "verifyEmailMessage": "A verification link has been sent to {userEmail}. Please check your inbox and click the link to activate your account.",
+  "@verifyEmailMessage": {
+    "description": "Message instructing the user to check their email.",
+    "placeholders": {
+      "userEmail": {
+        "type": "String",
+        "example": "test@example.com"
+      }
+    }
+  },
+  "verifyEmailResendButton": "Resend Email",
+  "verifyEmailResendButtonInSeconds": "Resend in {seconds}s",
+  "@verifyEmailResendButtonInSeconds": {
+    "description": "Button text showing a countdown before the user can resend the email.",
+    "placeholders": {
+      "seconds": {
+        "type": "String",
+        "example": "59"
+      }
+    }
+  },
 
   
   "authErrorEmailRequired" : "Email is required.",

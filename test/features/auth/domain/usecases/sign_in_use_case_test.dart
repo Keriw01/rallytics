@@ -3,7 +3,8 @@ import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:rallytics/core/error/exceptions.dart';
 import 'package:rallytics/features/auth/domain/repositories/auth_repository.dart';
-import 'package:rallytics/features/auth/domain/usecases/sign_in_with_email.dart';
+import 'package:rallytics/features/auth/domain/usecases/params/sign_in_with_email_params.dart';
+import 'package:rallytics/features/auth/domain/usecases/sign_in_with_email_usecase.dart';
 
 import 'sign_in_use_case_test.mocks.dart';
 

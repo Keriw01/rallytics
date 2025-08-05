@@ -60,6 +60,16 @@ class S {
     );
   }
 
+  /// `Send`
+  String get sendButton {
+    return Intl.message(
+      'Send',
+      name: 'sendButton',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Save`
   String get saveButton {
     return Intl.message(
@@ -110,10 +120,10 @@ class S {
     );
   }
 
-  /// `Sign in`
+  /// `Sign In`
   String get signInButton {
     return Intl.message(
-      'Sign in',
+      'Sign In',
       name: 'signInButton',
       desc: '',
       args: [],
@@ -190,10 +200,10 @@ class S {
     );
   }
 
-  /// `Sign up`
+  /// `Sign Up`
   String get signUpButton {
     return Intl.message(
-      'Sign up',
+      'Sign Up',
       name: 'signUpButton',
       desc: '',
       args: [],
@@ -217,6 +227,77 @@ class S {
       name: 'signInPrompt',
       desc: '',
       args: [],
+    );
+  }
+
+  /// `Reset Password`
+  String get resetPasswordTitle {
+    return Intl.message(
+      'Reset Password',
+      name: 'resetPasswordTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `If an account exists for that email, a password reset link has been sent.`
+  String get passwordResetEmailSentSuccess {
+    return Intl.message(
+      'If an account exists for that email, a password reset link has been sent.',
+      name: 'passwordResetEmailSentSuccess',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter the email address associated with your account and we'll send you a link to reset your password.`
+  String get resetPasswordInstruction {
+    return Intl.message(
+      'Enter the email address associated with your account and we\'ll send you a link to reset your password.',
+      name: 'resetPasswordInstruction',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Verify Your Email`
+  String get verifyEmailTitle {
+    return Intl.message(
+      'Verify Your Email',
+      name: 'verifyEmailTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `A verification link has been sent to {userEmail}. Please check your inbox and click the link to activate your account.`
+  String verifyEmailMessage(String userEmail) {
+    return Intl.message(
+      'A verification link has been sent to $userEmail. Please check your inbox and click the link to activate your account.',
+      name: 'verifyEmailMessage',
+      desc: 'Message instructing the user to check their email.',
+      args: [userEmail],
+    );
+  }
+
+  /// `Resend Email`
+  String get verifyEmailResendButton {
+    return Intl.message(
+      'Resend Email',
+      name: 'verifyEmailResendButton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Resend in {seconds}s`
+  String verifyEmailResendButtonInSeconds(String seconds) {
+    return Intl.message(
+      'Resend in ${seconds}s',
+      name: 'verifyEmailResendButtonInSeconds',
+      desc:
+          'Button text showing a countdown before the user can resend the email.',
+      args: [seconds],
     );
   }
 

@@ -6,7 +6,7 @@
     "description": "Główna nazwa aplikacji, wyświetlana w pasku aplikacji."
   },
 
-
+  "sendButton": "Wyślij",
   "saveButton": "Zapisz",
   "cancelButton": "Anuluj",
   "logoutButton": "Wyloguj",
@@ -26,6 +26,33 @@
   "signUpButton": "Zarejestruj się",
   "signUpPrompt": "Nie masz konta?",
   "signInPrompt": "Masz już konto?",
+
+  "resetPasswordTitle": "Zresetuj hasło",
+  "passwordResetEmailSentSuccess": "Jeśli istnieje konto dla tego adresu e-mail, link do resetowania hasła został wysłany.",
+  "resetPasswordInstruction": "Wprowadź adres e-mail powiązany z Twoim kontem, a my wyślemy Ci link umożliwiający zresetowanie hasła.",
+
+  "verifyEmailTitle": "Weryfikacja e-mail",
+  "verifyEmailMessage": "Link weryfikacyjny został wysłany na adres {userEmail}. Sprawdź skrzynkę odbiorczą i kliknij link, aby aktywować konto.",
+  "@verifyEmailMessage": {
+    "description": "Wiadomość z prośbą o sprawdzenie poczty e-mail.",
+    "placeholders": {
+      "userEmail": {
+        "type": "String",
+        "example": "test@example.com"
+      }
+    }
+  },
+  "verifyEmailResendButton": "Wyślij ponownie e-mail",
+  "verifyEmailResendButtonInSeconds": "Wyślij ponownie za {seconds} s",
+  "@verifyEmailResendButtonInSeconds": {
+    "description": "Tekst przycisku pokazujący odliczanie do momentu, w którym użytkownik będzie mógł ponownie wysłać e-mail.",
+    "placeholders": {
+      "seconds": {
+        "type": "String",
+        "example": "59"
+      }
+    }
+  },
 
   
   "authErrorEmailRequired" : "Email jest wymagany.",

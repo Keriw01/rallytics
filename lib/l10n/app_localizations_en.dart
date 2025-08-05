@@ -12,6 +12,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get appTitle => 'Rallytics';
 
   @override
+  String get sendButton => 'Send';
+
+  @override
   String get saveButton => 'Save';
 
   @override
@@ -27,7 +30,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get loginTitle => 'Login';
 
   @override
-  String get signInButton => 'Sign in';
+  String get signInButton => 'Sign In';
 
   @override
   String get emailLabel => 'Email';
@@ -51,13 +54,40 @@ class AppLocalizationsEn extends AppLocalizations {
   String get registerTitle => 'Register';
 
   @override
-  String get signUpButton => 'Sign up';
+  String get signUpButton => 'Sign Up';
 
   @override
   String get signUpPrompt => 'Don\'t have an account?';
 
   @override
   String get signInPrompt => 'Already have an account?';
+
+  @override
+  String get resetPasswordTitle => 'Reset Password';
+
+  @override
+  String get passwordResetEmailSentSuccess =>
+      'If an account exists for that email, a password reset link has been sent.';
+
+  @override
+  String get resetPasswordInstruction =>
+      'Enter the email address associated with your account and we\'ll send you a link to reset your password.';
+
+  @override
+  String get verifyEmailTitle => 'Verify Your Email';
+
+  @override
+  String verifyEmailMessage(String userEmail) {
+    return 'A verification link has been sent to $userEmail. Please check your inbox and click the link to activate your account.';
+  }
+
+  @override
+  String get verifyEmailResendButton => 'Resend Email';
+
+  @override
+  String verifyEmailResendButtonInSeconds(String seconds) {
+    return 'Resend in ${seconds}s';
+  }
 
   @override
   String get authErrorEmailRequired => 'Email is required.';

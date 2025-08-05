@@ -12,6 +12,9 @@ class AppLocalizationsPl extends AppLocalizations {
   String get appTitle => 'Rallytics';
 
   @override
+  String get sendButton => 'Wyślij';
+
+  @override
   String get saveButton => 'Zapisz';
 
   @override
@@ -58,6 +61,33 @@ class AppLocalizationsPl extends AppLocalizations {
 
   @override
   String get signInPrompt => 'Masz już konto?';
+
+  @override
+  String get resetPasswordTitle => 'Zresetuj hasło';
+
+  @override
+  String get passwordResetEmailSentSuccess =>
+      'Jeśli istnieje konto dla tego adresu e-mail, link do resetowania hasła został wysłany.';
+
+  @override
+  String get resetPasswordInstruction =>
+      'Wprowadź adres e-mail powiązany z Twoim kontem, a my wyślemy Ci link umożliwiający zresetowanie hasła.';
+
+  @override
+  String get verifyEmailTitle => 'Weryfikacja e-mail';
+
+  @override
+  String verifyEmailMessage(String userEmail) {
+    return 'Link weryfikacyjny został wysłany na adres $userEmail. Sprawdź skrzynkę odbiorczą i kliknij link, aby aktywować konto.';
+  }
+
+  @override
+  String get verifyEmailResendButton => 'Wyślij ponownie e-mail';
+
+  @override
+  String verifyEmailResendButtonInSeconds(String seconds) {
+    return 'Wyślij ponownie za $seconds s';
+  }
 
   @override
   String get authErrorEmailRequired => 'Email jest wymagany.';

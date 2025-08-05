@@ -104,6 +104,12 @@ abstract class AppLocalizations {
   /// **'Rallytics'**
   String get appTitle;
 
+  /// No description provided for @sendButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Send'**
+  String get sendButton;
+
   /// No description provided for @saveButton.
   ///
   /// In en, this message translates to:
@@ -137,7 +143,7 @@ abstract class AppLocalizations {
   /// No description provided for @signInButton.
   ///
   /// In en, this message translates to:
-  /// **'Sign in'**
+  /// **'Sign In'**
   String get signInButton;
 
   /// No description provided for @emailLabel.
@@ -185,7 +191,7 @@ abstract class AppLocalizations {
   /// No description provided for @signUpButton.
   ///
   /// In en, this message translates to:
-  /// **'Sign up'**
+  /// **'Sign Up'**
   String get signUpButton;
 
   /// No description provided for @signUpPrompt.
@@ -199,6 +205,48 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Already have an account?'**
   String get signInPrompt;
+
+  /// No description provided for @resetPasswordTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Reset Password'**
+  String get resetPasswordTitle;
+
+  /// No description provided for @passwordResetEmailSentSuccess.
+  ///
+  /// In en, this message translates to:
+  /// **'If an account exists for that email, a password reset link has been sent.'**
+  String get passwordResetEmailSentSuccess;
+
+  /// No description provided for @resetPasswordInstruction.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter the email address associated with your account and we\'ll send you a link to reset your password.'**
+  String get resetPasswordInstruction;
+
+  /// No description provided for @verifyEmailTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Verify Your Email'**
+  String get verifyEmailTitle;
+
+  /// Message instructing the user to check their email.
+  ///
+  /// In en, this message translates to:
+  /// **'A verification link has been sent to {userEmail}. Please check your inbox and click the link to activate your account.'**
+  String verifyEmailMessage(String userEmail);
+
+  /// No description provided for @verifyEmailResendButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Resend Email'**
+  String get verifyEmailResendButton;
+
+  /// Button text showing a countdown before the user can resend the email.
+  ///
+  /// In en, this message translates to:
+  /// **'Resend in {seconds}s'**
+  String verifyEmailResendButtonInSeconds(String seconds);
 
   /// No description provided for @authErrorEmailRequired.
   ///

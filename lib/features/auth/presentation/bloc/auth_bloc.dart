@@ -4,13 +4,18 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:rallytics/core/usecases/usecase.dart';
 import 'package:rallytics/features/auth/domain/entities/user_entity.dart';
-import 'package:rallytics/features/auth/domain/usecases/get_auth_state_changes.dart';
-import 'package:rallytics/features/auth/domain/usecases/sign_in_with_email.dart';
-import 'package:rallytics/features/auth/domain/usecases/sign_in_with_facebook.dart';
-import 'package:rallytics/features/auth/domain/usecases/sign_in_with_github.dart';
-import 'package:rallytics/features/auth/domain/usecases/sign_in_with_google.dart';
-import 'package:rallytics/features/auth/domain/usecases/sign_out.dart';
-import 'package:rallytics/features/auth/domain/usecases/sign_up_with_email.dart';
+import 'package:rallytics/features/auth/domain/usecases/get_auth_state_changes_usecase.dart';
+import 'package:rallytics/features/auth/domain/usecases/params/send_password_reset_email_params.dart';
+import 'package:rallytics/features/auth/domain/usecases/params/sign_in_with_email_params.dart';
+import 'package:rallytics/features/auth/domain/usecases/params/sign_up_with_email_params.dart';
+import 'package:rallytics/features/auth/domain/usecases/send_email_verification_usecase.dart';
+import 'package:rallytics/features/auth/domain/usecases/send_password_reset_email_usecase.dart';
+import 'package:rallytics/features/auth/domain/usecases/sign_in_with_email_usecase.dart';
+import 'package:rallytics/features/auth/domain/usecases/sign_in_with_facebook_usecase.dart';
+import 'package:rallytics/features/auth/domain/usecases/sign_in_with_github_usecase.dart';
+import 'package:rallytics/features/auth/domain/usecases/sign_in_with_google_usecase.dart';
+import 'package:rallytics/features/auth/domain/usecases/sign_out_usecase.dart';
+import 'package:rallytics/features/auth/domain/usecases/sign_up_with_email_usecase.dart';
 import 'package:rallytics/features/auth/presentation/bloc/auth_event.dart';
 import 'package:rallytics/features/auth/presentation/bloc/auth_state.dart';
 
@@ -29,6 +34,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   final SignInWithGoogleUseCase _signInWithGoogleUseCase;
   final SignInWithFacebookUseCase _signInWithFacebookUseCase;
   final SignInWithGitHubUseCase _signInWithGitHubUseCase;
+  final SendPasswordResetEmailUseCase _sendPasswordResetEmailUseCase;
+  final SendEmailVerificationUseCase _sendEmailVerificationUseCase;
   final SignOutUseCase _signOutUseCase;
 
   StreamSubscription<UserEntity?>? _userSubscription;
@@ -40,6 +47,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     this._signInWithGoogleUseCase,
     this._signInWithFacebookUseCase,
     this._signInWithGitHubUseCase,
+    this._sendPasswordResetEmailUseCase,
+    this._sendEmailVerificationUseCase,
     this._signOutUseCase,
   ) : super(const AuthState.initial()) {
     _userSubscription = _getAuthStateChangesUseCase(NoParams()).listen((user) {
@@ -81,10 +90,11 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         emit(AuthState.error(e.code));
       } on ValidationException catch (e) {
         emit(AuthState.error(e.code));
-      }
+      } 
     });
 
     on<SignInWithGoogleRequested>((event, emit) async {
+      emit(const AuthState.loading());
       try {
         await _signInWithGoogleUseCase(NoParams());
       } on AuthException catch (e) {
@@ -93,6 +103,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     });
 
     on<SignInWithFacebookRequested>((event, emit) async {
+      emit(const AuthState.loading());
       try {
         await _signInWithFacebookUseCase(NoParams());
       } on AuthException catch (e) {
@@ -101,8 +112,29 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     });
 
     on<SignInWithGitHubRequested>((event, emit) async {
+      emit(const AuthState.loading());
       try {
         await _signInWithGitHubUseCase(NoParams());
+      } on AuthException catch (e) {
+        emit(AuthState.error(e.code));
+      }
+    });
+
+    on<PasswordResetRequested>((event, emit) async {
+      emit(const AuthState.loading());
+      try {
+        await _sendPasswordResetEmailUseCase(
+          SendPasswordResetEmailParams(email: event.email),
+        );
+        emit(const AuthState.passwordResetEmailSent());
+      } on AuthException catch (e) {
+        emit(AuthState.error(e.code));
+      }
+    });
+
+    on<SendEmailVerificationRequested>((event, emit) async {
+      try {
+        await _sendEmailVerificationUseCase(NoParams());
       } on AuthException catch (e) {
         emit(AuthState.error(e.code));
       }

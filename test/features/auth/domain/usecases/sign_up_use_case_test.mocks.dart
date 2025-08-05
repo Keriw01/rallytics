@@ -6,10 +6,13 @@
 import 'dart:async' as _i3;
 
 import 'package:mockito/mockito.dart' as _i1;
+import 'package:rallytics/core/usecases/usecase.dart' as _i6;
 import 'package:rallytics/features/auth/domain/entities/user_entity.dart'
     as _i4;
 import 'package:rallytics/features/auth/domain/repositories/auth_repository.dart'
     as _i2;
+import 'package:rallytics/features/auth/domain/usecases/send_email_verification_usecase.dart'
+    as _i5;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -87,9 +90,46 @@ class MockAuthRepository extends _i1.Mock implements _i2.AuthRepository {
           as _i3.Future<void>);
 
   @override
+  _i3.Future<void> sendPasswordResetEmail(String? email) =>
+      (super.noSuchMethod(
+            Invocation.method(#sendPasswordResetEmail, [email]),
+            returnValue: _i3.Future<void>.value(),
+            returnValueForMissingStub: _i3.Future<void>.value(),
+          )
+          as _i3.Future<void>);
+
+  @override
+  _i3.Future<void> sendEmailVerification() =>
+      (super.noSuchMethod(
+            Invocation.method(#sendEmailVerification, []),
+            returnValue: _i3.Future<void>.value(),
+            returnValueForMissingStub: _i3.Future<void>.value(),
+          )
+          as _i3.Future<void>);
+
+  @override
   _i3.Future<void> signOut() =>
       (super.noSuchMethod(
             Invocation.method(#signOut, []),
+            returnValue: _i3.Future<void>.value(),
+            returnValueForMissingStub: _i3.Future<void>.value(),
+          )
+          as _i3.Future<void>);
+}
+
+/// A class which mocks [SendEmailVerificationUseCase].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockSendEmailVerificationUseCase extends _i1.Mock
+    implements _i5.SendEmailVerificationUseCase {
+  MockSendEmailVerificationUseCase() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  _i3.Future<void> call(_i6.NoParams? params) =>
+      (super.noSuchMethod(
+            Invocation.method(#call, [params]),
             returnValue: _i3.Future<void>.value(),
             returnValueForMissingStub: _i3.Future<void>.value(),
           )

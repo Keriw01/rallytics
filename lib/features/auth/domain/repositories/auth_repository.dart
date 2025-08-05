@@ -16,5 +16,9 @@ abstract class AuthRepository {
 
   Future<void> signInWithGitHub();
 
+  Future<void> sendPasswordResetEmail(String email);
+
+  Future<void> sendEmailVerification();
+
   Future<void> signOut();
 }

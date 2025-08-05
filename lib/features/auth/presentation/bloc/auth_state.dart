@@ -10,5 +10,6 @@ class AuthState with _$AuthState {
   const factory AuthState.loading() = Loading;
   const factory AuthState.authenticated(UserEntity user) = _Authenticated;
   const factory AuthState.unauthenticated() = _Unauthenticated;
+  const factory AuthState.passwordResetEmailSent() = PasswordResetEmailSent;
   const factory AuthState.error(ErrorCode code) = Error;
 }
