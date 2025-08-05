@@ -9,6 +9,7 @@ import 'package:rallytics/features/auth/presentation/bloc/auth_state.dart';
 import 'package:rallytics/features/auth/presentation/widgets/auth_text_field.dart';
 import 'package:rallytics/generated/l10n.dart';
 import 'package:rallytics/helpers/error_message_helper.dart';
+import 'package:flutter_svg/svg.dart';
 
 class ResetPasswordScreen extends StatefulWidget {
   const ResetPasswordScreen({super.key});
@@ -96,8 +97,13 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
       child: Padding(
         padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.1),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            SizedBox(height: screenHeight * 0.02),
+            SizedBox(
+              height: screenHeight * 0.25,
+              child: SvgPicture.asset('assets/images/forgot_password_logo.svg'),
+            ),
+            SizedBox(height: screenHeight * 0.02),
             Text(
               S.of(context).resetPasswordInstruction,
               textAlign: TextAlign.center,
