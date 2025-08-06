@@ -54,6 +54,7 @@
       }
     }
   },
+  "unknowUser": "unknown",
 
   
   "authErrorEmailRequired" : "Email is required.",
@@ -78,7 +79,7 @@
   "liveScoresMatchStatusUpcoming": "Upcoming",
   "liveScoresMatchStatusFinished": "Finished",
 
-
+  
   "welcomeUserMessage": "Welcome back, {userName}!",
   "@welcomeUserMessage": {
     "description": "A welcome message shown on the dashboard.",
@@ -89,6 +90,15 @@
       }
     }
   },
+  "dashboardWelcomeSubtitle": "Choose what interests you",
+  "dashboardLiveScoresTitle": "Scores",
+  "dashboardLiveScoresDescription": "Follow every point from the world's most important courts. Always stay up to date!",
+  "dashboardNewsTitle": "News",
+  "dashboardNewsDescription": "The latest news, analyses, and interviews. Everything a tennis fan needs to know.",
+  "dashboardAiCoachTitle": "AI Coach",
+  "dashboardAiCoachDescription": "Record a video, and our AI will analyze your technique. Your personal coach in your pocket.",
+  "dashboardTrainingHistoryTitle": "History",
+  "dashboardTrainingHistoryDescription": "Review your progress, analyze stats, and see how your game evolves.",
 
 
   "errorGeneric": "An unexpected error occurred. Please try again later."

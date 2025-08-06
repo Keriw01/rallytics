@@ -31,6 +31,7 @@
   "passwordResetEmailSentSuccess": "Jeśli istnieje konto dla tego adresu e-mail, link do resetowania hasła został wysłany.",
   "resetPasswordInstruction": "Wprowadź adres e-mail powiązany z Twoim kontem, a my wyślemy Ci link umożliwiający zresetowanie hasła.",
 
+  
   "verifyEmailTitle": "Weryfikacja e-mail",
   "verifyEmailMessage": "Link weryfikacyjny został wysłany na adres {userEmail}. Sprawdź skrzynkę odbiorczą i kliknij link, aby aktywować konto.",
   "@verifyEmailMessage": {
@@ -53,6 +54,7 @@
       }
     }
   },
+  "unknowUser": "nieznany",
 
   
   "authErrorEmailRequired" : "Email jest wymagany.",
@@ -90,6 +92,15 @@
       }
     }
   },
+  "dashboardWelcomeSubtitle": "Wybierz co cię interesuje",
+  "dashboardLiveScoresTitle": "Wyniki",
+  "dashboardLiveScoresDescription": "Śledź każdy punkt z najważniejszych kortów świata. Zawsze bądź na bieżąco!",
+  "dashboardNewsTitle": "Aktualności",
+  "dashboardNewsDescription": "Najnowsze wiadomości, analizy i wywiady. Wszystko, co musi wiedzieć fan tenisa.",
+  "dashboardAiCoachTitle": "Trener AI",
+  "dashboardAiCoachDescription": "Nagraj film, a nasza sztuczna inteligencja przeanalizuje Twoją technikę. Twój osobisty trener w Twojej kieszeni.",
+  "dashboardTrainingHistoryTitle": "Historia",
+  "dashboardTrainingHistoryDescription": "Przeglądaj swoje postępy, analizuj statystyki i obserwuj, jak ewoluuje Twoja gra.",
 
 
   "errorGeneric": "Niespodziewany błąd. Proszę spróbować ponownie później."

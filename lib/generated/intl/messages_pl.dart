@@ -47,6 +47,24 @@ class MessageLookup extends MessageLookupByLibrary {
         "cancelButton": MessageLookupByLibrary.simpleMessage("Anuluj"),
         "confirmPasswordLabel":
             MessageLookupByLibrary.simpleMessage("Powtórz hasło"),
+        "dashboardAiCoachDescription": MessageLookupByLibrary.simpleMessage(
+            "Nagraj film, a nasza sztuczna inteligencja przeanalizuje Twoją technikę. Twój osobisty trener w Twojej kieszeni."),
+        "dashboardAiCoachTitle":
+            MessageLookupByLibrary.simpleMessage("Trener AI"),
+        "dashboardLiveScoresDescription": MessageLookupByLibrary.simpleMessage(
+            "Śledź każdy punkt z najważniejszych kortów świata. Zawsze bądź na bieżąco!"),
+        "dashboardLiveScoresTitle":
+            MessageLookupByLibrary.simpleMessage("Wyniki"),
+        "dashboardNewsDescription": MessageLookupByLibrary.simpleMessage(
+            "Najnowsze wiadomości, analizy i wywiady. Wszystko, co musi wiedzieć fan tenisa."),
+        "dashboardNewsTitle":
+            MessageLookupByLibrary.simpleMessage("Aktualności"),
+        "dashboardTrainingHistoryDescription": MessageLookupByLibrary.simpleMessage(
+            "Przeglądaj swoje postępy, analizuj statystyki i obserwuj, jak ewoluuje Twoja gra."),
+        "dashboardTrainingHistoryTitle":
+            MessageLookupByLibrary.simpleMessage("Historia"),
+        "dashboardWelcomeSubtitle":
+            MessageLookupByLibrary.simpleMessage("Wybierz co cię interesuje"),
         "emailHint":
             MessageLookupByLibrary.simpleMessage("Wpisz swój adres email"),
         "emailLabel": MessageLookupByLibrary.simpleMessage("Email"),
@@ -85,6 +103,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Zacznij Nagrywanie"),
         "trainingSessionTitle":
             MessageLookupByLibrary.simpleMessage("Nowa Sesja"),
+        "unknowUser": MessageLookupByLibrary.simpleMessage("nieznany"),
         "validationErrorEmptyFields": MessageLookupByLibrary.simpleMessage(
             "Nie wszystkie pola są uzupełnione."),
         "validationErrorInvalidEmail":

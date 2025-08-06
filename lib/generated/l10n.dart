@@ -301,6 +301,16 @@ class S {
     );
   }
 
+  /// `unknown`
+  String get unknowUser {
+    return Intl.message(
+      'unknown',
+      name: 'unknowUser',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Email is required.`
   String get authErrorEmailRequired {
     return Intl.message(
@@ -478,6 +488,96 @@ class S {
       name: 'welcomeUserMessage',
       desc: 'A welcome message shown on the dashboard.',
       args: [userName],
+    );
+  }
+
+  /// `Choose what interests you`
+  String get dashboardWelcomeSubtitle {
+    return Intl.message(
+      'Choose what interests you',
+      name: 'dashboardWelcomeSubtitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Scores`
+  String get dashboardLiveScoresTitle {
+    return Intl.message(
+      'Scores',
+      name: 'dashboardLiveScoresTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Follow every point from the world's most important courts. Always stay up to date!`
+  String get dashboardLiveScoresDescription {
+    return Intl.message(
+      'Follow every point from the world\'s most important courts. Always stay up to date!',
+      name: 'dashboardLiveScoresDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `News`
+  String get dashboardNewsTitle {
+    return Intl.message(
+      'News',
+      name: 'dashboardNewsTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The latest news, analyses, and interviews. Everything a tennis fan needs to know.`
+  String get dashboardNewsDescription {
+    return Intl.message(
+      'The latest news, analyses, and interviews. Everything a tennis fan needs to know.',
+      name: 'dashboardNewsDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `AI Coach`
+  String get dashboardAiCoachTitle {
+    return Intl.message(
+      'AI Coach',
+      name: 'dashboardAiCoachTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Record a video, and our AI will analyze your technique. Your personal coach in your pocket.`
+  String get dashboardAiCoachDescription {
+    return Intl.message(
+      'Record a video, and our AI will analyze your technique. Your personal coach in your pocket.',
+      name: 'dashboardAiCoachDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `History`
+  String get dashboardTrainingHistoryTitle {
+    return Intl.message(
+      'History',
+      name: 'dashboardTrainingHistoryTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Review your progress, analyze stats, and see how your game evolves.`
+  String get dashboardTrainingHistoryDescription {
+    return Intl.message(
+      'Review your progress, analyze stats, and see how your game evolves.',
+      name: 'dashboardTrainingHistoryDescription',
+      desc: '',
+      args: [],
     );
   }
 

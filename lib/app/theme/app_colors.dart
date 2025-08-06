@@ -8,5 +8,11 @@ class AppColors {
   static const Color info = Color(0xFF007AFF);
 
   static const Color tenisBall = Color(0xFFC5E82C);
+
+  static const Color tennisRacketIcon = Color(0xFFC5E82C);
+  static const Color newsIcon = Color(0xFF00AEFF);
+  static const Color bulbIcon = Color(0xFFFFD900);
+  static const Color historyIcon = Color(0xFF7B7B7B);
+
   static const Color white = Color(0xFFFFFFFF);
 }
