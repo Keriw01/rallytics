@@ -101,7 +101,10 @@
   "dashboardAiCoachDescription": "Nagraj film, a nasza sztuczna inteligencja przeanalizuje Twoją technikę. Twój osobisty trener w Twojej kieszeni.",
   "dashboardTrainingHistoryTitle": "Historia",
   "dashboardTrainingHistoryDescription": "Przeglądaj swoje postępy, analizuj statystyki i obserwuj, jak ewoluuje Twoja gra.",
-
+  "drawerTheme": "Zmień motyw",
+  "drawerAbout": "O aplikacji",
+  "drawerSupport": "Wesprzyj mnie",
+  "drawerLogout": "Wyloguj",
 
   "errorGeneric": "Niespodziewany błąd. Proszę spróbować ponownie później."
   

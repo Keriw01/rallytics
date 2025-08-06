@@ -185,6 +185,18 @@ class AppLocalizationsPl extends AppLocalizations {
       'Przeglądaj swoje postępy, analizuj statystyki i obserwuj, jak ewoluuje Twoja gra.';
 
   @override
+  String get drawerTheme => 'Zmień motyw';
+
+  @override
+  String get drawerAbout => 'O aplikacji';
+
+  @override
+  String get drawerSupport => 'Wesprzyj mnie';
+
+  @override
+  String get drawerLogout => 'Wyloguj';
+
+  @override
   String get errorGeneric =>
       'Niespodziewany błąd. Proszę spróbować ponownie później.';
 }

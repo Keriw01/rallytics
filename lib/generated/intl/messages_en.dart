@@ -64,6 +64,10 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("History"),
         "dashboardWelcomeSubtitle":
             MessageLookupByLibrary.simpleMessage("Choose what interests you"),
+        "drawerAbout": MessageLookupByLibrary.simpleMessage("About App"),
+        "drawerLogout": MessageLookupByLibrary.simpleMessage("Log Out"),
+        "drawerSupport": MessageLookupByLibrary.simpleMessage("Support Me"),
+        "drawerTheme": MessageLookupByLibrary.simpleMessage("Change Theme"),
         "emailHint":
             MessageLookupByLibrary.simpleMessage("Enter your email address"),
         "emailLabel": MessageLookupByLibrary.simpleMessage("Email"),

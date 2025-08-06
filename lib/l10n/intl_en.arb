@@ -99,7 +99,10 @@
   "dashboardAiCoachDescription": "Record a video, and our AI will analyze your technique. Your personal coach in your pocket.",
   "dashboardTrainingHistoryTitle": "History",
   "dashboardTrainingHistoryDescription": "Review your progress, analyze stats, and see how your game evolves.",
-
+  "drawerTheme": "Change Theme",
+  "drawerAbout": "About App",
+  "drawerSupport": "Support Me",
+  "drawerLogout": "Log Out",
 
   "errorGeneric": "An unexpected error occurred. Please try again later."
 

@@ -581,6 +581,46 @@ class S {
     );
   }
 
+  /// `Change Theme`
+  String get drawerTheme {
+    return Intl.message(
+      'Change Theme',
+      name: 'drawerTheme',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `About App`
+  String get drawerAbout {
+    return Intl.message(
+      'About App',
+      name: 'drawerAbout',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Support Me`
+  String get drawerSupport {
+    return Intl.message(
+      'Support Me',
+      name: 'drawerSupport',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Log Out`
+  String get drawerLogout {
+    return Intl.message(
+      'Log Out',
+      name: 'drawerLogout',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `An unexpected error occurred. Please try again later.`
   String get errorGeneric {
     return Intl.message(

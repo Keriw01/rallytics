@@ -416,6 +416,30 @@ abstract class AppLocalizations {
   /// **'Review your progress, analyze stats, and see how your game evolves.'**
   String get dashboardTrainingHistoryDescription;
 
+  /// No description provided for @drawerTheme.
+  ///
+  /// In en, this message translates to:
+  /// **'Change Theme'**
+  String get drawerTheme;
+
+  /// No description provided for @drawerAbout.
+  ///
+  /// In en, this message translates to:
+  /// **'About App'**
+  String get drawerAbout;
+
+  /// No description provided for @drawerSupport.
+  ///
+  /// In en, this message translates to:
+  /// **'Support Me'**
+  String get drawerSupport;
+
+  /// No description provided for @drawerLogout.
+  ///
+  /// In en, this message translates to:
+  /// **'Log Out'**
+  String get drawerLogout;
+
   /// No description provided for @errorGeneric.
   ///
   /// In en, this message translates to:

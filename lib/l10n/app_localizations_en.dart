@@ -186,6 +186,18 @@ class AppLocalizationsEn extends AppLocalizations {
       'Review your progress, analyze stats, and see how your game evolves.';
 
   @override
+  String get drawerTheme => 'Change Theme';
+
+  @override
+  String get drawerAbout => 'About App';
+
+  @override
+  String get drawerSupport => 'Support Me';
+
+  @override
+  String get drawerLogout => 'Log Out';
+
+  @override
   String get errorGeneric =>
       'An unexpected error occurred. Please try again later.';
 }
