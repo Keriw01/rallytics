@@ -90,6 +90,9 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
+  String get unknowUser => 'unknown';
+
+  @override
   String get authErrorEmailRequired => 'Email is required.';
 
   @override
@@ -150,6 +153,37 @@ class AppLocalizationsEn extends AppLocalizations {
   String welcomeUserMessage(String userName) {
     return 'Welcome back, $userName!';
   }
+
+  @override
+  String get dashboardWelcomeSubtitle => 'Choose what interests you';
+
+  @override
+  String get dashboardLiveScoresTitle => 'Scores';
+
+  @override
+  String get dashboardLiveScoresDescription =>
+      'Follow every point from the world\'s most important courts. Always stay up to date!';
+
+  @override
+  String get dashboardNewsTitle => 'News';
+
+  @override
+  String get dashboardNewsDescription =>
+      'The latest news, analyses, and interviews. Everything a tennis fan needs to know.';
+
+  @override
+  String get dashboardAiCoachTitle => 'AI Coach';
+
+  @override
+  String get dashboardAiCoachDescription =>
+      'Record a video, and our AI will analyze your technique. Your personal coach in your pocket.';
+
+  @override
+  String get dashboardTrainingHistoryTitle => 'History';
+
+  @override
+  String get dashboardTrainingHistoryDescription =>
+      'Review your progress, analyze stats, and see how your game evolves.';
 
   @override
   String get errorGeneric =>

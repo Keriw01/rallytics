@@ -90,6 +90,9 @@ class AppLocalizationsPl extends AppLocalizations {
   }
 
   @override
+  String get unknowUser => 'nieznany';
+
+  @override
   String get authErrorEmailRequired => 'Email jest wymagany.';
 
   @override
@@ -149,6 +152,37 @@ class AppLocalizationsPl extends AppLocalizations {
   String welcomeUserMessage(String userName) {
     return 'Witaj ponownie, $userName!';
   }
+
+  @override
+  String get dashboardWelcomeSubtitle => 'Wybierz co cię interesuje';
+
+  @override
+  String get dashboardLiveScoresTitle => 'Wyniki';
+
+  @override
+  String get dashboardLiveScoresDescription =>
+      'Śledź każdy punkt z najważniejszych kortów świata. Zawsze bądź na bieżąco!';
+
+  @override
+  String get dashboardNewsTitle => 'Aktualności';
+
+  @override
+  String get dashboardNewsDescription =>
+      'Najnowsze wiadomości, analizy i wywiady. Wszystko, co musi wiedzieć fan tenisa.';
+
+  @override
+  String get dashboardAiCoachTitle => 'Trener AI';
+
+  @override
+  String get dashboardAiCoachDescription =>
+      'Nagraj film, a nasza sztuczna inteligencja przeanalizuje Twoją technikę. Twój osobisty trener w Twojej kieszeni.';
+
+  @override
+  String get dashboardTrainingHistoryTitle => 'Historia';
+
+  @override
+  String get dashboardTrainingHistoryDescription =>
+      'Przeglądaj swoje postępy, analizuj statystyki i obserwuj, jak ewoluuje Twoja gra.';
 
   @override
   String get errorGeneric =>

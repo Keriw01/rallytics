@@ -47,6 +47,23 @@ class MessageLookup extends MessageLookupByLibrary {
         "cancelButton": MessageLookupByLibrary.simpleMessage("Cancel"),
         "confirmPasswordLabel":
             MessageLookupByLibrary.simpleMessage("Repeat password"),
+        "dashboardAiCoachDescription": MessageLookupByLibrary.simpleMessage(
+            "Record a video, and our AI will analyze your technique. Your personal coach in your pocket."),
+        "dashboardAiCoachTitle":
+            MessageLookupByLibrary.simpleMessage("AI Coach"),
+        "dashboardLiveScoresDescription": MessageLookupByLibrary.simpleMessage(
+            "Follow every point from the world\'s most important courts. Always stay up to date!"),
+        "dashboardLiveScoresTitle":
+            MessageLookupByLibrary.simpleMessage("Scores"),
+        "dashboardNewsDescription": MessageLookupByLibrary.simpleMessage(
+            "The latest news, analyses, and interviews. Everything a tennis fan needs to know."),
+        "dashboardNewsTitle": MessageLookupByLibrary.simpleMessage("News"),
+        "dashboardTrainingHistoryDescription": MessageLookupByLibrary.simpleMessage(
+            "Review your progress, analyze stats, and see how your game evolves."),
+        "dashboardTrainingHistoryTitle":
+            MessageLookupByLibrary.simpleMessage("History"),
+        "dashboardWelcomeSubtitle":
+            MessageLookupByLibrary.simpleMessage("Choose what interests you"),
         "emailHint":
             MessageLookupByLibrary.simpleMessage("Enter your email address"),
         "emailLabel": MessageLookupByLibrary.simpleMessage("Email"),
@@ -87,6 +104,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Start Recording"),
         "trainingSessionTitle":
             MessageLookupByLibrary.simpleMessage("New Session"),
+        "unknowUser": MessageLookupByLibrary.simpleMessage("unknown"),
         "validationErrorEmptyFields": MessageLookupByLibrary.simpleMessage(
             "Not all fields are filled in."),
         "validationErrorInvalidEmail":

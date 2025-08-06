@@ -248,6 +248,12 @@ abstract class AppLocalizations {
   /// **'Resend in {seconds}s'**
   String verifyEmailResendButtonInSeconds(String seconds);
 
+  /// No description provided for @unknowUser.
+  ///
+  /// In en, this message translates to:
+  /// **'unknown'**
+  String get unknowUser;
+
   /// No description provided for @authErrorEmailRequired.
   ///
   /// In en, this message translates to:
@@ -355,6 +361,60 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Welcome back, {userName}!'**
   String welcomeUserMessage(String userName);
+
+  /// No description provided for @dashboardWelcomeSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose what interests you'**
+  String get dashboardWelcomeSubtitle;
+
+  /// No description provided for @dashboardLiveScoresTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Scores'**
+  String get dashboardLiveScoresTitle;
+
+  /// No description provided for @dashboardLiveScoresDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Follow every point from the world\'s most important courts. Always stay up to date!'**
+  String get dashboardLiveScoresDescription;
+
+  /// No description provided for @dashboardNewsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'News'**
+  String get dashboardNewsTitle;
+
+  /// No description provided for @dashboardNewsDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'The latest news, analyses, and interviews. Everything a tennis fan needs to know.'**
+  String get dashboardNewsDescription;
+
+  /// No description provided for @dashboardAiCoachTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'AI Coach'**
+  String get dashboardAiCoachTitle;
+
+  /// No description provided for @dashboardAiCoachDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Record a video, and our AI will analyze your technique. Your personal coach in your pocket.'**
+  String get dashboardAiCoachDescription;
+
+  /// No description provided for @dashboardTrainingHistoryTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'History'**
+  String get dashboardTrainingHistoryTitle;
+
+  /// No description provided for @dashboardTrainingHistoryDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Review your progress, analyze stats, and see how your game evolves.'**
+  String get dashboardTrainingHistoryDescription;
 
   /// No description provided for @errorGeneric.
   ///

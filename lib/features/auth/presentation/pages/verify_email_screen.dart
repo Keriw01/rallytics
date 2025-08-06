@@ -89,9 +89,11 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
               ),
               SizedBox(height: screenHeight * 0.01),
               Text(
-                S.of(context).verifyEmailMessage(userEmail ?? ''),
+                S
+                    .of(context)
+                    .verifyEmailMessage(userEmail ?? S.of(context).unknowUser),
                 textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.bodyMedium,
+                style: textTheme.bodyMedium,
               ),
               SizedBox(height: screenHeight * 0.02),
               ElevatedButton(
