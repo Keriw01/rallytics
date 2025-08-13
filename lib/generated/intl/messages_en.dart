@@ -75,10 +75,13 @@ class MessageLookup extends MessageLookupByLibrary {
             "An unexpected error occurred. Please try again later."),
         "forgotPasswordButton":
             MessageLookupByLibrary.simpleMessage("Forgot your password?"),
-        "liveScoresMatchStatusFinished":
-            MessageLookupByLibrary.simpleMessage("Finished"),
-        "liveScoresMatchStatusUpcoming":
-            MessageLookupByLibrary.simpleMessage("Upcoming"),
+        "liveScoresEmpty":
+            MessageLookupByLibrary.simpleMessage("No live matches right now."),
+        "liveScoresError": MessageLookupByLibrary.simpleMessage(
+            "We\'re currently having problems, please try again later."),
+        "liveScoresNoResults": MessageLookupByLibrary.simpleMessage(
+            "No results for the search phrase."),
+        "liveScoresPoints": MessageLookupByLibrary.simpleMessage("Points"),
         "liveScoresTitle": MessageLookupByLibrary.simpleMessage("Live Scores"),
         "loginTitle": MessageLookupByLibrary.simpleMessage("Login"),
         "logoutButton": MessageLookupByLibrary.simpleMessage("Log Out"),
@@ -95,6 +98,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "resetPasswordTitle":
             MessageLookupByLibrary.simpleMessage("Reset Password"),
         "saveButton": MessageLookupByLibrary.simpleMessage("Save"),
+        "searchHint": MessageLookupByLibrary.simpleMessage(
+            "Enter the player\'s name or surname"),
+        "searchLabel": MessageLookupByLibrary.simpleMessage("Search"),
         "sendButton": MessageLookupByLibrary.simpleMessage("Send"),
         "signInButton": MessageLookupByLibrary.simpleMessage("Sign In"),
         "signInPrompt":

@@ -461,21 +461,61 @@ class S {
     );
   }
 
-  /// `Upcoming`
-  String get liveScoresMatchStatusUpcoming {
+  /// `We're currently having problems, please try again later.`
+  String get liveScoresError {
     return Intl.message(
-      'Upcoming',
-      name: 'liveScoresMatchStatusUpcoming',
+      'We\'re currently having problems, please try again later.',
+      name: 'liveScoresError',
       desc: '',
       args: [],
     );
   }
 
-  /// `Finished`
-  String get liveScoresMatchStatusFinished {
+  /// `No live matches right now.`
+  String get liveScoresEmpty {
     return Intl.message(
-      'Finished',
-      name: 'liveScoresMatchStatusFinished',
+      'No live matches right now.',
+      name: 'liveScoresEmpty',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Points`
+  String get liveScoresPoints {
+    return Intl.message(
+      'Points',
+      name: 'liveScoresPoints',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Search`
+  String get searchLabel {
+    return Intl.message(
+      'Search',
+      name: 'searchLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter the player's name or surname`
+  String get searchHint {
+    return Intl.message(
+      'Enter the player\'s name or surname',
+      name: 'searchHint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No results for the search phrase.`
+  String get liveScoresNoResults {
+    return Intl.message(
+      'No results for the search phrase.',
+      name: 'liveScoresNoResults',
       desc: '',
       args: [],
     );

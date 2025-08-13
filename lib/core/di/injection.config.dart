@@ -9,6 +9,7 @@
 // coverage:ignore-file
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
+import 'package:cloud_firestore/cloud_firestore.dart' as _i974;
 import 'package:firebase_auth/firebase_auth.dart' as _i59;
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart' as _i806;
 import 'package:get_it/get_it.dart' as _i174;
@@ -39,6 +40,16 @@ import '../../features/auth/domain/usecases/sign_out_usecase.dart' as _i915;
 import '../../features/auth/domain/usecases/sign_up_with_email_usecase.dart'
     as _i254;
 import '../../features/auth/presentation/bloc/auth_bloc.dart' as _i797;
+import '../../features/live_score/data/datasources/live_score_firestore_datasource.dart'
+    as _i962;
+import '../../features/live_score/data/repositories/live_score_repository_impl.dart'
+    as _i825;
+import '../../features/live_score/domain/repositories/live_score_repository.dart'
+    as _i321;
+import '../../features/live_score/domain/usecases/get_live_scores_usecase.dart'
+    as _i317;
+import '../../features/live_score/presentation/bloc/live_score_bloc.dart'
+    as _i15;
 import '../config/app_config.dart' as _i650;
 import 'firebase_injectable_module.dart' as _i574;
 
@@ -58,9 +69,15 @@ Future<_i174.GetIt> $initGetIt(
   gh.lazySingleton<_i806.FacebookAuth>(
     () => firebaseInjectableModule.facebookAuth,
   );
+  gh.lazySingleton<_i974.FirebaseFirestore>(
+    () => firebaseInjectableModule.firebaseFirestore,
+  );
   await gh.lazySingletonAsync<_i116.GoogleSignIn>(
     () => firebaseInjectableModule.googleSignIn(gh<_i650.AppConfig>()),
     preResolve: true,
+  );
+  gh.lazySingleton<_i962.LiveScoreDataSource>(
+    () => _i962.LiveScoreFirestoreDataSourceImpl(gh<_i974.FirebaseFirestore>()),
   );
   gh.lazySingleton<_i157.AuthFirebaseDataSource>(
     () => _i157.AuthFirebaseDataSourceImpl(
@@ -69,11 +86,20 @@ Future<_i174.GetIt> $initGetIt(
       gh<_i116.GoogleSignIn>(),
     ),
   );
+  gh.lazySingleton<_i321.LiveScoreRepository>(
+    () => _i825.LiveScoreRepositoryImpl(gh<_i962.LiveScoreDataSource>()),
+  );
   gh.lazySingleton<_i787.AuthRepository>(
     () => _i153.AuthRepositoryImpl(gh<_i157.AuthFirebaseDataSource>()),
   );
   gh.lazySingleton<_i810.GetAuthStateChangesUseCase>(
     () => _i810.GetAuthStateChangesUseCase(gh<_i787.AuthRepository>()),
+  );
+  gh.lazySingleton<_i707.SendEmailVerificationUseCase>(
+    () => _i707.SendEmailVerificationUseCase(gh<_i787.AuthRepository>()),
+  );
+  gh.lazySingleton<_i961.SendPasswordResetEmailUseCase>(
+    () => _i961.SendPasswordResetEmailUseCase(gh<_i787.AuthRepository>()),
   );
   gh.lazySingleton<_i744.SignInWithEmailUseCase>(
     () => _i744.SignInWithEmailUseCase(gh<_i787.AuthRepository>()),
@@ -90,11 +116,11 @@ Future<_i174.GetIt> $initGetIt(
   gh.lazySingleton<_i915.SignOutUseCase>(
     () => _i915.SignOutUseCase(gh<_i787.AuthRepository>()),
   );
-  gh.lazySingleton<_i961.SendPasswordResetEmailUseCase>(
-    () => _i961.SendPasswordResetEmailUseCase(gh<_i787.AuthRepository>()),
+  gh.lazySingleton<_i317.GetLiveScoresUseCase>(
+    () => _i317.GetLiveScoresUseCase(gh<_i321.LiveScoreRepository>()),
   );
-  gh.lazySingleton<_i707.SendEmailVerificationUseCase>(
-    () => _i707.SendEmailVerificationUseCase(gh<_i787.AuthRepository>()),
+  gh.factory<_i15.LiveScoreBloc>(
+    () => _i15.LiveScoreBloc(gh<_i317.GetLiveScoresUseCase>()),
   );
   gh.lazySingleton<_i254.SignUpWithEmailUseCase>(
     () => _i254.SignUpWithEmailUseCase(

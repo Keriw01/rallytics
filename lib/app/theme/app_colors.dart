@@ -16,4 +16,5 @@ class AppColors {
   static const Color historyIcon = Color(0xFF7B7B7B);
 
   static const Color white = Color(0xFFFFFFFF);
+  static const Color grey = Color(0xFF9E9E9E);
 }

@@ -344,17 +344,41 @@ abstract class AppLocalizations {
   /// **'Live Scores'**
   String get liveScoresTitle;
 
-  /// No description provided for @liveScoresMatchStatusUpcoming.
+  /// No description provided for @liveScoresError.
   ///
   /// In en, this message translates to:
-  /// **'Upcoming'**
-  String get liveScoresMatchStatusUpcoming;
+  /// **'We\'re currently having problems, please try again later.'**
+  String get liveScoresError;
 
-  /// No description provided for @liveScoresMatchStatusFinished.
+  /// No description provided for @liveScoresEmpty.
   ///
   /// In en, this message translates to:
-  /// **'Finished'**
-  String get liveScoresMatchStatusFinished;
+  /// **'No live matches right now.'**
+  String get liveScoresEmpty;
+
+  /// No description provided for @liveScoresPoints.
+  ///
+  /// In en, this message translates to:
+  /// **'Points'**
+  String get liveScoresPoints;
+
+  /// No description provided for @searchLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Search'**
+  String get searchLabel;
+
+  /// No description provided for @searchHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter the player\'s name or surname'**
+  String get searchHint;
+
+  /// No description provided for @liveScoresNoResults.
+  ///
+  /// In en, this message translates to:
+  /// **'No results for the search phrase.'**
+  String get liveScoresNoResults;
 
   /// A welcome message shown on the dashboard.
   ///

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:go_router/go_router.dart';
 import 'package:rallytics/app/theme/app_colors.dart';
 import 'package:rallytics/app/theme/theme_cubit/theme_cubit.dart';
 import 'package:rallytics/features/auth/presentation/bloc/auth_bloc.dart';
@@ -35,18 +36,21 @@ class DashboardScreen extends StatelessWidget {
                 child: Text(
                   S.of(context).appTitle,
                   style: textTheme.displaySmall,
+                  overflow: TextOverflow.ellipsis,
                 ),
               ),
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 16.0,
-                vertical: 8.0,
+              padding: EdgeInsets.symmetric(
+                horizontal: screenWidth * 0.02,
+                vertical: screenHeight * 0.01,
               ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              child: Wrap(
+                alignment: WrapAlignment.start,
+                crossAxisAlignment: WrapCrossAlignment.center,
                 children: [
                   Text(S.of(context).drawerTheme, style: textTheme.titleMedium),
+                  SizedBox(width: screenWidth * 0.04),
                   BlocBuilder<ThemeCubit, ThemeMode>(
                     builder: (context, currentMode) {
                       return Switch(
@@ -60,6 +64,7 @@ class DashboardScreen extends StatelessWidget {
                 ],
               ),
             ),
+
             const Divider(),
             ListTile(
               leading: const Icon(Icons.info_outline),
@@ -133,7 +138,7 @@ class DashboardScreen extends StatelessWidget {
                       description: S.of(context).dashboardLiveScoresDescription,
                       icon: Icons.sports_tennis,
                       iconColor: AppColors.tennisRacketIcon,
-                      onTap: () {},
+                      onTap: () => context.goNamed("live_score"),
                     ),
                   ),
                   SizedBox(width: screenWidth * 0.04),

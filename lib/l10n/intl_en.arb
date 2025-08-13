@@ -76,8 +76,12 @@
 
 
   "liveScoresTitle": "Live Scores",
-  "liveScoresMatchStatusUpcoming": "Upcoming",
-  "liveScoresMatchStatusFinished": "Finished",
+  "liveScoresError": "We're currently having problems, please try again later.",
+  "liveScoresEmpty": "No live matches right now.",
+  "liveScoresPoints": "Points",
+  "searchLabel": "Search",
+  "searchHint": "Enter the player's name or surname",
+  "liveScoresNoResults": "No results for the search phrase.",
 
   
   "welcomeUserMessage": "Welcome back, {userName}!",
