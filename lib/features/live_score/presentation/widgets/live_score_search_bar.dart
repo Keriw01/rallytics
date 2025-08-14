@@ -10,7 +10,7 @@ class LiveScoreSearchBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left: 16, top: 0, right: 16, bottom: 16),
+      padding: const EdgeInsets.symmetric(horizontal: 16),
       child: SearchBar(
         hintText: S.of(context).searchHint,
         leading: const Icon(Icons.search),

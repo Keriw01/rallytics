@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rallytics/core/di/injection.dart';
-import 'package:rallytics/core/presentation/widgets/tennis_ball_loader/tennis_ball_loader.dart';
+import 'package:rallytics/features/live_score/presentation/widgets/live_score_shimmer_card.dart';
 import 'package:rallytics/features/live_score/presentation/bloc/live_score_bloc.dart';
 import 'package:rallytics/features/live_score/presentation/bloc/live_score_event.dart';
 import 'package:rallytics/features/live_score/presentation/bloc/live_score_state.dart';
@@ -19,17 +19,29 @@ class LiveScoreScreen extends StatelessWidget {
           getIt<LiveScoreBloc>()
             ..add(const LiveScoreEvent.watchLiveScoresStarted()),
       child: Scaffold(
-        appBar: AppBar(title: Text(S.of(context).liveScoresTitle)),
+        appBar: AppBar(
+          centerTitle: true,
+          title: Text(S.of(context).liveScoresTitle),
+        ),
         body: SafeArea(
           child: Column(
             children: [
+              const SizedBox(height: 8),
               const LiveScoreSearchBar(),
+              const SizedBox(height: 16),
               Expanded(
                 child: BlocBuilder<LiveScoreBloc, LiveScoreState>(
                   builder: (context, state) {
                     return state.when(
                       initial: () => const SizedBox.shrink(),
-                      loading: () => const TennisBallLoader(),
+                      loading: () {
+                        return ListView.builder(
+                          itemCount: 12,
+                          itemBuilder: (context, index) {
+                            return const ShimmerCard();
+                          },
+                        );
+                      },
                       error: (message) =>
                           Center(child: Text(S.of(context).liveScoresError)),
                       loaded: (allMatches, filteredMatches, searchQuery) {

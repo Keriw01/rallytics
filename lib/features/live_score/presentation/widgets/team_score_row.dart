@@ -21,26 +21,19 @@ class TeamScoreRow extends StatelessWidget {
 
     return Row(
       children: [
-        SizedBox(
-          width: 40,
-          height: 40,
+        CircleAvatar(
           child: CachedNetworkImage(
             imageUrl: 'https://images.sportdevs.com/$teamHashImage.png',
 
-            placeholder: (context, url) => Container(
-              color: AppColors.white,
-              child: Center(
-                child: CircularProgressIndicator(
-                  strokeWidth: 2.0,
-                  padding: EdgeInsets.all(8),
-                ),
+            placeholder: (context, url) => Center(
+              child: CircularProgressIndicator(
+                strokeWidth: 2.0,
+                padding: EdgeInsets.all(8),
               ),
             ),
 
-            errorWidget: (context, url, error) => Container(
-              color: AppColors.white,
-              child: Icon(Icons.person, color: AppColors.grey),
-            ),
+            errorWidget: (context, url, error) =>
+                Icon(Icons.person, color: AppColors.white),
 
             fit: BoxFit.cover,
           ),
