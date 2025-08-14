@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:go_router/go_router.dart';
 import 'package:rallytics/app/theme/app_colors.dart';
+import 'package:rallytics/app/theme/theme_cubit/theme_cubit.dart';
 import 'package:rallytics/features/auth/presentation/bloc/auth_bloc.dart';
+import 'package:rallytics/features/auth/presentation/bloc/auth_event.dart';
 import 'package:rallytics/features/dashboard/presentation/widgets/feature_tile.dart';
 import 'package:rallytics/generated/l10n.dart';
 
@@ -10,6 +14,8 @@ class DashboardScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+
     final double screenHeight = MediaQuery.of(context).size.height;
     final double screenWidth = MediaQuery.of(context).size.width;
     final double tileWidth = (screenWidth / 2) - 20;
@@ -21,6 +27,85 @@ class DashboardScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(title: Text(S.of(context).appTitle), centerTitle: true),
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: [
+            DrawerHeader(
+              child: Center(
+                child: Text(
+                  S.of(context).appTitle,
+                  style: textTheme.displaySmall,
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(
+                horizontal: screenWidth * 0.02,
+                vertical: screenHeight * 0.01,
+              ),
+              child: Wrap(
+                alignment: WrapAlignment.start,
+                crossAxisAlignment: WrapCrossAlignment.center,
+                children: [
+                  Text(S.of(context).drawerTheme, style: textTheme.titleMedium),
+                  SizedBox(width: screenWidth * 0.04),
+                  BlocBuilder<ThemeCubit, ThemeMode>(
+                    builder: (context, currentMode) {
+                      return Switch(
+                        value: currentMode == ThemeMode.dark,
+                        onChanged: (isDarkMode) {
+                          context.read<ThemeCubit>().toggleTheme(isDarkMode);
+                        },
+                      );
+                    },
+                  ),
+                ],
+              ),
+            ),
+
+            const Divider(),
+            ListTile(
+              leading: const Icon(Icons.info_outline),
+              title: Text(
+                S.of(context).drawerAbout,
+                style: textTheme.bodyLarge,
+              ),
+              // TODO: Implement navigation to about screen
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              leading: const Icon(FontAwesomeIcons.handHoldingHeart),
+              title: Text(
+                S.of(context).drawerSupport,
+                style: textTheme.bodyLarge,
+              ),
+              // TODO: Implement navigation to support screen
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+
+            const Divider(),
+            ListTile(
+              leading: const Icon(Icons.logout, color: AppColors.error),
+              title: Text(
+                S.of(context).drawerLogout,
+                style: textTheme.bodyLarge?.copyWith(color: AppColors.error),
+              ),
+              onTap: () {
+                Navigator.pop(context);
+                context.read<AuthBloc>().add(
+                  const AuthEvent.signOutRequested(),
+                );
+              },
+            ),
+          ],
+        ),
+      ),
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.02),
@@ -53,7 +138,7 @@ class DashboardScreen extends StatelessWidget {
                       description: S.of(context).dashboardLiveScoresDescription,
                       icon: Icons.sports_tennis,
                       iconColor: AppColors.tennisRacketIcon,
-                      onTap: () {},
+                      onTap: () => context.goNamed("live_score"),
                     ),
                   ),
                   SizedBox(width: screenWidth * 0.04),

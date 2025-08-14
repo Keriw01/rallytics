@@ -16,6 +16,10 @@ class ThemeCubit extends Cubit<ThemeMode> {
     _saveTheme(mode);
   }
 
+  void toggleTheme(bool isDarkMode) {
+    setThemeMode(isDarkMode ? ThemeMode.dark : ThemeMode.light);
+  }
+
   Future<void> _saveTheme(ThemeMode mode) async {
     final prefs = await SharedPreferences.getInstance();
     await prefs.setInt(_themeKey, mode.index);

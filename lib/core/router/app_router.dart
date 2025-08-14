@@ -84,21 +84,22 @@ GoRouter configureRouter(AuthBloc authBloc) {
       ),
 
       GoRoute(
-        path: '/',
-        name: 'dashboard',
-        builder: (context, state) => const DashboardScreen(),
-      ),
-
-      GoRoute(
         path: '/verify-email',
         name: 'verify_email',
         builder: (context, state) => const VerifyEmailScreen(),
       ),
 
       GoRoute(
-        path: '/live_score',
-        name: 'live_score',
-        builder: (context, state) => const LiveScoreScreen(),
+        path: '/',
+        name: 'dashboard',
+        builder: (context, state) => const DashboardScreen(),
+        routes: [
+          GoRoute(
+            path: '/live_score',
+            name: 'live_score',
+            builder: (context, state) => const LiveScoreScreen(),
+          ),
+        ],
       ),
     ],
   );

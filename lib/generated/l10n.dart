@@ -461,21 +461,61 @@ class S {
     );
   }
 
-  /// `Upcoming`
-  String get liveScoresMatchStatusUpcoming {
+  /// `We're currently having problems, please try again later.`
+  String get liveScoresError {
     return Intl.message(
-      'Upcoming',
-      name: 'liveScoresMatchStatusUpcoming',
+      'We\'re currently having problems, please try again later.',
+      name: 'liveScoresError',
       desc: '',
       args: [],
     );
   }
 
-  /// `Finished`
-  String get liveScoresMatchStatusFinished {
+  /// `No live matches right now.`
+  String get liveScoresEmpty {
     return Intl.message(
-      'Finished',
-      name: 'liveScoresMatchStatusFinished',
+      'No live matches right now.',
+      name: 'liveScoresEmpty',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Points`
+  String get liveScoresPoints {
+    return Intl.message(
+      'Points',
+      name: 'liveScoresPoints',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Search`
+  String get searchLabel {
+    return Intl.message(
+      'Search',
+      name: 'searchLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter the player's name or surname`
+  String get searchHint {
+    return Intl.message(
+      'Enter the player\'s name or surname',
+      name: 'searchHint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No results for the search phrase.`
+  String get liveScoresNoResults {
+    return Intl.message(
+      'No results for the search phrase.',
+      name: 'liveScoresNoResults',
       desc: '',
       args: [],
     );
@@ -576,6 +616,46 @@ class S {
     return Intl.message(
       'Review your progress, analyze stats, and see how your game evolves.',
       name: 'dashboardTrainingHistoryDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Change Theme`
+  String get drawerTheme {
+    return Intl.message(
+      'Change Theme',
+      name: 'drawerTheme',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `About App`
+  String get drawerAbout {
+    return Intl.message(
+      'About App',
+      name: 'drawerAbout',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Support Me`
+  String get drawerSupport {
+    return Intl.message(
+      'Support Me',
+      name: 'drawerSupport',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Log Out`
+  String get drawerLogout {
+    return Intl.message(
+      'Log Out',
+      name: 'drawerLogout',
       desc: '',
       args: [],
     );

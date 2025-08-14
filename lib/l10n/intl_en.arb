@@ -76,8 +76,12 @@
 
 
   "liveScoresTitle": "Live Scores",
-  "liveScoresMatchStatusUpcoming": "Upcoming",
-  "liveScoresMatchStatusFinished": "Finished",
+  "liveScoresError": "We're currently having problems, please try again later.",
+  "liveScoresEmpty": "No live matches right now.",
+  "liveScoresPoints": "Points",
+  "searchLabel": "Search",
+  "searchHint": "Enter the player's name or surname",
+  "liveScoresNoResults": "No results for the search phrase.",
 
   
   "welcomeUserMessage": "Welcome back, {userName}!",
@@ -99,7 +103,10 @@
   "dashboardAiCoachDescription": "Record a video, and our AI will analyze your technique. Your personal coach in your pocket.",
   "dashboardTrainingHistoryTitle": "History",
   "dashboardTrainingHistoryDescription": "Review your progress, analyze stats, and see how your game evolves.",
-
+  "drawerTheme": "Change Theme",
+  "drawerAbout": "About App",
+  "drawerSupport": "Support Me",
+  "drawerLogout": "Log Out",
 
   "errorGeneric": "An unexpected error occurred. Please try again later."
 

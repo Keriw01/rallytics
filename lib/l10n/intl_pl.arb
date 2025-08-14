@@ -78,8 +78,12 @@
 
 
   "liveScoresTitle": "Wyniki na Żywo",
-  "liveScoresMatchStatusUpcoming": "Nadchodzące",
-  "liveScoresMatchStatusFinished": "Zakończone",
+  "liveScoresError": "Mamy w tej chwili problemy, spróbuj ponownie później.",
+  "liveScoresEmpty": "Aktualnie brak meczów na żywo.",
+  "liveScoresPoints": "Punkty",
+  "searchLabel": "Wyszukaj",
+  "searchHint": "Wpisz imię lub nazwisko zawodnika",
+  "liveScoresNoResults": "Brak wyników dla szukanej frazy.",
 
 
   "welcomeUserMessage": "Witaj ponownie, {userName}!",
@@ -101,7 +105,10 @@
   "dashboardAiCoachDescription": "Nagraj film, a nasza sztuczna inteligencja przeanalizuje Twoją technikę. Twój osobisty trener w Twojej kieszeni.",
   "dashboardTrainingHistoryTitle": "Historia",
   "dashboardTrainingHistoryDescription": "Przeglądaj swoje postępy, analizuj statystyki i obserwuj, jak ewoluuje Twoja gra.",
-
+  "drawerTheme": "Zmień motyw",
+  "drawerAbout": "O aplikacji",
+  "drawerSupport": "Wesprzyj mnie",
+  "drawerLogout": "Wyloguj",
 
   "errorGeneric": "Niespodziewany błąd. Proszę spróbować ponownie później."
   

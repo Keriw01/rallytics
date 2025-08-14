@@ -65,6 +65,10 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Historia"),
         "dashboardWelcomeSubtitle":
             MessageLookupByLibrary.simpleMessage("Wybierz co cię interesuje"),
+        "drawerAbout": MessageLookupByLibrary.simpleMessage("O aplikacji"),
+        "drawerLogout": MessageLookupByLibrary.simpleMessage("Wyloguj"),
+        "drawerSupport": MessageLookupByLibrary.simpleMessage("Wesprzyj mnie"),
+        "drawerTheme": MessageLookupByLibrary.simpleMessage("Zmień motyw"),
         "emailHint":
             MessageLookupByLibrary.simpleMessage("Wpisz swój adres email"),
         "emailLabel": MessageLookupByLibrary.simpleMessage("Email"),
@@ -72,10 +76,13 @@ class MessageLookup extends MessageLookupByLibrary {
             "Niespodziewany błąd. Proszę spróbować ponownie później."),
         "forgotPasswordButton":
             MessageLookupByLibrary.simpleMessage("Nie pamiętasz hasła?"),
-        "liveScoresMatchStatusFinished":
-            MessageLookupByLibrary.simpleMessage("Zakończone"),
-        "liveScoresMatchStatusUpcoming":
-            MessageLookupByLibrary.simpleMessage("Nadchodzące"),
+        "liveScoresEmpty": MessageLookupByLibrary.simpleMessage(
+            "Aktualnie brak meczów na żywo."),
+        "liveScoresError": MessageLookupByLibrary.simpleMessage(
+            "Mamy w tej chwili problemy, spróbuj ponownie później."),
+        "liveScoresNoResults": MessageLookupByLibrary.simpleMessage(
+            "Brak wyników dla szukanej frazy."),
+        "liveScoresPoints": MessageLookupByLibrary.simpleMessage("Punkty"),
         "liveScoresTitle":
             MessageLookupByLibrary.simpleMessage("Wyniki na Żywo"),
         "loginTitle": MessageLookupByLibrary.simpleMessage("Logowanie"),
@@ -92,6 +99,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "resetPasswordTitle":
             MessageLookupByLibrary.simpleMessage("Zresetuj hasło"),
         "saveButton": MessageLookupByLibrary.simpleMessage("Zapisz"),
+        "searchHint": MessageLookupByLibrary.simpleMessage(
+            "Wpisz imię lub nazwisko zawodnika"),
+        "searchLabel": MessageLookupByLibrary.simpleMessage("Wyszukaj"),
         "sendButton": MessageLookupByLibrary.simpleMessage("Wyślij"),
         "signInButton": MessageLookupByLibrary.simpleMessage("Zaloguj się"),
         "signInPrompt": MessageLookupByLibrary.simpleMessage("Masz już konto?"),

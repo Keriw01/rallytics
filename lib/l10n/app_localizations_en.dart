@@ -144,10 +144,23 @@ class AppLocalizationsEn extends AppLocalizations {
   String get liveScoresTitle => 'Live Scores';
 
   @override
-  String get liveScoresMatchStatusUpcoming => 'Upcoming';
+  String get liveScoresError =>
+      'We\'re currently having problems, please try again later.';
 
   @override
-  String get liveScoresMatchStatusFinished => 'Finished';
+  String get liveScoresEmpty => 'No live matches right now.';
+
+  @override
+  String get liveScoresPoints => 'Points';
+
+  @override
+  String get searchLabel => 'Search';
+
+  @override
+  String get searchHint => 'Enter the player\'s name or surname';
+
+  @override
+  String get liveScoresNoResults => 'No results for the search phrase.';
 
   @override
   String welcomeUserMessage(String userName) {
@@ -184,6 +197,18 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get dashboardTrainingHistoryDescription =>
       'Review your progress, analyze stats, and see how your game evolves.';
+
+  @override
+  String get drawerTheme => 'Change Theme';
+
+  @override
+  String get drawerAbout => 'About App';
+
+  @override
+  String get drawerSupport => 'Support Me';
+
+  @override
+  String get drawerLogout => 'Log Out';
 
   @override
   String get errorGeneric =>
