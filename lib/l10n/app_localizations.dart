@@ -464,6 +464,36 @@ abstract class AppLocalizations {
   /// **'Log Out'**
   String get drawerLogout;
 
+  /// No description provided for @newsArticlesTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'News Articles'**
+  String get newsArticlesTitle;
+
+  /// No description provided for @newsArticlesError.
+  ///
+  /// In en, this message translates to:
+  /// **'We\'re currently having problems, please try again later.'**
+  String get newsArticlesError;
+
+  /// No description provided for @newsArticlesEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'No articles new right now.'**
+  String get newsArticlesEmpty;
+
+  /// No description provided for @readMoreButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Read More'**
+  String get readMoreButton;
+
+  /// No description provided for @showLessButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Show Less'**
+  String get showLessButton;
+
   /// No description provided for @errorGeneric.
   ///
   /// In en, this message translates to:

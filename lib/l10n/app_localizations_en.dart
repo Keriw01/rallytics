@@ -211,6 +211,22 @@ class AppLocalizationsEn extends AppLocalizations {
   String get drawerLogout => 'Log Out';
 
   @override
+  String get newsArticlesTitle => 'News Articles';
+
+  @override
+  String get newsArticlesError =>
+      'We\'re currently having problems, please try again later.';
+
+  @override
+  String get newsArticlesEmpty => 'No articles new right now.';
+
+  @override
+  String get readMoreButton => 'Read More';
+
+  @override
+  String get showLessButton => 'Show Less';
+
+  @override
   String get errorGeneric =>
       'An unexpected error occurred. Please try again later.';
 }

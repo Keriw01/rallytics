@@ -108,6 +108,14 @@
   "drawerSupport": "Support Me",
   "drawerLogout": "Log Out",
 
+
+  "newsArticlesTitle": "News Articles",
+  "newsArticlesError": "We're currently having problems, please try again later.",
+  "newsArticlesEmpty": "No articles new right now.",
+  "readMoreButton": "Read More",
+  "showLessButton": "Show Less",
+
+  
   "errorGeneric": "An unexpected error occurred. Please try again later."
 
 }

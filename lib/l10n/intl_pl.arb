@@ -110,6 +110,12 @@
   "drawerSupport": "Wesprzyj mnie",
   "drawerLogout": "Wyloguj",
 
+
+  "newsArticlesTitle": "Najnowsze Artykuły",
+  "readMoreButton": "Rozwiń",
+  "showLessButton": "Zwiń",
+
+
   "errorGeneric": "Niespodziewany błąd. Proszę spróbować ponownie później."
   
 }

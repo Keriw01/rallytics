@@ -661,6 +661,56 @@ class S {
     );
   }
 
+  /// `News Articles`
+  String get newsArticlesTitle {
+    return Intl.message(
+      'News Articles',
+      name: 'newsArticlesTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `We're currently having problems, please try again later.`
+  String get newsArticlesError {
+    return Intl.message(
+      'We\'re currently having problems, please try again later.',
+      name: 'newsArticlesError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No articles new right now.`
+  String get newsArticlesEmpty {
+    return Intl.message(
+      'No articles new right now.',
+      name: 'newsArticlesEmpty',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Read More`
+  String get readMoreButton {
+    return Intl.message(
+      'Read More',
+      name: 'readMoreButton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Show Less`
+  String get showLessButton {
+    return Intl.message(
+      'Show Less',
+      name: 'showLessButton',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `An unexpected error occurred. Please try again later.`
   String get errorGeneric {
     return Intl.message(
