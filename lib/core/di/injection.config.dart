@@ -137,8 +137,8 @@ Future<_i174.GetIt> $initGetIt(
   gh.lazySingleton<_i317.GetLiveScoresUseCase>(
     () => _i317.GetLiveScoresUseCase(gh<_i321.LiveScoreRepository>()),
   );
-  gh.lazySingleton<_i174.GetNewsArticlesUsecases>(
-    () => _i174.GetNewsArticlesUsecases(gh<_i491.NewsArticlesRepository>()),
+  gh.lazySingleton<_i174.GetNewsArticlesUseCase>(
+    () => _i174.GetNewsArticlesUseCase(gh<_i491.NewsArticlesRepository>()),
   );
   gh.factory<_i15.LiveScoreBloc>(
     () => _i15.LiveScoreBloc(gh<_i317.GetLiveScoresUseCase>()),
@@ -150,7 +150,7 @@ Future<_i174.GetIt> $initGetIt(
     ),
   );
   gh.factory<_i288.NewsArticlesBloc>(
-    () => _i288.NewsArticlesBloc(gh<_i174.GetNewsArticlesUsecases>()),
+    () => _i288.NewsArticlesBloc(gh<_i174.GetNewsArticlesUseCase>()),
   );
   gh.factory<_i797.AuthBloc>(
     () => _i797.AuthBloc(

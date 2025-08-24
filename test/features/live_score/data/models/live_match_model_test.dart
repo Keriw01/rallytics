@@ -56,7 +56,7 @@ void main() {
       'should correctly create a model from DocumentSnapshot (from fake_cloud_firestore)',
       () async {
         final firestore = FakeFirebaseFirestore();
-        final docRef = firestore.collection('matches').doc('123');
+        final docRef = firestore.collection('live_matches').doc('123');
         await docRef.set(tMatchJson);
         final snapshot = await docRef.get();
 

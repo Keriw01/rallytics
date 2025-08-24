@@ -8,16 +8,16 @@ import 'package:rallytics/features/news_articles/presentation/bloc/news_articles
 
 @injectable
 class NewsArticlesBloc extends Bloc<NewsArticlesEvent, NewsArticlesState> {
-  final GetNewsArticlesUsecases _getNewsArticlesUsecases;
+  final GetNewsArticlesUseCase _getNewsArticlesUsecase;
 
-  NewsArticlesBloc(this._getNewsArticlesUsecases)
+  NewsArticlesBloc(this._getNewsArticlesUsecase)
     : super(NewsArticlesState.initial()) {
     on<WatchNewsArticlesStarted>((event, emit) async {
       if (state is! Loaded) {
         emit(const NewsArticlesState.loading());
       }
       await emit.onEach<List<NewsArticlesEntity>>(
-        _getNewsArticlesUsecases(NoParams()),
+        _getNewsArticlesUsecase(NoParams()),
         onData: (newNewsArticles) {
           emit(NewsArticlesState.loaded(allNewsArticles: newNewsArticles));
         },
