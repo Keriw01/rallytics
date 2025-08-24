@@ -50,6 +50,16 @@ import '../../features/live_score/domain/usecases/get_live_scores_usecase.dart'
     as _i317;
 import '../../features/live_score/presentation/bloc/live_score_bloc.dart'
     as _i15;
+import '../../features/news_articles/data/datasources/news_articles_firestore_datasource.dart'
+    as _i798;
+import '../../features/news_articles/data/repositories/news_articles_repository_impl.dart'
+    as _i205;
+import '../../features/news_articles/domain/repositories/news_articles_repository.dart'
+    as _i491;
+import '../../features/news_articles/domain/usecases/get_news_articles_usecases.dart'
+    as _i174;
+import '../../features/news_articles/presentation/bloc/news_articles_bloc.dart'
+    as _i288;
 import '../config/app_config.dart' as _i650;
 import 'firebase_injectable_module.dart' as _i574;
 
@@ -86,8 +96,16 @@ Future<_i174.GetIt> $initGetIt(
       gh<_i116.GoogleSignIn>(),
     ),
   );
+  gh.lazySingleton<_i798.NewsArticlesDataSource>(
+    () => _i798.NewsArticlesFirestoreDataSourceImpl(
+      gh<_i974.FirebaseFirestore>(),
+    ),
+  );
   gh.lazySingleton<_i321.LiveScoreRepository>(
     () => _i825.LiveScoreRepositoryImpl(gh<_i962.LiveScoreDataSource>()),
+  );
+  gh.lazySingleton<_i491.NewsArticlesRepository>(
+    () => _i205.NewsArticlesRepositoryImpl(gh<_i798.NewsArticlesDataSource>()),
   );
   gh.lazySingleton<_i787.AuthRepository>(
     () => _i153.AuthRepositoryImpl(gh<_i157.AuthFirebaseDataSource>()),
@@ -119,6 +137,9 @@ Future<_i174.GetIt> $initGetIt(
   gh.lazySingleton<_i317.GetLiveScoresUseCase>(
     () => _i317.GetLiveScoresUseCase(gh<_i321.LiveScoreRepository>()),
   );
+  gh.lazySingleton<_i174.GetNewsArticlesUseCase>(
+    () => _i174.GetNewsArticlesUseCase(gh<_i491.NewsArticlesRepository>()),
+  );
   gh.factory<_i15.LiveScoreBloc>(
     () => _i15.LiveScoreBloc(gh<_i317.GetLiveScoresUseCase>()),
   );
@@ -127,6 +148,9 @@ Future<_i174.GetIt> $initGetIt(
       gh<_i787.AuthRepository>(),
       gh<_i707.SendEmailVerificationUseCase>(),
     ),
+  );
+  gh.factory<_i288.NewsArticlesBloc>(
+    () => _i288.NewsArticlesBloc(gh<_i174.GetNewsArticlesUseCase>()),
   );
   gh.factory<_i797.AuthBloc>(
     () => _i797.AuthBloc(

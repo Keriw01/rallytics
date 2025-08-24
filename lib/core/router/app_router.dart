@@ -9,6 +9,7 @@ import 'package:rallytics/features/auth/presentation/pages/reset_password_screen
 import 'package:rallytics/features/auth/presentation/pages/verify_email_screen.dart';
 import 'package:rallytics/features/dashboard/presentation/pages/dashboard_screen.dart';
 import 'package:rallytics/features/live_score/presentation/pages/live_score_screen.dart';
+import 'package:rallytics/features/news_articles/presentation/pages/news_articles_screen.dart';
 
 GoRouter configureRouter(AuthBloc authBloc) {
   return GoRouter(
@@ -98,6 +99,11 @@ GoRouter configureRouter(AuthBloc authBloc) {
             path: '/live_score',
             name: 'live_score',
             builder: (context, state) => const LiveScoreScreen(),
+          ),
+          GoRoute(
+            path: '/news_articles',
+            name: 'news_articles',
+            builder: (context, state) => const NewsArticlesScreen(),
           ),
         ],
       ),

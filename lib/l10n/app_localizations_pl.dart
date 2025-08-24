@@ -210,6 +210,22 @@ class AppLocalizationsPl extends AppLocalizations {
   String get drawerLogout => 'Wyloguj';
 
   @override
+  String get newsArticlesTitle => 'Najnowsze Artykuły';
+
+  @override
+  String get newsArticlesError =>
+      'We\'re currently having problems, please try again later.';
+
+  @override
+  String get newsArticlesEmpty => 'No articles new right now.';
+
+  @override
+  String get readMoreButton => 'Rozwiń';
+
+  @override
+  String get showLessButton => 'Zwiń';
+
+  @override
   String get errorGeneric =>
       'Niespodziewany błąd. Proszę spróbować ponownie później.';
 }

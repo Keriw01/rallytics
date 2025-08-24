@@ -85,6 +85,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "liveScoresTitle": MessageLookupByLibrary.simpleMessage("Live Scores"),
         "loginTitle": MessageLookupByLibrary.simpleMessage("Login"),
         "logoutButton": MessageLookupByLibrary.simpleMessage("Log Out"),
+        "newsArticlesEmpty":
+            MessageLookupByLibrary.simpleMessage("No articles new right now."),
+        "newsArticlesError": MessageLookupByLibrary.simpleMessage(
+            "We\'re currently having problems, please try again later."),
+        "newsArticlesTitle":
+            MessageLookupByLibrary.simpleMessage("News Articles"),
         "orConnectWith":
             MessageLookupByLibrary.simpleMessage("or connect with"),
         "passwordHint":
@@ -92,6 +98,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "passwordLabel": MessageLookupByLibrary.simpleMessage("Password"),
         "passwordResetEmailSentSuccess": MessageLookupByLibrary.simpleMessage(
             "If an account exists for that email, a password reset link has been sent."),
+        "readMoreButton": MessageLookupByLibrary.simpleMessage("Read More"),
         "registerTitle": MessageLookupByLibrary.simpleMessage("Register"),
         "resetPasswordInstruction": MessageLookupByLibrary.simpleMessage(
             "Enter the email address associated with your account and we\'ll send you a link to reset your password."),
@@ -102,6 +109,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Enter the player\'s name or surname"),
         "searchLabel": MessageLookupByLibrary.simpleMessage("Search"),
         "sendButton": MessageLookupByLibrary.simpleMessage("Send"),
+        "showLessButton": MessageLookupByLibrary.simpleMessage("Show Less"),
         "signInButton": MessageLookupByLibrary.simpleMessage("Sign In"),
         "signInPrompt":
             MessageLookupByLibrary.simpleMessage("Already have an account?"),

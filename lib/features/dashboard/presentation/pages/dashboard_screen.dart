@@ -40,28 +40,20 @@ class DashboardScreen extends StatelessWidget {
                 ),
               ),
             ),
-            Padding(
-              padding: EdgeInsets.symmetric(
-                horizontal: screenWidth * 0.02,
-                vertical: screenHeight * 0.01,
+            ListTile(
+              title: Text(
+                S.of(context).drawerTheme,
+                style: textTheme.bodyLarge,
               ),
-              child: Wrap(
-                alignment: WrapAlignment.start,
-                crossAxisAlignment: WrapCrossAlignment.center,
-                children: [
-                  Text(S.of(context).drawerTheme, style: textTheme.titleMedium),
-                  SizedBox(width: screenWidth * 0.04),
-                  BlocBuilder<ThemeCubit, ThemeMode>(
-                    builder: (context, currentMode) {
-                      return Switch(
-                        value: currentMode == ThemeMode.dark,
-                        onChanged: (isDarkMode) {
-                          context.read<ThemeCubit>().toggleTheme(isDarkMode);
-                        },
-                      );
+              trailing: BlocBuilder<ThemeCubit, ThemeMode>(
+                builder: (context, currentMode) {
+                  return Switch(
+                    value: currentMode == ThemeMode.dark,
+                    onChanged: (isDarkMode) {
+                      context.read<ThemeCubit>().toggleTheme(isDarkMode);
                     },
-                  ),
-                ],
+                  );
+                },
               ),
             ),
 
@@ -150,7 +142,7 @@ class DashboardScreen extends StatelessWidget {
                       description: S.of(context).dashboardNewsDescription,
                       icon: Icons.article,
                       iconColor: AppColors.newsIcon,
-                      onTap: () {},
+                      onTap: () => context.goNamed("news_articles"),
                     ),
                   ),
                 ],

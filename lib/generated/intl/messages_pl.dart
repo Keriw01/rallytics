@@ -87,12 +87,15 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Wyniki na Żywo"),
         "loginTitle": MessageLookupByLibrary.simpleMessage("Logowanie"),
         "logoutButton": MessageLookupByLibrary.simpleMessage("Wyloguj"),
+        "newsArticlesTitle":
+            MessageLookupByLibrary.simpleMessage("Najnowsze Artykuły"),
         "orConnectWith": MessageLookupByLibrary.simpleMessage("lub połącz z"),
         "passwordHint":
             MessageLookupByLibrary.simpleMessage("Wprowadź swoje hasło"),
         "passwordLabel": MessageLookupByLibrary.simpleMessage("Hasło"),
         "passwordResetEmailSentSuccess": MessageLookupByLibrary.simpleMessage(
             "Jeśli istnieje konto dla tego adresu e-mail, link do resetowania hasła został wysłany."),
+        "readMoreButton": MessageLookupByLibrary.simpleMessage("Rozwiń"),
         "registerTitle": MessageLookupByLibrary.simpleMessage("Rejestracja"),
         "resetPasswordInstruction": MessageLookupByLibrary.simpleMessage(
             "Wprowadź adres e-mail powiązany z Twoim kontem, a my wyślemy Ci link umożliwiający zresetowanie hasła."),
@@ -103,6 +106,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Wpisz imię lub nazwisko zawodnika"),
         "searchLabel": MessageLookupByLibrary.simpleMessage("Wyszukaj"),
         "sendButton": MessageLookupByLibrary.simpleMessage("Wyślij"),
+        "showLessButton": MessageLookupByLibrary.simpleMessage("Zwiń"),
         "signInButton": MessageLookupByLibrary.simpleMessage("Zaloguj się"),
         "signInPrompt": MessageLookupByLibrary.simpleMessage("Masz już konto?"),
         "signUpButton": MessageLookupByLibrary.simpleMessage("Zarejestruj się"),
