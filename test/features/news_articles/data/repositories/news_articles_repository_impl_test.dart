@@ -20,7 +20,6 @@ void main() {
   });
 
   final tNewsArticles = {
-    "originalUrl": "https://tenis.pl/tenis/3424/nie-dla-polki",
     "rewrittenContent":
         "Linda Klimovicova pożegnała się z marzeniami o debiucie w głównej drabince US Open 2025.",
     "rewrittenTitle":

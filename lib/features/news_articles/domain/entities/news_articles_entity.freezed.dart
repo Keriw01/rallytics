@@ -17,7 +17,6 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$NewsArticlesEntity {
-  String get originalUrl => throw _privateConstructorUsedError;
   String get rewrittenContent => throw _privateConstructorUsedError;
   String get rewrittenTitle => throw _privateConstructorUsedError;
 
@@ -35,11 +34,7 @@ abstract class $NewsArticlesEntityCopyWith<$Res> {
     $Res Function(NewsArticlesEntity) then,
   ) = _$NewsArticlesEntityCopyWithImpl<$Res, NewsArticlesEntity>;
   @useResult
-  $Res call({
-    String originalUrl,
-    String rewrittenContent,
-    String rewrittenTitle,
-  });
+  $Res call({String rewrittenContent, String rewrittenTitle});
 }
 
 /// @nodoc
@@ -56,17 +51,9 @@ class _$NewsArticlesEntityCopyWithImpl<$Res, $Val extends NewsArticlesEntity>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? originalUrl = null,
-    Object? rewrittenContent = null,
-    Object? rewrittenTitle = null,
-  }) {
+  $Res call({Object? rewrittenContent = null, Object? rewrittenTitle = null}) {
     return _then(
       _value.copyWith(
-            originalUrl: null == originalUrl
-                ? _value.originalUrl
-                : originalUrl // ignore: cast_nullable_to_non_nullable
-                      as String,
             rewrittenContent: null == rewrittenContent
                 ? _value.rewrittenContent
                 : rewrittenContent // ignore: cast_nullable_to_non_nullable
@@ -90,11 +77,7 @@ abstract class _$$NewsArticlesEntityImplCopyWith<$Res>
   ) = __$$NewsArticlesEntityImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({
-    String originalUrl,
-    String rewrittenContent,
-    String rewrittenTitle,
-  });
+  $Res call({String rewrittenContent, String rewrittenTitle});
 }
 
 /// @nodoc
@@ -110,17 +93,9 @@ class __$$NewsArticlesEntityImplCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? originalUrl = null,
-    Object? rewrittenContent = null,
-    Object? rewrittenTitle = null,
-  }) {
+  $Res call({Object? rewrittenContent = null, Object? rewrittenTitle = null}) {
     return _then(
       _$NewsArticlesEntityImpl(
-        originalUrl: null == originalUrl
-            ? _value.originalUrl
-            : originalUrl // ignore: cast_nullable_to_non_nullable
-                  as String,
         rewrittenContent: null == rewrittenContent
             ? _value.rewrittenContent
             : rewrittenContent // ignore: cast_nullable_to_non_nullable
@@ -138,13 +113,10 @@ class __$$NewsArticlesEntityImplCopyWithImpl<$Res>
 
 class _$NewsArticlesEntityImpl implements _NewsArticlesEntity {
   const _$NewsArticlesEntityImpl({
-    required this.originalUrl,
     required this.rewrittenContent,
     required this.rewrittenTitle,
   });
 
-  @override
-  final String originalUrl;
   @override
   final String rewrittenContent;
   @override
@@ -152,7 +124,7 @@ class _$NewsArticlesEntityImpl implements _NewsArticlesEntity {
 
   @override
   String toString() {
-    return 'NewsArticlesEntity(originalUrl: $originalUrl, rewrittenContent: $rewrittenContent, rewrittenTitle: $rewrittenTitle)';
+    return 'NewsArticlesEntity(rewrittenContent: $rewrittenContent, rewrittenTitle: $rewrittenTitle)';
   }
 
   @override
@@ -160,8 +132,6 @@ class _$NewsArticlesEntityImpl implements _NewsArticlesEntity {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$NewsArticlesEntityImpl &&
-            (identical(other.originalUrl, originalUrl) ||
-                other.originalUrl == originalUrl) &&
             (identical(other.rewrittenContent, rewrittenContent) ||
                 other.rewrittenContent == rewrittenContent) &&
             (identical(other.rewrittenTitle, rewrittenTitle) ||
@@ -170,7 +140,7 @@ class _$NewsArticlesEntityImpl implements _NewsArticlesEntity {
 
   @override
   int get hashCode =>
-      Object.hash(runtimeType, originalUrl, rewrittenContent, rewrittenTitle);
+      Object.hash(runtimeType, rewrittenContent, rewrittenTitle);
 
   /// Create a copy of NewsArticlesEntity
   /// with the given fields replaced by the non-null parameter values.
@@ -186,13 +156,10 @@ class _$NewsArticlesEntityImpl implements _NewsArticlesEntity {
 
 abstract class _NewsArticlesEntity implements NewsArticlesEntity {
   const factory _NewsArticlesEntity({
-    required final String originalUrl,
     required final String rewrittenContent,
     required final String rewrittenTitle,
   }) = _$NewsArticlesEntityImpl;
 
-  @override
-  String get originalUrl;
   @override
   String get rewrittenContent;
   @override

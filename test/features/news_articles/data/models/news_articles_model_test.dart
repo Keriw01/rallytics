@@ -6,7 +6,6 @@ import 'package:rallytics/features/news_articles/domain/entities/news_articles_e
 void main() {
   group('NewsArticlesModel', () {
     final tNewsArticleJson = {
-      "originalUrl": "https://tenis.pl/tenis/3424/nie-dla-polki",
       "rewrittenContent":
           "Linda Klimovicova pożegnała się z marzeniami o debiucie w głównej drabince US Open 2025.",
       "rewrittenTitle":
@@ -17,10 +16,6 @@ void main() {
 
     test('should correctly create a model from JSON', () {
       expect(tNewsArticleModel, isA<NewsArticlesModel>());
-      expect(
-        tNewsArticleModel.originalUrl,
-        "https://tenis.pl/tenis/3424/nie-dla-polki",
-      );
       expect(
         tNewsArticleModel.rewrittenContent,
         "Linda Klimovicova pożegnała się z marzeniami o debiucie w głównej drabince US Open 2025.",
@@ -35,7 +30,6 @@ void main() {
       final resultEntity = tNewsArticleModel.toEntity();
 
       expect(resultEntity, isA<NewsArticlesEntity>());
-      expect(resultEntity.originalUrl, tNewsArticleModel.originalUrl);
       expect(resultEntity.rewrittenContent, tNewsArticleModel.rewrittenContent);
       expect(resultEntity.rewrittenTitle, tNewsArticleModel.rewrittenTitle);
     });

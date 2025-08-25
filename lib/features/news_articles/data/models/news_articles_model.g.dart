@@ -9,7 +9,6 @@ part of 'news_articles_model.dart';
 _$NewsArticlesModelImpl _$$NewsArticlesModelImplFromJson(
   Map<String, dynamic> json,
 ) => _$NewsArticlesModelImpl(
-  originalUrl: json['originalUrl'] as String,
   rewrittenContent: json['rewrittenContent'] as String,
   rewrittenTitle: json['rewrittenTitle'] as String,
 );
@@ -17,7 +16,6 @@ _$NewsArticlesModelImpl _$$NewsArticlesModelImplFromJson(
 Map<String, dynamic> _$$NewsArticlesModelImplToJson(
   _$NewsArticlesModelImpl instance,
 ) => <String, dynamic>{
-  'originalUrl': instance.originalUrl,
   'rewrittenContent': instance.rewrittenContent,
   'rewrittenTitle': instance.rewrittenTitle,
 };

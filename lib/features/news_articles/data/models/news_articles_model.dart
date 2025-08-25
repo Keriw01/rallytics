@@ -9,7 +9,6 @@ class NewsArticlesModel with _$NewsArticlesModel {
   const NewsArticlesModel._();
 
   const factory NewsArticlesModel({
-    required String originalUrl,
     required String rewrittenContent,
     required String rewrittenTitle,
   }) = _NewsArticlesModel;
@@ -19,7 +18,6 @@ class NewsArticlesModel with _$NewsArticlesModel {
 
   NewsArticlesEntity toEntity() {
     return NewsArticlesEntity(
-      originalUrl: originalUrl,
       rewrittenContent: rewrittenContent,
       rewrittenTitle: rewrittenTitle,
     );
