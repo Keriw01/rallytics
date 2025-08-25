@@ -21,7 +21,6 @@ NewsArticlesModel _$NewsArticlesModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$NewsArticlesModel {
-  String get originalUrl => throw _privateConstructorUsedError;
   String get rewrittenContent => throw _privateConstructorUsedError;
   String get rewrittenTitle => throw _privateConstructorUsedError;
 
@@ -42,11 +41,7 @@ abstract class $NewsArticlesModelCopyWith<$Res> {
     $Res Function(NewsArticlesModel) then,
   ) = _$NewsArticlesModelCopyWithImpl<$Res, NewsArticlesModel>;
   @useResult
-  $Res call({
-    String originalUrl,
-    String rewrittenContent,
-    String rewrittenTitle,
-  });
+  $Res call({String rewrittenContent, String rewrittenTitle});
 }
 
 /// @nodoc
@@ -63,17 +58,9 @@ class _$NewsArticlesModelCopyWithImpl<$Res, $Val extends NewsArticlesModel>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? originalUrl = null,
-    Object? rewrittenContent = null,
-    Object? rewrittenTitle = null,
-  }) {
+  $Res call({Object? rewrittenContent = null, Object? rewrittenTitle = null}) {
     return _then(
       _value.copyWith(
-            originalUrl: null == originalUrl
-                ? _value.originalUrl
-                : originalUrl // ignore: cast_nullable_to_non_nullable
-                      as String,
             rewrittenContent: null == rewrittenContent
                 ? _value.rewrittenContent
                 : rewrittenContent // ignore: cast_nullable_to_non_nullable
@@ -97,11 +84,7 @@ abstract class _$$NewsArticlesModelImplCopyWith<$Res>
   ) = __$$NewsArticlesModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({
-    String originalUrl,
-    String rewrittenContent,
-    String rewrittenTitle,
-  });
+  $Res call({String rewrittenContent, String rewrittenTitle});
 }
 
 /// @nodoc
@@ -117,17 +100,9 @@ class __$$NewsArticlesModelImplCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? originalUrl = null,
-    Object? rewrittenContent = null,
-    Object? rewrittenTitle = null,
-  }) {
+  $Res call({Object? rewrittenContent = null, Object? rewrittenTitle = null}) {
     return _then(
       _$NewsArticlesModelImpl(
-        originalUrl: null == originalUrl
-            ? _value.originalUrl
-            : originalUrl // ignore: cast_nullable_to_non_nullable
-                  as String,
         rewrittenContent: null == rewrittenContent
             ? _value.rewrittenContent
             : rewrittenContent // ignore: cast_nullable_to_non_nullable
@@ -145,7 +120,6 @@ class __$$NewsArticlesModelImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$NewsArticlesModelImpl extends _NewsArticlesModel {
   const _$NewsArticlesModelImpl({
-    required this.originalUrl,
     required this.rewrittenContent,
     required this.rewrittenTitle,
   }) : super._();
@@ -154,15 +128,13 @@ class _$NewsArticlesModelImpl extends _NewsArticlesModel {
       _$$NewsArticlesModelImplFromJson(json);
 
   @override
-  final String originalUrl;
-  @override
   final String rewrittenContent;
   @override
   final String rewrittenTitle;
 
   @override
   String toString() {
-    return 'NewsArticlesModel(originalUrl: $originalUrl, rewrittenContent: $rewrittenContent, rewrittenTitle: $rewrittenTitle)';
+    return 'NewsArticlesModel(rewrittenContent: $rewrittenContent, rewrittenTitle: $rewrittenTitle)';
   }
 
   @override
@@ -170,8 +142,6 @@ class _$NewsArticlesModelImpl extends _NewsArticlesModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$NewsArticlesModelImpl &&
-            (identical(other.originalUrl, originalUrl) ||
-                other.originalUrl == originalUrl) &&
             (identical(other.rewrittenContent, rewrittenContent) ||
                 other.rewrittenContent == rewrittenContent) &&
             (identical(other.rewrittenTitle, rewrittenTitle) ||
@@ -181,7 +151,7 @@ class _$NewsArticlesModelImpl extends _NewsArticlesModel {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
-      Object.hash(runtimeType, originalUrl, rewrittenContent, rewrittenTitle);
+      Object.hash(runtimeType, rewrittenContent, rewrittenTitle);
 
   /// Create a copy of NewsArticlesModel
   /// with the given fields replaced by the non-null parameter values.
@@ -202,7 +172,6 @@ class _$NewsArticlesModelImpl extends _NewsArticlesModel {
 
 abstract class _NewsArticlesModel extends NewsArticlesModel {
   const factory _NewsArticlesModel({
-    required final String originalUrl,
     required final String rewrittenContent,
     required final String rewrittenTitle,
   }) = _$NewsArticlesModelImpl;
@@ -211,8 +180,6 @@ abstract class _NewsArticlesModel extends NewsArticlesModel {
   factory _NewsArticlesModel.fromJson(Map<String, dynamic> json) =
       _$NewsArticlesModelImpl.fromJson;
 
-  @override
-  String get originalUrl;
   @override
   String get rewrittenContent;
   @override

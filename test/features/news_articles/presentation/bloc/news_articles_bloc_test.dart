@@ -15,18 +15,14 @@ void main() {
   late MockGetNewsArticlesUseCase mockGetNewsArticlesUseCase;
 
   final tNewsArticleEntity1 = const NewsArticlesEntity(
-    originalUrl: "https://tenis.pl/tenis/3424/nie-dla-polki",
     rewrittenContent:
         "Linda Klimovicova pożegnała się z marzeniami o debiucie w głównej drabince US Open 2025.",
     rewrittenTitle:
         "US Open poza zasięgiem! Kosztowne błędy Polki w decydującym meczu kwalifikacji.",
   );
   final tNewsArticleEntity2 = const NewsArticlesEntity(
-    originalUrl: "https://tenis.pl/tenis/3234/niespodziewany-final",
-
     rewrittenContent:
         "Turniej WTA 250 w Cleveland zakończy się zaskakującym finałem. W decydującym meczu o tytuł powalczą Sorana Cirstea i Ann Li. Rumunka pokonała Anastazję Zacharową 6:1, 7:5. Z kolei Amerykanka wyeliminowała rozstawioną z numerem drugim Xinyu Wang, wygrywając 6:3, 5:7, 6:4. Mecz finałowy odbędzie się już dziś o godzinie 18:00 czasu polskiego.",
-
     rewrittenTitle:
         "Niespodzianka w Cleveland! Finał bez faworytek - Cirstea zmierzy się z Li.",
   );
