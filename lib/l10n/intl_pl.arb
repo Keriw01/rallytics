@@ -1,0 +1,121 @@
+{
+  "@@locale": "pl",
+
+  "appTitle": "Rallytics",
+  "@appTitle": {
+    "description": "Główna nazwa aplikacji, wyświetlana w pasku aplikacji."
+  },
+
+  "sendButton": "Wyślij",
+  "saveButton": "Zapisz",
+  "cancelButton": "Anuluj",
+  "logoutButton": "Wyloguj",
+  "orConnectWith": "lub połącz z",
+
+
+  "loginTitle": "Logowanie",
+  "signInButton": "Zaloguj się",
+  "emailLabel": "Email",
+  "emailHint": "Wpisz swój adres email",
+  "passwordLabel": "Hasło",
+  "passwordHint": "Wprowadź swoje hasło",
+  "confirmPasswordLabel": "Powtórz hasło",
+  "forgotPasswordButton": "Nie pamiętasz hasła?",
+  
+  "registerTitle": "Rejestracja",
+  "signUpButton": "Zarejestruj się",
+  "signUpPrompt": "Nie masz konta?",
+  "signInPrompt": "Masz już konto?",
+
+  "resetPasswordTitle": "Zresetuj hasło",
+  "passwordResetEmailSentSuccess": "Jeśli istnieje konto dla tego adresu e-mail, link do resetowania hasła został wysłany.",
+  "resetPasswordInstruction": "Wprowadź adres e-mail powiązany z Twoim kontem, a my wyślemy Ci link umożliwiający zresetowanie hasła.",
+
+  
+  "verifyEmailTitle": "Weryfikacja e-mail",
+  "verifyEmailMessage": "Link weryfikacyjny został wysłany na adres {userEmail}. Sprawdź skrzynkę odbiorczą i kliknij link, aby aktywować konto.",
+  "@verifyEmailMessage": {
+    "description": "Wiadomość z prośbą o sprawdzenie poczty e-mail.",
+    "placeholders": {
+      "userEmail": {
+        "type": "String",
+        "example": "test@example.com"
+      }
+    }
+  },
+  "verifyEmailResendButton": "Wyślij ponownie e-mail",
+  "verifyEmailResendButtonInSeconds": "Wyślij ponownie za {seconds} s",
+  "@verifyEmailResendButtonInSeconds": {
+    "description": "Tekst przycisku pokazujący odliczanie do momentu, w którym użytkownik będzie mógł ponownie wysłać e-mail.",
+    "placeholders": {
+      "seconds": {
+        "type": "String",
+        "example": "59"
+      }
+    }
+  },
+  "unknowUser": "nieznany",
+
+  
+  "authErrorEmailRequired" : "Email jest wymagany.",
+  "authErrorPasswordRequired" : "Hasło jest wymagane.",
+  "authErrorInvalidEmailFormat": "Proszę wprowadzić prawidłowy adres email.",
+  "authErrorInvalidCredentials": "Nieprawidłowy email lub hasło. Proszę spróbować ponownie.",
+  "authErrorEmailInUse": "Ten email jest już używany. Proszę spróbować innego.",
+  "authErrorInvalidEmail": "Email jest niepoprawny.",
+  "authErrorWeakPassword": "Hasło jest zbyt słabe. Powinno mieć co najmniej 12 znaków i zawierać minimum 1 wielką, małą literę, cyfrę i znak specjalny.",
+  
+  
+  "validationErrorPasswordsDoNotMatch": "Hasła do siebie nie pasują.",
+  "validationErrorEmptyFields": "Nie wszystkie pola są uzupełnione.",
+  "validationErrorInvalidEmail": "Email jest niepoprawny.",
+  "validationErrorWeakPassword": "Hasło nie spełnia wymagań.",
+
+
+  "trainingSessionTitle": "Nowa Sesja",
+  "trainingSessionStartButton": "Zacznij Nagrywanie",
+  "trainingSessionImportButton": "Importuj z Galerii",
+
+
+  "liveScoresTitle": "Wyniki na Żywo",
+  "liveScoresError": "Mamy w tej chwili problemy, spróbuj ponownie później.",
+  "liveScoresEmpty": "Aktualnie brak meczów na żywo.",
+  "liveScoresPoints": "Punkty",
+  "searchLabel": "Wyszukaj",
+  "searchHint": "Wpisz imię lub nazwisko zawodnika",
+  "liveScoresNoResults": "Brak wyników dla szukanej frazy.",
+
+
+  "welcomeUserMessage": "Witaj ponownie, {userName}!",
+  "@welcomeUserMessage": {
+    "description": "Powitanie wyświetlane na pulpicie.",
+    "placeholders": {
+      "userName": {
+        "type": "String",
+        "example": "John Doe"
+      }
+    }
+  },
+  "dashboardWelcomeSubtitle": "Wybierz co cię interesuje",
+  "dashboardLiveScoresTitle": "Wyniki",
+  "dashboardLiveScoresDescription": "Śledź każdy punkt z najważniejszych kortów świata. Zawsze bądź na bieżąco!",
+  "dashboardNewsTitle": "Aktualności",
+  "dashboardNewsDescription": "Najnowsze wiadomości, analizy i wywiady. Wszystko, co musi wiedzieć fan tenisa.",
+  "dashboardAiCoachTitle": "Trener AI",
+  "dashboardAiCoachDescription": "Nagraj film, a nasza sztuczna inteligencja przeanalizuje Twoją technikę. Twój osobisty trener w Twojej kieszeni.",
+  "dashboardTrainingHistoryTitle": "Historia",
+  "dashboardTrainingHistoryDescription": "Przeglądaj swoje postępy, analizuj statystyki i obserwuj, jak ewoluuje Twoja gra.",
+  "drawerTheme": "Zmień motyw",
+  "drawerAbout": "O aplikacji",
+  "drawerSupport": "Wesprzyj mnie",
+  "drawerLogout": "Wyloguj",
+
+
+  "newsArticlesTitle": "Najnowsze Artykuły",
+  "readMoreButton": "Rozwiń",
+  "showLessButton": "Zwiń",
+
+
+  "errorGeneric": "Niespodziewany błąd. Proszę spróbować ponownie później."
+  
+}

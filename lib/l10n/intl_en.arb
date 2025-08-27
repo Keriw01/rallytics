@@ -1,0 +1,121 @@
+{
+  "@@locale": "en",
+
+  "appTitle": "Rallytics",
+  "@appTitle": {
+    "description": "The main title of the application, shown in the app bar."
+  },
+
+  "sendButton": "Send",
+  "saveButton": "Save",
+  "cancelButton": "Cancel",
+  "logoutButton": "Log Out",
+  "orConnectWith": "or connect with",
+
+
+  "loginTitle": "Login",
+  "signInButton": "Sign In",
+  "emailLabel": "Email",
+  "emailHint": "Enter your email address",
+  "passwordLabel": "Password",
+  "passwordHint": "Enter your password",
+  "confirmPasswordLabel": "Repeat password",
+  "forgotPasswordButton": "Forgot your password?",
+  
+  "registerTitle": "Register",
+  "signUpButton": "Sign Up",
+  "signUpPrompt": "Don't have an account?",
+  "signInPrompt": "Already have an account?",
+
+  "resetPasswordTitle": "Reset Password",
+  "passwordResetEmailSentSuccess": "If an account exists for that email, a password reset link has been sent.",
+  "resetPasswordInstruction": "Enter the email address associated with your account and we'll send you a link to reset your password.",
+
+
+  "verifyEmailTitle": "Verify Your Email",
+  "verifyEmailMessage": "A verification link has been sent to {userEmail}. Please check your inbox and click the link to activate your account.",
+  "@verifyEmailMessage": {
+    "description": "Message instructing the user to check their email.",
+    "placeholders": {
+      "userEmail": {
+        "type": "String",
+        "example": "test@example.com"
+      }
+    }
+  },
+  "verifyEmailResendButton": "Resend Email",
+  "verifyEmailResendButtonInSeconds": "Resend in {seconds}s",
+  "@verifyEmailResendButtonInSeconds": {
+    "description": "Button text showing a countdown before the user can resend the email.",
+    "placeholders": {
+      "seconds": {
+        "type": "String",
+        "example": "59"
+      }
+    }
+  },
+  "unknowUser": "unknown",
+
+  
+  "authErrorEmailRequired" : "Email is required.",
+  "authErrorPasswordRequired" : "Password is required.",
+  "authErrorInvalidEmailFormat": "Please enter a valid email address.",
+  "authErrorInvalidCredentials": "Invalid email or password. Please try again.",
+  "authErrorEmailInUse": "This email is already in use. Please try another one.",
+  "authErrorInvalidEmail": "Email is invalid.",
+  "authErrorWeakPassword": "The password is too weak. Should be at least 12 characters and contain minimum 1 uppercase, lowercase letter, number, special character.",
+
+  "validationErrorPasswordsDoNotMatch": "The passwords do not match.",
+  "validationErrorEmptyFields": "Not all fields are filled in.",
+  "validationErrorInvalidEmail": "The email is invalid.",
+  "validationErrorWeakPassword": "The password does not meet the requirements.",
+
+  "trainingSessionTitle": "New Session",
+  "trainingSessionStartButton": "Start Recording",
+  "trainingSessionImportButton": "Import from Gallery",
+
+
+  "liveScoresTitle": "Live Scores",
+  "liveScoresError": "We're currently having problems, please try again later.",
+  "liveScoresEmpty": "No live matches right now.",
+  "liveScoresPoints": "Points",
+  "searchLabel": "Search",
+  "searchHint": "Enter the player's name or surname",
+  "liveScoresNoResults": "No results for the search phrase.",
+
+  
+  "welcomeUserMessage": "Welcome back, {userName}!",
+  "@welcomeUserMessage": {
+    "description": "A welcome message shown on the dashboard.",
+    "placeholders": {
+      "userName": {
+        "type": "String",
+        "example": "John Doe"
+      }
+    }
+  },
+  "dashboardWelcomeSubtitle": "Choose what interests you",
+  "dashboardLiveScoresTitle": "Scores",
+  "dashboardLiveScoresDescription": "Follow every point from the world's most important courts. Always stay up to date!",
+  "dashboardNewsTitle": "News",
+  "dashboardNewsDescription": "The latest news, analyses, and interviews. Everything a tennis fan needs to know.",
+  "dashboardAiCoachTitle": "AI Coach",
+  "dashboardAiCoachDescription": "Record a video, and our AI will analyze your technique. Your personal coach in your pocket.",
+  "dashboardTrainingHistoryTitle": "History",
+  "dashboardTrainingHistoryDescription": "Review your progress, analyze stats, and see how your game evolves.",
+  "drawerTheme": "Change Theme",
+  "drawerAbout": "About App",
+  "drawerSupport": "Support Me",
+  "drawerLogout": "Log Out",
+
+
+  "newsArticlesTitle": "News Articles",
+  "newsArticlesError": "We're currently having problems, please try again later.",
+  "newsArticlesEmpty": "No articles new right now.",
+  "readMoreButton": "Read More",
+  "showLessButton": "Show Less",
+
+  
+  "errorGeneric": "An unexpected error occurred. Please try again later."
+
+}

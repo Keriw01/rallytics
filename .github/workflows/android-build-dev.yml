@@ -1,0 +1,63 @@
+name: Android Build DEV (Debug)
+
+on:
+  push:
+    branches:
+      - develop
+  workflow_dispatch:
+
+jobs:
+  build-android-debug:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Java JDK 21
+        uses: actions/setup-java@v4
+        id: setup_java
+        with:
+          distribution: 'zulu'
+          java-version: '21'
+      
+      - name: Set JAVA_HOME
+        run: echo "JAVA_HOME=${{ steps.setup_java.outputs.path }}" >> $GITHUB_ENV
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.32.7'
+          channel: 'stable'
+          cache: true
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Create Firebase Options file from Base64 secret
+        run: echo "${{ secrets.DEV_FIREBASE_OPTIONS }}" | base64 --decode > lib/firebase_options_dev.dart
+
+      - name: Create 'dev' flavor directory for google-services.json
+        run: mkdir -p android/app/src/dev    
+      
+      - name: Create google-services.json from Base64 secret
+        run: echo "${{ secrets.DEV_GOOGLE_SERVICES_JSON }}" | base64 --decode > android/app/src/dev/google-services.json
+
+      - name: Generate generated files
+        run: flutter pub run build_runner build --delete-conflicting-outputs
+
+      - name: Build Android APK DEV (Debug)
+        run: flutter build apk --debug --flavor dev -t lib/main_dev.dart
+      
+      - name: Upload to Firebase App Distribution
+        uses: wzieba/Firebase-Distribution-Github-Action@v1.7.1
+        with:
+          appId: ${{ secrets.FIREBASE_APP_ID_DEV }}
+
+          token: ${{ secrets.FIREBASE_CLI_TOKEN }}
+          
+          file: build/app/outputs/flutter-apk/app-dev-debug.apk
+          
+          groups: 'developers'
+        
+          releaseNotes: "Build z gałęzi 'develop' - ${{ github.sha }}"

@@ -2,7 +2,7 @@
   "material-icon-theme.folders.associations": {
     "app": "app",
     "core": "core",
-    "features": "features",
+    "features": "src",
     "theme": "theme",
     "config": "config",
     "constants": "constant",
@@ -11,19 +11,19 @@
     "network": "api",
     "router": "routes",
     "usecases": "rules",
+    "params": "config",
     "datasources": "controller",
     "domain": "public",
     "entities": "class",
-    "models": "model",
     "presentation": "Ui",
     "widgets": "components",
-    "auth": "secure",
+    "tennis_ball_loader": "animation",
     "training_session": "video",
-    "live_score": "event",
     "settings": "tools",
     "profile": "admin",
     "utils": "utils",
-    "helpers": "helper",
-    "assets": "asset"
+    "helpers": "helper"
   },
+  "files.autoSave": "afterDelay",
+  "dart.flutterHotReloadOnSave": "all",
 }
