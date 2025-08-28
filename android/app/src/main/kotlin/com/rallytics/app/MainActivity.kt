@@ -1,4 +1,4 @@
-package com.example.rallytics
+package com.rallytics.app
 
 import io.flutter.embedding.android.FlutterActivity
 
