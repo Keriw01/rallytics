@@ -371,6 +371,66 @@ class S {
     );
   }
 
+  /// `Canceled login via Facebook by user.`
+  String get authErrorFacebookCanceled {
+    return Intl.message(
+      'Canceled login via Facebook by user.',
+      name: 'authErrorFacebookCanceled',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Login configuration error. Please contact support.`
+  String get authErrorConfiguration {
+    return Intl.message(
+      'Login configuration error. Please contact support.',
+      name: 'authErrorConfiguration',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Login via Facebook failed.`
+  String get authErrorFacebookFailed {
+    return Intl.message(
+      'Login via Facebook failed.',
+      name: 'authErrorFacebookFailed',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `An account with this email address already exists. Please log in using another method.`
+  String get authErrorAccountExistsWithDifferentCredential {
+    return Intl.message(
+      'An account with this email address already exists. Please log in using another method.',
+      name: 'authErrorAccountExistsWithDifferentCredential',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Canceled login via GitHub by user.`
+  String get authErrorGitHubCanceled {
+    return Intl.message(
+      'Canceled login via GitHub by user.',
+      name: 'authErrorGitHubCanceled',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Canceled login via Google by user.`
+  String get authErrorGoogleCanceled {
+    return Intl.message(
+      'Canceled login via Google by user.',
+      name: 'authErrorGoogleCanceled',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `The passwords do not match.`
   String get validationErrorPasswordsDoNotMatch {
     return Intl.message(

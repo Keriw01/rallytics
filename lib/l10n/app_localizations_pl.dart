@@ -115,6 +115,30 @@ class AppLocalizationsPl extends AppLocalizations {
       'Hasło jest zbyt słabe. Powinno mieć co najmniej 12 znaków i zawierać minimum 1 wielką, małą literę, cyfrę i znak specjalny.';
 
   @override
+  String get authErrorFacebookCanceled =>
+      'Przerwano logowanie przez Facebook przez użytkownika.';
+
+  @override
+  String get authErrorConfiguration =>
+      'Błąd konfiguracji logowania. Skontaktuj się z pomocą techniczną.';
+
+  @override
+  String get authErrorFacebookFailed =>
+      'Logowanie przez Facebook nie powiodło się.';
+
+  @override
+  String get authErrorAccountExistsWithDifferentCredential =>
+      'Konto z tym adresem e-mail już istnieje. Zaloguj się inną metodą.';
+
+  @override
+  String get authErrorGitHubCanceled =>
+      'Przerwano logowanie przez GitHub przez użytkownika.';
+
+  @override
+  String get authErrorGoogleCanceled =>
+      'Przerwano logowanie przez Google przez użytkownika.';
+
+  @override
   String get validationErrorPasswordsDoNotMatch =>
       'Hasła do siebie nie pasują.';
 

@@ -115,6 +115,27 @@ class AppLocalizationsEn extends AppLocalizations {
       'The password is too weak. Should be at least 12 characters and contain minimum 1 uppercase, lowercase letter, number, special character.';
 
   @override
+  String get authErrorFacebookCanceled =>
+      'Canceled login via Facebook by user.';
+
+  @override
+  String get authErrorConfiguration =>
+      'Login configuration error. Please contact support.';
+
+  @override
+  String get authErrorFacebookFailed => 'Login via Facebook failed.';
+
+  @override
+  String get authErrorAccountExistsWithDifferentCredential =>
+      'An account with this email address already exists. Please log in using another method.';
+
+  @override
+  String get authErrorGitHubCanceled => 'Canceled login via GitHub by user.';
+
+  @override
+  String get authErrorGoogleCanceled => 'Canceled login via Google by user.';
+
+  @override
   String get validationErrorPasswordsDoNotMatch =>
       'The passwords do not match.';
 

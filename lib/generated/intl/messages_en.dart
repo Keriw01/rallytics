@@ -30,10 +30,23 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "appTitle": MessageLookupByLibrary.simpleMessage("Rallytics"),
+        "authErrorAccountExistsWithDifferentCredential":
+            MessageLookupByLibrary.simpleMessage(
+                "An account with this email address already exists. Please log in using another method."),
+        "authErrorConfiguration": MessageLookupByLibrary.simpleMessage(
+            "Login configuration error. Please contact support."),
         "authErrorEmailInUse": MessageLookupByLibrary.simpleMessage(
             "This email is already in use. Please try another one."),
         "authErrorEmailRequired":
             MessageLookupByLibrary.simpleMessage("Email is required."),
+        "authErrorFacebookCanceled": MessageLookupByLibrary.simpleMessage(
+            "Canceled login via Facebook by user."),
+        "authErrorFacebookFailed":
+            MessageLookupByLibrary.simpleMessage("Login via Facebook failed."),
+        "authErrorGitHubCanceled": MessageLookupByLibrary.simpleMessage(
+            "Canceled login via GitHub by user."),
+        "authErrorGoogleCanceled": MessageLookupByLibrary.simpleMessage(
+            "Canceled login via Google by user."),
         "authErrorInvalidCredentials": MessageLookupByLibrary.simpleMessage(
             "Invalid email or password. Please try again."),
         "authErrorInvalidEmail":

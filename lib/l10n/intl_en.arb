@@ -63,6 +63,13 @@
   "authErrorEmailInUse": "This email is already in use. Please try another one.",
   "authErrorInvalidEmail": "Email is invalid.",
   "authErrorWeakPassword": "The password is too weak. Should be at least 12 characters and contain minimum 1 uppercase, lowercase letter, number, special character.",
+  "authErrorFacebookCanceled": "Canceled login via Facebook by user.",
+  "authErrorConfiguration": "Login configuration error. Please contact support.",
+  "authErrorFacebookFailed": "Login via Facebook failed.",
+  "authErrorAccountExistsWithDifferentCredential": "An account with this email address already exists. Please log in using another method.",
+  "authErrorGitHubCanceled": "Canceled login via GitHub by user.",
+  "authErrorGoogleCanceled": "Canceled login via Google by user.",
+  
 
   "validationErrorPasswordsDoNotMatch": "The passwords do not match.",
   "validationErrorEmptyFields": "Not all fields are filled in.",

@@ -290,6 +290,42 @@ abstract class AppLocalizations {
   /// **'The password is too weak. Should be at least 12 characters and contain minimum 1 uppercase, lowercase letter, number, special character.'**
   String get authErrorWeakPassword;
 
+  /// No description provided for @authErrorFacebookCanceled.
+  ///
+  /// In en, this message translates to:
+  /// **'Canceled login via Facebook by user.'**
+  String get authErrorFacebookCanceled;
+
+  /// No description provided for @authErrorConfiguration.
+  ///
+  /// In en, this message translates to:
+  /// **'Login configuration error. Please contact support.'**
+  String get authErrorConfiguration;
+
+  /// No description provided for @authErrorFacebookFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Login via Facebook failed.'**
+  String get authErrorFacebookFailed;
+
+  /// No description provided for @authErrorAccountExistsWithDifferentCredential.
+  ///
+  /// In en, this message translates to:
+  /// **'An account with this email address already exists. Please log in using another method.'**
+  String get authErrorAccountExistsWithDifferentCredential;
+
+  /// No description provided for @authErrorGitHubCanceled.
+  ///
+  /// In en, this message translates to:
+  /// **'Canceled login via GitHub by user.'**
+  String get authErrorGitHubCanceled;
+
+  /// No description provided for @authErrorGoogleCanceled.
+  ///
+  /// In en, this message translates to:
+  /// **'Canceled login via Google by user.'**
+  String get authErrorGoogleCanceled;
+
   /// No description provided for @validationErrorPasswordsDoNotMatch.
   ///
   /// In en, this message translates to:

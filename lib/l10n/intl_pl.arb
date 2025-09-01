@@ -62,8 +62,13 @@
   "authErrorEmailInUse": "Ten email jest już używany. Proszę spróbować innego.",
   "authErrorInvalidEmail": "Email jest niepoprawny.",
   "authErrorWeakPassword": "Hasło jest zbyt słabe. Powinno mieć co najmniej 12 znaków i zawierać minimum 1 wielką, małą literę, cyfrę i znak specjalny.",
-  
-  
+  "authErrorConfiguration": "Błąd konfiguracji logowania. Skontaktuj się z pomocą techniczną.",
+  "authErrorFacebookCanceled": "Przerwano logowanie przez Facebook przez użytkownika.",
+  "authErrorFacebookFailed": "Logowanie przez Facebook nie powiodło się.",
+  "authErrorAccountExistsWithDifferentCredential": "Konto z tym adresem e-mail już istnieje. Zaloguj się inną metodą.",
+  "authErrorGitHubCanceled": "Przerwano logowanie przez GitHub przez użytkownika.",
+  "authErrorGoogleCanceled": "Przerwano logowanie przez Google przez użytkownika.",
+
   "validationErrorPasswordsDoNotMatch": "Hasła do siebie nie pasują.",
   "validationErrorEmptyFields": "Nie wszystkie pola są uzupełnione.",
   "validationErrorInvalidEmail": "Email jest niepoprawny.",
