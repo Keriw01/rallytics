@@ -45,6 +45,18 @@ String _getAuthErrorMessage(BuildContext context, AuthErrorCode code) {
       return l10n.authErrorWeakPassword;
     case AuthErrorCode.emailAlreadyInUse:
       return l10n.authErrorEmailInUse;
+    case AuthErrorCode.configurationError:
+      return l10n.authErrorConfiguration;
+    case AuthErrorCode.facebookAuthFailed:
+      return l10n.authErrorFacebookFailed;
+    case AuthErrorCode.facebookAuthCanceled:
+      return l10n.authErrorFacebookCanceled;
+    case AuthErrorCode.gitHubAuthCanceled:
+      return l10n.authErrorGitHubCanceled;
+    case AuthErrorCode.googleAuthCanceled:
+      return l10n.authErrorGoogleCanceled;
+    case AuthErrorCode.accountExistsWithDifferentCredential:
+      return l10n.authErrorAccountExistsWithDifferentCredential;
   }
 }
 

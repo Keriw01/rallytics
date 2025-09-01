@@ -6,6 +6,12 @@ enum AuthErrorCode implements ErrorCode {
   invalidEmail,
   weakPassword,
   emailAlreadyInUse,
+  configurationError,
+  facebookAuthFailed,
+  facebookAuthCanceled,
+  gitHubAuthCanceled,
+  googleAuthCanceled,
+  accountExistsWithDifferentCredential,
 }
 
 enum ValidationErrorCode implements ErrorCode {
