@@ -122,6 +122,22 @@
   "readMoreButton": "Read More",
   "showLessButton": "Show Less",
 
+
+  "supportMeTitle": "Support Me",
+  "supportMeHintText": "Own amount (PLN)",
+  "paymentButton": "Pay",
+  "paymentSuccessMessage": "Thank you for your support!",
+
+  
+  "paymentNetworkFailed": "Network connection failed.",
+  "paymentNetworkError": "Stripe server error. Please try again later.",
+  "paymentPaymentFailed": "Payment failed. Please check your payment details and try again.",
+  "paymentInvalidRequest": "Invalid request. Please ensure all required details are provided.",
+  "paymentAuthenticationError": "Authorization error. Please log in or validate your API key.",
+  "paymentResourceNotFound": "Resource not found.",
+  "paymentErrorUserNotLoggedIn": "You must be logged in to make a payment.",
+  "paymentInvalidResponse": "Invalid response from server.",
+
   
   "errorGeneric": "An unexpected error occurred. Please try again later."
 

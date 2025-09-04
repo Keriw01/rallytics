@@ -100,6 +100,10 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Wyniki na Żywo"),
         "loginTitle": MessageLookupByLibrary.simpleMessage("Logowanie"),
         "logoutButton": MessageLookupByLibrary.simpleMessage("Wyloguj"),
+        "newsArticlesEmpty": MessageLookupByLibrary.simpleMessage(
+            "W tej chwili nie ma nowych artykułów."),
+        "newsArticlesError": MessageLookupByLibrary.simpleMessage(
+            "Występują obecnie problemy. Spróbuj ponownie później."),
         "newsArticlesTitle":
             MessageLookupByLibrary.simpleMessage("Najnowsze Artykuły"),
         "orConnectWith": MessageLookupByLibrary.simpleMessage("lub połącz z"),
@@ -108,6 +112,25 @@ class MessageLookup extends MessageLookupByLibrary {
         "passwordLabel": MessageLookupByLibrary.simpleMessage("Hasło"),
         "passwordResetEmailSentSuccess": MessageLookupByLibrary.simpleMessage(
             "Jeśli istnieje konto dla tego adresu e-mail, link do resetowania hasła został wysłany."),
+        "paymentAuthenticationError": MessageLookupByLibrary.simpleMessage(
+            "Błąd autoryzacji. Zaloguj się lub sprawdź poprawność klucza API."),
+        "paymentButton": MessageLookupByLibrary.simpleMessage("Zapłać"),
+        "paymentErrorUserNotLoggedIn": MessageLookupByLibrary.simpleMessage(
+            "Musisz być zalogowany, aby dokonać płatności."),
+        "paymentInvalidRequest": MessageLookupByLibrary.simpleMessage(
+            "Nieprawidłowe żądanie. Upewnij się, że wszystkie wymagane dane zostały podane."),
+        "paymentInvalidResponse": MessageLookupByLibrary.simpleMessage(
+            "Nieprawidłowa odpowiedź serwera."),
+        "paymentNetworkError": MessageLookupByLibrary.simpleMessage(
+            "Błąd serwera Stripe. Spróbuj ponownie później."),
+        "paymentNetworkFailed": MessageLookupByLibrary.simpleMessage(
+            "Połączenie sieciowe nie powiodło się."),
+        "paymentPaymentFailed": MessageLookupByLibrary.simpleMessage(
+            "Płatność nie powiodła się. Sprawdź dane płatności i spróbuj ponownie."),
+        "paymentResourceNotFound":
+            MessageLookupByLibrary.simpleMessage("Nie znaleziono zasobu."),
+        "paymentSuccessMessage":
+            MessageLookupByLibrary.simpleMessage("Dziękuję za twoje wsparcie!"),
         "readMoreButton": MessageLookupByLibrary.simpleMessage("Rozwiń"),
         "registerTitle": MessageLookupByLibrary.simpleMessage("Rejestracja"),
         "resetPasswordInstruction": MessageLookupByLibrary.simpleMessage(
@@ -124,6 +147,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "signInPrompt": MessageLookupByLibrary.simpleMessage("Masz już konto?"),
         "signUpButton": MessageLookupByLibrary.simpleMessage("Zarejestruj się"),
         "signUpPrompt": MessageLookupByLibrary.simpleMessage("Nie masz konta?"),
+        "supportMeHintText":
+            MessageLookupByLibrary.simpleMessage("Własna kwota (zł)"),
+        "supportMeTitle": MessageLookupByLibrary.simpleMessage("Wesprzyj mnie"),
         "trainingSessionImportButton":
             MessageLookupByLibrary.simpleMessage("Importuj z Galerii"),
         "trainingSessionStartButton":

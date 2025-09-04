@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:injectable/injectable.dart';
+import 'package:rallytics/core/error/error_codes.dart';
 import 'package:rallytics/features/auth/domain/entities/user_entity.dart';
 
 import 'package:rallytics/core/error/exceptions.dart';

@@ -111,6 +111,25 @@ class MessageLookup extends MessageLookupByLibrary {
         "passwordLabel": MessageLookupByLibrary.simpleMessage("Password"),
         "passwordResetEmailSentSuccess": MessageLookupByLibrary.simpleMessage(
             "If an account exists for that email, a password reset link has been sent."),
+        "paymentAuthenticationError": MessageLookupByLibrary.simpleMessage(
+            "Authorization error. Please log in or validate your API key."),
+        "paymentButton": MessageLookupByLibrary.simpleMessage("Pay"),
+        "paymentErrorUserNotLoggedIn": MessageLookupByLibrary.simpleMessage(
+            "You must be logged in to make a payment."),
+        "paymentInvalidRequest": MessageLookupByLibrary.simpleMessage(
+            "Invalid request. Please ensure all required details are provided."),
+        "paymentInvalidResponse": MessageLookupByLibrary.simpleMessage(
+            "Invalid response from server."),
+        "paymentNetworkError": MessageLookupByLibrary.simpleMessage(
+            "Stripe server error. Please try again later."),
+        "paymentNetworkFailed":
+            MessageLookupByLibrary.simpleMessage("Network connection failed."),
+        "paymentPaymentFailed": MessageLookupByLibrary.simpleMessage(
+            "Payment failed. Please check your payment details and try again."),
+        "paymentResourceNotFound":
+            MessageLookupByLibrary.simpleMessage("Resource not found."),
+        "paymentSuccessMessage":
+            MessageLookupByLibrary.simpleMessage("Thank you for your support!"),
         "readMoreButton": MessageLookupByLibrary.simpleMessage("Read More"),
         "registerTitle": MessageLookupByLibrary.simpleMessage("Register"),
         "resetPasswordInstruction": MessageLookupByLibrary.simpleMessage(
@@ -129,6 +148,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "signUpButton": MessageLookupByLibrary.simpleMessage("Sign Up"),
         "signUpPrompt":
             MessageLookupByLibrary.simpleMessage("Don\'t have an account?"),
+        "supportMeHintText":
+            MessageLookupByLibrary.simpleMessage("Own amount (PLN)"),
+        "supportMeTitle": MessageLookupByLibrary.simpleMessage("Support Me"),
         "trainingSessionImportButton":
             MessageLookupByLibrary.simpleMessage("Import from Gallery"),
         "trainingSessionStartButton":

@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:rallytics/core/error/exceptions.dart';
+import 'package:rallytics/core/error/error_codes.dart';
 import 'package:rallytics/features/auth/domain/entities/user_entity.dart';
 
 part 'auth_state.freezed.dart';

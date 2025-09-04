@@ -1,26 +1,4 @@
-abstract class ErrorCode {}
-
-enum AuthErrorCode implements ErrorCode {
-  unknown,
-  invalidCredentials,
-  invalidEmail,
-  weakPassword,
-  emailAlreadyInUse,
-  configurationError,
-  facebookAuthFailed,
-  facebookAuthCanceled,
-  gitHubAuthCanceled,
-  googleAuthCanceled,
-  accountExistsWithDifferentCredential,
-}
-
-enum ValidationErrorCode implements ErrorCode {
-  unknown,
-  emptyFields,
-  invalidEmail,
-  weakPassword,
-  passwordsDoNotMatch,
-}
+import 'package:rallytics/core/error/error_codes.dart';
 
 class AuthException implements Exception {
   final AuthErrorCode code;
@@ -33,4 +11,14 @@ class ValidationException implements Exception {
   final ValidationErrorCode code;
 
   ValidationException({this.code = ValidationErrorCode.unknown});
+}
+
+class PaymentException implements Exception {
+  final PaymentErrorCode code;
+  final String? originalMessage;
+
+  PaymentException({
+    this.code = PaymentErrorCode.unknown,
+    this.originalMessage,
+  });
 }

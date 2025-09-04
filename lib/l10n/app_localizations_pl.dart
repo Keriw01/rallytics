@@ -238,16 +238,57 @@ class AppLocalizationsPl extends AppLocalizations {
 
   @override
   String get newsArticlesError =>
-      'We\'re currently having problems, please try again later.';
+      'Występują obecnie problemy. Spróbuj ponownie później.';
 
   @override
-  String get newsArticlesEmpty => 'No articles new right now.';
+  String get newsArticlesEmpty => 'W tej chwili nie ma nowych artykułów.';
 
   @override
   String get readMoreButton => 'Rozwiń';
 
   @override
   String get showLessButton => 'Zwiń';
+
+  @override
+  String get supportMeTitle => 'Wesprzyj mnie';
+
+  @override
+  String get supportMeHintText => 'Własna kwota (zł)';
+
+  @override
+  String get paymentButton => 'Zapłać';
+
+  @override
+  String get paymentSuccessMessage => 'Dziękuję za twoje wsparcie!';
+
+  @override
+  String get paymentNetworkFailed => 'Połączenie sieciowe nie powiodło się.';
+
+  @override
+  String get paymentNetworkError =>
+      'Błąd serwera Stripe. Spróbuj ponownie później.';
+
+  @override
+  String get paymentPaymentFailed =>
+      'Płatność nie powiodła się. Sprawdź dane płatności i spróbuj ponownie.';
+
+  @override
+  String get paymentInvalidRequest =>
+      'Nieprawidłowe żądanie. Upewnij się, że wszystkie wymagane dane zostały podane.';
+
+  @override
+  String get paymentAuthenticationError =>
+      'Błąd autoryzacji. Zaloguj się lub sprawdź poprawność klucza API.';
+
+  @override
+  String get paymentResourceNotFound => 'Nie znaleziono zasobu.';
+
+  @override
+  String get paymentErrorUserNotLoggedIn =>
+      'Musisz być zalogowany, aby dokonać płatności.';
+
+  @override
+  String get paymentInvalidResponse => 'Nieprawidłowa odpowiedź serwera.';
 
   @override
   String get errorGeneric =>

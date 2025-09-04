@@ -10,6 +10,7 @@ import 'package:rallytics/features/auth/presentation/pages/verify_email_screen.d
 import 'package:rallytics/features/dashboard/presentation/pages/dashboard_screen.dart';
 import 'package:rallytics/features/live_score/presentation/pages/live_score_screen.dart';
 import 'package:rallytics/features/news_articles/presentation/pages/news_articles_screen.dart';
+import 'package:rallytics/features/payment/presentation/pages/support_screen.dart';
 
 GoRouter configureRouter(AuthBloc authBloc) {
   return GoRouter(
@@ -104,6 +105,11 @@ GoRouter configureRouter(AuthBloc authBloc) {
             path: '/news_articles',
             name: 'news_articles',
             builder: (context, state) => const NewsArticlesScreen(),
+          ),
+          GoRoute(
+            path: '/support',
+            name: 'support',
+            builder: (context, state) => const SupportScreen(),
           ),
         ],
       ),

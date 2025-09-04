@@ -3,6 +3,7 @@
 // Zależy od interfejsu repozytorium, nie od implementacji.
 import 'package:injectable/injectable.dart';
 import 'package:rallytics/core/constants/validation_constants.dart';
+import 'package:rallytics/core/error/error_codes.dart';
 import 'package:rallytics/core/error/exceptions.dart';
 import 'package:rallytics/core/usecases/usecase.dart';
 import 'package:rallytics/features/auth/domain/repositories/auth_repository.dart';

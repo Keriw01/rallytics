@@ -248,6 +248,47 @@ class AppLocalizationsEn extends AppLocalizations {
   String get showLessButton => 'Show Less';
 
   @override
+  String get supportMeTitle => 'Support Me';
+
+  @override
+  String get supportMeHintText => 'Own amount (PLN)';
+
+  @override
+  String get paymentButton => 'Pay';
+
+  @override
+  String get paymentSuccessMessage => 'Thank you for your support!';
+
+  @override
+  String get paymentNetworkFailed => 'Network connection failed.';
+
+  @override
+  String get paymentNetworkError =>
+      'Stripe server error. Please try again later.';
+
+  @override
+  String get paymentPaymentFailed =>
+      'Payment failed. Please check your payment details and try again.';
+
+  @override
+  String get paymentInvalidRequest =>
+      'Invalid request. Please ensure all required details are provided.';
+
+  @override
+  String get paymentAuthenticationError =>
+      'Authorization error. Please log in or validate your API key.';
+
+  @override
+  String get paymentResourceNotFound => 'Resource not found.';
+
+  @override
+  String get paymentErrorUserNotLoggedIn =>
+      'You must be logged in to make a payment.';
+
+  @override
+  String get paymentInvalidResponse => 'Invalid response from server.';
+
+  @override
   String get errorGeneric =>
       'An unexpected error occurred. Please try again later.';
 }

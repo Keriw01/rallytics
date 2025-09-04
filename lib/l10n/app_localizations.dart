@@ -530,6 +530,78 @@ abstract class AppLocalizations {
   /// **'Show Less'**
   String get showLessButton;
 
+  /// No description provided for @supportMeTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Support Me'**
+  String get supportMeTitle;
+
+  /// No description provided for @supportMeHintText.
+  ///
+  /// In en, this message translates to:
+  /// **'Own amount (PLN)'**
+  String get supportMeHintText;
+
+  /// No description provided for @paymentButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Pay'**
+  String get paymentButton;
+
+  /// No description provided for @paymentSuccessMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Thank you for your support!'**
+  String get paymentSuccessMessage;
+
+  /// No description provided for @paymentNetworkFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Network connection failed.'**
+  String get paymentNetworkFailed;
+
+  /// No description provided for @paymentNetworkError.
+  ///
+  /// In en, this message translates to:
+  /// **'Stripe server error. Please try again later.'**
+  String get paymentNetworkError;
+
+  /// No description provided for @paymentPaymentFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Payment failed. Please check your payment details and try again.'**
+  String get paymentPaymentFailed;
+
+  /// No description provided for @paymentInvalidRequest.
+  ///
+  /// In en, this message translates to:
+  /// **'Invalid request. Please ensure all required details are provided.'**
+  String get paymentInvalidRequest;
+
+  /// No description provided for @paymentAuthenticationError.
+  ///
+  /// In en, this message translates to:
+  /// **'Authorization error. Please log in or validate your API key.'**
+  String get paymentAuthenticationError;
+
+  /// No description provided for @paymentResourceNotFound.
+  ///
+  /// In en, this message translates to:
+  /// **'Resource not found.'**
+  String get paymentResourceNotFound;
+
+  /// No description provided for @paymentErrorUserNotLoggedIn.
+  ///
+  /// In en, this message translates to:
+  /// **'You must be logged in to make a payment.'**
+  String get paymentErrorUserNotLoggedIn;
+
+  /// No description provided for @paymentInvalidResponse.
+  ///
+  /// In en, this message translates to:
+  /// **'Invalid response from server.'**
+  String get paymentInvalidResponse;
+
   /// No description provided for @errorGeneric.
   ///
   /// In en, this message translates to:
