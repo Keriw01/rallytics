@@ -63,6 +63,7 @@ import '../../features/news_articles/presentation/bloc/news_articles_bloc.dart'
     as _i288;
 import '../../features/payment/data/datasources/payment_datasource.dart'
     as _i892;
+import '../../features/payment/data/datasources/stripe_service.dart' as _i893;
 import '../../features/payment/data/repositories/payment_repository_impl.dart'
     as _i265;
 import '../../features/payment/domain/repositories/payment_repository.dart'
@@ -109,6 +110,7 @@ Future<_i174.GetIt> $initGetIt(
   gh.singleton<_i667.DioClient>(
     () => _i667.DioClient(gh<_i361.Dio>(), gh<_i650.AppConfig>()),
   );
+  gh.lazySingleton<_i893.StripeService>(() => _i893.StripeServiceImpl());
   gh.lazySingleton<_i962.LiveScoreDataSource>(
     () => _i962.LiveScoreFirestoreDataSourceImpl(gh<_i974.FirebaseFirestore>()),
   );
@@ -198,6 +200,7 @@ Future<_i174.GetIt> $initGetIt(
     () => _i206.PaymentBloc(
       gh<_i1003.CreatePaymentIntentUseCase>(),
       gh<_i797.AuthBloc>(),
+      gh<_i893.StripeService>(),
     ),
   );
   return getIt;
