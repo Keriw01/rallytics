@@ -1,11 +1,11 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:injectable/injectable.dart';
+import 'package:rallytics/core/error/error_codes.dart';
 import 'package:rallytics/features/auth/domain/entities/user_entity.dart';
 
 import 'package:rallytics/core/error/exceptions.dart';
 import 'package:rallytics/features/auth/domain/repositories/auth_repository.dart';
 import 'package:rallytics/features/auth/data/datasources/auth_firebase_datasource.dart';
-import 'package:rallytics/helpers/error_message_helper.dart';
 
 // Implementacja interfejsu z `domain/repositories`.
 // Wie, skąd wziąć dane (z jakiego `DataSource`).
@@ -21,9 +21,8 @@ class AuthRepositoryImpl implements AuthRepository {
   Future<void> signInWithEmail(String email, String password) async {
     try {
       await _authFirebaseDataSource.signInWithEmailAndPassword(email, password);
-    } on FirebaseAuthException catch (e) {
-      final errorCode = mapFirebaseErrorCode(e.code);
-      throw AuthException(code: errorCode, originalMessage: e.message);
+    } on AuthException {
+      rethrow;
     } catch (e) {
       throw AuthException(
         code: AuthErrorCode.unknown,
@@ -39,9 +38,8 @@ class AuthRepositoryImpl implements AuthRepository {
         email,
         password,
       );
-    } on FirebaseAuthException catch (e) {
-      final errorCode = mapFirebaseErrorCode(e.code);
-      throw AuthException(code: errorCode, originalMessage: e.message);
+    } on AuthException {
+      rethrow;
     } catch (e) {
       throw AuthException(
         code: AuthErrorCode.unknown,
@@ -54,8 +52,13 @@ class AuthRepositoryImpl implements AuthRepository {
   Future<void> signInWithGoogle() async {
     try {
       await _authFirebaseDataSource.signInWithGoogle();
+    } on AuthException {
+      rethrow;
     } catch (e) {
-      throw AuthException();
+      throw AuthException(
+        code: AuthErrorCode.unknown,
+        originalMessage: e.toString(),
+      );
     }
   }
 
@@ -63,8 +66,13 @@ class AuthRepositoryImpl implements AuthRepository {
   Future<void> signInWithFacebook() async {
     try {
       await _authFirebaseDataSource.signInWithFacebook();
+    } on AuthException {
+      rethrow;
     } catch (e) {
-      throw AuthException();
+      throw AuthException(
+        code: AuthErrorCode.unknown,
+        originalMessage: e.toString(),
+      );
     }
   }
 
@@ -72,8 +80,13 @@ class AuthRepositoryImpl implements AuthRepository {
   Future<void> signInWithGitHub() async {
     try {
       await _authFirebaseDataSource.signInWithGitHub();
+    } on AuthException {
+      rethrow;
     } catch (e) {
-      throw AuthException();
+      throw AuthException(
+        code: AuthErrorCode.unknown,
+        originalMessage: e.toString(),
+      );
     }
   }
 
@@ -81,9 +94,8 @@ class AuthRepositoryImpl implements AuthRepository {
   Future<void> sendPasswordResetEmail(String email) async {
     try {
       await _authFirebaseDataSource.sendPasswordResetEmail(email);
-    } on FirebaseAuthException catch (e) {
-      final errorCode = mapFirebaseErrorCode(e.code);
-      throw AuthException(code: errorCode, originalMessage: e.message);
+    } on AuthException {
+      rethrow;
     } catch (e) {
       throw AuthException(
         code: AuthErrorCode.unknown,
@@ -96,6 +108,8 @@ class AuthRepositoryImpl implements AuthRepository {
   Future<void> sendEmailVerification() async {
     try {
       await _authFirebaseDataSource.sendEmailVerification();
+    } on AuthException {
+      rethrow;
     } catch (e) {
       throw AuthException(
         code: AuthErrorCode.unknown,
@@ -108,9 +122,13 @@ class AuthRepositoryImpl implements AuthRepository {
   Future<void> signOut() async {
     try {
       await _authFirebaseDataSource.signOut();
-    } on FirebaseAuthException catch (e) {
-      final errorCode = mapFirebaseErrorCode(e.code);
-      throw AuthException(code: errorCode, originalMessage: e.toString());
+    } on AuthException {
+      rethrow;
+    } catch (e) {
+      throw AuthException(
+        code: AuthErrorCode.unknown,
+        originalMessage: e.toString(),
+      );
     }
   }
 

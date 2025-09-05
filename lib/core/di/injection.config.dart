@@ -10,6 +10,7 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:cloud_firestore/cloud_firestore.dart' as _i974;
+import 'package:dio/dio.dart' as _i361;
 import 'package:firebase_auth/firebase_auth.dart' as _i59;
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart' as _i806;
 import 'package:get_it/get_it.dart' as _i174;
@@ -60,8 +61,19 @@ import '../../features/news_articles/domain/usecases/get_news_articles_usecases.
     as _i174;
 import '../../features/news_articles/presentation/bloc/news_articles_bloc.dart'
     as _i288;
+import '../../features/payment/data/datasources/payment_datasource.dart'
+    as _i892;
+import '../../features/payment/data/datasources/stripe_service.dart' as _i893;
+import '../../features/payment/data/repositories/payment_repository_impl.dart'
+    as _i265;
+import '../../features/payment/domain/repositories/payment_repository.dart'
+    as _i639;
+import '../../features/payment/domain/usecases/create_payment_intent_usecase.dart'
+    as _i1003;
+import '../../features/payment/presentation/bloc/payment_bloc.dart' as _i206;
 import '../config/app_config.dart' as _i650;
-import 'firebase_injectable_module.dart' as _i574;
+import '../network/dio_client.dart' as _i667;
+import 'external_services_module.dart' as _i306;
 
 // initializes the registration of main-scope dependencies inside of GetIt
 Future<_i174.GetIt> $initGetIt(
@@ -70,22 +82,35 @@ Future<_i174.GetIt> $initGetIt(
   _i526.EnvironmentFilter? environmentFilter,
 }) async {
   final gh = _i526.GetItHelper(getIt, environment, environmentFilter);
-  final firebaseInjectableModule = _$FirebaseInjectableModule();
+  final externalServicesModule = _$ExternalServicesModule();
+  final dioInjectableModule = _$DioInjectableModule();
   gh.factory<_i30.ThemeCubit>(() => _i30.ThemeCubit());
   gh.singleton<_i650.AppConfig>(() => _i650.AppConfig.fromEnvironment());
   gh.lazySingleton<_i59.FirebaseAuth>(
-    () => firebaseInjectableModule.firebaseAuth,
+    () => externalServicesModule.firebaseAuth,
   );
   gh.lazySingleton<_i806.FacebookAuth>(
-    () => firebaseInjectableModule.facebookAuth,
+    () => externalServicesModule.facebookAuth,
   );
   gh.lazySingleton<_i974.FirebaseFirestore>(
-    () => firebaseInjectableModule.firebaseFirestore,
+    () => externalServicesModule.firebaseFirestore,
   );
+  gh.lazySingleton<_i361.Dio>(() => dioInjectableModule.dio);
   await gh.lazySingletonAsync<_i116.GoogleSignIn>(
-    () => firebaseInjectableModule.googleSignIn(gh<_i650.AppConfig>()),
+    () => externalServicesModule.googleSignIn(gh<_i650.AppConfig>()),
     preResolve: true,
   );
+  await gh.lazySingletonAsync<_i306.StripeInitializer>(
+    () => externalServicesModule.configureStripe(gh<_i650.AppConfig>()),
+    preResolve: true,
+  );
+  gh.lazySingleton<_i892.PaymentDataSource>(
+    () => _i892.PaymentDataSourceImpl(gh<_i361.Dio>()),
+  );
+  gh.singleton<_i667.DioClient>(
+    () => _i667.DioClient(gh<_i361.Dio>(), gh<_i650.AppConfig>()),
+  );
+  gh.lazySingleton<_i893.StripeService>(() => _i893.StripeServiceImpl());
   gh.lazySingleton<_i962.LiveScoreDataSource>(
     () => _i962.LiveScoreFirestoreDataSourceImpl(gh<_i974.FirebaseFirestore>()),
   );
@@ -95,6 +120,9 @@ Future<_i174.GetIt> $initGetIt(
       gh<_i806.FacebookAuth>(),
       gh<_i116.GoogleSignIn>(),
     ),
+  );
+  gh.lazySingleton<_i639.PaymentRepository>(
+    () => _i265.PaymentRepositoryImpl(gh<_i892.PaymentDataSource>()),
   );
   gh.lazySingleton<_i798.NewsArticlesDataSource>(
     () => _i798.NewsArticlesFirestoreDataSourceImpl(
@@ -106,6 +134,9 @@ Future<_i174.GetIt> $initGetIt(
   );
   gh.lazySingleton<_i491.NewsArticlesRepository>(
     () => _i205.NewsArticlesRepositoryImpl(gh<_i798.NewsArticlesDataSource>()),
+  );
+  gh.lazySingleton<_i1003.CreatePaymentIntentUseCase>(
+    () => _i1003.CreatePaymentIntentUseCase(gh<_i639.PaymentRepository>()),
   );
   gh.lazySingleton<_i787.AuthRepository>(
     () => _i153.AuthRepositoryImpl(gh<_i157.AuthFirebaseDataSource>()),
@@ -165,7 +196,16 @@ Future<_i174.GetIt> $initGetIt(
       gh<_i915.SignOutUseCase>(),
     ),
   );
+  gh.factory<_i206.PaymentBloc>(
+    () => _i206.PaymentBloc(
+      gh<_i1003.CreatePaymentIntentUseCase>(),
+      gh<_i797.AuthBloc>(),
+      gh<_i893.StripeService>(),
+    ),
+  );
   return getIt;
 }
 
-class _$FirebaseInjectableModule extends _i574.FirebaseInjectableModule {}
+class _$ExternalServicesModule extends _i306.ExternalServicesModule {}
+
+class _$DioInjectableModule extends _i667.DioInjectableModule {}

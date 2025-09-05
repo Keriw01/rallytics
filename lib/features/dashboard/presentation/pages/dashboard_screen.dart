@@ -66,7 +66,7 @@ class DashboardScreen extends StatelessWidget {
               ),
               // TODO: Implement navigation to about screen
               onTap: () {
-                Navigator.pop(context);
+                context.pop();
               },
             ),
             ListTile(
@@ -75,9 +75,9 @@ class DashboardScreen extends StatelessWidget {
                 S.of(context).drawerSupport,
                 style: textTheme.bodyLarge,
               ),
-              // TODO: Implement navigation to support screen
               onTap: () {
-                Navigator.pop(context);
+                context.pop();
+                context.goNamed("support");
               },
             ),
 
@@ -89,7 +89,7 @@ class DashboardScreen extends StatelessWidget {
                 style: textTheme.bodyLarge?.copyWith(color: AppColors.error),
               ),
               onTap: () {
-                Navigator.pop(context);
+                context.pop();
                 context.read<AuthBloc>().add(
                   const AuthEvent.signOutRequested(),
                 );

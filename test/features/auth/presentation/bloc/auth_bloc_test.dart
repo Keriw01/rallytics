@@ -2,6 +2,7 @@ import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
+import 'package:rallytics/core/error/error_codes.dart';
 import 'package:rallytics/core/error/exceptions.dart';
 
 import 'package:rallytics/features/auth/domain/entities/user_entity.dart';

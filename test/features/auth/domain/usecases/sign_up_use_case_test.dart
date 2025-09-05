@@ -1,6 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
+import 'package:rallytics/core/error/error_codes.dart';
 import 'package:rallytics/core/error/exceptions.dart';
 import 'package:rallytics/features/auth/domain/repositories/auth_repository.dart';
 import 'package:rallytics/features/auth/domain/usecases/params/sign_up_with_email_params.dart';

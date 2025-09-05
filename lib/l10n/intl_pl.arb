@@ -64,8 +64,13 @@
   "authErrorEmailInUse": "Ten email jest już używany. Proszę spróbować innego.",
   "authErrorInvalidEmail": "Email jest niepoprawny.",
   "authErrorWeakPassword": "Hasło jest zbyt słabe. Powinno mieć co najmniej 12 znaków i zawierać minimum 1 wielką, małą literę, cyfrę i znak specjalny.",
-  
-  
+  "authErrorConfiguration": "Błąd konfiguracji logowania. Skontaktuj się z pomocą techniczną.",
+  "authErrorFacebookCanceled": "Przerwano logowanie przez Facebook przez użytkownika.",
+  "authErrorFacebookFailed": "Logowanie przez Facebook nie powiodło się.",
+  "authErrorAccountExistsWithDifferentCredential": "Konto z tym adresem e-mail już istnieje. Zaloguj się inną metodą.",
+  "authErrorGitHubCanceled": "Przerwano logowanie przez GitHub przez użytkownika.",
+  "authErrorGoogleCanceled": "Przerwano logowanie przez Google przez użytkownika.",
+
   "validationErrorPasswordsDoNotMatch": "Hasła do siebie nie pasują.",
   "validationErrorEmptyFields": "Nie wszystkie pola są uzupełnione.",
   "validationErrorInvalidEmail": "Email jest niepoprawny.",
@@ -112,8 +117,26 @@
 
 
   "newsArticlesTitle": "Najnowsze Artykuły",
+  "newsArticlesError": "Występują obecnie problemy. Spróbuj ponownie później.",
+  "newsArticlesEmpty": "W tej chwili nie ma nowych artykułów.",
   "readMoreButton": "Rozwiń",
   "showLessButton": "Zwiń",
+
+
+  "supportMeTitle": "Wesprzyj mnie",
+  "supportMeHintText": "Własna kwota (zł)",
+  "paymentButton": "Zapłać",
+  "paymentSuccessMessage": "Dziękuję za twoje wsparcie!",
+
+
+  "paymentNetworkFailed": "Połączenie sieciowe nie powiodło się.",
+  "paymentNetworkError": "Błąd serwera Stripe. Spróbuj ponownie później.",
+  "paymentPaymentFailed": "Płatność nie powiodła się. Sprawdź dane płatności i spróbuj ponownie.",
+  "paymentInvalidRequest": "Nieprawidłowe żądanie. Upewnij się, że wszystkie wymagane dane zostały podane.",
+  "paymentAuthenticationError": "Błąd autoryzacji. Zaloguj się lub sprawdź poprawność klucza API.",
+  "paymentResourceNotFound": "Nie znaleziono zasobu.",
+  "paymentErrorUserNotLoggedIn": "Musisz być zalogowany, aby dokonać płatności.",
+  "paymentInvalidResponse": "Nieprawidłowa odpowiedź serwera.",
 
 
   "errorGeneric": "Niespodziewany błąd. Proszę spróbować ponownie później."

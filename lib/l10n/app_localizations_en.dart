@@ -118,6 +118,27 @@ class AppLocalizationsEn extends AppLocalizations {
       'The password is too weak. Should be at least 12 characters and contain minimum 1 uppercase, lowercase letter, number, special character.';
 
   @override
+  String get authErrorFacebookCanceled =>
+      'Canceled login via Facebook by user.';
+
+  @override
+  String get authErrorConfiguration =>
+      'Login configuration error. Please contact support.';
+
+  @override
+  String get authErrorFacebookFailed => 'Login via Facebook failed.';
+
+  @override
+  String get authErrorAccountExistsWithDifferentCredential =>
+      'An account with this email address already exists. Please log in using another method.';
+
+  @override
+  String get authErrorGitHubCanceled => 'Canceled login via GitHub by user.';
+
+  @override
+  String get authErrorGoogleCanceled => 'Canceled login via Google by user.';
+
+  @override
   String get validationErrorPasswordsDoNotMatch =>
       'The passwords do not match.';
 
@@ -225,6 +246,47 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get showLessButton => 'Show Less';
+
+  @override
+  String get supportMeTitle => 'Support Me';
+
+  @override
+  String get supportMeHintText => 'Own amount (PLN)';
+
+  @override
+  String get paymentButton => 'Pay';
+
+  @override
+  String get paymentSuccessMessage => 'Thank you for your support!';
+
+  @override
+  String get paymentNetworkFailed => 'Network connection failed.';
+
+  @override
+  String get paymentNetworkError =>
+      'Stripe server error. Please try again later.';
+
+  @override
+  String get paymentPaymentFailed =>
+      'Payment failed. Please check your payment details and try again.';
+
+  @override
+  String get paymentInvalidRequest =>
+      'Invalid request. Please ensure all required details are provided.';
+
+  @override
+  String get paymentAuthenticationError =>
+      'Authorization error. Please log in or validate your API key.';
+
+  @override
+  String get paymentResourceNotFound => 'Resource not found.';
+
+  @override
+  String get paymentErrorUserNotLoggedIn =>
+      'You must be logged in to make a payment.';
+
+  @override
+  String get paymentInvalidResponse => 'Invalid response from server.';
 
   @override
   String get errorGeneric =>

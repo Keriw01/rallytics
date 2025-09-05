@@ -381,6 +381,66 @@ class S {
     );
   }
 
+  /// `Canceled login via Facebook by user.`
+  String get authErrorFacebookCanceled {
+    return Intl.message(
+      'Canceled login via Facebook by user.',
+      name: 'authErrorFacebookCanceled',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Login configuration error. Please contact support.`
+  String get authErrorConfiguration {
+    return Intl.message(
+      'Login configuration error. Please contact support.',
+      name: 'authErrorConfiguration',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Login via Facebook failed.`
+  String get authErrorFacebookFailed {
+    return Intl.message(
+      'Login via Facebook failed.',
+      name: 'authErrorFacebookFailed',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `An account with this email address already exists. Please log in using another method.`
+  String get authErrorAccountExistsWithDifferentCredential {
+    return Intl.message(
+      'An account with this email address already exists. Please log in using another method.',
+      name: 'authErrorAccountExistsWithDifferentCredential',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Canceled login via GitHub by user.`
+  String get authErrorGitHubCanceled {
+    return Intl.message(
+      'Canceled login via GitHub by user.',
+      name: 'authErrorGitHubCanceled',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Canceled login via Google by user.`
+  String get authErrorGoogleCanceled {
+    return Intl.message(
+      'Canceled login via Google by user.',
+      name: 'authErrorGoogleCanceled',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `The passwords do not match.`
   String get validationErrorPasswordsDoNotMatch {
     return Intl.message(
@@ -706,6 +766,126 @@ class S {
     return Intl.message(
       'Show Less',
       name: 'showLessButton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Support Me`
+  String get supportMeTitle {
+    return Intl.message(
+      'Support Me',
+      name: 'supportMeTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Own amount (PLN)`
+  String get supportMeHintText {
+    return Intl.message(
+      'Own amount (PLN)',
+      name: 'supportMeHintText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Pay`
+  String get paymentButton {
+    return Intl.message(
+      'Pay',
+      name: 'paymentButton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Thank you for your support!`
+  String get paymentSuccessMessage {
+    return Intl.message(
+      'Thank you for your support!',
+      name: 'paymentSuccessMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Network connection failed.`
+  String get paymentNetworkFailed {
+    return Intl.message(
+      'Network connection failed.',
+      name: 'paymentNetworkFailed',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Stripe server error. Please try again later.`
+  String get paymentNetworkError {
+    return Intl.message(
+      'Stripe server error. Please try again later.',
+      name: 'paymentNetworkError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Payment failed. Please check your payment details and try again.`
+  String get paymentPaymentFailed {
+    return Intl.message(
+      'Payment failed. Please check your payment details and try again.',
+      name: 'paymentPaymentFailed',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Invalid request. Please ensure all required details are provided.`
+  String get paymentInvalidRequest {
+    return Intl.message(
+      'Invalid request. Please ensure all required details are provided.',
+      name: 'paymentInvalidRequest',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Authorization error. Please log in or validate your API key.`
+  String get paymentAuthenticationError {
+    return Intl.message(
+      'Authorization error. Please log in or validate your API key.',
+      name: 'paymentAuthenticationError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Resource not found.`
+  String get paymentResourceNotFound {
+    return Intl.message(
+      'Resource not found.',
+      name: 'paymentResourceNotFound',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You must be logged in to make a payment.`
+  String get paymentErrorUserNotLoggedIn {
+    return Intl.message(
+      'You must be logged in to make a payment.',
+      name: 'paymentErrorUserNotLoggedIn',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Invalid response from server.`
+  String get paymentInvalidResponse {
+    return Intl.message(
+      'Invalid response from server.',
+      name: 'paymentInvalidResponse',
       desc: '',
       args: [],
     );
