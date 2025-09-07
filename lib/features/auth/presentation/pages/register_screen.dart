@@ -67,21 +67,29 @@ class _RegisterScreenState extends State<RegisterScreen> {
       resizeToAvoidBottomInset: false,
       body: BlocConsumer<AuthBloc, AuthState>(
         listener: (context, state) {
-          if (state is Error) {
-            final errorMessage = getErrorMessage(context, state.code);
-            ScaffoldMessenger.of(
-              context,
-            ).showSnackBar(SnackBar(content: Text(errorMessage)));
-          }
+          state.maybeWhen(
+            error: (code) {
+              final errorMessage = getErrorMessage(context, code);
+              ScaffoldMessenger.of(
+                context,
+              ).showSnackBar(SnackBar(content: Text(errorMessage)));
+            },
+            orElse: () {},
+          );
         },
         builder: (context, state) {
+          final isLoading = state.maybeWhen(
+            loading: () => true,
+            orElse: () => false,
+          );
+
           return Stack(
             children: [
               _buildPositionedBackground(),
 
               _buildRegisterForm(context),
 
-              if (state is Loading) TennisBallLoader(),
+              if (isLoading) TennisBallLoader(),
             ],
           );
         },
