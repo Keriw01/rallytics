@@ -48,30 +48,30 @@ mixin _$AuthState {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(Loading value) loading,
+    required TResult Function(_Loading value) loading,
     required TResult Function(_Authenticated value) authenticated,
     required TResult Function(_Unauthenticated value) unauthenticated,
-    required TResult Function(PasswordResetEmailSent value)
+    required TResult Function(_PasswordResetEmailSent value)
     passwordResetEmailSent,
-    required TResult Function(Error value) error,
+    required TResult Function(_Error value) error,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(Loading value)? loading,
+    TResult? Function(_Loading value)? loading,
     TResult? Function(_Authenticated value)? authenticated,
     TResult? Function(_Unauthenticated value)? unauthenticated,
-    TResult? Function(PasswordResetEmailSent value)? passwordResetEmailSent,
-    TResult? Function(Error value)? error,
+    TResult? Function(_PasswordResetEmailSent value)? passwordResetEmailSent,
+    TResult? Function(_Error value)? error,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(Loading value)? loading,
+    TResult Function(_Loading value)? loading,
     TResult Function(_Authenticated value)? authenticated,
     TResult Function(_Unauthenticated value)? unauthenticated,
-    TResult Function(PasswordResetEmailSent value)? passwordResetEmailSent,
-    TResult Function(Error value)? error,
+    TResult Function(_PasswordResetEmailSent value)? passwordResetEmailSent,
+    TResult Function(_Error value)? error,
     required TResult orElse(),
   }) => throw _privateConstructorUsedError;
 }
@@ -183,12 +183,12 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(Loading value) loading,
+    required TResult Function(_Loading value) loading,
     required TResult Function(_Authenticated value) authenticated,
     required TResult Function(_Unauthenticated value) unauthenticated,
-    required TResult Function(PasswordResetEmailSent value)
+    required TResult Function(_PasswordResetEmailSent value)
     passwordResetEmailSent,
-    required TResult Function(Error value) error,
+    required TResult Function(_Error value) error,
   }) {
     return initial(this);
   }
@@ -197,11 +197,11 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(Loading value)? loading,
+    TResult? Function(_Loading value)? loading,
     TResult? Function(_Authenticated value)? authenticated,
     TResult? Function(_Unauthenticated value)? unauthenticated,
-    TResult? Function(PasswordResetEmailSent value)? passwordResetEmailSent,
-    TResult? Function(Error value)? error,
+    TResult? Function(_PasswordResetEmailSent value)? passwordResetEmailSent,
+    TResult? Function(_Error value)? error,
   }) {
     return initial?.call(this);
   }
@@ -210,11 +210,11 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(Loading value)? loading,
+    TResult Function(_Loading value)? loading,
     TResult Function(_Authenticated value)? authenticated,
     TResult Function(_Unauthenticated value)? unauthenticated,
-    TResult Function(PasswordResetEmailSent value)? passwordResetEmailSent,
-    TResult Function(Error value)? error,
+    TResult Function(_PasswordResetEmailSent value)? passwordResetEmailSent,
+    TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -251,7 +251,7 @@ class __$$LoadingImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$LoadingImpl implements Loading {
+class _$LoadingImpl implements _Loading {
   const _$LoadingImpl();
 
   @override
@@ -315,12 +315,12 @@ class _$LoadingImpl implements Loading {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(Loading value) loading,
+    required TResult Function(_Loading value) loading,
     required TResult Function(_Authenticated value) authenticated,
     required TResult Function(_Unauthenticated value) unauthenticated,
-    required TResult Function(PasswordResetEmailSent value)
+    required TResult Function(_PasswordResetEmailSent value)
     passwordResetEmailSent,
-    required TResult Function(Error value) error,
+    required TResult Function(_Error value) error,
   }) {
     return loading(this);
   }
@@ -329,11 +329,11 @@ class _$LoadingImpl implements Loading {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(Loading value)? loading,
+    TResult? Function(_Loading value)? loading,
     TResult? Function(_Authenticated value)? authenticated,
     TResult? Function(_Unauthenticated value)? unauthenticated,
-    TResult? Function(PasswordResetEmailSent value)? passwordResetEmailSent,
-    TResult? Function(Error value)? error,
+    TResult? Function(_PasswordResetEmailSent value)? passwordResetEmailSent,
+    TResult? Function(_Error value)? error,
   }) {
     return loading?.call(this);
   }
@@ -342,11 +342,11 @@ class _$LoadingImpl implements Loading {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(Loading value)? loading,
+    TResult Function(_Loading value)? loading,
     TResult Function(_Authenticated value)? authenticated,
     TResult Function(_Unauthenticated value)? unauthenticated,
-    TResult Function(PasswordResetEmailSent value)? passwordResetEmailSent,
-    TResult Function(Error value)? error,
+    TResult Function(_PasswordResetEmailSent value)? passwordResetEmailSent,
+    TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -356,8 +356,8 @@ class _$LoadingImpl implements Loading {
   }
 }
 
-abstract class Loading implements AuthState {
-  const factory Loading() = _$LoadingImpl;
+abstract class _Loading implements AuthState {
+  const factory _Loading() = _$LoadingImpl;
 }
 
 /// @nodoc
@@ -486,12 +486,12 @@ class _$AuthenticatedImpl implements _Authenticated {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(Loading value) loading,
+    required TResult Function(_Loading value) loading,
     required TResult Function(_Authenticated value) authenticated,
     required TResult Function(_Unauthenticated value) unauthenticated,
-    required TResult Function(PasswordResetEmailSent value)
+    required TResult Function(_PasswordResetEmailSent value)
     passwordResetEmailSent,
-    required TResult Function(Error value) error,
+    required TResult Function(_Error value) error,
   }) {
     return authenticated(this);
   }
@@ -500,11 +500,11 @@ class _$AuthenticatedImpl implements _Authenticated {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(Loading value)? loading,
+    TResult? Function(_Loading value)? loading,
     TResult? Function(_Authenticated value)? authenticated,
     TResult? Function(_Unauthenticated value)? unauthenticated,
-    TResult? Function(PasswordResetEmailSent value)? passwordResetEmailSent,
-    TResult? Function(Error value)? error,
+    TResult? Function(_PasswordResetEmailSent value)? passwordResetEmailSent,
+    TResult? Function(_Error value)? error,
   }) {
     return authenticated?.call(this);
   }
@@ -513,11 +513,11 @@ class _$AuthenticatedImpl implements _Authenticated {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(Loading value)? loading,
+    TResult Function(_Loading value)? loading,
     TResult Function(_Authenticated value)? authenticated,
     TResult Function(_Unauthenticated value)? unauthenticated,
-    TResult Function(PasswordResetEmailSent value)? passwordResetEmailSent,
-    TResult Function(Error value)? error,
+    TResult Function(_PasswordResetEmailSent value)? passwordResetEmailSent,
+    TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
     if (authenticated != null) {
@@ -626,12 +626,12 @@ class _$UnauthenticatedImpl implements _Unauthenticated {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(Loading value) loading,
+    required TResult Function(_Loading value) loading,
     required TResult Function(_Authenticated value) authenticated,
     required TResult Function(_Unauthenticated value) unauthenticated,
-    required TResult Function(PasswordResetEmailSent value)
+    required TResult Function(_PasswordResetEmailSent value)
     passwordResetEmailSent,
-    required TResult Function(Error value) error,
+    required TResult Function(_Error value) error,
   }) {
     return unauthenticated(this);
   }
@@ -640,11 +640,11 @@ class _$UnauthenticatedImpl implements _Unauthenticated {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(Loading value)? loading,
+    TResult? Function(_Loading value)? loading,
     TResult? Function(_Authenticated value)? authenticated,
     TResult? Function(_Unauthenticated value)? unauthenticated,
-    TResult? Function(PasswordResetEmailSent value)? passwordResetEmailSent,
-    TResult? Function(Error value)? error,
+    TResult? Function(_PasswordResetEmailSent value)? passwordResetEmailSent,
+    TResult? Function(_Error value)? error,
   }) {
     return unauthenticated?.call(this);
   }
@@ -653,11 +653,11 @@ class _$UnauthenticatedImpl implements _Unauthenticated {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(Loading value)? loading,
+    TResult Function(_Loading value)? loading,
     TResult Function(_Authenticated value)? authenticated,
     TResult Function(_Unauthenticated value)? unauthenticated,
-    TResult Function(PasswordResetEmailSent value)? passwordResetEmailSent,
-    TResult Function(Error value)? error,
+    TResult Function(_PasswordResetEmailSent value)? passwordResetEmailSent,
+    TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
     if (unauthenticated != null) {
@@ -694,7 +694,7 @@ class __$$PasswordResetEmailSentImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$PasswordResetEmailSentImpl implements PasswordResetEmailSent {
+class _$PasswordResetEmailSentImpl implements _PasswordResetEmailSent {
   const _$PasswordResetEmailSentImpl();
 
   @override
@@ -759,12 +759,12 @@ class _$PasswordResetEmailSentImpl implements PasswordResetEmailSent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(Loading value) loading,
+    required TResult Function(_Loading value) loading,
     required TResult Function(_Authenticated value) authenticated,
     required TResult Function(_Unauthenticated value) unauthenticated,
-    required TResult Function(PasswordResetEmailSent value)
+    required TResult Function(_PasswordResetEmailSent value)
     passwordResetEmailSent,
-    required TResult Function(Error value) error,
+    required TResult Function(_Error value) error,
   }) {
     return passwordResetEmailSent(this);
   }
@@ -773,11 +773,11 @@ class _$PasswordResetEmailSentImpl implements PasswordResetEmailSent {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(Loading value)? loading,
+    TResult? Function(_Loading value)? loading,
     TResult? Function(_Authenticated value)? authenticated,
     TResult? Function(_Unauthenticated value)? unauthenticated,
-    TResult? Function(PasswordResetEmailSent value)? passwordResetEmailSent,
-    TResult? Function(Error value)? error,
+    TResult? Function(_PasswordResetEmailSent value)? passwordResetEmailSent,
+    TResult? Function(_Error value)? error,
   }) {
     return passwordResetEmailSent?.call(this);
   }
@@ -786,11 +786,11 @@ class _$PasswordResetEmailSentImpl implements PasswordResetEmailSent {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(Loading value)? loading,
+    TResult Function(_Loading value)? loading,
     TResult Function(_Authenticated value)? authenticated,
     TResult Function(_Unauthenticated value)? unauthenticated,
-    TResult Function(PasswordResetEmailSent value)? passwordResetEmailSent,
-    TResult Function(Error value)? error,
+    TResult Function(_PasswordResetEmailSent value)? passwordResetEmailSent,
+    TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
     if (passwordResetEmailSent != null) {
@@ -800,8 +800,8 @@ class _$PasswordResetEmailSentImpl implements PasswordResetEmailSent {
   }
 }
 
-abstract class PasswordResetEmailSent implements AuthState {
-  const factory PasswordResetEmailSent() = _$PasswordResetEmailSentImpl;
+abstract class _PasswordResetEmailSent implements AuthState {
+  const factory _PasswordResetEmailSent() = _$PasswordResetEmailSentImpl;
 }
 
 /// @nodoc
@@ -841,7 +841,7 @@ class __$$ErrorImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ErrorImpl implements Error {
+class _$ErrorImpl implements _Error {
   const _$ErrorImpl(this.code);
 
   @override
@@ -918,12 +918,12 @@ class _$ErrorImpl implements Error {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(Loading value) loading,
+    required TResult Function(_Loading value) loading,
     required TResult Function(_Authenticated value) authenticated,
     required TResult Function(_Unauthenticated value) unauthenticated,
-    required TResult Function(PasswordResetEmailSent value)
+    required TResult Function(_PasswordResetEmailSent value)
     passwordResetEmailSent,
-    required TResult Function(Error value) error,
+    required TResult Function(_Error value) error,
   }) {
     return error(this);
   }
@@ -932,11 +932,11 @@ class _$ErrorImpl implements Error {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(Loading value)? loading,
+    TResult? Function(_Loading value)? loading,
     TResult? Function(_Authenticated value)? authenticated,
     TResult? Function(_Unauthenticated value)? unauthenticated,
-    TResult? Function(PasswordResetEmailSent value)? passwordResetEmailSent,
-    TResult? Function(Error value)? error,
+    TResult? Function(_PasswordResetEmailSent value)? passwordResetEmailSent,
+    TResult? Function(_Error value)? error,
   }) {
     return error?.call(this);
   }
@@ -945,11 +945,11 @@ class _$ErrorImpl implements Error {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(Loading value)? loading,
+    TResult Function(_Loading value)? loading,
     TResult Function(_Authenticated value)? authenticated,
     TResult Function(_Unauthenticated value)? unauthenticated,
-    TResult Function(PasswordResetEmailSent value)? passwordResetEmailSent,
-    TResult Function(Error value)? error,
+    TResult Function(_PasswordResetEmailSent value)? passwordResetEmailSent,
+    TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -959,8 +959,8 @@ class _$ErrorImpl implements Error {
   }
 }
 
-abstract class Error implements AuthState {
-  const factory Error(final ErrorCode code) = _$ErrorImpl;
+abstract class _Error implements AuthState {
+  const factory _Error(final ErrorCode code) = _$ErrorImpl;
 
   ErrorCode get code;
 

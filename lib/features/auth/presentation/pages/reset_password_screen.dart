@@ -60,28 +60,35 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
       ),
       body: BlocConsumer<AuthBloc, AuthState>(
         listener: (context, state) {
-          if (state is Error) {
-            final errorMessage = getErrorMessage(context, state.code);
-            ScaffoldMessenger.of(
-              context,
-            ).showSnackBar(SnackBar(content: Text(errorMessage)));
-          }
-
-          if (state is PasswordResetEmailSent) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(
-                content: Text(S.of(context).passwordResetEmailSentSuccess),
-              ),
-            );
-            context.goNamed('login');
-          }
+          state.maybeWhen(
+            error: (code) {
+              final errorMessage = getErrorMessage(context, code);
+              ScaffoldMessenger.of(
+                context,
+              ).showSnackBar(SnackBar(content: Text(errorMessage)));
+            },
+            passwordResetEmailSent: () {
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text(S.of(context).passwordResetEmailSentSuccess),
+                ),
+              );
+              context.goNamed('login');
+            },
+            orElse: () {},
+          );
         },
         builder: (context, state) {
+          final isLoading = state.maybeWhen(
+            loading: () => true,
+            orElse: () => false,
+          );
+
           return Stack(
             children: [
               _buildResetPasswordForm(context),
 
-              if (state is Loading) TennisBallLoader(),
+              if (isLoading) TennisBallLoader(),
             ],
           );
         },

@@ -90,7 +90,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         emit(AuthState.error(e.code));
       } on ValidationException catch (e) {
         emit(AuthState.error(e.code));
-      } 
+      }
     });
 
     on<SignInWithGoogleRequested>((event, emit) async {
