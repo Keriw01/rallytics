@@ -13,9 +13,16 @@ class NewsArticlesBloc extends Bloc<NewsArticlesEvent, NewsArticlesState> {
   NewsArticlesBloc(this._getNewsArticlesUsecase)
     : super(NewsArticlesState.initial()) {
     on<WatchNewsArticlesStarted>((event, emit) async {
-      if (state is! Loaded) {
+      // Show loading only the first time (silent refresh)
+      final isAlreadyLoaded = state.maybeMap(
+        loaded: (_) => true,
+        orElse: () => false,
+      );
+
+      if (!isAlreadyLoaded) {
         emit(const NewsArticlesState.loading());
       }
+
       await emit.onEach<List<NewsArticlesEntity>>(
         _getNewsArticlesUsecase(NoParams()),
         onData: (newNewsArticles) {

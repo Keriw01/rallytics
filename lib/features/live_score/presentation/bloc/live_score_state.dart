@@ -11,6 +11,6 @@ class LiveScoreState with _$LiveScoreState {
     @Default([]) List<LiveMatchEntity> allMatches,
     @Default([]) List<LiveMatchEntity> filteredMatches,
     @Default('') String searchQuery,
-  }) = Loaded;
+  }) = _Loaded;
   const factory LiveScoreState.error(String message) = _Error;
 }

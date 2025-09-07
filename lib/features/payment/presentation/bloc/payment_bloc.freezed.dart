@@ -433,24 +433,24 @@ mixin _$PaymentState {
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(Initial value) initial,
-    required TResult Function(Loading value) loading,
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
     required TResult Function(_ReadyToPay value) readyToPay,
     required TResult Function(_Success value) success,
     required TResult Function(_Error value) error,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(Initial value)? initial,
-    TResult? Function(Loading value)? loading,
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loading value)? loading,
     TResult? Function(_ReadyToPay value)? readyToPay,
     TResult? Function(_Success value)? success,
     TResult? Function(_Error value)? error,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(Initial value)? initial,
-    TResult Function(Loading value)? loading,
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
     TResult Function(_ReadyToPay value)? readyToPay,
     TResult Function(_Success value)? success,
     TResult Function(_Error value)? error,
@@ -503,7 +503,7 @@ class __$$InitialImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$InitialImpl implements Initial {
+class _$InitialImpl implements _Initial {
   const _$InitialImpl();
 
   @override
@@ -563,8 +563,8 @@ class _$InitialImpl implements Initial {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(Initial value) initial,
-    required TResult Function(Loading value) loading,
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
     required TResult Function(_ReadyToPay value) readyToPay,
     required TResult Function(_Success value) success,
     required TResult Function(_Error value) error,
@@ -575,8 +575,8 @@ class _$InitialImpl implements Initial {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(Initial value)? initial,
-    TResult? Function(Loading value)? loading,
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loading value)? loading,
     TResult? Function(_ReadyToPay value)? readyToPay,
     TResult? Function(_Success value)? success,
     TResult? Function(_Error value)? error,
@@ -587,8 +587,8 @@ class _$InitialImpl implements Initial {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(Initial value)? initial,
-    TResult Function(Loading value)? loading,
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
     TResult Function(_ReadyToPay value)? readyToPay,
     TResult Function(_Success value)? success,
     TResult Function(_Error value)? error,
@@ -601,8 +601,8 @@ class _$InitialImpl implements Initial {
   }
 }
 
-abstract class Initial implements PaymentState {
-  const factory Initial() = _$InitialImpl;
+abstract class _Initial implements PaymentState {
+  const factory _Initial() = _$InitialImpl;
 }
 
 /// @nodoc
@@ -628,7 +628,7 @@ class __$$LoadingImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$LoadingImpl implements Loading {
+class _$LoadingImpl implements _Loading {
   const _$LoadingImpl();
 
   @override
@@ -688,8 +688,8 @@ class _$LoadingImpl implements Loading {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(Initial value) initial,
-    required TResult Function(Loading value) loading,
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
     required TResult Function(_ReadyToPay value) readyToPay,
     required TResult Function(_Success value) success,
     required TResult Function(_Error value) error,
@@ -700,8 +700,8 @@ class _$LoadingImpl implements Loading {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(Initial value)? initial,
-    TResult? Function(Loading value)? loading,
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loading value)? loading,
     TResult? Function(_ReadyToPay value)? readyToPay,
     TResult? Function(_Success value)? success,
     TResult? Function(_Error value)? error,
@@ -712,8 +712,8 @@ class _$LoadingImpl implements Loading {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(Initial value)? initial,
-    TResult Function(Loading value)? loading,
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
     TResult Function(_ReadyToPay value)? readyToPay,
     TResult Function(_Success value)? success,
     TResult Function(_Error value)? error,
@@ -726,8 +726,8 @@ class _$LoadingImpl implements Loading {
   }
 }
 
-abstract class Loading implements PaymentState {
-  const factory Loading() = _$LoadingImpl;
+abstract class _Loading implements PaymentState {
+  const factory _Loading() = _$LoadingImpl;
 }
 
 /// @nodoc
@@ -841,8 +841,8 @@ class _$ReadyToPayImpl implements _ReadyToPay {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(Initial value) initial,
-    required TResult Function(Loading value) loading,
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
     required TResult Function(_ReadyToPay value) readyToPay,
     required TResult Function(_Success value) success,
     required TResult Function(_Error value) error,
@@ -853,8 +853,8 @@ class _$ReadyToPayImpl implements _ReadyToPay {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(Initial value)? initial,
-    TResult? Function(Loading value)? loading,
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loading value)? loading,
     TResult? Function(_ReadyToPay value)? readyToPay,
     TResult? Function(_Success value)? success,
     TResult? Function(_Error value)? error,
@@ -865,8 +865,8 @@ class _$ReadyToPayImpl implements _ReadyToPay {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(Initial value)? initial,
-    TResult Function(Loading value)? loading,
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
     TResult Function(_ReadyToPay value)? readyToPay,
     TResult Function(_Success value)? success,
     TResult Function(_Error value)? error,
@@ -974,8 +974,8 @@ class _$SuccessImpl implements _Success {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(Initial value) initial,
-    required TResult Function(Loading value) loading,
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
     required TResult Function(_ReadyToPay value) readyToPay,
     required TResult Function(_Success value) success,
     required TResult Function(_Error value) error,
@@ -986,8 +986,8 @@ class _$SuccessImpl implements _Success {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(Initial value)? initial,
-    TResult? Function(Loading value)? loading,
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loading value)? loading,
     TResult? Function(_ReadyToPay value)? readyToPay,
     TResult? Function(_Success value)? success,
     TResult? Function(_Error value)? error,
@@ -998,8 +998,8 @@ class _$SuccessImpl implements _Success {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(Initial value)? initial,
-    TResult Function(Loading value)? loading,
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
     TResult Function(_ReadyToPay value)? readyToPay,
     TResult Function(_Success value)? success,
     TResult Function(_Error value)? error,
@@ -1126,8 +1126,8 @@ class _$ErrorImpl implements _Error {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(Initial value) initial,
-    required TResult Function(Loading value) loading,
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
     required TResult Function(_ReadyToPay value) readyToPay,
     required TResult Function(_Success value) success,
     required TResult Function(_Error value) error,
@@ -1138,8 +1138,8 @@ class _$ErrorImpl implements _Error {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(Initial value)? initial,
-    TResult? Function(Loading value)? loading,
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loading value)? loading,
     TResult? Function(_ReadyToPay value)? readyToPay,
     TResult? Function(_Success value)? success,
     TResult? Function(_Error value)? error,
@@ -1150,8 +1150,8 @@ class _$ErrorImpl implements _Error {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(Initial value)? initial,
-    TResult Function(Loading value)? loading,
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
     TResult Function(_ReadyToPay value)? readyToPay,
     TResult Function(_Success value)? success,
     TResult Function(_Error value)? error,

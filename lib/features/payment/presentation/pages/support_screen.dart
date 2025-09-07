@@ -83,7 +83,10 @@ class __SupportViewState extends State<_SupportView> {
           );
         },
         builder: (context, state) {
-          final bool isLoading = state is Loading;
+          final isLoading = state.maybeWhen(
+            loading: () => true,
+            orElse: () => false,
+          );
 
           return Stack(
             children: [

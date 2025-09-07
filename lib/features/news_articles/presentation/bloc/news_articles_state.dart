@@ -9,6 +9,6 @@ class NewsArticlesState with _$NewsArticlesState {
   const factory NewsArticlesState.loading() = _Loading;
   const factory NewsArticlesState.loaded({
     @Default([]) List<NewsArticlesEntity> allNewsArticles,
-  }) = Loaded;
+  }) = _Loaded;
   const factory NewsArticlesState.error(String message) = _Error;
 }

@@ -13,9 +13,16 @@ class LiveScoreBloc extends Bloc<LiveScoreEvent, LiveScoreState> {
   LiveScoreBloc(this._getLiveScoresUseCase)
     : super(const LiveScoreState.initial()) {
     on<WatchLiveScoresStarted>((event, emit) async {
-      if (state is! Loaded) {
+      // Show loading only the first time (silent refresh)
+      final isAlreadyLoaded = state.maybeMap(
+        loaded: (_) => true,
+        orElse: () => false,
+      );
+
+      if (!isAlreadyLoaded) {
         emit(const LiveScoreState.loading());
       }
+
       await emit.onEach<List<LiveMatchEntity>>(
         _getLiveScoresUseCase(NoParams()),
         onData: (newMatches) {
@@ -41,22 +48,23 @@ class LiveScoreBloc extends Bloc<LiveScoreEvent, LiveScoreState> {
     });
 
     on<SearchQueryChanged>((event, emit) async {
-      final currentState = state;
-      if (currentState is Loaded) {
-        final newQuery = event.query;
+      state.mapOrNull(
+        loaded: (loadedState) {
+          final newQuery = event.query;
 
-        final filteredMatches = _filterMatches(
-          currentState.allMatches,
-          newQuery,
-        );
+          final filteredMatches = _filterMatches(
+            loadedState.allMatches,
+            newQuery,
+          );
 
-        emit(
-          currentState.copyWith(
-            searchQuery: newQuery,
-            filteredMatches: filteredMatches,
-          ),
-        );
-      }
+          emit(
+            loadedState.copyWith(
+              searchQuery: newQuery,
+              filteredMatches: filteredMatches,
+            ),
+          );
+        },
+      );
     });
   }
 
